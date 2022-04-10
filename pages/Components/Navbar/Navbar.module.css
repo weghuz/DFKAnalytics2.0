@@ -1,0 +1,41 @@
+.Navbar {
+  text-align: center;
+  font-size: 1.4rem;
+  line-height: 1.5rem;
+  white-space: normal;
+  flex-wrap: wrap;
+  padding: 12px 0 5px 0;
+  width: "100%";
+  background-color: rgb(14, 14, 14);
+  color: rgb(81, 120, 248);
+
+}
+.DFKLogo {
+    margin: 0 8px;
+    padding: 0;
+}
+.text {
+    display: inline-block;
+    margin:0;
+    vertical-align: top;
+}
+
+.navigation > a {
+    font-size: 0.9rem;
+    display: inline-block;
+    margin: 0px 15px;
+}
+
+@media screen and (max-width:500px) {
+    .Navbar {
+        font-size: 1rem;
+    }
+    .DFKLogo {
+        display: none;
+        margin: 0;
+    }
+    .text {
+        display: none;
+    }
+}
+

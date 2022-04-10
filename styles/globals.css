@@ -6,11 +6,41 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
+.space {
+  margin: 10px 0;
+}
+
+body {
+  background-color: rgb(14,14,14);
+}
+
+ul {
+  padding-left: 0px;
+  margin: 0px;
+  padding: 0px;
+}
+
+li {
+  list-style: none;
+}
+
 a {
-  color: inherit;
+  color: rgb(98, 129, 224);
   text-decoration: none;
 }
 
-* {
-  box-sizing: border-box;
+a:hover {
+  color: royalblue;
+}
+
+a:active {
+  color: red;
+  text-decoration: none;
+}
+
+.react-dropdown-select-input{
+  color:white;
+}
+.react-dropdown-select-clear{
+  color:white;
 }
