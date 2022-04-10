@@ -14,6 +14,7 @@
     margin: 0 8px;
     padding: 0;
 }
+
 .text {
     display: inline-block;
     margin:0;
@@ -21,14 +22,32 @@
 }
 
 .navigation > a {
-    font-size: 0.9rem;
+    border-radius: 10px;
+    padding: 8px 15px;
+    background-color: rgb(14,14,14);
+    font-size: 1rem;
     display: inline-block;
-    margin: 0px 15px;
+    margin: 6px 3px;
 }
 
-@media screen and (max-width:500px) {
+.navigation > a:hover {
+    background-color: rgb(16, 16, 16);
+    box-shadow: 0 3px 0 rgb(81, 120, 248);
+}
+
+.navigation > a:active {
+    background-color: rgb(20, 20, 20);
+    transform: translateY(2px);
+    box-shadow: 0 1px 0 rgb(81, 120, 248);
+}
+
+@media screen and (max-width:574px) {
     .Navbar {
         font-size: 1rem;
+    }
+    .navigation > a {
+        padding: 8px 8px;
+        margin: 3px;
     }
     .DFKLogo {
         display: none;

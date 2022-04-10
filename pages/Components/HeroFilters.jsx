@@ -70,7 +70,7 @@ export default function HeroFilters() {
         <SelectItem title="Profession" values={professions} setValues={setProfessions}>
           {profession}
         </SelectItem>
-        <SelectItem label="value" values={rarities} setValues={setRarities}>
+        <SelectItem title="Rarity" label="value" values={rarities} setValues={setRarities}>
           {heroRarity}
         </SelectItem>
       </div>

@@ -1,8 +1,7 @@
 import { ethers } from "ethers";
-import React from "react";
-import { useEffect, useState, useLayoutEffect } from "react";
-import Modal from "./Modal";
-import QuestionModal from "./QuestionModal";
+import { useEffect, useState } from "react";
+import DisconnectWalletModal from "./Modal/DisconnectWalletModal";
+import QuestionModal from "./Modal/QuestionModal";
 
 export default function MetaMask() {
   const [connected, setConnected] = useState(true);
@@ -20,12 +19,15 @@ export default function MetaMask() {
     setConnected(true);
     setShowQuestionsModal(false);
   };
+  const FindConnectedWallets = async () => {
+    let provider = new ethers.providers.Web3Provider(window.ethereum);
+    const address = await provider.listAccounts();
+    ConnectMetamaskAddress(address);
+  };
   useEffect(() => {
     const OnWindowLoaded = async () => {
-      console.log(localStorage.getItem("address"));
       let savedWallet = localStorage.getItem("address");
       if (savedWallet) {
-        console.log("yep1");
         SaveLocalStorageWallet(savedWallet);
         return;
       }
@@ -38,11 +40,6 @@ export default function MetaMask() {
     };
     OnWindowLoaded();
   }, []);
-  const FindConnectedWallets = async () => {
-    let provider = new ethers.providers.Web3Provider(window.ethereum);
-    const address = await provider.listAccounts();
-    ConnectMetamaskAddress(address);
-  };
   const ConnectMetamaskAddress = (address) => {
     if (address.length == 0) {
       setConnected(false);
@@ -68,9 +65,6 @@ export default function MetaMask() {
   };
   const HideQuestionsModal = () => {
     setShowQuestionsModal(false);
-  };
-  const HideConnectedInformationModal = () => {
-    setShowConnectedInformation(false);
   };
   const DisconnectWallet = () => {
     if (connectionMethod == "MetaMask") {
@@ -143,7 +137,6 @@ export default function MetaMask() {
       </>
     );
   }
-
   return (
     <>
       <button
@@ -153,24 +146,12 @@ export default function MetaMask() {
         {`${address.substring(0, 6)}`}
       </button>
       {showConnectedInformation && (
-        <Modal
-          Title={address}
-          closeModalFunction={HideConnectedInformationModal}
-        >
-          <p>
-            {`This site stores no data on servers. The wallet connection is
-            personal and will only be used to query the DeFikingdoms API.`}
-          </p>
-          <p>{`You're currently connected through ${connectionMethod}`}.</p>
-          <p className="text-center">
-            <button
-              className="btn btn-sm btn-danger"
-              onClick={DisconnectWallet}
-            >
-              Disconnect
-            </button>
-          </p>
-        </Modal>
+        <DisconnectWalletModal
+          closeModalFunction={() => setShowConnectedInformation(false)}
+          address={address}
+          connectionMethod={connectionMethod}
+          disconnectWalletCallback={DisconnectWallet}
+        />
       )}
     </>
   );

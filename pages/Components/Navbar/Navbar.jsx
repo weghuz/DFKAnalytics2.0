@@ -3,7 +3,6 @@ import Image from "next/image";
 import DFKLogo from "../../../public/DFKLogo.png";
 import style from './Navbar.module.css'
 import Link from 'next/link'
-import MetaMask from '../MetaMask'
 
 export default function Navbar() {
   const [address, setAddress] = useState("");

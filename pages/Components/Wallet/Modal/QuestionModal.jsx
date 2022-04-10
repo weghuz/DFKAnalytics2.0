@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Modal from './Modal'
+import Modal from '../../Modal/Modal'
 
 export default function QuestionModal({HideQuestionsModal, SaveLocalStorageWallet}) {
   const [address, setAddress] = useState("")
