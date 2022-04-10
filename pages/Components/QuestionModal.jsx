@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Modal from './Modal'
 
-export default function QuestionModal({HideQuestionsModal, SetLocalStorageWallet, SaveLocalStorageWallet}) {
+export default function QuestionModal({HideQuestionsModal, SaveLocalStorageWallet}) {
+  const [address, setAddress] = useState("")
   return (
-      
     <Modal Title="Why connect?" closeModalFunction={HideQuestionsModal}>
     <p>
       The reason DFKAnalytics has a connect with MetaMask feature is to
@@ -17,11 +17,11 @@ export default function QuestionModal({HideQuestionsModal, SetLocalStorageWallet
     <input
       className="form-control form-control-sm mb-2"
       placeholder="0x address"
-      onInput={SetLocalStorageWallet}
+      onInput={(e) => setAddress(e.target.value)}
     />
     <button
       className="btn btn-sm btn-success"
-      onClick={() => SaveLocalStorageWallet()}
+      onClick={() => SaveLocalStorageWallet(address)}
     >
       Save address
     </button>

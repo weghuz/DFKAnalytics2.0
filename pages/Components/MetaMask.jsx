@@ -13,69 +13,65 @@ export default function MetaMask() {
     useState(false);
   const [connecting, setConnecting] = useState(false);
   const [connectionMethod, setConnectionMethod] = useState("");
-  function SetLocalStorageWallet(event) {
-    if (event !== undefined) {
-      localStorage.setItem("address", event.target.value);
-    }
-  }
-  const SaveLocalStorageWallet = () => {
+  const SaveLocalStorageWallet = (address) => {
     setConnectionMethod("Local Storage");
-    setAddress(localStorage.getItem("address"));
-    setShowQuestionsModal(false);
+    localStorage.setItem("address", address);
+    setAddress(address);
     setConnected(true);
-  }
-  function SetWallet(address) {
-    if (address.length > 0) {
-      setAddress(address[0]);
-      setConnectionMethod("MetaMask");
-      console.log("connected!");
-      setConnected(true);
-    } else {
-      setConnected(false);
-    }
-  }
-  const FindConnectedWallets = async () => {
-    let provider = new ethers.providers.Web3Provider(window.ethereum);
-    const accounts = await provider.listAccounts();
-    SetWallet(accounts);
-  };
-  const ConnectWallet = async () => {
-    setConnecting(true);
-    window.ethereum
-      .request({ method: "eth_requestAccounts" })
-      .then((accounts) => {
-        SetWallet(accounts);
-      })
-      .catch((f) => {
-        setConnected(false);
-      })
-      .finally(() => {
-        setConnecting(false);
-      });
+    setShowQuestionsModal(false);
   };
   useEffect(() => {
-    async function OnWindowLoaded() {
+    const OnWindowLoaded = async () => {
+      console.log(localStorage.getItem("address"));
       let savedWallet = localStorage.getItem("address");
-      console.log(savedWallet);
       if (savedWallet) {
-        setAddress(savedWallet);
-        SaveLocalStorageWallet();
+        console.log("yep1");
+        SaveLocalStorageWallet(savedWallet);
         return;
       }
       if (typeof window.ethereum !== "undefined") {
         FindConnectedWallets();
       } else {
+        setConnected(false);
         setMetaMaskInstalled(false);
       }
-    }
+    };
     OnWindowLoaded();
-  });
-  function HideQuestionsModal() {
+  }, []);
+  const FindConnectedWallets = async () => {
+    let provider = new ethers.providers.Web3Provider(window.ethereum);
+    const address = await provider.listAccounts();
+    ConnectMetamaskAddress(address);
+  };
+  const ConnectMetamaskAddress = (address) => {
+    if (address.length == 0) {
+      setConnected(false);
+      return;
+    }
+    setAddress(address[0]);
+    setConnected(true);
+    setConnectionMethod("MetaMask");
+  };
+  const ConnectWallet = async () => {
+    setConnecting(true);
+    window.ethereum
+      .request({ method: "eth_requestAccounts" })
+      .then((address) => {
+        ConnectMetamaskAddress(address);
+      })
+      .catch((f) => {
+        setConnecting(false);
+      })
+      .finally(() => {
+        setConnecting(false);
+      });
+  };
+  const HideQuestionsModal = () => {
     setShowQuestionsModal(false);
-  }
-  function HideConnectedInformationModal() {
+  };
+  const HideConnectedInformationModal = () => {
     setShowConnectedInformation(false);
-  }
+  };
   const DisconnectWallet = () => {
     if (connectionMethod == "MetaMask") {
       window.open(
@@ -84,6 +80,8 @@ export default function MetaMask() {
       return;
     }
     localStorage.setItem("address", "");
+    setShowConnectedInformation(false);
+    setShowQuestionsModal(false);
     setConnected(false);
   };
   if (connecting) {
@@ -104,7 +102,10 @@ export default function MetaMask() {
           </button>
         </div>
         {showQuestionsModal && (
-          <QuestionModal HideQuestionsModal={HideQuestionsModal} SetLocalStorageWallet={SetLocalStorageWallet} SaveLocalStorageWallet={SaveLocalStorageWallet} />
+          <QuestionModal
+            HideQuestionsModal={HideQuestionsModal}
+            SaveLocalStorageWallet={SaveLocalStorageWallet}
+          />
         )}
       </>
     );
@@ -132,7 +133,10 @@ export default function MetaMask() {
           </button>
         </div>
         {showQuestionsModal ? (
-          <QuestionModal HideQuestionsModal={HideQuestionsModal} SetLocalStorageWallet={SetLocalStorageWallet} SaveLocalStorageWallet={SaveLocalStorageWallet} />
+          <QuestionModal
+            HideQuestionsModal={HideQuestionsModal}
+            SaveLocalStorageWallet={SaveLocalStorageWallet}
+          />
         ) : (
           ""
         )}
@@ -154,10 +158,10 @@ export default function MetaMask() {
           closeModalFunction={HideConnectedInformationModal}
         >
           <p>
-            This site stores no data peronal data. The wallet connection is
-            personal and will only be used to query the DeFikingdoms API.
+            {`This site stores no data on servers. The wallet connection is
+            personal and will only be used to query the DeFikingdoms API.`}
           </p>
-          <p>You&apos;re currently connected through {connectionMethod}.</p>
+          <p>{`You're currently connected through ${connectionMethod}`}.</p>
           <p className="text-center">
             <button
               className="btn btn-sm btn-danger"

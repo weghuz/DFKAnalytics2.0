@@ -34,7 +34,7 @@ export default function Resources() {
                 target="_blank"
                 rel="noreferrer"
               >
-                Beginner&APOS;s guide to DeFi Kingdoms
+                Beginner&apos;s guide to DeFi Kingdoms
               </a>
             </li>
             <li>
@@ -55,7 +55,7 @@ export default function Resources() {
               >
                 The Facts on Hero Stats
               </a>
-              . A great guide to start if you&APOS;re looking to get deep into
+              . A great guide to start if you&apos;re looking to get deep into
               breaking down the stats of heroes.
             </li>
             <li>
@@ -88,7 +88,7 @@ export default function Resources() {
               >
                 Stat Growth Charts
               </a>
-              : you can&APOS;t make decisions about heroes without these.
+              : you can&apos;t make decisions about heroes without these.
             </li>
             <li>
               <a
@@ -98,7 +98,7 @@ export default function Resources() {
               >
                 DFK Discord Channel
               </a>
-              : If you haven&APOS;t joined already, join the DFK discord now! It will
+              : If you haven&apos;t joined already, join the DFK discord now! It will
               change your life.
             </li>
           </ul>
@@ -116,7 +116,7 @@ export default function Resources() {
                 target="_blank"
                 rel="noreferrer"
               >
-                DFK Report - Lila&APOS;s Ledger
+                DFK Report - Lila&apos;s Ledger
               </a>{" "}
               Tax report tool that gives a great summary of your transactions in
               DFK. You can get a summary in several different formats and your
@@ -205,7 +205,7 @@ export default function Resources() {
                 target="_blank"
                 rel="noreferrer"
               >
-                Gaia&APOS;s tears
+                Gaia&apos;s tears
               </a>
             </li>
             <li>
