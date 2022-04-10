@@ -22,15 +22,15 @@ export default function About() {
               analyse heroes in DFK{" "}
               <a
                 href="https://medium.com/@@Weghuz/advanced-theory-part-1-scoring-heroes-in-defi-kingdoms-1ffd043fcd1c"
-                target="_blank"
+                target="_blank" rel="noreferrer"
               >
                 here
               </a>
-              . This is what makes up the "Class Score" I use on this site. You
+              . This is what makes up the &quot;Class Score&quot; I use on this site. You
               can also find the code in the below section.
             </p>
             <p>
-              The "Growth Score" is a growth based score. It's based on a heroes
+              The &quot;Growth Score&quot; is a growth based score. It&apos;s based on a heroes
               Stat Growth Values. A medium article about it will come out at
               some point and then get linked in this section.
             </p>
@@ -40,13 +40,13 @@ export default function About() {
                 href="#"
                 onClick={() => setShowTipModal(true)}
               >
-                <Image src={StamPot} height="60px" width="60px"/>
+                <Image src={StamPot} alt="Clickable Stamina Potion Tip Modal" height="60px" width="60px"/>
               </a>
             </h5>
           </div>
           <div>
             <h5>Image assets from DFK</h5>
-            <p>All assets are used with the blessings of the <a href="https://defikingdoms.com/team.html" target="_blank">DFK team</a> and <a href="https://kingdomstudios.io/" target="_blank">DefikingdomStudios.io</a>!</p>
+            <p>All assets are used with the blessings of the <a href="https://defikingdoms.com/team.html" target="_blank" rel="noreferrer">DFK team</a> and <a href="https://kingdomstudios.io/" target="_blank" rel="noreferrer">DefikingdomStudios.io</a>!</p>
           </div>
         </div>
         {

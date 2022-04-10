@@ -10,12 +10,12 @@ export default function Navbar() {
   return (
     <div className={style.Navbar}>
       <span className={style.text}><Link href="/">DFKAnalytics</Link> a</span>
-      <a className={style.DFKLogo} href="https://defikingdoms.com/" target="_blank">
-        <Image className={style.Img}  placeholder="blur" src={DFKLogo} height="30" width="184" />
+      <a className={style.DFKLogo} href="https://defikingdoms.com/" target="_blank" rel="noreferrer">
+        <Image className={style.Img} alt="DeFi Kingdoms Logo"  placeholder="blur" src={DFKLogo} height="30" width="184" />
       </a>
       <span className={style.text}>third party site</span>
       <div className={style.navigation}>
-        <Link href={"/"}><a href="/">Home</a></Link>
+        <Link href={"/"}>Home</Link>
         <Link href={"/Auctions"}>Auctions</Link>
         <Link href={"/Wallet"}>Wallet</Link>
         <Link href={"/Resources"}>Resources</Link>

@@ -6,7 +6,7 @@ export default function Footer() {
     <div className={Style.Footer}>
       <p>
         Twitter:{" "}
-        <a href="https://twitter.com/Weghuz" target="_blank">
+        <a href="https://twitter.com/Weghuz" target="_blank" rel="noreferrer">
           @Weghuz
         </a>
       </p>

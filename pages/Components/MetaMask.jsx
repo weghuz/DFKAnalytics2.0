@@ -69,7 +69,7 @@ export default function MetaMask() {
       }
     }
     OnWindowLoaded();
-  }, []);
+  });
   function HideQuestionsModal() {
     setShowQuestionsModal(false);
   }
@@ -157,7 +157,7 @@ export default function MetaMask() {
             This site stores no data peronal data. The wallet connection is
             personal and will only be used to query the DeFikingdoms API.
           </p>
-          <p>You're currently connected through {connectionMethod}.</p>
+          <p>You&apos;re currently connected through {connectionMethod}.</p>
           <p className="text-center">
             <button
               className="btn btn-sm btn-danger"
