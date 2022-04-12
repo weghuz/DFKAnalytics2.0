@@ -44,3 +44,19 @@ a:active {
 .react-dropdown-select-clear{
   color:white;
 }
+.react-dropdown-select-dropdown>span{
+  background-color: black;
+  color: white;
+}
+.react-dropdown-select-dropdown>span:hover{
+  background-color: gray;
+  color: white;
+}
+
+span.react-dropdown-select-option{
+  background-color: black;
+}
+
+.MuiSlider-root>span.MuiSlider-markLabel{
+  color:white;
+}

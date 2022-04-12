@@ -11,7 +11,7 @@ export default function Home() {
     <>
       <Layout Title={"DFKAnalytics"}>
         <div className="text-center mb-3">
-          <ToggleButton
+          <ToggleButton variant="text"
             active={showColumnSelect}
             onClick={() => setShowColumnSelect(!showColumnSelect)}
           >
