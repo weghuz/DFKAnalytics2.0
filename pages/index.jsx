@@ -1,8 +1,8 @@
 import { useState } from "react";
-import Columns from "./Components/Columns";
-import HeroFilters from "./Components/HeroFilters";
-import Layout from "./Components/Layout";
-import ToggleButton from "./Components/ToggleButton";
+import Columns from "../Components/Columns";
+import HeroFilters from "../Components/HeroFilters";
+import Layout from "../Components/Layout";
+import ToggleButton from "../Components/ToggleButton";
 
 export default function Home() {
   const [showColumnSelect, setShowColumnSelect] = useState(false);

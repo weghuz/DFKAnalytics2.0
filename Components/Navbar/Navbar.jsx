@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import DFKLogo from "../../../public/DFKLogo.png";
+import DFKLogo from "../../public/DFKLogo.png";
 import style from './Navbar.module.css'
 import Link from 'next/link'
 

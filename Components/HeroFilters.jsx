@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import DFKBase from "../../Logic/DFKBase";
+import DFKBase from "../Logic/DFKBase";
 import SelectItem from "./Filters/Select";
 import Slider from "@mui/material/Slider";
 

@@ -1,5 +1,5 @@
-import Layout from "./Components/Layout";
-import MetaMask from "./Components/Wallet/MetaMask";
+import Layout from "../Components/Layout";
+import MetaMask from "../Components/Wallet/MetaMask";
 
 export default function Wallet() {
   return (

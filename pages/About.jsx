@@ -1,8 +1,8 @@
-import Layout from "./Components/Layout";
+import Layout from "../Components/Layout";
 import Image from "next/image";
 import StamPot from "../public/StaminaPotion.png";
 import { useState } from "react";
-import TipModal from "./Components/Modal/TipModal";
+import TipModal from "../Components/Modal/TipModal";
 
 export default function About() {
   const [showTipModal, setShowTipModal] = useState(false);
