@@ -1,7 +1,7 @@
 import React from "react";
 import Modal from "./Modal";
 import Image from "next/image";
-import StamPot from "../../public/StaminaPotion.png"
+import StamPot from "../../public/StaminaPotion.png";
 
 export default function TipModal({ closeModalFunction }) {
   return (

@@ -4,7 +4,12 @@ import reactDom from "react-dom";
 export default function Modal({ Title, children, closeModalFunction }) {
   if (typeof document !== "undefined") {
     return reactDom.createPortal(
-      <div className="modal" role="dialog" style={{ display: "block" }} onClick={closeModalFunction}>
+      <div
+        className="modal"
+        role="dialog"
+        style={{ display: "block" }}
+        onClick={closeModalFunction}
+      >
         <div className="modal-dialog modal-lg" role="document">
           <div
             className="modal-content"
@@ -25,7 +30,7 @@ export default function Modal({ Title, children, closeModalFunction }) {
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
-            <div className="modal-body" >{children}</div>
+            <div className="modal-body">{children}</div>
           </div>
         </div>
       </div>,

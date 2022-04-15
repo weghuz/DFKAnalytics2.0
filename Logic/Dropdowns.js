@@ -1,3 +1,5 @@
+const { default: PJBadge } = require("../Components/Hero/PJBadge");
+
 module.exports = {
   Professions: [
     { value: "mining", label: "Mining" },
@@ -41,5 +43,10 @@ module.exports = {
     { value: "monk", label: "Monk" },
     { value: "priest", label: "Priest" },
     { value: "wizard", label: "Wizard" },
+  ],
+  PJSurvivor: [
+    { value: "SURVIVED", label: <PJBadge /> },
+    { value: "DIED", label: "RIP" },
+    { value: "null", label: "No" },
   ],
 };

@@ -11,7 +11,15 @@ body {
 }
 
 body {
-  background-color: rgb(14,14,14);
+  background-color: rgb(18,18,18);
+}
+
+.MuiSlider-markLabel{
+  min-height: 35px;
+  min-width: 35px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 ul {
@@ -45,7 +53,7 @@ a:active {
   color:white;
 }
 .react-dropdown-select-dropdown>span{
-  background-color: black;
+  background-color: rgb(14,14,14);
   color: white;
 }
 .react-dropdown-select-dropdown>span:hover{
@@ -54,9 +62,39 @@ a:active {
 }
 
 span.react-dropdown-select-option{
-  background-color: black;
+  background-color: rgb(14,14,14);
 }
 
 .MuiSlider-root>span.MuiSlider-markLabel{
   color:white;
+}
+div.MuiTablePagination-select{
+  color:white;
+}
+p{
+  color:white;
+}
+svg.MuiSvgIcon-root{
+  color:white;
+}
+button.svg.MuiSvgIcon-root{
+  color:white;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+::-webkit-scrollbar-thumb {
+  background: royalblue; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #111; 
 }

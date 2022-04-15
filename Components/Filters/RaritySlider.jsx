@@ -1,0 +1,66 @@
+import React, { useState } from "react";
+import Slider from "@mui/material/Slider";
+import Image from "next/image"
+import Common from "../../public/Gems/Common.png";
+import Uncommon from "../../public/Gems/Uncommon.png";
+import Rare from "../../public/Gems/Rare.png";
+import Legendary from "../../public/Gems/Legendary.png";
+import Mythic from "../../public/Gems/Mythic.png";
+
+export default function RaritySlider() {
+  const [rarity, setRarity] = useState([0, 4]);
+  return (
+    <div className="col-sm-6 col-md-4 col-xl-3">
+      <label className="font-weight-bold text-white">Rarity</label>
+      <Slider
+        getAriaLabel={(val) => {
+          switch (val) {
+            case 1:
+              return "Uncommon";
+            case 2:
+              return "Rare";
+            case 3:
+              return "Legendary";
+            case 4:
+              return "Mythic";
+            default:
+              return `Common`;
+          }
+        }}
+        valueLabelDisplay="auto"
+        value={rarity}
+        min={0}
+        max={4}
+        size="small"
+        marks={[
+          { value: 0, label: <Image src={Common} alt="Common" /> },
+          { value: 1, label: <Image src={Uncommon} alt="Uncommon" /> },
+          { value: 2, label: <Image src={Rare} alt="Rare" /> },
+          { value: 3, label: <Image src={Legendary} alt="Legendary" /> },
+          { value: 4, label: <Image src={Mythic} alt="Mythic"/> },
+        ]}
+        onChange={(e, val) => {
+          setRarity(val);
+        }}
+        onChangeCommitted={(e, val) => {
+          console.log(val);
+        }}
+        sx={{ color: "#0074D9" }}
+        valueLabelFormat={(val) => {
+          switch (val) {
+            case 1:
+              return "Uncommon";
+            case 2:
+              return "Rare";
+            case 3:
+              return "Legendary";
+            case 4:
+              return "Mythic";
+            default:
+              return `Common`;
+          }
+        }}
+      />
+    </div>
+  );
+}
