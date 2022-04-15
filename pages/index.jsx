@@ -24,7 +24,6 @@ export default function Home() {
     );
   };
   const UpdateHeroes = (newHeroes) => {
-    
     newHeroes.forEach((h) => {
       getRecessives(h);
       ClassScore(h);
