@@ -185,13 +185,13 @@ let columnDefs = [
     headerName: "HP",
     field: "hp",
     width: 60,
-    hide: false,
+    hide: true,
   },
   {
     headerName: "MP",
     field: "mp",
     width: 60,
-    hide: false,
+    hide: true,
   },
   {
     headerName: "SB1",
@@ -866,7 +866,7 @@ let columnDefs = [
   {
     headerName: "Name",
     field: "name",
-    hide: true,
+    hide: false,
     width: 170,
     renderCell: ({row}) => {
       return <div style={{overflow:"auto"}}>{FullName(row)}</div>;

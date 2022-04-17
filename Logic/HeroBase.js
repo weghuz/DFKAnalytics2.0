@@ -7197,5 +7197,8 @@ module.exports = {
     rarities,
     classes,
     heroClasses,
-    classVars
+    classVars,
+    femaleFirstNames,
+    maleFirstNames,
+    lastNames
   };

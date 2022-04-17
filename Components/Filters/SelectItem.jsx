@@ -13,5 +13,7 @@ export default function SelectItem({ children, title, values, setValues, label, 
 
 SelectItem.defaultProps = {
   columns: "col-sm-6 col-md-4 col-xl-3",
-  color: "white"
+  color: "white",
+  value: "value",
+  label: "label"
 }
