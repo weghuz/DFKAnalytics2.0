@@ -7,7 +7,6 @@ export default function Layout({ children, Title }) {
   const getTitle = () => {
     if(typeof window !== "undefined")
     {
-      console.log(window.location);
       switch(window.location.pathname)
       {
         case "/": return "DFKAnalytics";

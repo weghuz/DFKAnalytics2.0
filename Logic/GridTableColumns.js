@@ -20,10 +20,13 @@ let columnDefs = [
   {
     headerName: "Cost",
     field: "salePrice",
-    width: 90,
+    width: 105,
     renderCell: ({ row }) => {
       return <PriceCell>{row}</PriceCell>;
     },
+    sortComparator: ( a, b ) => {
+      return a-b;
+    }
   },
   {
     headerName: "Id",
@@ -34,10 +37,13 @@ let columnDefs = [
     headerName: "Rarity",
     field: "rarity",
     width: 60,
-    type: "string",
+    type: "number",
     renderCell: ({ row }) => {
       return <RarityCell rarity={row.rarity} />;
     },
+    sortComparator: (a, b, c, e) => {
+      return a - b;
+    }
   },
   {
     headerName: "Class",
@@ -89,8 +95,8 @@ let columnDefs = [
     },
   },
   {
-    headerName: "Subclass Recessives",
-    field: "Subclass Recessives",
+    headerName: "Subclass+",
+    field: "Subclass+",
     minWidth: 150,
     hide: true,
     type: "string",
@@ -113,7 +119,7 @@ let columnDefs = [
   {
     headerName: "Lvl",
     field: "level",
-    hide: true,
+    hide: false,
     width:60,
   },
   {
@@ -179,19 +185,19 @@ let columnDefs = [
     headerName: "HP",
     field: "hp",
     width: 60,
-    hide: true,
+    hide: false,
   },
   {
     headerName: "MP",
     field: "mp",
     width: 60,
-    hide: true,
+    hide: false,
   },
   {
     headerName: "SB1",
     field: "statBoost1",
     width: 60,
-    hide: true,
+    hide: false,
   },
   {
     headerName: "SB1R1",
@@ -226,7 +232,7 @@ let columnDefs = [
     headerName: "SB2",
     field: "statBoost2",
     width: 60,
-    hide: true,
+    hide: false,
   },
   {
     headerName: "SB2R1",
@@ -259,7 +265,7 @@ let columnDefs = [
   {
     headerName: "Profession",
     field: "profession",
-    hide: true,
+    hide: false,
   },
   {
     headerName: "Profession+",
@@ -356,7 +362,7 @@ let columnDefs = [
     headerName: "Stamina",
     field: "Stamina",
     title: "Stamina",
-    hide: true,
+    hide: false,
     valueGetter: ({ row }) => {
       return `${CurrentStamina(row)}/${parseInt(25 + parseInt(row.level) / 2)}`;
     },
@@ -392,9 +398,9 @@ let columnDefs = [
     },
   },
   {
-    headerName: "ProfStat",
-    field: "ProfStat",
-    title: "ProfStat",
+    headerName: "Profession Stats",
+    field: "Profession Stats",
+    title: "Profession Stats",
     hide: true,
     width: 60,
     valueGetter: ({ row }) => {
@@ -405,9 +411,9 @@ let columnDefs = [
     },
   },
   {
-    headerName: "SkillProfStat",
-    field: "skillProfStat",
-    title: "SkillProfStat",
+    headerName: "Skill Profession Stats",
+    field: "Skill Profession Stats",
+    title: "Skill Profession Stats",
     hide: true,
     width: 60,
     valueGetter: ({ row }) => {
@@ -498,7 +504,7 @@ let columnDefs = [
   {
     headerName: "Active1",
     field: "active1",
-    hide: true,
+    hide: false,
   },
   {
     headerName: "A1R1",
@@ -537,7 +543,7 @@ let columnDefs = [
   {
     headerName: "Active2",
     field: "active2",
-    hide: true,
+    hide: false,
   },
   {
     headerName: "A2R1",
@@ -576,7 +582,7 @@ let columnDefs = [
   {
     headerName: "Passive1",
     field: "passive1",
-    hide: true,
+    hide: false,
   },
   {
     headerName: "P1R1",
@@ -587,7 +593,7 @@ let columnDefs = [
     },
   },
   {
-    headerName: "Passive1",
+    headerName: "Passive1+",
     field: "passive1+",
     hide: true,
     width: 185,
@@ -615,7 +621,7 @@ let columnDefs = [
   {
     headerName: "Passive2",
     field: "passive2",
-    hide: true,
+    hide: false,
   },
   {
     headerName: "P2R1",
@@ -626,7 +632,7 @@ let columnDefs = [
     },
   },
   {
-    headerName: "Passive2",
+    headerName: "Passive2+",
     field: "passive2+",
     hide: true,
     width: 185,
@@ -697,13 +703,13 @@ let columnDefs = [
     headerName: "SU2",
     field: "statsUnknown2",
     title: "Status Unknown 2",
-    hide: false,
+    hide: true,
     width: 55,
   },
   {
     headerName: "SU2R1",
     field: "SU2R1",
-    hide: false,
+    hide: true,
     width: 55,
     valueGetter: ({row}) => {
       return row.R1.statsUnknown2;
@@ -712,7 +718,7 @@ let columnDefs = [
   {
     headerName: "SU2+",
     field: "SU2+",
-    hide: false,
+    hide: true,
     width: 90,
     renderCell: ({ row }) => {
       return (
@@ -822,7 +828,7 @@ let columnDefs = [
   {
     headerName: "Previous Owner",
     field: "previousOwner",
-    hide: false,
+    hide: true,
     renderCell: ({row}) => {
       if (row.previousOwner == null) return null;
       return <div style={{overflow:"auto"}}>{row.previousOwner.name}</div>;
@@ -831,7 +837,7 @@ let columnDefs = [
   {
     headerName: "Previous Owner Address",
     field: "previousOwnerAddress",
-    hide: false,
+    hide: true,
     renderCell: ({row}) => {
       if (row.previousOwner == null) return null;
       return <div style={{overflow:"auto"}}>{row.previousOwner.id}</div>;
@@ -840,7 +846,7 @@ let columnDefs = [
   {
     headerName: "Owner",
     field: "owner",
-    hide: false,
+    hide: true,
     renderCell: ({row}) => {
       if (row.owner == null) return row.owner;
       if (row.owner.name == "undefined") return null;
@@ -850,7 +856,7 @@ let columnDefs = [
   {
     headerName: "Owner Address",
     field: "ownerAddress",
-    hide: false,
+    hide: true,
     renderCell: ({row}) => {
       if (row.owner == null) return row.owner;
       if (row.owner.id == "undefined") return null;
@@ -860,7 +866,7 @@ let columnDefs = [
   {
     headerName: "Name",
     field: "name",
-    hide: false,
+    hide: true,
     width: 170,
     renderCell: ({row}) => {
       return <div style={{overflow:"auto"}}>{FullName(row)}</div>;

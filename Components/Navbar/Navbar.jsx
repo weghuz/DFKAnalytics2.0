@@ -15,7 +15,7 @@ export default function Navbar() {
       <span className={style.text}>third party site</span>
       <div className={style.navigation}>
         <Link href={"/"}>Tavern</Link>
-        <Link href={"/Auctions"}>Auctions</Link>
+        {/* <Link href={"/Auctions"}>Auctions</Link> */}
         <Link href={"/Wallet"}>Wallet</Link>
         <Link href={"/Resources"}>Resources</Link>
         <Link href={"/About"}>About</Link>

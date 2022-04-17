@@ -1,28 +1,27 @@
-import request, { gql } from "graphql-request";
-import { useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { useQuery } from "react-query";
 import HeroFilters from "../Components/HeroFilters";
-import Layout from "../Components/Layout";
 import HeroTable from "../Components/Table/HeroTable";
 import { ClassScore, GrowthScore, getRecessives } from "../Logic/HeroBase";
 import { base, heroData } from "../Logic/Query";
+import RequestContext from "../Context/Context";
 
 export default function Home() {
   const [heroes, setHeroes] = useState([]);
   const [render, setRender] = useState(false);
+  const requestContext = useContext(RequestContext);
   const testRequest = async () => {
-    return request(
-      base,
-      gql`
-          {
-            heroes(first:100, where:{salePrice_not:null}, orderBy:salePrice, orderDirection:asc)
-            {
-              ${heroData}
-            }
-          }
-          `
-    );
+    return fetch(base, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json;charset=UTF-8",
+      },
+      body: JSON.stringify({
+        query: `{heroes(first:100, where:{salePrice_not:null, ${requestContext.query.query}}, orderBy:salePrice, orderDirection:asc){${heroData}}}`,
+      }),
+    });
   };
+
   const UpdateHeroes = (newHeroes) => {
     newHeroes.forEach((h) => {
       getRecessives(h);
@@ -31,19 +30,29 @@ export default function Home() {
       h.id = h.numberId;
     });
     setHeroes(newHeroes);
+    console.log(newHeroes);
     setRender(true);
-  }
-  const result = useQuery("request", testRequest, {
-    onSuccess:(result) => UpdateHeroes(result.heroes)
+  };
+  const result = useQuery(["request", requestContext.query.query], testRequest, {
+    onSuccess: async (result) => {
+      let json = await result.json();
+      if(json.data == null)
+      {
+        return;
+      }
+      UpdateHeroes(json.data.heroes);
+    },
   });
   return (
     <>
-        <HeroFilters />
-        <HeroTable isLoading={result.isLoading}>
-          {render ? heroes.map((h) => {
-                return h;
-              }) : []}
-        </HeroTable>
+      <HeroFilters />
+      <HeroTable isLoading={result.isLoading}>
+        {render
+          ? heroes.map((h) => {
+              return h;
+            })
+          : []}
+      </HeroTable>
     </>
   );
 }

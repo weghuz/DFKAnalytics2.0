@@ -1,7 +1,8 @@
 import { ethers } from "ethers";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import DisconnectWalletModal from "./Modal/DisconnectWalletModal";
 import QuestionModal from "./Modal/QuestionModal";
+import QueryContext from "../../Context/Context";
 
 export default function MetaMask() {
   const [connected, setConnected] = useState(true);
@@ -12,6 +13,15 @@ export default function MetaMask() {
     useState(false);
   const [connecting, setConnecting] = useState(false);
   const [connectionMethod, setConnectionMethod] = useState("");
+  const queryContext = useContext(QueryContext);
+  useEffect(() => {
+    if (address.length == 42) {
+      queryContext.setQuery({
+        ...queryContext.query,
+        wallet: `,owner: "${address}"`,
+      });
+    }
+  }, [address]);
   const SaveLocalStorageWallet = (address) => {
     setConnectionMethod("Local Storage");
     localStorage.setItem("address", address);

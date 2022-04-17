@@ -7,8 +7,13 @@ import Rare from "../../public/Gems/Rare.png";
 import Legendary from "../../public/Gems/Legendary.png";
 import Mythic from "../../public/Gems/Mythic.png";
 
-export default function RaritySlider() {
+export default function RaritySlider( { setQueryRarity, clear } ) {
   const [rarity, setRarity] = useState([0, 4]);
+  const clearState = () => {
+    setRarity([0, 4]);
+  };
+
+  clear(clearState);
   return (
     <div className="col-sm-6 col-md-4 col-xl-3">
       <label className="font-weight-bold text-white">Rarity</label>
@@ -44,6 +49,7 @@ export default function RaritySlider() {
         }}
         onChangeCommitted={(e, val) => {
           console.log(val);
+          setQueryRarity(val);
         }}
         sx={{ color: "#0074D9" }}
         valueLabelFormat={(val) => {
