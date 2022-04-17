@@ -8,6 +8,12 @@ import NumberSlider from "./Filters/NumberSlider";
 import { Input, InputAdornment, InputLabel, TextField } from "@mui/material";
 import RequestContext from "../Context/Context";
 import SelectItemSingle from "./Filters/SelectItemSingle";
+import {
+  femaleFirstNames,
+  FirstName,
+  lastNames,
+  maleFirstNames,
+} from "../Logic/HeroBase";
 
 export default function HeroFilters() {
   const [mainClass, setMainClass] = useState([]);
@@ -22,6 +28,9 @@ export default function HeroFilters() {
   const [level, setLevel] = useState([0, 100]);
   const [minSalePrice, setMinSalePrice] = useState(0);
   const [maxSalePrice, setMaxSalePrice] = useState(9999999);
+  const [mFName, setMFName] = useState([]);
+  const [fFName, setFFName] = useState([]);
+  const [lName, setLName] = useState([]);
   const queryContext = useContext(RequestContext);
   let clearRarity = null,
     clearGeneration = null,
@@ -88,6 +97,35 @@ export default function HeroFilters() {
         query += `pjStatus: "${PJ[0].value}",`;
       }
     }
+    if (lName.length > 0) {
+      query += `lastName_in: [`;
+      lName.forEach((c, i) => {
+        query += `${c.value}`;
+        if (i < lName.length - 1) {
+          query += `,`;
+        }
+      });
+      query += `],`;
+    }
+    if (mFName.length > 0) {
+      query += `firstName_in: [`;
+      mFName.forEach((c, i) => {
+        query += `${c.value}`;
+        if (i < mFName.length - 1) {
+          query += `,`;
+        }
+      });
+      query += `],gender:"male",`;
+    } else if (fFName.length > 0) {
+      query += `firstName_in: [`;
+      fFName.forEach((c, i) => {
+        query += `${c.value}`;
+        if (i < fFName.length - 1) {
+          query += `,`;
+        }
+      });
+      query += `],gender:"female",`;
+    }
     console.log(rarity);
     query += `rarity_gte: ${rarity[0]}, rarity_lte:${rarity[1]},`;
     query += `generation_gte: ${generation[0]}, generation_lte:${generation[1]},`;
@@ -114,6 +152,9 @@ export default function HeroFilters() {
     generation,
     summons,
     level,
+    fFName,
+    mFName,
+    lName,
   ]);
   const ClearFilters = () => {
     setMainClass([]);
@@ -268,6 +309,29 @@ export default function HeroFilters() {
             }
           ></Input>
         </div>
+        {fFName.length == 0 && <SelectItem
+          title="Male First Names"
+          values={mFName}
+          setValues={setMFName}
+        >
+          {maleFirstNames.map((n, i) => {
+            return { value: i, label: n };
+          })}
+        </SelectItem>}
+        {mFName.length == 0 && <SelectItem
+          title="Female First Names"
+          values={fFName}
+          setValues={setFFName}
+        >
+          {femaleFirstNames.map((n, i) => {
+            return { value: i, label: n };
+          })}
+        </SelectItem>}
+        <SelectItem title="Last Name" values={lName} setValues={setLName}>
+          {lastNames.map((n, i) => {
+            return { value: i, label: n };
+          })}
+        </SelectItem>
       </div>
       <div className="text-center mt-3">
         <button className="btn btn-sm btn-secondary" onClick={ClearFilters}>
