@@ -5,7 +5,14 @@ import Jewel from "../public/Jewel.png";
 import SelectItem from "./Filters/SelectItem";
 import RaritySlider from "./Filters/RaritySlider";
 import NumberSlider from "./Filters/NumberSlider";
-import { Input, InputAdornment, InputLabel, TextField } from "@mui/material";
+import {
+  Checkbox,
+  FormControlLabel,
+  Input,
+  InputAdornment,
+  InputLabel,
+  TextField,
+} from "@mui/material";
 import RequestContext from "../Context/Context";
 import SelectItemSingle from "./Filters/SelectItemSingle";
 import {
@@ -31,6 +38,7 @@ export default function HeroFilters() {
   const [mFName, setMFName] = useState([]);
   const [fFName, setFFName] = useState([]);
   const [lName, setLName] = useState([]);
+  const [onSale, setOnSale] = useState(true);
   const queryContext = useContext(RequestContext);
   let clearRarity = null,
     clearGeneration = null,
@@ -134,6 +142,10 @@ export default function HeroFilters() {
     },`;
     query += `level_gte: ${level[0]}, level_lte:${level[1]},`;
     query += `salePrice_gte: "${minSalePrice}000000000000000000", salePrice_lte:"${maxSalePrice}000000000000000000",`;
+    if(onSale)
+    {
+      query += "salePrice_not: null,";
+    }
     queryContext.setQuery({ ...queryContext.query, query });
     console.log(queryContext.query.query);
     queryContext.query.invalidateQueries();
@@ -155,6 +167,7 @@ export default function HeroFilters() {
     fFName,
     mFName,
     lName,
+    onSale
   ]);
   const ClearFilters = () => {
     setMainClass([]);
@@ -173,6 +186,10 @@ export default function HeroFilters() {
     clearGeneration();
     clearSummons();
     clearLevel();
+    setFFName([]);
+    setMFName([]);
+    setLName([]);
+    setOnSale([]);
   };
   return (
     <div className="container">
@@ -209,6 +226,33 @@ export default function HeroFilters() {
         <SelectItemSingle title="PJ Status" values={PJ} setValues={setPJ}>
           {DFKBase.PJSurvivor}
         </SelectItemSingle>
+        {fFName.length == 0 && (
+          <SelectItem
+            title="Male First Names"
+            values={mFName}
+            setValues={setMFName}
+          >
+            {maleFirstNames.map((n, i) => {
+              return { value: i, label: n };
+            })}
+          </SelectItem>
+        )}
+        {mFName.length == 0 && (
+          <SelectItem
+            title="Female First Names"
+            values={fFName}
+            setValues={setFFName}
+          >
+            {femaleFirstNames.map((n, i) => {
+              return { value: i, label: n };
+            })}
+          </SelectItem>
+        )}
+        <SelectItem title="Last Name" values={lName} setValues={setLName}>
+          {lastNames.map((n, i) => {
+            return { value: i, label: n };
+          })}
+        </SelectItem>
         <RaritySlider
           setQueryRarity={setRarity}
           clear={(clearFunc) => (clearRarity = clearFunc)}
@@ -309,29 +353,17 @@ export default function HeroFilters() {
             }
           ></Input>
         </div>
-        {fFName.length == 0 && <SelectItem
-          title="Male First Names"
-          values={mFName}
-          setValues={setMFName}
-        >
-          {maleFirstNames.map((n, i) => {
-            return { value: i, label: n };
-          })}
-        </SelectItem>}
-        {mFName.length == 0 && <SelectItem
-          title="Female First Names"
-          values={fFName}
-          setValues={setFFName}
-        >
-          {femaleFirstNames.map((n, i) => {
-            return { value: i, label: n };
-          })}
-        </SelectItem>}
-        <SelectItem title="Last Name" values={lName} setValues={setLName}>
-          {lastNames.map((n, i) => {
-            return { value: i, label: n };
-          })}
-        </SelectItem>
+        <div className="col-sm-6 col-md-4 col-xl-3 my-1 text-center">
+          <FormControlLabel
+            sx={{ color: "white" }}
+            control={<Checkbox />}
+            label="On Sale"
+            checked={onSale}
+            onChange={(e) => {
+              setOnSale(e.target.checked);
+            }}
+          />
+        </div>
       </div>
       <div className="text-center mt-3">
         <button className="btn btn-sm btn-secondary" onClick={ClearFilters}>

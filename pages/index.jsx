@@ -17,7 +17,7 @@ export default function Home() {
         "Content-Type": "application/json;charset=UTF-8",
       },
       body: JSON.stringify({
-        query: `{heroes(first:100, where:{salePrice_not:null, ${requestContext.query.query}}, orderBy:salePrice, orderDirection:asc){${heroData}}}`,
+        query: `{heroes(first:100, where:{${requestContext.query.query}}, orderBy:salePrice, orderDirection:asc){${heroData}}}`,
       }),
     });
   };
