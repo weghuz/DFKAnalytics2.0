@@ -18,7 +18,7 @@ export default function Wallet() {
         "Content-Type": "application/json;charset=UTF-8",
       },
       body: JSON.stringify({
-        query: `{heroes(first:100, where:{${requestContext.query.wallet}${requestContext.query.query}}, orderBy:salePrice, orderDirection:asc){${heroData}}}`,
+        query: `{heroes(first:100, where:{${requestContext.query.wallet}}, orderBy:salePrice, orderDirection:asc){${heroData}}}`,
       }),
     });
   };
