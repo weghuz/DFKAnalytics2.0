@@ -43,6 +43,13 @@ module.exports = {
     { value: "Monk", label: "Monk" },
     { value: "Priest", label: "Priest" },
     { value: "Wizard", label: "Wizard" },
+    { value: "Paladin", label: "Paladin" },
+    { value: "DarkKnight", label: "DarkKnight" },
+    { value: "Ninja", label: "Ninja" },
+    { value: "Summoner", label: "Summoner" },
+    { value: "Dragoon", label: "Dragoon" },
+    { value: "Sage", label: "Sage" },
+    { value: "DreadKnight", label: "DreadKnight" },
   ],
   PJSurvivor: [
     { value: "SURVIVED", label: <PJBadge /> },
