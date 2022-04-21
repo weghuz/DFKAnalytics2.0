@@ -32,27 +32,43 @@ const TrainStat = (hero) => {
     let stats = [{
         name:"STR",
         amount: hero.strength,
+        link: "https://beta.defikingdoms.com/#/tavern",
+        linkName: "Tavern: Ice Reaver Zaine - Arm Wrestling"
       },{
         name:"DEX",
         amount: hero.dexterity,
+        link: "https://beta.defikingdoms.com/#/tavern",
+        linkName: "Tavern: Layla - Darts"
       },{
         name:"AGI",
         amount: hero.agility,
+        link: "https://beta.defikingdoms.com/#/marketplace",
+        linkName: "Marketplace: Street Kid Carlin - Game of Ball"
       },{
         name:"VIT",
         amount: hero.vitality,
+        link: "https://beta.defikingdoms.com/#/gardens",
+        linkName: "Gardens: Farmer Quill - Helping the Farm"
       },{
         name:"END",
         amount: hero.endurance,
+        link: "https://beta.defikingdoms.com/#/marketplace",
+        linkName: "Marketplace: Isabelle - Dancing"
       },{
         name:"INT",
         amount: hero.intelligence,
+        link: "https://beta.defikingdoms.com/#/alchemist",
+        linkName: "Alchemist: Arnold - Alchemist Assistance"
       },{
         name:"WIS",
         amount: hero.wisdom,
+        link: "https://beta.defikingdoms.com/#/castle",
+        linkName: "Castle: Orvin - Puzzle Solving"
       },{
         name:"LCK",
         amount: hero.luck,
+        link: "https://beta.defikingdoms.com/#/tavern",
+        linkName: "Tavern: Lucky Moe - Card Game"
       }];
       stats.find((s) => s.name == hero.statBoost1).amount += 1;
       stats.find((s) => s.name == hero.statBoost2).amount += 3;

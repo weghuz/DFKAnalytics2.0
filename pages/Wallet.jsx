@@ -11,6 +11,7 @@ export default function Wallet() {
   const [heroes, setHeroes] = useState([]);
   const [render, setRender] = useState(false);
   const requestContext = useContext(RequestContext);
+  console.log(`{heroes(first:500, where:{${requestContext.query.wallet},${requestContext.query.query}}, orderBy:salePrice, orderDirection:asc){${heroData}}}`);
   const testRequest = async () => {
     return fetch(base, {
       method: "POST",
@@ -36,7 +37,7 @@ export default function Wallet() {
     setRender(true);
   };
   const result = useQuery(
-    ["request", requestContext.query.wallet],
+    ["request", requestContext.query.query + requestContext.query.wallet],
     testRequest,
     {
       onSuccess: async (result) => {
@@ -55,7 +56,7 @@ export default function Wallet() {
         <label className="font-weight-bold text-white me-2">Conntected with</label>
         <MetaMask />
       </div>
-      {/* <HeroFilters /> */}
+      {/* <HeroFilters onSaleDefault={false}/> */}
       <HeroTable isLoading={result.isLoading}>
         {render
           ? heroes.map((h) => {

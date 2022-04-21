@@ -25,9 +25,9 @@ let columnDefs = [
     renderCell: ({ row }) => {
       return <PriceCell>{row}</PriceCell>;
     },
-    sortComparator: ( a, b ) => {
-      return a-b;
-    }
+    sortComparator: (a, b) => {
+      return a - b;
+    },
   },
   {
     headerName: "Id",
@@ -44,7 +44,7 @@ let columnDefs = [
     },
     sortComparator: (a, b, c, e) => {
       return a - b;
-    }
+    },
   },
   {
     headerName: "Class",
@@ -121,7 +121,7 @@ let columnDefs = [
     headerName: "Lvl",
     field: "level",
     hide: false,
-    width:60,
+    width: 60,
   },
   {
     headerName: "XP",
@@ -239,7 +239,7 @@ let columnDefs = [
     headerName: "SB2R1",
     field: "sb2r1",
     hide: true,
-    valueGetter: ({row}) => {
+    valueGetter: ({ row }) => {
       return row.R1.statBoost2;
     },
   },
@@ -269,22 +269,31 @@ let columnDefs = [
     width: "80",
     hide: false,
     type: "number",
-    renderCell: ({value}) => {
+    renderCell: ({ value }) => {
       return (
-        <Tooltip title="Green stat gives +1 and Blue +3 points to a stat for questing." placement="left" >
-          <div style={{color: value.color}}>
+        <Tooltip
+          title={
+            <>
+              {
+                "Green stat gives +1 and Blue +3 points to a stat for questing. "
+              }
+              <a href={value.link} target="_blank" rel="noreferrer">{value.linkName}</a>
+            </>
+          }
+          placement="left"
+        >
+          <div style={{ color: value.color }}>
             {value.name} {value.amount}
           </div>
         </Tooltip>
-      )
+      );
     },
     sortComparator: (v1, v2) => {
-      if(v1 !== undefined && v2 !== undefined)
-      {
+      if (v1 !== undefined && v2 !== undefined) {
         return statBoost.indexOf(v1.name) - statBoost.indexOf(v2.name);
       }
       return -1;
-    }
+    },
   },
   {
     headerName: "Profession",
@@ -534,7 +543,7 @@ let columnDefs = [
     headerName: "A1R1",
     field: "a1r1",
     hide: true,
-    valueGetter: ({row}) => {
+    valueGetter: ({ row }) => {
       return row.R1.active1;
     },
   },
@@ -558,7 +567,9 @@ let columnDefs = [
               fontSize: "12px",
             }}
           >
-            D: {row.active1} R1: {row.R1.active1}<br/>R2: {row.R2.active1} R3: {row.R3.active1}
+            D: {row.active1} R1: {row.R1.active1}
+            <br />
+            R2: {row.R2.active1} R3: {row.R3.active1}
           </div>
         </Tooltip>
       );
@@ -573,7 +584,7 @@ let columnDefs = [
     headerName: "A2R1",
     field: "a2r1",
     hide: true,
-    valueGetter: ({row}) => {
+    valueGetter: ({ row }) => {
       return row.R1.active2;
     },
   },
@@ -597,7 +608,8 @@ let columnDefs = [
               fontSize: "12px",
             }}
           >
-            D: {row.active2} R1: {row.R1.active2}<br/> R2: {row.R2.active2} R3: {row.R3.active2}
+            D: {row.active2} R1: {row.R1.active2}
+            <br /> R2: {row.R2.active2} R3: {row.R3.active2}
           </div>
         </Tooltip>
       );
@@ -612,7 +624,7 @@ let columnDefs = [
     headerName: "P1R1",
     field: "p1r1",
     hide: true,
-    renderCell: ({row}) => {
+    renderCell: ({ row }) => {
       return row.R1.passive1;
     },
   },
@@ -636,7 +648,9 @@ let columnDefs = [
               fontSize: "12px",
             }}
           >
-            D: {row.passive1} R1: {row.R1.passive1}<br/>R2: {row.R2.passive1} R3: {row.R3.passive1}
+            D: {row.passive1} R1: {row.R1.passive1}
+            <br />
+            R2: {row.R2.passive1} R3: {row.R3.passive1}
           </div>
         </Tooltip>
       );
@@ -651,7 +665,7 @@ let columnDefs = [
     headerName: "P2R1",
     field: "p2r1",
     hide: true,
-    renderCell: ({row}) => {
+    renderCell: ({ row }) => {
       return row.R1.passive2;
     },
   },
@@ -675,7 +689,8 @@ let columnDefs = [
               fontSize: "12px",
             }}
           >
-            D: {row.passive2} R1: {row.R1.passive2} <br/>R2: {row.R2.passive2} R3: {row.R3.passive1}
+            D: {row.passive2} R1: {row.R1.passive2} <br />
+            R2: {row.R2.passive2} R3: {row.R3.passive1}
           </div>
         </Tooltip>
       );
@@ -692,7 +707,7 @@ let columnDefs = [
     field: "su1r1",
     hide: true,
     width: 55,
-    valueGetter: ({row}) => {
+    valueGetter: ({ row }) => {
       return row.R1.statsUnknown1;
     },
   },
@@ -717,7 +732,9 @@ let columnDefs = [
               fontSize: "12px",
             }}
           >
-            D: {row.statsUnknown1} R1: {row.R1.statsUnknown1}<br/>R2: {row.R2.statsUnknown1} R3: {row.R3.statsUnknown1}
+            D: {row.statsUnknown1} R1: {row.R1.statsUnknown1}
+            <br />
+            R2: {row.R2.statsUnknown1} R3: {row.R3.statsUnknown1}
           </div>
         </Tooltip>
       );
@@ -735,7 +752,7 @@ let columnDefs = [
     field: "SU2R1",
     hide: true,
     width: 55,
-    valueGetter: ({row}) => {
+    valueGetter: ({ row }) => {
       return row.R1.statsUnknown2;
     },
   },
@@ -759,7 +776,9 @@ let columnDefs = [
               fontSize: "12px",
             }}
           >
-            D: {row.statsUnknown2} R1: {row.R1.statsUnknown2}<br/>R2: {row.R2.statsUnknown2} R3: {row.R3.statsUnknown2}
+            D: {row.statsUnknown2} R1: {row.R1.statsUnknown2}
+            <br />
+            R2: {row.R2.statsUnknown2} R3: {row.R3.statsUnknown2}
           </div>
         </Tooltip>
       );
@@ -769,7 +788,7 @@ let columnDefs = [
     headerName: "Mining",
     field: "mining",
     hide: true,
-    width:60,
+    width: 60,
     valueFormatter: ({ value }) => {
       return value / 10;
     },
@@ -778,7 +797,7 @@ let columnDefs = [
     headerName: "Foraging",
     field: "foraging",
     hide: true,
-    width:60,
+    width: 60,
     valueFormatter: ({ value }) => {
       return value / 10;
     },
@@ -787,7 +806,7 @@ let columnDefs = [
     headerName: "Fishing",
     field: "fishing",
     hide: true,
-    width:60,
+    width: 60,
     valueFormatter: ({ value }) => {
       return value / 10;
     },
@@ -796,7 +815,7 @@ let columnDefs = [
     headerName: "Gardening",
     field: "gardening",
     hide: true,
-    width:60,
+    width: 60,
     valueFormatter: ({ value }) => {
       return value / 10;
     },
@@ -804,87 +823,87 @@ let columnDefs = [
   {
     headerName: "Str",
     field: "strength",
-    width:60,
+    width: 60,
     hide: true,
   },
   {
     headerName: "Dex",
     field: "dexterity",
-    width:60,
+    width: 60,
     hide: true,
   },
   {
     headerName: "Agi",
     field: "agility",
-    width:60,
-    hide: true
+    width: 60,
+    hide: true,
   },
   {
     headerName: "Vit",
     field: "vitality",
-    width:60,
-    hide: true
+    width: 60,
+    hide: true,
   },
   {
     headerName: "End",
     field: "endurance",
-    width:60,
-    hide: true
+    width: 60,
+    hide: true,
   },
   {
     headerName: "Int",
     field: "intelligence",
-    width:60,
-    hide: true
+    width: 60,
+    hide: true,
   },
   {
     headerName: "Wis",
     field: "wisdom",
-    width:60,
-    hide: true
+    width: 60,
+    hide: true,
   },
   {
     headerName: "lck",
     field: "luck",
-    width:60,
-    hide: true
+    width: 60,
+    hide: true,
   },
   {
     headerName: "Previous Owner",
     field: "previousOwner",
     hide: true,
-    renderCell: ({row}) => {
+    renderCell: ({ row }) => {
       if (row.previousOwner == null) return null;
-      return <div style={{overflow:"auto"}}>{row.previousOwner.name}</div>;
+      return <div style={{ overflow: "auto" }}>{row.previousOwner.name}</div>;
     },
   },
   {
     headerName: "Previous Owner Address",
     field: "previousOwnerAddress",
     hide: true,
-    renderCell: ({row}) => {
+    renderCell: ({ row }) => {
       if (row.previousOwner == null) return null;
-      return <div style={{overflow:"auto"}}>{row.previousOwner.id}</div>;
+      return <div style={{ overflow: "auto" }}>{row.previousOwner.id}</div>;
     },
   },
   {
     headerName: "Owner",
     field: "owner",
     hide: true,
-    renderCell: ({row}) => {
+    renderCell: ({ row }) => {
       if (row.owner == null) return row.owner;
       if (row.owner.name == "undefined") return null;
-      return <div style={{overflow:"auto"}}>{row.owner.name}</div>;
+      return <div style={{ overflow: "auto" }}>{row.owner.name}</div>;
     },
   },
   {
     headerName: "Owner Address",
     field: "ownerAddress",
     hide: true,
-    renderCell: ({row}) => {
+    renderCell: ({ row }) => {
       if (row.owner == null) return row.owner;
       if (row.owner.id == "undefined") return null;
-      return <div style={{overflow:"auto"}}>{row.owner.id}</div>;
+      return <div style={{ overflow: "auto" }}>{row.owner.id}</div>;
     },
   },
   {
@@ -892,8 +911,8 @@ let columnDefs = [
     field: "name",
     hide: false,
     width: 170,
-    renderCell: ({row}) => {
-      return <div style={{overflow:"auto"}}>{FullName(row)}</div>;
+    renderCell: ({ row }) => {
+      return <div style={{ overflow: "auto" }}>{FullName(row)}</div>;
     },
   },
 ];

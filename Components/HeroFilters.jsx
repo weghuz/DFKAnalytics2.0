@@ -22,7 +22,7 @@ import {
   maleFirstNames,
 } from "../Logic/HeroBase";
 
-export default function HeroFilters() {
+export default function HeroFilters({onSaleDefault}) {
   const [mainClass, setMainClass] = useState([]);
   const [subClass, setSubClass] = useState([]);
   const [professions, setProfessions] = useState([]);
@@ -38,7 +38,7 @@ export default function HeroFilters() {
   const [mFName, setMFName] = useState([]);
   const [fFName, setFFName] = useState([]);
   const [lName, setLName] = useState([]);
-  const [onSale, setOnSale] = useState(true);
+  const [onSale, setOnSale] = useState(onSaleDefault);
   const queryContext = useContext(RequestContext);
   let clearRarity = null,
     clearGeneration = null,
@@ -371,4 +371,7 @@ export default function HeroFilters() {
       </div>
     </div>
   );
+}
+HeroFilters.defaultProps = {
+  onSaleDefault: true,
 }
