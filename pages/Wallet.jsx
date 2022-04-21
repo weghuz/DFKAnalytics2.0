@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { useQuery } from "react-query";
 import HeroFilters from "../Components/HeroFilters";
 import HeroTable from "../Components/Table/HeroTable";
-import { ClassScore, GrowthScore, getRecessives } from "../Logic/HeroBase";
+import { ClassScore, GrowthScore, getRecessives, TrainStat } from "../Logic/HeroBase";
 import { base, heroData } from "../Logic/Query";
 import RequestContext from "../Context/Context";
 import MetaMask from "../Components/Wallet/MetaMask";
@@ -18,7 +18,7 @@ export default function Wallet() {
         "Content-Type": "application/json;charset=UTF-8",
       },
       body: JSON.stringify({
-        query: `{heroes(first:100, where:{${requestContext.query.wallet}}, orderBy:salePrice, orderDirection:asc){${heroData}}}`,
+        query: `{heroes(first:500, where:{${requestContext.query.wallet}}, orderBy:salePrice, orderDirection:asc){${heroData}}}`,
       }),
     });
   };
@@ -28,6 +28,7 @@ export default function Wallet() {
       getRecessives(h);
       ClassScore(h);
       GrowthScore(h);
+      TrainStat(h);
       h.id = h.numberId;
     });
     setHeroes(newHeroes);
