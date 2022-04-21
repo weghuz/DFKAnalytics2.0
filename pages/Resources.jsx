@@ -19,7 +19,7 @@ export default function Resources() {
           </li>
           <li>
             <a
-              href="https://medium.com/@@Samichpunch/index-of-samichpunch-defi-kingdoms-articles-dda9e50327ef"
+              href="https://medium.com/@Samichpunch/index-of-samichpunch-defi-kingdoms-articles-dda9e50327ef"
               target="_blank"
               rel="noreferrer"
             >
@@ -29,7 +29,7 @@ export default function Resources() {
             puts out deep informational posts about recent events. A place to
             start, Samichpunch&apos;s{" "}
             <a
-              href="https://medium.com/@@Samichpunch/beginners-guide-to-defi-kingdoms-how-to-start-playing-defi-kingdoms-88e9041467d2"
+              href="https://medium.com/@Samichpunch/beginners-guide-to-defi-kingdoms-how-to-start-playing-defi-kingdoms-88e9041467d2"
               target="_blank"
               rel="noreferrer"
             >
@@ -38,7 +38,7 @@ export default function Resources() {
           </li>
           <li>
             <a
-              href="https://medium.com/@@MrZipper7"
+              href="https://medium.com/@MrZipper7"
               target="_blank"
               rel="noreferrer"
             >
@@ -59,7 +59,7 @@ export default function Resources() {
           </li>
           <li>
             <a
-              href="https://medium.com/@@Weghuz/advanced-theory-part-1-scoring-heroes-in-defi-kingdoms-1ffd043fcd1c"
+              href="https://medium.com/@Weghuz/advanced-theory-part-1-scoring-heroes-in-defi-kingdoms-1ffd043fcd1c"
               target="_blank"
               rel="noreferrer"
             >

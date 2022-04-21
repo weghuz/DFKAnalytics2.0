@@ -142,8 +142,7 @@ export default function HeroFilters() {
     },`;
     query += `level_gte: ${level[0]}, level_lte:${level[1]},`;
     query += `salePrice_gte: "${minSalePrice}000000000000000000", salePrice_lte:"${maxSalePrice}000000000000000000",`;
-    if(onSale)
-    {
+    if (onSale) {
       query += "salePrice_not: null,";
     }
     queryContext.setQuery({ ...queryContext.query, query });
@@ -167,7 +166,7 @@ export default function HeroFilters() {
     fFName,
     mFName,
     lName,
-    onSale
+    onSale,
   ]);
   const ClearFilters = () => {
     setMainClass([]);
