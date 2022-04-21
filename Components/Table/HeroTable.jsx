@@ -3,7 +3,7 @@ import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { columnDefs } from "../../Logic/GridTableColumns";
 
 export default function Table({ isLoading, children }) {
-  const [pageSize, setPageSize] = useState(15);
+  const [pageSize, setPageSize] = useState(100);
   const [page, setPage] = useState(0);
   const rowsPerPageOptions = [5, 10, 15, 20, 35, 50, 75, 100];
   return (

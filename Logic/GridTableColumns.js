@@ -9,6 +9,7 @@ const {
   CurrentStaminaHours,
   professionStats,
   FullName,
+  statBoost,
 } = require("./HeroBase");
 import { Tooltip } from "@mui/material";
 import ElementCell from "../Components/Hero/ElementCell";
@@ -264,67 +265,25 @@ let columnDefs = [
   },
   {
     headerName: "Train Stat",
-    field: "Train Stat",
+    field: "TrainStat",
     width: "80",
     hide: false,
-    renderCell: ({ row }) => {
-      let stats = [{
-        name:"STR",
-        amount: row.strength,
-      },{
-        name:"DEX",
-        amount: row.dexterity,
-      },{
-        name:"AGI",
-        amount: row.agility,
-      },{
-        name:"VIT",
-        amount: row.vitality,
-      },{
-        name:"END",
-        amount: row.endurance,
-      },{
-        name:"INT",
-        amount: row.intelligence,
-      },{
-        name:"WIS",
-        amount: row.wisdom,
-      },{
-        name:"LCK",
-        amount: row.luck,
-      }];
-      stats.find((s) => s.name == row.statBoost1).amount += 1;
-      stats.find((s) => s.name == row.statBoost2).amount += 3;
-      let highest = stats.reduce((stat, compare) => {
-        if(stat.amount < compare.amount){
-          return compare;
-        }
-        return stat;
-      }, {name: "", amount: 0});
-      let color = "white";
-      if(highest.name == row.statBoost1 && highest.name == row.statBoost2)
-      {
-        color = "purple";
-      }
-      else if(highest.name == row.statBoost1)
-      {
-        color = "green";
-      }
-      else if(highest.name == row.statBoost2)
-      {
-        color = "royalblue"
-      }
-
+    type: "number",
+    renderCell: ({value}) => {
       return (
         <Tooltip title="Green stat gives +1 and Blue +3 points to a stat for questing." placement="left" >
-          <div style={{color: color}}>
-            {highest.name} {highest.amount}
+          <div style={{color: value.color}}>
+            {value.name} {value.amount}
           </div>
         </Tooltip>
       )
     },
-    sortComparator: (a, b, c, d, e) => {
-      console.log( e);
+    sortComparator: (v1, v2) => {
+      if(v1 !== undefined && v2 !== undefined)
+      {
+        return statBoost.indexOf(v1.name) - statBoost.indexOf(v2.name);
+      }
+      return -1;
     }
   },
   {

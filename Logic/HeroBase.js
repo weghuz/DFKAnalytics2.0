@@ -28,6 +28,57 @@ const classes = [
   "wizard",
 ];
 
+const TrainStat = (hero) => {
+    let stats = [{
+        name:"STR",
+        amount: hero.strength,
+      },{
+        name:"DEX",
+        amount: hero.dexterity,
+      },{
+        name:"AGI",
+        amount: hero.agility,
+      },{
+        name:"VIT",
+        amount: hero.vitality,
+      },{
+        name:"END",
+        amount: hero.endurance,
+      },{
+        name:"INT",
+        amount: hero.intelligence,
+      },{
+        name:"WIS",
+        amount: hero.wisdom,
+      },{
+        name:"LCK",
+        amount: hero.luck,
+      }];
+      stats.find((s) => s.name == hero.statBoost1).amount += 1;
+      stats.find((s) => s.name == hero.statBoost2).amount += 3;
+      let highest = stats.reduce((stat, compare) => {
+        if(stat.amount < compare.amount){
+          return compare;
+        }
+        return stat;
+      }, {name: "", amount: 0, color: ""});
+      highest.color = "white";
+      if(highest.name == hero.statBoost1 && highest.name == hero.statBoost2)
+      {
+        highest.color = "purple";
+      }
+      else if(highest.name == hero.statBoost1)
+      {
+        highest.color = "green";
+      }
+      else if(highest.name == hero.statBoost2)
+      {
+        highest.color = "royalblue"
+      }
+      hero.TrainStat = highest;
+      return hero.TrainStat;
+}
+
 const calculateRequiredXp = (currentLevel) => {
   let xpNeeded;
   const nextLevel = currentLevel + 1;
@@ -7190,6 +7241,7 @@ module.exports = {
     SumStats,
     RemoveBase,
     CurrentStamina,
+    TrainStat,
     professions,
     professionStats,
     stats,
