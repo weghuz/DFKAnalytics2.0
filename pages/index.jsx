@@ -46,7 +46,7 @@ export default function Home() {
   });
   return (
     <>
-      <HeroFilters />
+      <HeroFilters includeSalePrice={true} onSaleDefault={true} />
       <HeroTable isLoading={result.isLoading}>
         {render
           ? heroes.map((h) => {
