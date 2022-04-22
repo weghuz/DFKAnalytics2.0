@@ -19,7 +19,7 @@ export default function Wallet() {
         "Content-Type": "application/json;charset=UTF-8",
       },
       body: JSON.stringify({
-        query: `{heroes(first:500, where:{${requestContext.query.wallet}}, orderBy:salePrice, orderDirection:asc){${heroData}}}`,
+        query: `{heroes(first:500, where:{${requestContext.query.wallet},${requestContext.query.query}}, orderBy:salePrice, orderDirection:asc){${heroData}}}`,
       }),
     });
   };
@@ -56,7 +56,7 @@ export default function Wallet() {
         <label className="font-weight-bold text-white me-2">Conntected with</label>
         <MetaMask />
       </div>
-      {/* <HeroFilters onSaleDefault={false}/> */}
+      <HeroFilters onSaleDefault={false} includeSalePrice={false}/>
       <HeroTable isLoading={result.isLoading}>
         {render
           ? heroes.map((h) => {

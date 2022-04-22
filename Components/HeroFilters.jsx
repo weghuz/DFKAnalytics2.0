@@ -22,7 +22,7 @@ import {
   maleFirstNames,
 } from "../Logic/HeroBase";
 
-export default function HeroFilters({onSaleDefault}) {
+export default function HeroFilters({ onSaleDefault, includeSalePrice }) {
   const [mainClass, setMainClass] = useState([]);
   const [subClass, setSubClass] = useState([]);
   const [professions, setProfessions] = useState([]);
@@ -134,14 +134,15 @@ export default function HeroFilters({onSaleDefault}) {
       });
       query += `],gender:"female",`;
     }
-    console.log(rarity);
     query += `rarity_gte: ${rarity[0]}, rarity_lte:${rarity[1]},`;
     query += `generation_gte: ${generation[0]}, generation_lte:${generation[1]},`;
     query += `summonsRemaining_gte: ${summons[0]}, summonsRemaining_lte:${
       summons[1] == 10 ? 11 : summons[1]
     },`;
     query += `level_gte: ${level[0]}, level_lte:${level[1]},`;
-    query += `salePrice_gte: "${minSalePrice}000000000000000000", salePrice_lte:"${maxSalePrice}000000000000000000",`;
+    if (includeSalePrice) {
+      query += `salePrice_gte: "${minSalePrice}000000000000000000", salePrice_lte:"${maxSalePrice}000000000000000000",`;
+    }
     if (onSale) {
       query += "salePrice_not: null,";
     }
@@ -179,8 +180,11 @@ export default function HeroFilters({onSaleDefault}) {
     setGeneration([0, 14]);
     setSummons([0, 10]);
     setLevel([0, 100]);
-    setMinSalePrice(0);
-    setMaxSalePrice(9999999);
+    if(includeSalePrice)
+    {
+      setMinSalePrice(0);
+      setMaxSalePrice(9999999);
+    }
     clearRarity();
     clearGeneration();
     clearSummons();
@@ -188,7 +192,7 @@ export default function HeroFilters({onSaleDefault}) {
     setFFName([]);
     setMFName([]);
     setLName([]);
-    setOnSale([]);
+    setOnSale(onSaleDefault);
   };
   return (
     <div className="container">
@@ -314,44 +318,60 @@ export default function HeroFilters({onSaleDefault}) {
           max={100}
           callback={(val) => setLevel(val)}
         />
-        <div className="col-sm-6 col-md-4 col-xl-3 my-1">
-          <InputLabel htmlFor="minPrice" className="text-white">
-            Min Price
-          </InputLabel>
-          <Input
-            placeholder="0"
-            value={minSalePrice}
-            id="minPrice"
-            onChange={(e) => setMinSalePrice(e.target.value)}
-            onBlur={(e) => UpdateQuery()}
-            sx={{ color: "white", width: "100%" }}
-            type="number"
-            startAdornment={
-              <InputAdornment position="start" sx={{ width: "30px" }}>
-                <Image src={Jewel} alt="Jewel" width={24} height={24}></Image>
-              </InputAdornment>
-            }
-          ></Input>
-        </div>
-        <div className="col-sm-6 col-md-4 col-xl-3 my-1">
-          <InputLabel htmlFor="minPrice" className="text-white">
-            Max Price
-          </InputLabel>
-          <Input
-            placeholder="9999999"
-            value={maxSalePrice}
-            id="maxPrice"
-            onChange={(e) => setMaxSalePrice(e.target.value)}
-            onBlur={(e) => UpdateQuery()}
-            sx={{ color: "white", width: "100%" }}
-            type="number"
-            startAdornment={
-              <InputAdornment position="start" sx={{ width: "30px" }}>
-                <Image src={Jewel} alt="Jewel" width={24} height={24}></Image>
-              </InputAdornment>
-            }
-          ></Input>
-        </div>
+        {
+          
+            includeSalePrice &&
+            <>
+            <div className="col-sm-6 col-md-4 col-xl-3 my-1">
+              <InputLabel htmlFor="minPrice" className="text-white">
+                Min Price
+              </InputLabel>
+              <Input
+                placeholder="0"
+                value={minSalePrice}
+                id="minPrice"
+                onChange={(e) => setMinSalePrice(e.target.value)}
+                onBlur={(e) => UpdateQuery()}
+                sx={{ color: "white", width: "100%" }}
+                type="number"
+                startAdornment={
+                  <InputAdornment position="start" sx={{ width: "30px" }}>
+                    <Image
+                      src={Jewel}
+                      alt="Jewel"
+                      width={24}
+                      height={24}
+                    ></Image>
+                  </InputAdornment>
+                }
+              ></Input>
+            </div>
+            <div className="col-sm-6 col-md-4 col-xl-3 my-1">
+              <InputLabel htmlFor="minPrice" className="text-white">
+                Max Price
+              </InputLabel>
+              <Input
+                placeholder="9999999"
+                value={maxSalePrice}
+                id="maxPrice"
+                onChange={(e) => setMaxSalePrice(e.target.value)}
+                onBlur={(e) => UpdateQuery()}
+                sx={{ color: "white", width: "100%" }}
+                type="number"
+                startAdornment={
+                  <InputAdornment position="start" sx={{ width: "30px" }}>
+                    <Image
+                      src={Jewel}
+                      alt="Jewel"
+                      width={24}
+                      height={24}
+                    ></Image>
+                  </InputAdornment>
+                }
+              ></Input>
+            </div>
+          </>
+        }
         <div className="col-sm-6 col-md-4 col-xl-3 my-1 text-center">
           <FormControlLabel
             sx={{ color: "white" }}
@@ -374,4 +394,5 @@ export default function HeroFilters({onSaleDefault}) {
 }
 HeroFilters.defaultProps = {
   onSaleDefault: true,
-}
+  includeSalePrice: false,
+};
