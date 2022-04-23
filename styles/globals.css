@@ -64,7 +64,18 @@ a:active {
 span.react-dropdown-select-option{
   background-color: rgb(14,14,14);
 }
-
+.MuiInputLabel-root.MuiInputLabel-formControl{
+  color:white;
+}
+.MuiOutlinedInput-notchedOutline {
+  border-color: white;
+}
+.MuiOutlinedInput-notchedOutline:hover {
+  border-color: white;
+}
+.MuiInput-root.MuiInput-underline::before{
+  border-bottom-color: white;
+}
 .MuiSlider-root>span.MuiSlider-markLabel{
   color:white;
 }

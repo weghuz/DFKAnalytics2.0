@@ -2,11 +2,11 @@ import React from "react";
 import Select from "react-dropdown-select";
 
 
-export default function SelectItemSingle({ children, title, values, setValues, label, value, columns, color }) {
+export default function SelectItemSingle({ children, title, values, setValues, label, value, columns, color, callback }) {
   return (
     <div className={columns}>
       <label className="font-weight-bold" style={{color:color}}>{title}</label>
-      <Select style={{color:color}} keepSelectedInList={false} clearable={true} searchBy={label} labelField={label} valueField={value} values={values} options={children} placeholder={title} onChange={(values) => setValues(values)}/>
+      <Select style={{color:color}} onBlur={callback} keepSelectedInList={false} clearable={true} searchBy={label} labelField={label} valueField={value} values={values} options={children} placeholder={title} onChange={(values) => setValues(values)}/>
     </div>
   );
 }

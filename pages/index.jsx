@@ -10,6 +10,7 @@ export default function Home() {
   const [heroes, setHeroes] = useState([]);
   const [render, setRender] = useState(false);
   const requestContext = useContext(RequestContext);
+  console.log(`${requestContext.query.query.length > 0 ? "where:{" : ""}${requestContext.query.query}${requestContext.query.query.length > 0 ? "}" : ""}`);
   const testRequest = async () => {
     return fetch(base, {
       method: "POST",
@@ -17,7 +18,7 @@ export default function Home() {
         "Content-Type": "application/json;charset=UTF-8",
       },
       body: JSON.stringify({
-        query: `{heroes(first:500, where:{${requestContext.query.query}}, orderBy:salePrice, orderDirection:asc){${heroData}}}`,
+        query: `{heroes(first:100, ${requestContext.query.query.length > 0 ? "where:{" : ""}${requestContext.query.query}${requestContext.query.query.length > 0 ? "}" : ""}, orderBy:salePrice, orderDirection:asc){${heroData}}}`,
       }),
     });
   };

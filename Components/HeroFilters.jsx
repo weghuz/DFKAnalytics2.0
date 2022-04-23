@@ -6,6 +6,7 @@ import SelectItem from "./Filters/SelectItem";
 import RaritySlider from "./Filters/RaritySlider";
 import NumberSlider from "./Filters/NumberSlider";
 import {
+  Button,
   Checkbox,
   FormControlLabel,
   Input,
@@ -21,6 +22,7 @@ import {
   lastNames,
   maleFirstNames,
 } from "../Logic/HeroBase";
+import IdInput from "./Filters/IdInput";
 
 export default function HeroFilters({ onSaleDefault, includeSalePrice }) {
   const [mainClass, setMainClass] = useState([]);
@@ -39,13 +41,34 @@ export default function HeroFilters({ onSaleDefault, includeSalePrice }) {
   const [fFName, setFFName] = useState([]);
   const [lName, setLName] = useState([]);
   const [onSale, setOnSale] = useState(onSaleDefault);
+  const [idInput, setIdInput] = useState("");
+  const [updateTimeout, setUpdateTimeout] = useState(0);
+  const [countdown, setCountdown] = useState(0);
+  const [autoUpdate, setAutoUpdate] = useState(true);
+  const [initiated, setInitiated] = useState(false);
   const queryContext = useContext(RequestContext);
   let clearRarity = null,
     clearGeneration = null,
     clearSummons = null,
     clearLevel = null;
+  const UpdateCountDown = (cd) => {
+    if (cd <= 0) {
+      UpdateQuery();
+      return;
+    }
+    setUpdateTimeout(
+      setTimeout(() => {
+        cd -= 1;
+        setCountdown(cd);
+        console.log(cd);
+        UpdateCountDown(cd);
+      }, 1000)
+    );
+  };
 
-  const UpdateQuery = () => {
+  const UpdateQuery = (forceUpdate) => {
+    clearTimeout(updateTimeout);
+    setCountdown(0);
     let query = ``;
     if (mainClass.length > 0) {
       query += `mainClass_in: [`;
@@ -134,25 +157,76 @@ export default function HeroFilters({ onSaleDefault, includeSalePrice }) {
       });
       query += `],gender:"female",`;
     }
-    query += `rarity_gte: ${rarity[0]}, rarity_lte:${rarity[1]},`;
-    query += `generation_gte: ${generation[0]}, generation_lte:${generation[1]},`;
-    query += `summonsRemaining_gte: ${summons[0]}, summonsRemaining_lte:${
-      summons[1] == 10 ? 11 : summons[1]
-    },`;
-    query += `level_gte: ${level[0]}, level_lte:${level[1]},`;
+    if (rarity[0] !== 0) {
+      query += `rarity_gte: ${rarity[0]},`;
+    }
+    if (rarity[1] !== 4) {
+      query += `rarity_lte:${rarity[1]},`;
+    }
+    if (generation[0] !== 0) {
+      query += `generation_gte: ${generation[0]},`;
+    }
+    if (generation[1] !== 14) {
+      query += ` generation_lte:${generation[1]},`;
+    }
+    if (summons[0] !== 0) {
+      query += `summonsRemaining_gte: ${summons[0]},`;
+    }
+    if (summons[1] !== 10) {
+      query += `summonsRemaining_lte:${summons[1] == 10 ? 11 : summons[1]},`;
+    }
+    if (level[0] !== 0) {
+      query += `level_gte: ${level[0]},`;
+    }
+    if (level[1] !== 100) {
+      query += `level_lte:${level[1]},`;
+    }
     if (includeSalePrice) {
-      query += `salePrice_gte: "${minSalePrice}000000000000000000", salePrice_lte:"${maxSalePrice}000000000000000000",`;
+      if (minSalePrice !== 0) {
+        query += `salePrice_gte: "${minSalePrice}000000000000000000",`;
+      }
+      if (maxSalePrice !== 9999999) {
+        query += `salePrice_lte:"${maxSalePrice}000000000000000000",`;
+      }
     }
     if (onSale) {
       query += "salePrice_not: null,";
     }
-    queryContext.setQuery({ ...queryContext.query, query });
-    console.log(queryContext.query.query);
-    queryContext.query.invalidateQueries();
+    query = query.substring(0, query.length - 1);
+    console.log(query);
+    if (idInput.length > 0) {
+      console.log(idInput);
+    }
+    if (forceUpdate || queryContext.query.query !== query) {
+      queryContext.setQuery({ ...queryContext.query, query });
+      console.log(queryContext.query.query);
+    }
   };
 
+  const startUpdateTimer = () => {
+    if (autoUpdate) {
+      clearTimeout(updateTimeout);
+      setCountdown(3);
+      UpdateCountDown(3);
+    }
+  };
   useEffect(() => {
-    UpdateQuery();
+    if (autoUpdate && initiated) {
+      startUpdateTimer();
+    } else {
+      clearTimeout(updateTimeout);
+      setCountdown(0);
+    }
+  }, [autoUpdate]);
+
+  useEffect(() => {
+    if (initiated) {
+      startUpdateTimer();
+    }
+    else{
+      UpdateQuery(true);
+      setInitiated(true);
+    }
   }, [
     mainClass,
     subClass,
@@ -180,8 +254,7 @@ export default function HeroFilters({ onSaleDefault, includeSalePrice }) {
     setGeneration([0, 14]);
     setSummons([0, 10]);
     setLevel([0, 100]);
-    if(includeSalePrice)
-    {
+    if (includeSalePrice) {
       setMinSalePrice(0);
       setMaxSalePrice(9999999);
     }
@@ -193,6 +266,7 @@ export default function HeroFilters({ onSaleDefault, includeSalePrice }) {
     setMFName([]);
     setLName([]);
     setOnSale(onSaleDefault);
+    setIdInput("");
   };
   return (
     <div className="container">
@@ -318,10 +392,8 @@ export default function HeroFilters({ onSaleDefault, includeSalePrice }) {
           max={100}
           callback={(val) => setLevel(val)}
         />
-        {
-          
-            includeSalePrice &&
-            <>
+        {includeSalePrice && (
+          <>
             <div className="col-sm-6 col-md-4 col-xl-3 my-1">
               <InputLabel htmlFor="minPrice" className="text-white">
                 Min Price
@@ -331,7 +403,7 @@ export default function HeroFilters({ onSaleDefault, includeSalePrice }) {
                 value={minSalePrice}
                 id="minPrice"
                 onChange={(e) => setMinSalePrice(e.target.value)}
-                onBlur={(e) => UpdateQuery()}
+                onBlur={(e) => startUpdateTimer()}
                 sx={{ color: "white", width: "100%" }}
                 type="number"
                 startAdornment={
@@ -355,7 +427,7 @@ export default function HeroFilters({ onSaleDefault, includeSalePrice }) {
                 value={maxSalePrice}
                 id="maxPrice"
                 onChange={(e) => setMaxSalePrice(e.target.value)}
-                onBlur={(e) => UpdateQuery()}
+                onBlur={(e) => startUpdateTimer()}
                 sx={{ color: "white", width: "100%" }}
                 type="number"
                 startAdornment={
@@ -371,7 +443,7 @@ export default function HeroFilters({ onSaleDefault, includeSalePrice }) {
               ></Input>
             </div>
           </>
-        }
+        )}
         <div className="col-sm-6 col-md-4 col-xl-3 my-1 text-center">
           <FormControlLabel
             sx={{ color: "white" }}
@@ -382,12 +454,34 @@ export default function HeroFilters({ onSaleDefault, includeSalePrice }) {
               setOnSale(e.target.checked);
             }}
           />
+
+          <FormControlLabel
+            sx={{ color: "white" }}
+            control={<Checkbox />}
+            label="Auto Update"
+            checked={autoUpdate}
+            onChange={(e) => {
+              setAutoUpdate(e.target.checked);
+            }}
+          />
         </div>
+        {/* <IdInput callback={(val) => setIdInput(val)} /> */}
       </div>
-      <div className="text-center mt-3">
-        <button className="btn btn-sm btn-secondary" onClick={ClearFilters}>
+      <div className="text-center text-success my-3">
+        <h5>{countdown > 0 ? `Autoupdating in ${countdown}` : ""}</h5>
+      </div>
+      <div className="text-center my-1">
+        <Button variant="contained" color="success" onClick={() => UpdateQuery(true)}>
+          Search
+        </Button>
+        <Button
+          sx={{ marginLeft: ".5rem" }}
+          variant="contained"
+          color="secondary"
+          onClick={ClearFilters}
+        >
           Clear Filters
-        </button>
+        </Button>
       </div>
     </div>
   );
