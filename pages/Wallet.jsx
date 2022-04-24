@@ -1,17 +1,32 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useLayoutEffect, useState } from "react";
 import { useQuery } from "react-query";
 import HeroFilters from "../Components/HeroFilters";
 import HeroTable from "../Components/Table/HeroTable";
-import { ClassScore, GrowthScore, getRecessives, TrainStat } from "../Logic/HeroBase";
+import {
+  ClassScore,
+  GrowthScore,
+  getRecessives,
+  TrainStat,
+} from "../Logic/HeroBase";
 import { base, heroData } from "../Logic/Query";
 import RequestContext from "../Context/Context";
 import MetaMask from "../Components/Wallet/MetaMask";
+import { Button } from "@mui/material";
 
 export default function Wallet() {
   const [heroes, setHeroes] = useState([]);
   const [render, setRender] = useState(false);
+  const [filterVisible, setFilterVisible] = useState(true);
+  const toggleFilters = () => {
+    setFilterVisible((v) => !v);
+  };
+  useEffect(() => {
+    setFilterVisible(false);
+  }, []);
   const requestContext = useContext(RequestContext);
-  console.log(`{heroes(first:500, where:{${requestContext.query.wallet},${requestContext.query.query}}, orderBy:salePrice, orderDirection:asc){${heroData}}}`);
+  console.log(
+    `{heroes(first:500, where:{${requestContext.query.wallet},${requestContext.query.query}}, orderBy:salePrice, orderDirection:asc){${heroData}}}`
+  );
   const testRequest = async () => {
     return fetch(base, {
       method: "POST",
@@ -23,7 +38,6 @@ export default function Wallet() {
       }),
     });
   };
-
   const UpdateHeroes = (newHeroes) => {
     newHeroes.forEach((h) => {
       getRecessives(h);
@@ -42,8 +56,7 @@ export default function Wallet() {
     {
       onSuccess: async (result) => {
         let json = await result.json();
-        if(json.data == null)
-        {
+        if (json.data == null) {
           return;
         }
         UpdateHeroes(json.data.heroes);
@@ -53,10 +66,22 @@ export default function Wallet() {
   return (
     <>
       <div className="text-center mb-3">
-        <label className="font-weight-bold text-white me-2">Conntected with</label>
         <MetaMask />
+        <Button
+          className="mx-2"
+          variant="contained"
+          color={filterVisible ? "primary" : "secondary"}
+          onClick={toggleFilters}
+        >
+          Filters
+        </Button>
       </div>
-      <HeroFilters onSaleDefault={false} includeSalePrice={false}/>
+
+      <HeroFilters
+        onSaleDefault={false}
+        includeSalePrice={false}
+        visible={filterVisible}
+      />
       <HeroTable isLoading={result.isLoading}>
         {render
           ? heroes.map((h) => {

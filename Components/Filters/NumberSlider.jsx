@@ -15,7 +15,7 @@ export default function NumberSlider({
   };
   clear(clearState);
   return (
-    <div className="col-sm-6 col-md-4 col-xl-3">
+    <div className={`col-sm-6 col-md-4 col-xl-3`}>
       <label className="font-weight-bold text-white">{title}</label>
       <Slider
         valueLabelDisplay="auto"

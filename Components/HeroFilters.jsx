@@ -24,7 +24,11 @@ import {
 } from "../Logic/HeroBase";
 import IdInput from "./Filters/IdInput";
 
-export default function HeroFilters({ onSaleDefault, includeSalePrice }) {
+export default function HeroFilters({
+  onSaleDefault,
+  includeSalePrice,
+  visible,
+}) {
   const [mainClass, setMainClass] = useState([]);
   const [subClass, setSubClass] = useState([]);
   const [professions, setProfessions] = useState([]);
@@ -192,17 +196,48 @@ export default function HeroFilters({ onSaleDefault, includeSalePrice }) {
     if (onSale) {
       query += "salePrice_not: null,";
     }
-    query = query.substring(0, query.length - 1);
-    console.log(query);
     if (idInput.length > 0) {
       console.log(idInput);
+
+      if (idInput.length > 0) {
+        console.log(idInput);
+        idInput = idInput.split(/,| |\n/);
+        let addys = idInput.filter((id) => id.length == 42);
+        console.log(addys.length);
+        if (addys.length != 0) {
+          query += "owner_in: [";
+          console.log("addys", addys);
+          addys.forEach((id) => {
+            query += `"${id}",`;
+          });
+          query += "],";
+        }
+        let heroId = idInput.filter(
+          (id) =>
+            id.length < 42 &&
+            id.length > 0 &&
+            (!isNaN(parseInt(id)) || !isNaN(id))
+        );
+        if (heroId.length != 0) {
+          console.log("heroId", heroId);
+          query += "numberId_in: [";
+          heroId.forEach((id, i) => {
+            query += `"${id}"`;
+            if (i < heroId.length - 1) {
+              query += ",";
+            }
+          });
+          query += "],";
+        }
+      }
     }
+    query = query.substring(0, query.length - 1);
+    console.log(query);
     if (forceUpdate || queryContext.query.query !== query) {
       queryContext.setQuery({ ...queryContext.query, query });
       console.log(queryContext.query.query);
     }
   };
-
   const startUpdateTimer = () => {
     if (autoUpdate) {
       clearTimeout(updateTimeout);
@@ -222,8 +257,7 @@ export default function HeroFilters({ onSaleDefault, includeSalePrice }) {
   useEffect(() => {
     if (initiated) {
       startUpdateTimer();
-    }
-    else{
+    } else {
       UpdateQuery(true);
       setInitiated(true);
     }
@@ -242,6 +276,7 @@ export default function HeroFilters({ onSaleDefault, includeSalePrice }) {
     mFName,
     lName,
     onSale,
+    idInput,
   ]);
   const ClearFilters = () => {
     setMainClass([]);
@@ -269,8 +304,8 @@ export default function HeroFilters({ onSaleDefault, includeSalePrice }) {
     setIdInput("");
   };
   return (
-    <div className="container">
-      <div className="row">
+    <div className={`container`} style={{ display: visible ? "" : "none" }}>
+      <div className={`row`}>
         <SelectItem title="Class" values={mainClass} setValues={setMainClass}>
           {DFKBase.Classes}
         </SelectItem>
@@ -394,7 +429,7 @@ export default function HeroFilters({ onSaleDefault, includeSalePrice }) {
         />
         {includeSalePrice && (
           <>
-            <div className="col-sm-6 col-md-4 col-xl-3 my-1">
+            <div className={`col-sm-6 col-md-4 col-xl-3 my-1 `}>
               <InputLabel htmlFor="minPrice" className="text-white">
                 Min Price
               </InputLabel>
@@ -418,7 +453,7 @@ export default function HeroFilters({ onSaleDefault, includeSalePrice }) {
                 }
               ></Input>
             </div>
-            <div className="col-sm-6 col-md-4 col-xl-3 my-1">
+            <div className={`col-sm-6 col-md-4 col-xl-3 my-1`}>
               <InputLabel htmlFor="minPrice" className="text-white">
                 Max Price
               </InputLabel>
@@ -444,7 +479,7 @@ export default function HeroFilters({ onSaleDefault, includeSalePrice }) {
             </div>
           </>
         )}
-        <div className="col-sm-6 col-md-4 col-xl-3 my-1 text-center">
+        <div className={`col-sm-6 col-md-4 col-xl-3 my-1 text-center`}>
           <FormControlLabel
             sx={{ color: "white" }}
             control={<Checkbox />}
@@ -465,13 +500,23 @@ export default function HeroFilters({ onSaleDefault, includeSalePrice }) {
             }}
           />
         </div>
-        {/* <IdInput callback={(val) => setIdInput(val)} /> */}
+        <IdInput
+          value={idInput}
+          setValue={(val) => {
+            setIdInput(val);
+            setOnSale(false);
+          }}
+        />
       </div>
       <div className="text-center text-success my-3">
         <h5>{countdown > 0 ? `Autoupdating in ${countdown}` : ""}</h5>
       </div>
       <div className="text-center my-1">
-        <Button variant="contained" color="success" onClick={() => UpdateQuery(true)}>
+        <Button
+          variant="contained"
+          color="success"
+          onClick={() => UpdateQuery(true)}
+        >
           Search
         </Button>
         <Button
@@ -489,4 +534,5 @@ export default function HeroFilters({ onSaleDefault, includeSalePrice }) {
 HeroFilters.defaultProps = {
   onSaleDefault: true,
   includeSalePrice: false,
+  visible: true,
 };

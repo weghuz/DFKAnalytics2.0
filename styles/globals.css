@@ -60,6 +60,9 @@ a:active {
   background-color: gray;
   color: white;
 }
+textarea.MuiOutlinedInput-input{
+  color:white;
+}
 
 span.react-dropdown-select-option{
   background-color: rgb(14,14,14);

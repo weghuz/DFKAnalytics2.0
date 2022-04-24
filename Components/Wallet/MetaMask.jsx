@@ -3,6 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import DisconnectWalletModal from "./Modal/DisconnectWalletModal";
 import QuestionModal from "./Modal/QuestionModal";
 import QueryContext from "../../Context/Context";
+import { Button } from "@mui/material";
 
 export default function MetaMask() {
   const [connected, setConnected] = useState(true);
@@ -13,6 +14,8 @@ export default function MetaMask() {
     useState(false);
   const [connecting, setConnecting] = useState(false);
   const [connectionMethod, setConnectionMethod] = useState("");
+  const [connectionText, setConnectionText] = useState("");
+  const [textInterval, setTextInterval] = useState(0);
   const queryContext = useContext(QueryContext);
   useEffect(() => {
     if (address.length == 42) {
@@ -34,6 +37,23 @@ export default function MetaMask() {
     const address = await provider.listAccounts();
     ConnectMetamaskAddress(address);
   };
+  useEffect(() => {
+    console.log("setInterval");
+    const intervalId = setInterval(() => {
+      console.log(connectionText);
+      setConnectionText(text => {
+        if(text.length < 3)
+        {
+          return text + ".";
+        }
+        return "";
+      });
+    }, 350);
+    setTextInterval((interval) => {
+      console.log(intervalId);
+      return intervalId;
+    });
+  }, [connecting]);
   useEffect(() => {
     const OnWindowLoaded = async () => {
       let savedWallet = localStorage.getItem("address");
@@ -89,21 +109,29 @@ export default function MetaMask() {
     setConnected(false);
   };
   if (connecting) {
-    return <span className="text-success">Connecting...</span>;
+    return (
+      <div style={{width:"100px"}} className="text-start d-inline-block text-success mx-2">Connecting{connectionText}</div>
+    );
+  }
+  if (textInterval !== 0) {
+    console.log("reset");
+    setConnectionText("");
+    clearInterval(textInterval);
+    setTextInterval(0);
   }
   if (!metaMaskInstalled) {
     return (
       <>
         <div className="d-inline-block mx-2">
-          <button
-            type="button"
-            className="btn btn-sm text-white outline-primary btn-success"
+          <Button
+            variant="contained"
+            color="success"
             onClick={() => {
               setShowQuestionsModal(true);
             }}
           >
             Why connect?
-          </button>
+          </Button>
         </div>
         {showQuestionsModal && (
           <QuestionModal
@@ -118,23 +146,24 @@ export default function MetaMask() {
     return (
       <>
         <div className="d-inline-block mx-2">
-          <button
-            className={`btn btn-sm text-white outline-primary btn-success`}
+          <Button
+            variant="contained"
+            color="success"
             onClick={() => ConnectWallet()}
           >
             Connect 🦊
-          </button>
+          </Button>
         </div>
         <div className="d-inline-block mx-2">
-          <button
-            type="button"
-            className="btn btn-sm text-white outline-primary btn-success"
+          <Button
+            variant="contained"
+            color="success"
             onClick={() => {
               setShowQuestionsModal(true);
             }}
           >
             Why connect?
-          </button>
+          </Button>
         </div>
         {showQuestionsModal ? (
           <QuestionModal
@@ -149,12 +178,19 @@ export default function MetaMask() {
   }
   return (
     <>
-      <button
-        className="btn btn-sm btn-primary"
+      <label className="font-weight-bold text-white me-2">Connected with</label>
+      <Button
+        className="mx-2"
+        variant="contained"
+        color="success"
         onClick={() => setShowConnectedInformation(true)}
       >
-        {`${address.substring(0, 6)}`}
-      </button>
+        {`${
+          address.substring(2, 6) +
+          "..." +
+          address.substring(address.length - 4, address.length)
+        }`}
+      </Button>
       {showConnectedInformation && (
         <DisconnectWalletModal
           closeModalFunction={() => setShowConnectedInformation(false)}

@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import Slider from "@mui/material/Slider";
-import Image from "next/image"
+import Image from "next/image";
 import Common from "../../public/Gems/Common.png";
 import Uncommon from "../../public/Gems/Uncommon.png";
 import Rare from "../../public/Gems/Rare.png";
 import Legendary from "../../public/Gems/Legendary.png";
 import Mythic from "../../public/Gems/Mythic.png";
 
-export default function RaritySlider( { setQueryRarity, clear } ) {
+export default function RaritySlider({ setQueryRarity, clear }) {
   const [rarity, setRarity] = useState([0, 4]);
   const clearState = () => {
     setRarity([0, 4]);
@@ -15,7 +15,7 @@ export default function RaritySlider( { setQueryRarity, clear } ) {
 
   clear(clearState);
   return (
-    <div className="col-sm-6 col-md-4 col-xl-3">
+    <div className={`col-sm-6 col-md-4 col-xl-3`}>
       <label className="font-weight-bold text-white">Rarity</label>
       <Slider
         getAriaLabel={(val) => {
@@ -42,7 +42,7 @@ export default function RaritySlider( { setQueryRarity, clear } ) {
           { value: 1, label: <Image src={Uncommon} alt="Uncommon" /> },
           { value: 2, label: <Image src={Rare} alt="Rare" /> },
           { value: 3, label: <Image src={Legendary} alt="Legendary" /> },
-          { value: 4, label: <Image src={Mythic} alt="Mythic"/> },
+          { value: 4, label: <Image src={Mythic} alt="Mythic" /> },
         ]}
         onChange={(e, val) => {
           setRarity(val);
