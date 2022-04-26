@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, {
+  useState,
+  useEffect,
+  useContext,
+  useRef,
+  forwardRef,
+} from "react";
 import DFKBase, { PJSurvivor } from "../Logic/Dropdowns";
 import Image from "next/image";
 import Jewel from "../public/Jewel.png";
@@ -24,11 +30,7 @@ import {
 } from "../Logic/HeroBase";
 import IdInput from "./Filters/IdInput";
 
-export default function HeroFilters({
-  onSaleDefault,
-  includeSalePrice,
-  visible,
-}) {
+const HeroFilters = forwardRef(function HeroFilters({ onSaleDefault, includeSalePrice, visible }, ref) {
   const [mainClass, setMainClass] = useState([]);
   const [subClass, setSubClass] = useState([]);
   const [professions, setProfessions] = useState([]);
@@ -50,6 +52,7 @@ export default function HeroFilters({
   const [countdown, setCountdown] = useState(0);
   const [autoUpdate, setAutoUpdate] = useState(true);
   const [initiated, setInitiated] = useState(false);
+  const mainDivReference = useRef();
   const queryContext = useContext(RequestContext);
   let clearRarity = null,
     clearGeneration = null,
@@ -304,7 +307,10 @@ export default function HeroFilters({
     setIdInput("");
   };
   return (
-    <div className={`container`} style={{ display: visible ? "" : "none" }}>
+    <div
+      className={`container ${visible ? "" : "collapse"}`}
+      ref={ref}
+    >
       <div className={`row`}>
         <SelectItem title="Class" values={mainClass} setValues={setMainClass}>
           {DFKBase.Classes}
@@ -530,9 +536,11 @@ export default function HeroFilters({
       </div>
     </div>
   );
-}
+});
 HeroFilters.defaultProps = {
   onSaleDefault: true,
   includeSalePrice: false,
   visible: true,
 };
+
+export default HeroFilters;

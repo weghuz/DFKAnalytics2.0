@@ -1,32 +1,23 @@
-import { useContext, useEffect, useLayoutEffect, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import { useQuery } from "react-query";
 import HeroFilters from "../Components/HeroFilters";
 import HeroTable from "../Components/Table/HeroTable";
-import {
-  ClassScore,
-  GrowthScore,
-  getRecessives,
-  TrainStat,
-} from "../Logic/HeroBase";
 import { base, heroData } from "../Logic/Query";
 import RequestContext from "../Context/Context";
 import MetaMask from "../Components/Wallet/MetaMask";
 import { Button } from "@mui/material";
 
 export default function Wallet() {
-  const [heroes, setHeroes] = useState([]);
-  const [render, setRender] = useState(false);
-  const [filterVisible, setFilterVisible] = useState(true);
-  const toggleFilters = () => {
-    setFilterVisible((v) => !v);
+  const filtersRef = useRef(null);
+  const [filtersHidden, setFiltersHidden] = useState(false);
+  const updateHeroes = useRef();
+  const toggleFilters = (e) => {
+    if (typeof window) {
+      filtersRef.current.classList.toggle("collapse");
+      setFiltersHidden((hidden) => !hidden);
+    }
   };
-  useEffect(() => {
-    setFilterVisible(false);
-  }, []);
   const requestContext = useContext(RequestContext);
-  console.log(
-    `{heroes(first:500, where:{${requestContext.query.wallet},${requestContext.query.query}}, orderBy:salePrice, orderDirection:asc){${heroData}}}`
-  );
   const testRequest = async () => {
     return fetch(base, {
       method: "POST",
@@ -38,18 +29,6 @@ export default function Wallet() {
       }),
     });
   };
-  const UpdateHeroes = (newHeroes) => {
-    newHeroes.forEach((h) => {
-      getRecessives(h);
-      ClassScore(h);
-      GrowthScore(h);
-      TrainStat(h);
-      h.id = h.numberId;
-    });
-    setHeroes(newHeroes);
-    console.log(newHeroes);
-    setRender(true);
-  };
   const result = useQuery(
     ["request", requestContext.query.query + requestContext.query.wallet],
     testRequest,
@@ -59,7 +38,7 @@ export default function Wallet() {
         if (json.data == null) {
           return;
         }
-        UpdateHeroes(json.data.heroes);
+        updateHeroes.current(json.data.heroes);
       },
     }
   );
@@ -70,7 +49,7 @@ export default function Wallet() {
         <Button
           className="mx-2"
           variant="contained"
-          color={filterVisible ? "primary" : "secondary"}
+          color={filtersHidden ? "primary" : "secondary"}
           onClick={toggleFilters}
         >
           Filters
@@ -80,15 +59,12 @@ export default function Wallet() {
       <HeroFilters
         onSaleDefault={false}
         includeSalePrice={false}
-        visible={filterVisible}
+        ref={filtersRef}
       />
-      <HeroTable isLoading={result.isLoading}>
-        {render
-          ? heroes.map((h) => {
-              return h;
-            })
-          : []}
-      </HeroTable>
+      <HeroTable
+        isLoading={result.isLoading}
+        update={(updateFunc) => (updateHeroes.current = updateFunc)}
+      />
     </>
   );
 }

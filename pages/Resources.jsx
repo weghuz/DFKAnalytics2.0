@@ -97,8 +97,8 @@ export default function Resources() {
             >
               DFK Discord Channel
             </a>
-            : If you haven&apos;t joined already, join the DFK discord now! It will
-            change your life.
+            : If you haven&apos;t joined already, join the DFK discord now! It
+            will change your life.
           </li>
         </ul>
         <h4 className="text-center">Sites</h4>
@@ -108,6 +108,19 @@ export default function Resources() {
               Kingdom.Watch
             </a>{" "}
             a must use for any DFK enthusiast.
+          </li>
+          <li>
+            <a href="https://dfktracker.app/" target="_blank" rel="noreferrer">
+              dfktracker.app
+            </a>{" "}
+            Portfolio summary and account transaction traversal for heroes and
+            gardens and more.
+          </li>
+          <li>
+            <a href="https://dfktools.com/" target="_blank" rel="noreferrer">
+              dfktools.com
+            </a>{" "}
+            Hero floor reports and filters.
           </li>
           <li>
             <a
