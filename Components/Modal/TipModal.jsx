@@ -24,7 +24,7 @@ export default function TipModal({ closeModalFunction }) {
 
       <h6>{`Tip top tippers:`}</h6>
       <ul>
-        <li>{`Thorik Ẅood: 9.2J`}</li>
+        <li>{`Thorik Ẅood: 28.2J`}</li>
         <li>{`Afromaster🍍Burnmaster🍕Gamemaster: 6.969J`}</li>
         <li>{`burnem: 4.20J`}</li>
       </ul>
