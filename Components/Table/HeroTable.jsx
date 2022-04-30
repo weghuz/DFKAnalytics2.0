@@ -1,15 +1,20 @@
 import React, { useState } from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { columnDefs } from "../../Logic/GridTableColumns";
-import { ClassScore, getRecessives, GrowthScore, TrainStat } from "../../Logic/HeroBase";
+import {
+  ClassScore,
+  getRecessives,
+  GrowthScore,
+  TrainStat,
+} from "../../Logic/HeroBase";
 
-export default function Table({ isLoading, update }) {
+export default function Table({ isLoading, update, add }) {
   const [pageSize, setPageSize] = useState(100);
   const [page, setPage] = useState(0);
   const rowsPerPageOptions = [5, 10, 15, 20, 35, 50, 75, 100];
-  
+
   const [heroes, setHeroes] = useState([]);
-  update((newHeroes) => {
+  update((newHeroes, clear) => {
     newHeroes.forEach((h) => {
       getRecessives(h);
       ClassScore(h);
@@ -18,8 +23,14 @@ export default function Table({ isLoading, update }) {
       h.stats = { hp: h.hp };
       h.id = h.numberId;
     });
-    setHeroes(newHeroes);
-    console.log(newHeroes);
+    setHeroes((heroes) => {
+      if(clear)
+      {
+        return newHeroes;
+      }
+      return heroes.concat(newHeroes);
+    });
+    console.log(newHeroes, heroes);
   });
   return (
     <div style={{ height: "800px", margin: "0 1%", color: "black" }}>
@@ -38,7 +49,7 @@ export default function Table({ isLoading, update }) {
         rowsPerPageOptions={rowsPerPageOptions}
         style={{ backgroundColor: "rgb(25,25,25)", color: "white" }}
         components={{
-          Toolbar: GridToolbar
+          Toolbar: GridToolbar,
         }}
       />
     </div>

@@ -5,7 +5,7 @@ import React, {
   useRef,
   forwardRef,
 } from "react";
-import DFKBase, { PJSurvivor } from "../Logic/Dropdowns";
+import DFKBase, { PJSurvivor, Skills } from "../Logic/Dropdowns";
 import Image from "next/image";
 import Jewel from "../public/Jewel.png";
 import SelectItem from "./Filters/SelectItem";
@@ -30,7 +30,10 @@ import {
 } from "../Logic/HeroBase";
 import IdInput from "./Filters/IdInput";
 
-const HeroFilters = forwardRef(function HeroFilters({ onSaleDefault, includeSalePrice, visible }, ref) {
+const HeroFilters = forwardRef(function HeroFilters(
+  { onSaleDefault, includeSalePrice, visible },
+  ref
+) {
   const [mainClass, setMainClass] = useState([]);
   const [subClass, setSubClass] = useState([]);
   const [professions, setProfessions] = useState([]);
@@ -52,7 +55,13 @@ const HeroFilters = forwardRef(function HeroFilters({ onSaleDefault, includeSale
   const [countdown, setCountdown] = useState(0);
   const [autoUpdate, setAutoUpdate] = useState(true);
   const [initiated, setInitiated] = useState(false);
-  const mainDivReference = useRef();
+  const [active1, setActive1] = useState([]);
+  const [active2, setActive2] = useState([]);
+  const [Passive1, setPassive1] = useState([]);
+  const [Passive2, setPassive2] = useState([]);
+  const [section, setSection] = useState("Main");
+  const mainRerence = useRef();
+  const cosmeticReference = useRef();
   const queryContext = useContext(RequestContext);
   let clearRarity = null,
     clearGeneration = null,
@@ -102,6 +111,46 @@ const HeroFilters = forwardRef(function HeroFilters({ onSaleDefault, includeSale
       professions.forEach((c, i) => {
         query += `"${c.value}"`;
         if (i < professions.length - 1) {
+          query += `,`;
+        }
+      });
+      query += `],`;
+    }
+    if (active1.length > 0) {
+      query += `active1_in: [`;
+      active1.forEach((c, i) => {
+        query += `"${c.value}"`;
+        if (i < active1.length - 1) {
+          query += `,`;
+        }
+      });
+      query += `],`;
+    }
+    if (active2.length > 0) {
+      query += `active2_in: [`;
+      active2.forEach((c, i) => {
+        query += `"${c.value}"`;
+        if (i < active2.length - 1) {
+          query += `,`;
+        }
+      });
+      query += `],`;
+    }
+    if (Passive1.length > 0) {
+      query += `Passive1_in: [`;
+      Passive1.forEach((c, i) => {
+        query += `"${c.value}"`;
+        if (i < Passive1.length - 1) {
+          query += `,`;
+        }
+      });
+      query += `],`;
+    }
+    if (Passive2.length > 0) {
+      query += `Passive2_in: [`;
+      Passive2.forEach((c, i) => {
+        query += `"${c.value}"`;
+        if (i < Passive2.length - 1) {
           query += `,`;
         }
       });
@@ -280,6 +329,10 @@ const HeroFilters = forwardRef(function HeroFilters({ onSaleDefault, includeSale
     lName,
     onSale,
     idInput,
+    active1,
+    active2,
+    Passive1,
+    Passive2,
   ]);
   const ClearFilters = () => {
     setMainClass([]);
@@ -303,217 +356,266 @@ const HeroFilters = forwardRef(function HeroFilters({ onSaleDefault, includeSale
     setFFName([]);
     setMFName([]);
     setLName([]);
+    setActive1([]);
+    setActive2([]);
+    setPassive1([]);
+    setPassive2([]);
     setOnSale(onSaleDefault);
     setIdInput("");
   };
   return (
-    <div
-      className={`container ${visible ? "" : "collapse"}`}
-      ref={ref}
-    >
-      <div className={`row`}>
-        <SelectItem title="Class" values={mainClass} setValues={setMainClass}>
-          {DFKBase.Classes}
-        </SelectItem>
-        <SelectItem title="Subclass" values={subClass} setValues={setSubClass}>
-          {DFKBase.Classes}
-        </SelectItem>
-        <SelectItem
-          title="Profession"
-          values={professions}
-          setValues={setProfessions}
+    <div className={`container ${visible ? "" : "collapse"}`} ref={ref}>
+      <div>
+        <Button
+          className="me-2"
+          variant="contained"
+          color={section == "Main" ? "primary" : "secondary"}
+          onClick={() => setSection("Main")}
         >
-          {DFKBase.Professions}
-        </SelectItem>
-        <SelectItem
-          title="+2 Stats"
-          color="#11BB11"
-          values={SB1}
-          setValues={setSB1}
+          Main
+        </Button>
+        <Button
+          className="me-2"
+          variant="contained"
+          color={section == "Cosmetic" ? "primary" : "secondary"}
+          onClick={() => setSection("Cosmetic")}
         >
-          {DFKBase.StatBoosts}
-        </SelectItem>
-        <SelectItem
-          title="2%/4% Growth"
-          color="#0055FF"
-          values={SB2}
-          setValues={setSB2}
-        >
-          {DFKBase.StatBoosts}
-        </SelectItem>
-        <SelectItemSingle title="PJ Status" values={PJ} setValues={setPJ}>
-          {DFKBase.PJSurvivor}
-        </SelectItemSingle>
-        {fFName.length == 0 && (
-          <SelectItem
-            title="Male First Names"
-            values={mFName}
-            setValues={setMFName}
-          >
-            {maleFirstNames.map((n, i) => {
+          Cosmetic
+        </Button>
+      </div>
+      {section == "Cosmetic" && (
+        <div className="row">
+          {fFName.length == 0 && (
+            <SelectItem
+              title="Male First Names"
+              values={mFName}
+              setValues={setMFName}
+            >
+              {maleFirstNames.map((n, i) => {
+                return { value: i, label: n };
+              })}
+            </SelectItem>
+          )}
+          {mFName.length == 0 && (
+            <SelectItem
+              title="Female First Names"
+              values={fFName}
+              setValues={setFFName}
+            >
+              {femaleFirstNames.map((n, i) => {
+                return { value: i, label: n };
+              })}
+            </SelectItem>
+          )}
+          <SelectItem title="Last Name" values={lName} setValues={setLName}>
+            {lastNames.map((n, i) => {
               return { value: i, label: n };
             })}
           </SelectItem>
-        )}
-        {mFName.length == 0 && (
-          <SelectItem
-            title="Female First Names"
-            values={fFName}
-            setValues={setFFName}
-          >
-            {femaleFirstNames.map((n, i) => {
-              return { value: i, label: n };
-            })}
+        </div>
+      )}
+      {section == "Main" && (
+        <div className={`row`}>
+          <SelectItem title="Class" values={mainClass} setValues={setMainClass}>
+            {DFKBase.Classes}
           </SelectItem>
-        )}
-        <SelectItem title="Last Name" values={lName} setValues={setLName}>
-          {lastNames.map((n, i) => {
-            return { value: i, label: n };
-          })}
-        </SelectItem>
-        <RaritySlider
-          setQueryRarity={setRarity}
-          clear={(clearFunc) => (clearRarity = clearFunc)}
-        />
-        <NumberSlider
-          title={"Generation"}
-          clear={(clearFunc) => (clearGeneration = clearFunc)}
-          min={0}
-          max={14}
-          callback={(val) => setGeneration(val)}
-          marks={[
-            { value: 0, label: <div style={{ fontSize: "11px" }}>0</div> },
-            { value: 1, label: <div style={{ fontSize: "11px" }}>1</div> },
-            { value: 2, label: <div style={{ fontSize: "11px" }}>2</div> },
-            { value: 3, label: <div style={{ fontSize: "11px" }}>3</div> },
-            { value: 4, label: <div style={{ fontSize: "11px" }}>4</div> },
-            { value: 5, label: <div style={{ fontSize: "11px" }}>5</div> },
-            { value: 6, label: <div style={{ fontSize: "11px" }}>6</div> },
-            { value: 7, label: <div style={{ fontSize: "11px" }}>7</div> },
-            { value: 8, label: <div style={{ fontSize: "11px" }}>8</div> },
-            { value: 9, label: <div style={{ fontSize: "11px" }}>9</div> },
-            { value: 10, label: <div style={{ fontSize: "11px" }}>10</div> },
-            { value: 11, label: <div style={{ fontSize: "11px" }}>11</div> },
-            { value: 12, label: <div style={{ fontSize: "11px" }}>12</div> },
-            { value: 13, label: <div style={{ fontSize: "11px" }}>13</div> },
-            { value: 14, label: <div style={{ fontSize: "11px" }}>14</div> },
-          ]}
-        />
-        <NumberSlider
-          title={"Summons"}
-          clear={(clearFunc) => (clearSummons = clearFunc)}
-          min={0}
-          max={10}
-          callback={(val) => setSummons(val)}
-          marks={[
-            { value: 0, label: <div style={{ fontSize: "11px" }}>0</div> },
-            { value: 1, label: <div style={{ fontSize: "11px" }}>1</div> },
-            { value: 2, label: <div style={{ fontSize: "11px" }}>2</div> },
-            { value: 3, label: <div style={{ fontSize: "11px" }}>3</div> },
-            { value: 4, label: <div style={{ fontSize: "11px" }}>4</div> },
-            { value: 5, label: <div style={{ fontSize: "11px" }}>5</div> },
-            { value: 6, label: <div style={{ fontSize: "11px" }}>6</div> },
-            { value: 7, label: <div style={{ fontSize: "11px" }}>7</div> },
-            { value: 8, label: <div style={{ fontSize: "11px" }}>8</div> },
-            { value: 9, label: <div style={{ fontSize: "11px" }}>9</div> },
-            { value: 10, label: <div style={{ fontSize: "11px" }}>10</div> },
-          ]}
-        />
-        <NumberSlider
-          title={"Level"}
-          clear={(clearFunc) => (clearLevel = clearFunc)}
-          marks={[
-            { value: 0, label: 0 },
-            { value: 25, label: 25 },
-            { value: 50, label: 50 },
-            { value: 75, label: 75 },
-            { value: 100, label: 100 },
-          ]}
-          min={0}
-          max={100}
-          callback={(val) => setLevel(val)}
-        />
-        {includeSalePrice && (
-          <>
-            <div className={`col-sm-6 col-md-4 col-xl-3 my-1 `}>
-              <InputLabel htmlFor="minPrice" className="text-white">
-                Min Price
-              </InputLabel>
-              <Input
-                placeholder="0"
-                value={minSalePrice}
-                id="minPrice"
-                onChange={(e) => setMinSalePrice(e.target.value)}
-                onBlur={(e) => startUpdateTimer()}
-                sx={{ color: "white", width: "100%" }}
-                type="number"
-                startAdornment={
-                  <InputAdornment position="start" sx={{ width: "30px" }}>
-                    <Image
-                      src={Jewel}
-                      alt="Jewel"
-                      width={24}
-                      height={24}
-                    ></Image>
-                  </InputAdornment>
-                }
-              ></Input>
-            </div>
-            <div className={`col-sm-6 col-md-4 col-xl-3 my-1`}>
-              <InputLabel htmlFor="minPrice" className="text-white">
-                Max Price
-              </InputLabel>
-              <Input
-                placeholder="9999999"
-                value={maxSalePrice}
-                id="maxPrice"
-                onChange={(e) => setMaxSalePrice(e.target.value)}
-                onBlur={(e) => startUpdateTimer()}
-                sx={{ color: "white", width: "100%" }}
-                type="number"
-                startAdornment={
-                  <InputAdornment position="start" sx={{ width: "30px" }}>
-                    <Image
-                      src={Jewel}
-                      alt="Jewel"
-                      width={24}
-                      height={24}
-                    ></Image>
-                  </InputAdornment>
-                }
-              ></Input>
-            </div>
-          </>
-        )}
-        <div className={`col-sm-6 col-md-4 col-xl-3 my-1 text-center`}>
-          <FormControlLabel
-            sx={{ color: "white" }}
-            control={<Checkbox />}
-            label="On Sale"
-            checked={onSale}
-            onChange={(e) => {
-              setOnSale(e.target.checked);
-            }}
+          <SelectItem
+            title="Subclass"
+            values={subClass}
+            setValues={setSubClass}
+          >
+            {DFKBase.Classes}
+          </SelectItem>
+          <SelectItem
+            title="Profession"
+            values={professions}
+            setValues={setProfessions}
+          >
+            {DFKBase.Professions}
+          </SelectItem>
+          <SelectItemSingle title="PJ Status" values={PJ} setValues={setPJ}>
+            {DFKBase.PJSurvivor}
+          </SelectItemSingle>
+          <SelectItem title="Active 1" values={active1} setValues={setActive1}>
+            {Skills}
+          </SelectItem>
+          <SelectItem title="Active 2" values={active2} setValues={setActive2}>
+            {Skills}
+          </SelectItem>
+          <SelectItem
+            title="Passive 1"
+            values={Passive1}
+            setValues={setPassive1}
+          >
+            {Skills}
+          </SelectItem>
+          <SelectItem
+            title="Passive 2"
+            values={Passive2}
+            setValues={setPassive2}
+          >
+            {Skills}
+          </SelectItem>
+          <SelectItem
+            title="+2 Stats"
+            color="#11BB11"
+            values={SB1}
+            setValues={setSB1}
+          >
+            {DFKBase.StatBoosts}
+          </SelectItem>
+          <SelectItem
+            title="2%/4% Growth"
+            color="#0055FF"
+            values={SB2}
+            setValues={setSB2}
+          >
+            {DFKBase.StatBoosts}
+          </SelectItem>
+          <RaritySlider
+            setQueryRarity={setRarity}
+            clear={(clearFunc) => (clearRarity = clearFunc)}
           />
+          <NumberSlider
+            title={"Generation"}
+            clear={(clearFunc) => (clearGeneration = clearFunc)}
+            min={0}
+            max={14}
+            callback={(val) => setGeneration(val)}
+            marks={[
+              { value: 0, label: <div style={{ fontSize: "11px" }}>0</div> },
+              { value: 1, label: <div style={{ fontSize: "11px" }}>1</div> },
+              { value: 2, label: <div style={{ fontSize: "11px" }}>2</div> },
+              { value: 3, label: <div style={{ fontSize: "11px" }}>3</div> },
+              { value: 4, label: <div style={{ fontSize: "11px" }}>4</div> },
+              { value: 5, label: <div style={{ fontSize: "11px" }}>5</div> },
+              { value: 6, label: <div style={{ fontSize: "11px" }}>6</div> },
+              { value: 7, label: <div style={{ fontSize: "11px" }}>7</div> },
+              { value: 8, label: <div style={{ fontSize: "11px" }}>8</div> },
+              { value: 9, label: <div style={{ fontSize: "11px" }}>9</div> },
+              { value: 10, label: <div style={{ fontSize: "11px" }}>10</div> },
+              { value: 11, label: <div style={{ fontSize: "11px" }}>11</div> },
+              { value: 12, label: <div style={{ fontSize: "11px" }}>12</div> },
+              { value: 13, label: <div style={{ fontSize: "11px" }}>13</div> },
+              { value: 14, label: <div style={{ fontSize: "11px" }}>14</div> },
+            ]}
+          />
+          <NumberSlider
+            title={"Summons"}
+            clear={(clearFunc) => (clearSummons = clearFunc)}
+            min={0}
+            max={10}
+            callback={(val) => setSummons(val)}
+            marks={[
+              { value: 0, label: <div style={{ fontSize: "11px" }}>0</div> },
+              { value: 1, label: <div style={{ fontSize: "11px" }}>1</div> },
+              { value: 2, label: <div style={{ fontSize: "11px" }}>2</div> },
+              { value: 3, label: <div style={{ fontSize: "11px" }}>3</div> },
+              { value: 4, label: <div style={{ fontSize: "11px" }}>4</div> },
+              { value: 5, label: <div style={{ fontSize: "11px" }}>5</div> },
+              { value: 6, label: <div style={{ fontSize: "11px" }}>6</div> },
+              { value: 7, label: <div style={{ fontSize: "11px" }}>7</div> },
+              { value: 8, label: <div style={{ fontSize: "11px" }}>8</div> },
+              { value: 9, label: <div style={{ fontSize: "11px" }}>9</div> },
+              { value: 10, label: <div style={{ fontSize: "11px" }}>10</div> },
+            ]}
+          />
+          <NumberSlider
+            title={"Level"}
+            clear={(clearFunc) => (clearLevel = clearFunc)}
+            marks={[
+              { value: 0, label: 0 },
+              { value: 25, label: 25 },
+              { value: 50, label: 50 },
+              { value: 75, label: 75 },
+              { value: 100, label: 100 },
+            ]}
+            min={0}
+            max={100}
+            callback={(val) => setLevel(val)}
+          />
+          {includeSalePrice && (
+            <>
+              <div className={`col-sm-6 col-md-4 col-xl-3 my-1 `}>
+                <InputLabel htmlFor="minPrice" className="text-white">
+                  Min Price
+                </InputLabel>
+                <Input
+                  placeholder="0"
+                  value={minSalePrice}
+                  id="minPrice"
+                  onChange={(e) => setMinSalePrice(e.target.value)}
+                  onBlur={(e) => startUpdateTimer()}
+                  sx={{ color: "white", width: "100%" }}
+                  type="number"
+                  startAdornment={
+                    <InputAdornment position="start" sx={{ width: "30px" }}>
+                      <Image
+                        src={Jewel}
+                        alt="Jewel"
+                        width={24}
+                        height={24}
+                      ></Image>
+                    </InputAdornment>
+                  }
+                ></Input>
+              </div>
+              <div className={`col-sm-6 col-md-4 col-xl-3 my-1`}>
+                <InputLabel htmlFor="minPrice" className="text-white">
+                  Max Price
+                </InputLabel>
+                <Input
+                  placeholder="9999999"
+                  value={maxSalePrice}
+                  id="maxPrice"
+                  onChange={(e) => setMaxSalePrice(e.target.value)}
+                  onBlur={(e) => startUpdateTimer()}
+                  sx={{ color: "white", width: "100%" }}
+                  type="number"
+                  startAdornment={
+                    <InputAdornment position="start" sx={{ width: "30px" }}>
+                      <Image
+                        src={Jewel}
+                        alt="Jewel"
+                        width={24}
+                        height={24}
+                      ></Image>
+                    </InputAdornment>
+                  }
+                ></Input>
+              </div>
+            </>
+          )}
+          <div className={`col-sm-6 col-md-4 col-xl-3 my-1 text-center`}>
+            <FormControlLabel
+              sx={{ color: "white" }}
+              control={<Checkbox />}
+              label="On Sale"
+              checked={onSale}
+              onChange={(e) => {
+                setOnSale(e.target.checked);
+              }}
+            />
 
-          <FormControlLabel
-            sx={{ color: "white" }}
-            control={<Checkbox />}
-            label="Auto Update"
-            checked={autoUpdate}
-            onChange={(e) => {
-              setAutoUpdate(e.target.checked);
+            <FormControlLabel
+              sx={{ color: "white" }}
+              control={<Checkbox />}
+              label="Auto Update"
+              checked={autoUpdate}
+              onChange={(e) => {
+                setAutoUpdate(e.target.checked);
+              }}
+            />
+          </div>
+          <IdInput
+            value={idInput}
+            setValue={(val) => {
+              setIdInput(val);
+              setOnSale(false);
             }}
           />
         </div>
-        <IdInput
-          value={idInput}
-          setValue={(val) => {
-            setIdInput(val);
-            setOnSale(false);
-          }}
-        />
-      </div>
+      )}
       <div className="text-center text-success my-3">
         <h5>{countdown > 0 ? `Autoupdating in ${countdown}` : ""}</h5>
       </div>

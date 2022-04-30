@@ -18,12 +18,13 @@ export default function SelectItem({
       </label>
       <Select
         style={{ color: color }}
-        keepSelectedInList={false}
         clearable={true}
         searchBy={label}
         labelField={label}
         valueField={value}
         values={values}
+        clearOnSelect={true}
+        clearOnBlur={true}
         multi
         options={children}
         placeholder={title}

@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useQuery } from "react-query";
 import HeroFilters from "../Components/HeroFilters";
 import HeroTable from "../Components/Table/HeroTable";
@@ -10,7 +10,10 @@ import { Button } from "@mui/material";
 export default function Wallet() {
   const filtersRef = useRef(null);
   const [filtersHidden, setFiltersHidden] = useState(false);
+  const [first, setFirst] = useState(100);
+  const [skip, setSkip] = useState(0);
   const updateHeroes = useRef();
+  const lastRequest = useRef();
   const toggleFilters = (e) => {
     if (typeof window) {
       filtersRef.current.classList.toggle("collapse");
@@ -25,23 +28,49 @@ export default function Wallet() {
         "Content-Type": "application/json;charset=UTF-8",
       },
       body: JSON.stringify({
-        query: `{heroes(first:500, where:{${requestContext.query.wallet},${requestContext.query.query}}, orderBy:salePrice, orderDirection:asc){${heroData}}}`,
+        query: `{heroes(first:${first}, skip:${skip}, where:{${requestContext.query.wallet},${requestContext.query.query}}, orderBy:salePrice, orderDirection:asc){${heroData}}}`,
       }),
     });
   };
   const result = useQuery(
-    ["request", requestContext.query.query + requestContext.query.wallet],
-    testRequest,
+    ["request", requestContext.query.query + requestContext.query.wallet + first + skip],
+    async () => {
+      return {
+        q: requestContext.query.query + requestContext.query.wallet,
+        res: await (await testRequest()).json(),
+      };
+    },
     {
       onSuccess: async (result) => {
-        let json = await result.json();
-        if (json.data == null) {
+        console.log(result);
+        let data = result.res.data;
+        if (data == null) {
           return;
         }
-        updateHeroes.current(json.data.heroes);
+        console.log(result.q, requestContext.query.query)
+        if (result.q != requestContext.query.query + requestContext.query.wallet) {
+          return;
+        }
+        if (first == data.heroes.length) {
+          setSkip((s) => s + first);
+          setFirst((f) => 1000);
+        }
+        updateHeroes.current(data.heroes, false);
       },
     }
   );
+  
+  useEffect(() => {
+    if (lastRequest.current == requestContext.query.query + requestContext.query.wallet) {
+      console.log("Didn't clear search");
+      return;
+    }
+    console.log("Clear Search");
+    lastRequest.current = requestContext.query.query + requestContext.query.wallet;
+    updateHeroes.current([], true);
+    setSkip((s) => 0);
+    setFirst((f) => 100);
+  });
   return (
     <>
       <div className="text-center mb-3">

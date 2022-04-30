@@ -1,6 +1,23 @@
 const { default: PJBadge } = require("../Components/Hero/PJBadge");
 
 module.exports = {
+  Skills: [
+    {value: "Basic1", label: "Basic 1"},
+    {value: "Basic2", label: "Basic 2"},
+    {value: "Basic3", label: "Basic 3"},
+    {value: "Basic4", label: "Basic 4"},
+    {value: "Basic5", label: "Basic 5"},
+    {value: "Basic6", label: "Basic 6"},
+    {value: "Basic7", label: "Basic 7"},
+    {value: "Basic8", label: "Basic 8"},
+    {value: "Advanced1", label: "Advanced 1"},
+    {value: "Advanced2", label: "Advanced 2"},
+    {value: "Advanced3", label: "Advanced 3"},
+    {value: "Advanced4", label: "Advanced 4"},
+    {value: "Elite1", label: "Elite 1"},
+    {value: "Elite2", label: "Elite 2"},
+    {value: "Transcendant1", label: "Transcendant 1"},
+  ],
   Professions: [
     { value: "mining", label: "Mining" },
     { value: "foraging", label: "Foraging" },

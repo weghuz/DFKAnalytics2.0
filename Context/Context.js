@@ -1,7 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext } from "react";
 const Context = createContext();
-const queryParam = {
-    mainClass: "",
-    subClass: "",
-}
+
 export default Context;
