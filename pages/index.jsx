@@ -1,14 +1,18 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { useQuery } from "react-query";
 import HeroFilters from "../Components/HeroFilters";
 import HeroTable from "../Components/Table/HeroTable";
 import { base, heroData } from "../Logic/Query";
 import RequestContext from "../Context/Context";
 import { Button, Dialog } from "@mui/material";
+import { RestaurantMenuTwoTone } from "@mui/icons-material";
 export default function Home() {
   const filtersRef = useRef(null);
   const [filtersHidden, setFiltersHidden] = useState(false);
+  const [first, setFirst] = useState(100);
+  const [skip, setSkip] = useState(0);
   const updateHeroes = useRef();
+  const lastRequest = useRef();
   const toggleFilters = (e) => {
     if (typeof window) {
       filtersRef.current.classList.toggle("collapse");
@@ -23,7 +27,7 @@ export default function Home() {
         "Content-Type": "application/json;charset=UTF-8",
       },
       body: JSON.stringify({
-        query: `{heroes(first:100, ${
+        query: `{heroes(first:${first},skip:${skip},${
           requestContext.query.query.length > 0 ? "where:{" : ""
         }${requestContext.query.query}${
           requestContext.query.query.length > 0 ? "}" : ""
@@ -31,21 +35,44 @@ export default function Home() {
       }),
     });
   };
-
   const result = useQuery(
-    ["request", requestContext.query.query],
-    testRequest,
+    ["request", requestContext.query.query + first + skip],
+    async () => {
+      return {
+        q: requestContext.query.query,
+        res: await (await testRequest()).json(),
+      };
+    },
     {
       onSuccess: async (result) => {
-        let json = await result.json();
-        if (json.data == null) {
+        console.log(result);
+        let data = result.res.data;
+        if (data == null) {
           return;
         }
-        console.log("rerender");
-        updateHeroes.current(json.data.heroes);
+
+        if (result.q != requestContext.query.query) {
+          return;
+        }
+        if (first == data.heroes.length) {
+          setSkip((s) => s + first);
+          setFirst((f) => 1000);
+        }
+        updateHeroes.current(data.heroes, false);
       },
     }
   );
+  useEffect(() => {
+    if (lastRequest.current == requestContext.query.query) {
+      console.log("Didn't clear search");
+      return;
+    }
+    console.log("Clear Search");
+    lastRequest.current = requestContext.query.query;
+    updateHeroes.current([], true);
+    setSkip((s) => 0);
+    setFirst((f) => 100);
+  });
   return (
     <>
       <div>
