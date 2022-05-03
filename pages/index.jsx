@@ -6,11 +6,13 @@ import { base, heroData } from "../Logic/Query";
 import RequestContext from "../Context/Context";
 import { Button, Dialog } from "@mui/material";
 import { RestaurantMenuTwoTone } from "@mui/icons-material";
+import HeroDetails from "../Components/Modal/HeroDetails";
 export default function Home() {
   const filtersRef = useRef(null);
   const [filtersHidden, setFiltersHidden] = useState(false);
   const [first, setFirst] = useState(100);
   const [skip, setSkip] = useState(0);
+  const [heroDetails, setHeroDetails] = useState(null);
   const updateHeroes = useRef();
   const lastRequest = useRef();
   const toggleFilters = (e) => {
@@ -73,6 +75,9 @@ export default function Home() {
     setSkip((s) => 0);
     setFirst((f) => 100);
   });
+  const clickedHero = (hero) => {
+    setHeroDetails(h => hero);
+  }
   return (
     <>
       <div>
@@ -96,7 +101,12 @@ export default function Home() {
       <HeroTable
         isLoading={result.isLoading}
         update={(updateFunc) => (updateHeroes.current = updateFunc)}
+        clickedHero={clickedHero}
       />
+      {
+        heroDetails !== null &&
+        <HeroDetails hero={heroDetails} clear={() => setHeroDetails(null)} />
+      }
     </>
   );
 }

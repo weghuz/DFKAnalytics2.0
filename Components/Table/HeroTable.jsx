@@ -7,12 +7,10 @@ import {
   GrowthScore,
   TrainStat,
 } from "../../Logic/HeroBase";
-
-export default function Table({ isLoading, update, add }) {
+export default function Table({ isLoading, update, clickedHero }) {
   const [pageSize, setPageSize] = useState(100);
   const [page, setPage] = useState(0);
   const rowsPerPageOptions = [5, 10, 15, 20, 35, 50, 75, 100];
-
   const [heroes, setHeroes] = useState([]);
   update((newHeroes, clear) => {
     newHeroes.forEach((h) => {
@@ -24,8 +22,7 @@ export default function Table({ isLoading, update, add }) {
       h.id = h.numberId;
     });
     setHeroes((heroes) => {
-      if(clear)
-      {
+      if (clear) {
         return newHeroes;
       }
       return heroes.concat(newHeroes);
@@ -33,7 +30,7 @@ export default function Table({ isLoading, update, add }) {
     console.log(newHeroes, heroes);
   });
   return (
-    <div style={{ height: "800px", margin: "0 1%", color: "black" }}>
+    <div style={{ margin: "0 1%", color: "black" }}>
       <DataGrid
         density="compact"
         autoHeight={true}
@@ -41,13 +38,30 @@ export default function Table({ isLoading, update, add }) {
         loading={isLoading}
         columns={columnDefs}
         onSortModelChange={() => setPage(0)}
+        onRowClick={({ row }) => {
+          clickedHero(row);
+        }}
+        getRowClassName={({ row }) => {
+          switch (row.rarity) {
+            case 1:
+              return "uncommon";
+            case 2:
+              return "rare";
+            case 3:
+              return "legendary";
+            case 4:
+              return "mythic";
+            default:
+              return "common";
+          }
+        }}
         page={page}
         onPageChange={(page) => setPage(page)}
         pagination={true}
         pageSize={pageSize}
         onPageSizeChange={(val) => setPageSize(val)}
         rowsPerPageOptions={rowsPerPageOptions}
-        style={{ backgroundColor: "rgb(25,25,25)", color: "white" }}
+        style={{ color: "white" }}
         components={{
           Toolbar: GridToolbar,
         }}
