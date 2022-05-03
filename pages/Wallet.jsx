@@ -6,12 +6,14 @@ import { base, heroData } from "../Logic/Query";
 import RequestContext from "../Context/Context";
 import MetaMask from "../Components/Wallet/MetaMask";
 import { Button } from "@mui/material";
+import HeroDetails from "../Components/Modal/HeroDetails";
 
 export default function Wallet() {
   const filtersRef = useRef(null);
   const [filtersHidden, setFiltersHidden] = useState(false);
   const [first, setFirst] = useState(100);
   const [skip, setSkip] = useState(0);
+  const [heroDetails, setHeroDetails] = useState(null);
   const updateHeroes = useRef();
   const lastRequest = useRef();
   const toggleFilters = (e) => {
@@ -33,7 +35,10 @@ export default function Wallet() {
     });
   };
   const result = useQuery(
-    ["request", requestContext.query.query + requestContext.query.wallet + first + skip],
+    [
+      "request",
+      requestContext.query.query + requestContext.query.wallet + first + skip,
+    ],
     async () => {
       return {
         q: requestContext.query.query + requestContext.query.wallet,
@@ -47,8 +52,11 @@ export default function Wallet() {
         if (data == null) {
           return;
         }
-        console.log(result.q, requestContext.query.query)
-        if (result.q != requestContext.query.query + requestContext.query.wallet) {
+        console.log(result.q, requestContext.query.query);
+        if (
+          result.q !=
+          requestContext.query.query + requestContext.query.wallet
+        ) {
           return;
         }
         if (first == data.heroes.length) {
@@ -59,18 +67,25 @@ export default function Wallet() {
       },
     }
   );
-  
+
   useEffect(() => {
-    if (lastRequest.current == requestContext.query.query + requestContext.query.wallet) {
+    if (
+      lastRequest.current ==
+      requestContext.query.query + requestContext.query.wallet
+    ) {
       console.log("Didn't clear search");
       return;
     }
     console.log("Clear Search");
-    lastRequest.current = requestContext.query.query + requestContext.query.wallet;
+    lastRequest.current =
+      requestContext.query.query + requestContext.query.wallet;
     updateHeroes.current([], true);
     setSkip((s) => 0);
     setFirst((f) => 100);
   });
+  const clickedHero = (hero) => {
+    setHeroDetails((h) => hero);
+  };
   return (
     <>
       <div className="text-center mb-3">
@@ -93,7 +108,11 @@ export default function Wallet() {
       <HeroTable
         isLoading={result.isLoading}
         update={(updateFunc) => (updateHeroes.current = updateFunc)}
+        clickedHero={clickedHero}
       />
+      {heroDetails !== null && (
+        <HeroDetails hero={heroDetails} clear={() => setHeroDetails(null)} />
+      )}
     </>
   );
 }
