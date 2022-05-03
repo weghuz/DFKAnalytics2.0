@@ -332,7 +332,7 @@ export default function HeroDetails({ hero, clear }) {
                 <td>{hero.R3.statsUnknown1}</td>
               </tr>
               <tr>
-                <td>Passive 2</td>
+                <td>Status Unknown 2</td>
                 <td>{hero.statsUnknown2}</td>
                 <td>{hero.R1.statsUnknown2}</td>
                 <td>{hero.R2.statsUnknown2}</td>
