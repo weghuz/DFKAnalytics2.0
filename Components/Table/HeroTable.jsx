@@ -7,10 +7,12 @@ import {
   GrowthScore,
   TrainStat,
 } from "../../Logic/HeroBase";
-export default function Table({ isLoading, update, clickedHero }) {
+import HeroDetails from "../Modal/HeroDetails";
+export default function Table({ isLoading, update }) {
   const [pageSize, setPageSize] = useState(100);
   const [page, setPage] = useState(0);
   const rowsPerPageOptions = [5, 10, 15, 20, 35, 50, 75, 100];
+  const [heroDetails, setHeroDetails] = useState(null);
   const [heroes, setHeroes] = useState([]);
   update((newHeroes, clear) => {
     newHeroes.forEach((h) => {
@@ -29,6 +31,9 @@ export default function Table({ isLoading, update, clickedHero }) {
     });
     console.log(newHeroes, heroes);
   });
+  const clickedHero = (hero) => {
+    setHeroDetails((h) => hero);
+  };
   return (
     <div style={{ margin: "0 1%", color: "black" }}>
       <DataGrid
@@ -66,6 +71,9 @@ export default function Table({ isLoading, update, clickedHero }) {
           Toolbar: GridToolbar,
         }}
       />
+      {heroDetails !== null && (
+        <HeroDetails hero={heroDetails} clear={() => setHeroDetails(null)} />
+      )}
     </div>
   );
 }

@@ -1,12 +1,8 @@
 import { Dialog, Table } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import {
-  ClassScore,
-  classVars,
-  FullName,
-  GrowthScore,
-} from "../../Logic/HeroBase";
+import React from "react";
+import { classVars, FullName } from "../../Logic/HeroBase";
 import ElementCell from "../Hero/ElementCell";
+import PJBadge from "../Hero/PJBadge";
 import PriceCell from "../Hero/PriceCell";
 import RarityCell from "../Hero/RarityCell";
 
@@ -64,6 +60,15 @@ export default function HeroDetails({ hero, clear }) {
             <div className="col-sm-4 justify-content-center d-flex">
               <div style={{ maxWidth: "35px" }}>
                 <RarityCell rarity={hero.rarity} />
+              </div>
+            </div>
+            <div className="col-12 d-flex justify-content-center">
+              <div style={{ marginLeft: "10px", maxWidth: "60px" }}>
+                {hero.pjStatus == "SURVIVED" && <PJBadge></PJBadge>}
+                {hero.pjStatus == "DIED" &&
+                  `${FullName(
+                    hero
+                  )} died a glorious death at sea looking to discover the promised land of Crystalvale.`}
               </div>
             </div>
           </div>
@@ -258,6 +263,13 @@ export default function HeroDetails({ hero, clear }) {
                 <td>{hero.R1.subClass}</td>
                 <td>{hero.R2.subClass}</td>
                 <td>{hero.R3.subClass}</td>
+              </tr>
+              <tr>
+                <td>Profession</td>
+                <td>{hero.profession}</td>
+                <td>{hero.R1.profession}</td>
+                <td>{hero.R2.profession}</td>
+                <td>{hero.R3.profession}</td>
               </tr>
               <tr>
                 <td>SB1</td>

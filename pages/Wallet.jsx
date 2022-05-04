@@ -6,14 +6,12 @@ import { base, heroData } from "../Logic/Query";
 import RequestContext from "../Context/Context";
 import MetaMask from "../Components/Wallet/MetaMask";
 import { Button } from "@mui/material";
-import HeroDetails from "../Components/Modal/HeroDetails";
 
 export default function Wallet() {
   const filtersRef = useRef(null);
   const [filtersHidden, setFiltersHidden] = useState(false);
   const [first, setFirst] = useState(100);
   const [skip, setSkip] = useState(0);
-  const [heroDetails, setHeroDetails] = useState(null);
   const updateHeroes = useRef();
   const lastRequest = useRef();
   const toggleFilters = (e) => {
@@ -83,9 +81,6 @@ export default function Wallet() {
     setSkip((s) => 0);
     setFirst((f) => 100);
   });
-  const clickedHero = (hero) => {
-    setHeroDetails((h) => hero);
-  };
   return (
     <>
       <div className="text-center mb-3">
@@ -108,11 +103,7 @@ export default function Wallet() {
       <HeroTable
         isLoading={result.isLoading}
         update={(updateFunc) => (updateHeroes.current = updateFunc)}
-        clickedHero={clickedHero}
       />
-      {heroDetails !== null && (
-        <HeroDetails hero={heroDetails} clear={() => setHeroDetails(null)} />
-      )}
     </>
   );
 }
