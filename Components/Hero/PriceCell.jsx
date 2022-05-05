@@ -15,7 +15,7 @@ export default function PriceCell({ children }) {
         justifyContent: "space-evenly",
       }}
     >
-      <span className="me-1">
+      <span className="me-auto">
         {parseFloat(FixSalePrice(children.salePrice).toFixed(2))}
       </span>
       <Image src={Jewel} alt="Jewel" height="24px" width="24px" />

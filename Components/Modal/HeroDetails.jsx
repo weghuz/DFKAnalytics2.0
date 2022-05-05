@@ -54,7 +54,7 @@ export default function HeroDetails({ hero, clear }) {
             <div className="col-sm-4">Generation: {hero.generation}</div>
             <div className="col-sm-4 d-flex justify-content-center">
               Price:{" "}
-              <div style={{ marginLeft: "10px", maxWidth: "60px" }}>
+              <div style={{ marginLeft: "10px", minWidth: "60px" }}>
                 <PriceCell>{hero}</PriceCell>
               </div>
             </div>
