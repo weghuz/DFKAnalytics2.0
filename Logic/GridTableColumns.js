@@ -13,6 +13,7 @@ const {
 } = require("./HeroBase");
 import { Tooltip } from "@mui/material";
 import ElementCell from "../Components/Hero/ElementCell";
+import HeroId from "../Components/Hero/HeroId";
 import PJBadge from "../Components/Hero/PJBadge";
 import PriceCell from "../Components/Hero/PriceCell";
 import RarityCell from "../Components/Hero/RarityCell";
@@ -31,8 +32,11 @@ let columnDefs = [
   },
   {
     headerName: "Id",
-    field: "numberId",
-    width: 70,
+    field: "id",
+    width: 100,
+    renderCell: ({ row }) => {
+      return <HeroId>{row.id}</HeroId>;
+    },
   },
   {
     headerName: "Rarity",
@@ -50,7 +54,7 @@ let columnDefs = [
     headerName: "Class",
     field: "mainClass",
     hide: false,
-    width: 100,
+    width: 110,
   },
   {
     headerName: "ClassR1",
@@ -277,7 +281,9 @@ let columnDefs = [
               {
                 "Green stat gives +1 and Blue +3 points to a stat for questing. "
               }
-              <a href={value.link} target="_blank" rel="noreferrer">{value.linkName}</a>
+              <a href={value.link} target="_blank" rel="noreferrer">
+                {value.linkName}
+              </a>
             </>
           }
           placement="left"

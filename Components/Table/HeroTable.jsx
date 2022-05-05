@@ -21,12 +21,7 @@ export default function Table({ isLoading, update }) {
       GrowthScore(h);
       TrainStat(h);
       h.stats = { hp: h.hp };
-      h.id = h.numberId;
-      if(h.numberId == null)
-      {
-        h.id = 10000000000 + parseInt(Math.random()*1000000)
-        console.log(h.numberId);
-      }
+      h.id = h.id;
     });
     setHeroes((heroes) => {
       if (clear) {

@@ -2,6 +2,7 @@ import { Dialog, Table } from "@mui/material";
 import React from "react";
 import { classVars, FullName } from "../../Logic/HeroBase";
 import ElementCell from "../Hero/ElementCell";
+import HeroId from "../Hero/HeroId";
 import PJBadge from "../Hero/PJBadge";
 import PriceCell from "../Hero/PriceCell";
 import RarityCell from "../Hero/RarityCell";
@@ -35,7 +36,7 @@ export default function HeroDetails({ hero, clear }) {
           <div className="row text-center">
             <div className="col-12">
               <h3>
-                #{hero.numberId} - {FullName(hero)}
+                <HeroId>{hero.id}</HeroId> - {FullName(hero)}
               </h3>
             </div>
             <div className="col-sm-4">Level {hero.level}</div>
