@@ -789,6 +789,50 @@ var classVars = {
             lck: 10
         }
     },
+    "Berserker": {
+        growth: {
+            str: .8,
+            dex: .6,
+            agi: .55,
+            vit: .65,
+            end: .60,
+            int: .2,
+            wis: .2,
+            lck: .4
+        },
+        base: {
+            str: 14,
+            dex: 6,
+            agi: 7,
+            vit: 9,
+            end: 8,
+            int: 5,
+            wis: 5,
+            lck: 6
+        }
+    },
+    "Seer": {
+        growth: {
+            str: .3,
+            dex: .3,
+            agi: .55,
+            vit: .5,
+            end: .5,
+            int: .7,
+            wis: .8,
+            lck: .35
+        },
+        base: {
+            str: 5,
+            dex: 6,
+            agi: 8,
+            vit: 6,
+            end: 8,
+            int: 10,
+            wis: 13,
+            lck: 6
+        }
+    },
     "Paladin": {
         growth: {
             str: .8,
@@ -875,6 +919,28 @@ var classVars = {
             int: 7,
             wis: 6,
             lck: 10
+        }
+    },
+    "Shapeshifter": {
+        growth: {
+            str: .65,
+            dex: .7,
+            agi: .8,
+            vit: .65,
+            end: .55,
+            int: .25,
+            wis: .45,
+            lck: .45
+        },
+        base: {
+            str: 9,
+            dex: 9,
+            agi: 11,
+            vit: 9,
+            end: 7,
+            int: 6,
+            wis: 6,
+            lck: 8
         }
     },
     "Dragoon": {

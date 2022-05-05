@@ -52,6 +52,8 @@ module.exports = {
     { value: "Mythic", label: "Mythic" },
   ],
   Classes: [
+    { value: "Seer", label: "Seer" },
+    { value: "Berserker", label: "Berserker" },
     { value: "Warrior", label: "Warrior" },
     { value: "Knight", label: "Knight" },
     { value: "Thief", label: "Thief" },
@@ -60,6 +62,7 @@ module.exports = {
     { value: "Monk", label: "Monk" },
     { value: "Priest", label: "Priest" },
     { value: "Wizard", label: "Wizard" },
+    { value: "Shapeshifter", label: "Shapeshifter" },
     { value: "Paladin", label: "Paladin" },
     { value: "DarkKnight", label: "DarkKnight" },
     { value: "Ninja", label: "Ninja" },

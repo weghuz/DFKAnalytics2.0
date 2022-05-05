@@ -22,6 +22,11 @@ export default function Table({ isLoading, update }) {
       TrainStat(h);
       h.stats = { hp: h.hp };
       h.id = h.numberId;
+      if(h.numberId == null)
+      {
+        h.id = 10000000000 + parseInt(Math.random()*1000000)
+        console.log(h.numberId);
+      }
     });
     setHeroes((heroes) => {
       if (clear) {
