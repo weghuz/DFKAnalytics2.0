@@ -18,13 +18,11 @@ import {
   Input,
   InputAdornment,
   InputLabel,
-  TextField,
 } from "@mui/material";
 import RequestContext from "../Context/Context";
 import SelectItemSingle from "./Filters/SelectItemSingle";
 import {
   femaleFirstNames,
-  FirstName,
   lastNames,
   maleFirstNames,
 } from "../Logic/HeroBase";
