@@ -23,19 +23,19 @@ export default function PriceCell({ children }) {
         parseInt(children.saleAuction.id) > 1000000000000 ? (
           <Tooltip
             placement="right"
-            title="This hero is being sold in Serendale for Jewel."
+            title="This hero is being sold in CrystalVale for Crystal."
           >
             <span>
-              <Image src={Jewel} alt="Jewel" height="24px" width="24px" />
+              <Image src={Crystal} alt="Crystal" height="24px" width="24px" />
             </span>
           </Tooltip>
         ) : (
           <Tooltip
             placement="right"
-            title="This hero is being sold in CrystalVale for Crystal."
+            title="This hero is being sold in Serendale for Jewel."
           >
             <span>
-              <Image src={Crystal} alt="Crystal" height="24px" width="24px" />
+              <Image src={Jewel} alt="Jewel" height="24px" width="24px" />
             </span>
           </Tooltip>
         )
