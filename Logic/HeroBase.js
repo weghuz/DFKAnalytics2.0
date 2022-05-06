@@ -827,7 +827,7 @@ var classVars = {
             dex: 6,
             agi: 8,
             vit: 6,
-            end: 8,
+            end: 6,
             int: 10,
             wis: 13,
             lck: 6
