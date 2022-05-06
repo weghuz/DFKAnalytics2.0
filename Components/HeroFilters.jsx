@@ -135,7 +135,7 @@ const HeroFilters = forwardRef(function HeroFilters(
       query += `],`;
     }
     if (Passive1.length > 0) {
-      query += `Passive1_in: [`;
+      query += `passive1_in: [`;
       Passive1.forEach((c, i) => {
         query += `"${c.value}"`;
         if (i < Passive1.length - 1) {
@@ -145,7 +145,7 @@ const HeroFilters = forwardRef(function HeroFilters(
       query += `],`;
     }
     if (Passive2.length > 0) {
-      query += `Passive2_in: [`;
+      query += `passive2_in: [`;
       Passive2.forEach((c, i) => {
         query += `"${c.value}"`;
         if (i < Passive2.length - 1) {
