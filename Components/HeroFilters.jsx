@@ -5,7 +5,7 @@ import React, {
   useRef,
   forwardRef,
 } from "react";
-import DFKBase, { PJSurvivor, Skills } from "../Logic/Dropdowns";
+import DFKBase, { PJSurvivor, Skills, Targets } from "../Logic/Dropdowns";
 import Image from "next/image";
 import Jewel from "../public/Jewel.png";
 import SelectItem from "./Filters/SelectItem";
@@ -21,11 +21,7 @@ import {
 } from "@mui/material";
 import RequestContext from "../Context/Context";
 import SelectItemSingle from "./Filters/SelectItemSingle";
-import {
-  femaleFirstNames,
-  lastNames,
-  maleFirstNames,
-} from "../Logic/HeroBase";
+import { femaleFirstNames, lastNames, maleFirstNames } from "../Logic/HeroBase";
 import IdInput from "./Filters/IdInput";
 
 const HeroFilters = forwardRef(function HeroFilters(
@@ -37,6 +33,7 @@ const HeroFilters = forwardRef(function HeroFilters(
   const [professions, setProfessions] = useState([]);
   const [SB1, setSB1] = useState([]);
   const [SB2, setSB2] = useState([]);
+  const [target, setTarget] = useState([{ label: "Buy", value: "Tavern" }]);
   const [PJ, setPJ] = useState([]);
   const [rarity, setRarity] = useState([0, 4]);
   const [generation, setGeneration] = useState([0, 14]);
@@ -47,7 +44,6 @@ const HeroFilters = forwardRef(function HeroFilters(
   const [mFName, setMFName] = useState([]);
   const [fFName, setFFName] = useState([]);
   const [lName, setLName] = useState([]);
-  const [onSale, setOnSale] = useState(onSaleDefault);
   const [idInput, setIdInput] = useState("");
   const [updateTimeout, setUpdateTimeout] = useState(0);
   const [countdown, setCountdown] = useState(0);
@@ -58,8 +54,6 @@ const HeroFilters = forwardRef(function HeroFilters(
   const [Passive1, setPassive1] = useState([]);
   const [Passive2, setPassive2] = useState([]);
   const [section, setSection] = useState("Main");
-  const mainRerence = useRef();
-  const cosmeticReference = useRef();
   const queryContext = useContext(RequestContext);
   let clearRarity = null,
     clearGeneration = null,
@@ -237,14 +231,31 @@ const HeroFilters = forwardRef(function HeroFilters(
     }
     if (includeSalePrice) {
       if (minSalePrice !== 0) {
-        query += `salePrice_gte: "${minSalePrice}000000000000000000",`;
+        switch (target[0].value) {
+          case "Tavern":
+            query += "salePrice_gte: ";
+            break;
+          case "Hire":
+            query += "assistingPrice_gte: ";
+            break;
+          case "All":
+            break;
+        }
+        query += `"${minSalePrice}000000000000000000",`;
       }
       if (maxSalePrice !== 9999999) {
-        query += `salePrice_lte:"${maxSalePrice}000000000000000000",`;
+        switch (target[0].value) {
+          case "Tavern":
+            query += "salePrice_lte: ";
+            break;
+          case "Hire":
+            query += "assistingPrice_lte: ";
+            break;
+          case "All":
+            break;
+        }
+        query += `"${maxSalePrice}000000000000000000",`;
       }
-    }
-    if (onSale) {
-      query += "salePrice_not: null,";
     }
     if (idInput.length > 0) {
       console.log(idInput);
@@ -281,7 +292,18 @@ const HeroFilters = forwardRef(function HeroFilters(
         }
       }
     }
-    query = query.substring(0, query.length - 1);
+    if (includeSalePrice) {
+      switch (target[0].value) {
+        case "Tavern":
+          query += "salePrice_not: null} orderBy: salePrice";
+          break;
+        case "Hire":
+          query += "assistingPrice_not: null}  orderBy: assistingPrice";
+          break;
+        case "All":
+          break;
+      }
+    }
     console.log(query);
     if (forceUpdate || queryContext.query.query !== query) {
       queryContext.setQuery({ ...queryContext.query, query });
@@ -325,12 +347,12 @@ const HeroFilters = forwardRef(function HeroFilters(
     fFName,
     mFName,
     lName,
-    onSale,
     idInput,
     active1,
     active2,
     Passive1,
     Passive2,
+    target,
   ]);
   const ClearFilters = () => {
     setMainClass([]);
@@ -338,6 +360,7 @@ const HeroFilters = forwardRef(function HeroFilters(
     setProfessions([]);
     setSB1([]);
     setSB2([]);
+    setTarget([]);
     setPJ([]);
     setRarity([0, 4]);
     setGeneration([0, 14]);
@@ -414,6 +437,15 @@ const HeroFilters = forwardRef(function HeroFilters(
       )}
       {section == "Main" && (
         <div className={`row`}>
+          {includeSalePrice && (
+            <SelectItemSingle
+              title="I want to ... heroes"
+              values={target}
+              setValues={setTarget}
+            >
+              {Targets}
+            </SelectItemSingle>
+          )}
           <SelectItem title="Class" values={mainClass} setValues={setMainClass}>
             {DFKBase.Classes}
           </SelectItem>
@@ -585,16 +617,6 @@ const HeroFilters = forwardRef(function HeroFilters(
             </>
           )}
           <div className={`col-sm-6 col-md-4 col-xl-3 my-1 text-center`}>
-            <FormControlLabel
-              sx={{ color: "white" }}
-              control={<Checkbox />}
-              label="On Sale"
-              checked={onSale}
-              onChange={(e) => {
-                setOnSale(e.target.checked);
-              }}
-            />
-
             <FormControlLabel
               sx={{ color: "white" }}
               control={<Checkbox />}

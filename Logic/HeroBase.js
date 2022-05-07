@@ -549,7 +549,6 @@ function getRecessives(hero) {
             }
         }
     }
-
     hero.R1 = R1;
     hero.R2 = R2;
     hero.R3 = R3;

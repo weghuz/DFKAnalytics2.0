@@ -17,13 +17,14 @@ export default function PriceCell({ children }) {
       }}
     >
       <span className="me-auto">
-        {parseFloat(FixSalePrice(children.salePrice).toFixed(2))}
+        {children.saleAuction ? parseFloat(FixSalePrice(children.salePrice).toFixed(2)) : children.assistingPrice ? parseFloat(FixSalePrice(children.assistingPrice).toFixed(2)) : ""}
       </span>
-      {children.saleAuction ? (
-        parseInt(children.saleAuction.id) > 1000000000000 ? (
+      {
+      children.saleAuction || children.assistingPrice ? (
+        children.network == "dfk" ? (
           <Tooltip
             placement="right"
-            title="This hero is being sold in CrystalVale for Crystal."
+            title={`This hero is being ${children.saleAuction ? "Sold" : "Rented out"} in CrystalVale for Crystal.`}
           >
             <span>
               <Image src={Crystal} alt="Crystal" height="24px" width="24px" />
@@ -32,7 +33,7 @@ export default function PriceCell({ children }) {
         ) : (
           <Tooltip
             placement="right"
-            title="This hero is being sold in Serendale for Jewel."
+            title={`This hero is being ${children.saleAuction ? "Sold" : "Rented out"} in Serendale for Jewel.`}
           >
             <span>
               <Image src={Jewel} alt="Jewel" height="24px" width="24px" />

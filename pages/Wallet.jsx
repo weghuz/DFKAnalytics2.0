@@ -5,7 +5,7 @@ import HeroTable from "../Components/Table/HeroTable";
 import { base, heroData } from "../Logic/Query";
 import RequestContext from "../Context/Context";
 import MetaMask from "../Components/Wallet/MetaMask";
-import { Button } from "@mui/material";
+import { Button, LinearProgress } from "@mui/material";
 
 export default function Wallet() {
   const filtersRef = useRef(null);
@@ -21,6 +21,7 @@ export default function Wallet() {
     }
   };
   const requestContext = useContext(RequestContext);
+  
   const testRequest = async () => {
     return fetch(base, {
       method: "POST",
@@ -28,7 +29,7 @@ export default function Wallet() {
         "Content-Type": "application/json;charset=UTF-8",
       },
       body: JSON.stringify({
-        query: `{heroes(first:${first}, skip:${skip}, where:{${requestContext.query.wallet},${requestContext.query.query}}, orderBy:salePrice, orderDirection:asc){${heroData}}}`,
+        query: `{heroes(first:${first},skip:${skip},${requestContext.query.query.length > 0 ? `where: {${requestContext.query.wallet},${requestContext.query.query}` : `where: {${requestContext.query.wallet}}`}){${heroData}}}`,
       }),
     });
   };
@@ -100,8 +101,8 @@ export default function Wallet() {
         includeSalePrice={false}
         ref={filtersRef}
       />
+      {result.isLoading && <LinearProgress />}
       <HeroTable
-        isLoading={result.isLoading}
         update={(updateFunc) => (updateHeroes.current = updateFunc)}
       />
     </>

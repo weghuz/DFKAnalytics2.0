@@ -8,7 +8,7 @@ import {
   TrainStat,
 } from "../../Logic/HeroBase";
 import HeroDetails from "../Modal/HeroDetails";
-export default function Table({ isLoading, update }) {
+export default function Table({ update }) {
   const [pageSize, setPageSize] = useState(100);
   const [page, setPage] = useState(0);
   const rowsPerPageOptions = [5, 10, 15, 20, 35, 50, 75, 100];
@@ -40,7 +40,6 @@ export default function Table({ isLoading, update }) {
         density="compact"
         autoHeight={true}
         rows={heroes}
-        loading={isLoading}
         columns={columnDefs}
         onSortModelChange={() => setPage(0)}
         onRowClick={({ row }) => {

@@ -13,14 +13,14 @@ export default function HeroId({ children }) {
         >
           <div className="d-inline-block">
             <img style={{ width: "10px", height: "10px" }} src="./CVID.png" />{" "}
-            {parseInt(children) - 1000000000000}
+            #{parseInt(children) - 1000000000000}
           </div>
         </Tooltip>
       ) : (
         <Tooltip placement="right" title="Serendale ID. Starts at 1.">
           <div className="d-inline-block">
             <img style={{ width: "10px", height: "10px" }} src="./SDID10.png" />{" "}
-            {children}
+            #{children}
           </div>
         </Tooltip>
       )}

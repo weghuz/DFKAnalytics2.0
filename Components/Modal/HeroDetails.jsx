@@ -240,7 +240,7 @@ export default function HeroDetails({ hero, clear }) {
         </div>
         <h5 className="text-center">Recessives</h5>
         <div className="overflow-auto">
-          <table className="table-bordered  w-100">
+          <table className="table-bordered w-100">
             <thead>
               <tr>
                 <th>Stat</th>

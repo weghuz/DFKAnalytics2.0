@@ -1,6 +1,11 @@
 const { default: PJBadge } = require("../Components/Hero/PJBadge");
 
 module.exports = {
+  Targets: [
+    {value: "All", label: "Find"},
+    {value: "Tavern", label: "Buy"},
+    {value: "Hire", label: "Hire"},
+  ],
   Skills: [
     {value: "Basic1", label: "Basic 1"},
     {value: "Basic2", label: "Basic 2"},

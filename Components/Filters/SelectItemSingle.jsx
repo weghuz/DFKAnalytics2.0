@@ -20,7 +20,6 @@ export default function SelectItemSingle({
       <Select
         style={{ color: color }}
         onBlur={callback}
-        keepSelectedInList={false}
         clearable={true}
         searchBy={label}
         labelField={label}

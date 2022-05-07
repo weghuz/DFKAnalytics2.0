@@ -4,7 +4,7 @@ import HeroFilters from "../Components/HeroFilters";
 import HeroTable from "../Components/Table/HeroTable";
 import { base, heroData } from "../Logic/Query";
 import RequestContext from "../Context/Context";
-import { Button, Dialog } from "@mui/material";
+import { Button, Dialog, LinearProgress } from "@mui/material";
 import { RestaurantMenuTwoTone } from "@mui/icons-material";
 export default function Home() {
   const filtersRef = useRef(null);
@@ -20,6 +20,7 @@ export default function Home() {
     }
   };
   const requestContext = useContext(RequestContext);
+  console.log(`{heroes(first:${first},skip:${skip},${requestContext.query.query.length > 0 ? `where: {${requestContext.query.query}` : ``}){${heroData}}}`);
   const testRequest = async () => {
     return fetch(base, {
       method: "POST",
@@ -27,11 +28,7 @@ export default function Home() {
         "Content-Type": "application/json;charset=UTF-8",
       },
       body: JSON.stringify({
-        query: `{heroes(first:${first},skip:${skip},${
-          requestContext.query.query.length > 0 ? "where:{" : ""
-        }${requestContext.query.query}${
-          requestContext.query.query.length > 0 ? "}" : ""
-        }, orderBy:salePrice, orderDirection:asc){${heroData}}}`,
+        query: `{heroes(first:${first},skip:${skip},${requestContext.query.query.length > 0 ? `where: {${requestContext.query.query}` : ``}){${heroData}}}`,
       }),
     });
   };
@@ -93,8 +90,8 @@ export default function Home() {
           />
         </div>
       </div>
+      {result.isLoading && <LinearProgress style={{height:10,margin:"5px 50px"}} />}
       <HeroTable
-        isLoading={result.isLoading}
         update={(updateFunc) => (updateHeroes.current = updateFunc)}
       />
     </>
