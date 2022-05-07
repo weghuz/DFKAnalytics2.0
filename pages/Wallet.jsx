@@ -101,7 +101,7 @@ export default function Wallet() {
         includeSalePrice={false}
         ref={filtersRef}
       />
-      {result.isLoading && <LinearProgress />}
+      {result.isLoading && <LinearProgress style={{height:10,margin:"5px 50px"}} />}
       <HeroTable
         update={(updateFunc) => (updateHeroes.current = updateFunc)}
       />
