@@ -292,19 +292,25 @@ const HeroFilters = forwardRef(function HeroFilters(
         }
       }
     }
-    switch (target[0].value) {
-      case "Tavern":
-        query += "salePrice_not: null} orderBy: salePrice";
-        break;
-      case "Hire":
-        query += "assistingPrice_not: null}  orderBy: assistingPrice";
-        break;
-      case "All":
-        if(query.length > 0)
-        {
-          query += "}";
-        }
-        break;
+    if(includeSalePrice)
+    {
+      switch (target[0].value) {
+        case "Tavern":
+          query += "salePrice_not: null} orderBy: salePrice";
+          break;
+        case "Hire":
+          query += "assistingPrice_not: null}  orderBy: assistingPrice";
+          break;
+        case "All":
+          if(query.length > 0)
+          {
+            query += "}";
+          }
+          break;
+      }
+    }
+    else{
+      query += "}";
     }
     console.log(query);
     if (forceUpdate || queryContext.query.query !== query) {

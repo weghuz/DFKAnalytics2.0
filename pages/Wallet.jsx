@@ -21,7 +21,11 @@ export default function Wallet() {
     }
   };
   const requestContext = useContext(RequestContext);
-  
+console.log(`{heroes(first:${first},skip:${skip},${
+  requestContext.query.query.length > 0
+    ? `where: {${requestContext.query.wallet},${requestContext.query.query}`
+    : `where: {${requestContext.query.wallet}}`
+}){${heroData}}}`);
   const testRequest = async () => {
     return fetch(base, {
       method: "POST",
@@ -29,7 +33,11 @@ export default function Wallet() {
         "Content-Type": "application/json;charset=UTF-8",
       },
       body: JSON.stringify({
-        query: `{heroes(first:${first},skip:${skip},${requestContext.query.query.length > 0 ? `where: {${requestContext.query.wallet},${requestContext.query.query}` : `where: {${requestContext.query.wallet}}`}){${heroData}}}`,
+        query: `{heroes(first:${first},skip:${skip},${
+          requestContext.query.query.length > 0
+            ? `where: {${requestContext.query.wallet}${requestContext.query.query}`
+            : `where: {${requestContext.query.wallet}}`
+        }){${heroData}}}`,
       }),
     });
   };
@@ -51,7 +59,10 @@ export default function Wallet() {
         if (data == null) {
           return;
         }
-        console.log(result.q, requestContext.query.query);
+        console.log(
+          result.q, "\n",
+            requestContext.query.query + requestContext.query.wallet
+        );
         if (
           result.q !=
           requestContext.query.query + requestContext.query.wallet
@@ -101,10 +112,10 @@ export default function Wallet() {
         includeSalePrice={false}
         ref={filtersRef}
       />
-      {result.isLoading && <LinearProgress style={{height:10,margin:"5px 50px"}} />}
-      <HeroTable
-        update={(updateFunc) => (updateHeroes.current = updateFunc)}
-      />
+      {result.isLoading && (
+        <LinearProgress style={{ height: 10, margin: "5px 50px" }} />
+      )}
+      <HeroTable update={(updateFunc) => (updateHeroes.current = updateFunc)} />
     </>
   );
 }
