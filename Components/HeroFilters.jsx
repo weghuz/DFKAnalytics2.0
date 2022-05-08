@@ -368,7 +368,7 @@ const HeroFilters = forwardRef(function HeroFilters(
     setProfessions([]);
     setSB1([]);
     setSB2([]);
-    setTarget([]);
+    setTarget([{ label: "Buy", value: "Tavern" }]);
     setPJ([]);
     setRarity([0, 4]);
     setGeneration([0, 14]);
