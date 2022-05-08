@@ -262,8 +262,8 @@ const HeroFilters = forwardRef(function HeroFilters(
 
       if (idInput.length > 0) {
         console.log(idInput);
-        idInput = idInput.split(/,| |\n/);
-        let addys = idInput.filter((id) => id.length == 42);
+        let splitIds = idInput.split(/,| |\n/);
+        let addys = splitIds.filter((id) => id.length == 42);
         console.log(addys.length);
         if (addys.length != 0) {
           query += "owner_in: [";
@@ -273,7 +273,7 @@ const HeroFilters = forwardRef(function HeroFilters(
           });
           query += "],";
         }
-        let heroId = idInput.filter(
+        let heroId = splitIds.filter(
           (id) =>
             id.length < 42 &&
             id.length > 0 &&
@@ -292,17 +292,19 @@ const HeroFilters = forwardRef(function HeroFilters(
         }
       }
     }
-    if (includeSalePrice) {
-      switch (target[0].value) {
-        case "Tavern":
-          query += "salePrice_not: null} orderBy: salePrice";
-          break;
-        case "Hire":
-          query += "assistingPrice_not: null}  orderBy: assistingPrice";
-          break;
-        case "All":
-          break;
-      }
+    switch (target[0].value) {
+      case "Tavern":
+        query += "salePrice_not: null} orderBy: salePrice";
+        break;
+      case "Hire":
+        query += "assistingPrice_not: null}  orderBy: assistingPrice";
+        break;
+      case "All":
+        if(query.length > 0)
+        {
+          query += "}";
+        }
+        break;
     }
     console.log(query);
     if (forceUpdate || queryContext.query.query !== query) {
@@ -381,7 +383,6 @@ const HeroFilters = forwardRef(function HeroFilters(
     setActive2([]);
     setPassive1([]);
     setPassive2([]);
-    setOnSale(onSaleDefault);
     setIdInput("");
   };
   return (
@@ -631,7 +632,7 @@ const HeroFilters = forwardRef(function HeroFilters(
             value={idInput}
             setValue={(val) => {
               setIdInput(val);
-              setOnSale(false);
+              setTarget([Targets[0]]);
             }}
           />
         </div>
