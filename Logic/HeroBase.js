@@ -93,6 +93,7 @@ const TrainStat = (hero) => {
       }
       hero.TrainStat = highest;
       return hero.TrainStat;
+    hero.TrainStat = 0;
 }
 
 const calculateRequiredXp = (currentLevel) => {

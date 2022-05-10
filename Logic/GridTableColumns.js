@@ -37,6 +37,9 @@ let columnDefs = [
     renderCell: ({ row }) => {
       return <HeroId>{row.id}</HeroId>;
     },
+    sortComparator: (a, b) => {
+      return a - b;
+    },
   },
   {
     headerName: "Rarity",
@@ -55,11 +58,13 @@ let columnDefs = [
     field: "mainClass",
     hide: false,
     width: 110,
+    type: "string"
   },
   {
     headerName: "ClassR1",
     field: "R1.mainClass",
     hide: true,
+    type: "string",
     valueGetter: ({ row }) => {
       return row.R1.mainClass;
     },
@@ -174,6 +179,9 @@ let columnDefs = [
       }
       return `${row.summonsRemaining}/${row.maxSummons}`;
     },
+    sortComparator: (a, b, c ,d) => {
+        return c.api.getRow(c.id).summonsRemaining-d.api.getRow(d.id).summonsRemaining;
+    },
   },
   {
     headerName: "Gen|Sum",
@@ -184,6 +192,14 @@ let columnDefs = [
         return `${row.generation} | ${row.summons}/∞`;
       }
       return `${row.generation} | ${row.summonsRemaining}/${row.maxSummons}`;
+    },
+    sortComparator: (a, b, c ,d) => {
+      
+      if(c.api.getRow(c.id).generation !== d.api.getRow(d.id).generation)
+      {
+        return c.api.getRow(c.id).generation-d.api.getRow(d.id).generation;
+      }
+      return d.api.getRow(d.id).summonsRemaining-c.api.getRow(c.id).summonsRemaining;
     },
   },
   {
@@ -272,7 +288,7 @@ let columnDefs = [
     field: "TrainStat",
     width: "80",
     hide: false,
-    type: "number",
+    type: "string",
     renderCell: ({ value }) => {
       return (
         <Tooltip
@@ -295,10 +311,9 @@ let columnDefs = [
       );
     },
     sortComparator: (v1, v2) => {
-      if (v1 !== undefined && v2 !== undefined) {
+      if(statBoost.indexOf(v1.name) !== statBoost.indexOf(v2.name))
         return statBoost.indexOf(v1.name) - statBoost.indexOf(v2.name);
-      }
-      return -1;
+      return v1.amount - v2.amount;
     },
   },
   {
@@ -516,11 +531,13 @@ let columnDefs = [
     headerName: "Class Score",
     field: "classScore",
     hide: false,
+    type: "number",
   },
   {
     headerName: "C Score/J",
     field: "cScore/J",
     hide: true,
+    type: "number",
     valueGetter: ({ row }) => {
       if (row.salePrice == null) return null;
       return (row.classScore / FixSalePrice(row.salePrice)).toFixed(5);
@@ -530,11 +547,13 @@ let columnDefs = [
     headerName: "Growth Score",
     field: "growthScore",
     hide: false,
+    type: "number",
   },
   {
     headerName: `G Score/J`,
     field: "gScore/J",
     hide: true,
+    type: "number",
     valueGetter: ({ row }) => {
       if (row.salePrice == null) return null;
       return (row.growthScore / FixSalePrice(row.salePrice)).toFixed(5);
@@ -878,47 +897,48 @@ let columnDefs = [
     headerName: "Previous Owner",
     field: "previousOwner",
     hide: true,
-    renderCell: ({ row }) => {
+    valueGetter: ({ row }) => {
       if (row.previousOwner == null) return null;
-      return <div style={{ overflow: "auto" }}>{row.previousOwner.name}</div>;
+      return row.previousOwner.name;
     },
   },
   {
     headerName: "Previous Owner Address",
     field: "previousOwnerAddress",
     hide: true,
-    renderCell: ({ row }) => {
+    valueGetter: ({ row }) => {
       if (row.previousOwner == null) return null;
-      return <div style={{ overflow: "auto" }}>{row.previousOwner.id}</div>;
+      return row.previousOwner.id;
     },
   },
   {
     headerName: "Owner",
     field: "owner",
     hide: true,
-    renderCell: ({ row }) => {
+    valueGetter: ({ row }) => {
       if (row.owner == null) return row.owner;
-      if (row.owner.name == "undefined") return null;
-      return <div style={{ overflow: "auto" }}>{row.owner.name}</div>;
+      if (row.owner.id == "undefined") return null;
+      return row.owner.name;
     },
   },
   {
     headerName: "Owner Address",
     field: "ownerAddress",
     hide: true,
-    renderCell: ({ row }) => {
+    valueGetter: ({ row }) => {
       if (row.owner == null) return row.owner;
       if (row.owner.id == "undefined") return null;
-      return <div style={{ overflow: "auto" }}>{row.owner.id}</div>;
+      return row.owner.id;
     },
   },
   {
     headerName: "Name",
     field: "name",
     hide: false,
-    width: 170,
-    renderCell: ({ row }) => {
-      return <div style={{ overflow: "auto" }}>{FullName(row)}</div>;
+    width: 190,
+    type: "string",
+    valueGetter: ({ row }) => {
+      return FullName(row);
     },
   },
 ];
