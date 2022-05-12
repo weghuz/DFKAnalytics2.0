@@ -12,7 +12,9 @@ const {
   statBoost,
 } = require("./HeroBase");
 import { Tooltip } from "@mui/material";
+import ClassScoreCell from "../Components/Hero/ClassScoreCell";
 import ElementCell from "../Components/Hero/ElementCell";
+import GrowthScoreCell from "../Components/Hero/GrowthScoreCell";
 import HeroId from "../Components/Hero/HeroId";
 import PJBadge from "../Components/Hero/PJBadge";
 import PriceCell from "../Components/Hero/PriceCell";
@@ -58,7 +60,7 @@ let columnDefs = [
     field: "mainClass",
     hide: false,
     width: 110,
-    type: "string"
+    type: "string",
   },
   {
     headerName: "ClassR1",
@@ -179,8 +181,11 @@ let columnDefs = [
       }
       return `${row.summonsRemaining}/${row.maxSummons}`;
     },
-    sortComparator: (a, b, c ,d) => {
-        return c.api.getRow(c.id).summonsRemaining-d.api.getRow(d.id).summonsRemaining;
+    sortComparator: (a, b, c, d) => {
+      return (
+        c.api.getRow(c.id).summonsRemaining -
+        d.api.getRow(d.id).summonsRemaining
+      );
     },
   },
   {
@@ -193,13 +198,14 @@ let columnDefs = [
       }
       return `${row.generation} | ${row.summonsRemaining}/${row.maxSummons}`;
     },
-    sortComparator: (a, b, c ,d) => {
-      
-      if(c.api.getRow(c.id).generation !== d.api.getRow(d.id).generation)
-      {
-        return c.api.getRow(c.id).generation-d.api.getRow(d.id).generation;
+    sortComparator: (a, b, c, d) => {
+      if (c.api.getRow(c.id).generation !== d.api.getRow(d.id).generation) {
+        return c.api.getRow(c.id).generation - d.api.getRow(d.id).generation;
       }
-      return d.api.getRow(d.id).summonsRemaining-c.api.getRow(c.id).summonsRemaining;
+      return (
+        d.api.getRow(d.id).summonsRemaining -
+        c.api.getRow(c.id).summonsRemaining
+      );
     },
   },
   {
@@ -311,7 +317,7 @@ let columnDefs = [
       );
     },
     sortComparator: (v1, v2) => {
-      if(statBoost.indexOf(v1.name) !== statBoost.indexOf(v2.name))
+      if (statBoost.indexOf(v1.name) !== statBoost.indexOf(v2.name))
         return statBoost.indexOf(v1.name) - statBoost.indexOf(v2.name);
       return v1.amount - v2.amount;
     },
@@ -532,6 +538,9 @@ let columnDefs = [
     field: "classScore",
     hide: false,
     type: "number",
+    renderCell: ({row}) => {
+      return <ClassScoreCell>{row}</ClassScoreCell>
+    }
   },
   {
     headerName: "C Score/J",
@@ -548,6 +557,9 @@ let columnDefs = [
     field: "growthScore",
     hide: false,
     type: "number",
+    renderCell: ({ row }) => {
+      return <GrowthScoreCell>{row}</GrowthScoreCell>;
+    },
   },
   {
     headerName: `G Score/J`,

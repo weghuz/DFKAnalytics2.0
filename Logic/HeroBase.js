@@ -7150,6 +7150,16 @@ function GrowthScore(hero) {
     let r3 = SumPandSGrowth(r2);
     let r4 = MultiplyGrowthByBaseGrowth(r3);
     let score = SumGrowth(r4);
+    hero.growthScoreBreakdown = {
+        str: r4.strengthGrowthP.toFixed(3),
+        dex: r4.dexterityGrowthP.toFixed(3),
+        agi: r4.agilityGrowthP.toFixed(3),
+        vit: r4.vitalityGrowthP.toFixed(3),
+        end: r4.enduranceGrowthP.toFixed(3),
+        int: r4.intelligenceGrowthP.toFixed(3),
+        wis: r4.wisdomGrowthP.toFixed(3),
+        lck: r4.luckGrowthP.toFixed(3),
+    }
     hero.growthScore = score.toFixed(3);
 }
 
@@ -7259,6 +7269,16 @@ function ClassScore(hero) {
     let r1 = RemoveBase(hero);
     let r2 = RemoveAverageLevels(r1);
     let r3 = MultiplyBaseByGrowth(r2);
+    hero.classScoreBreakdown = {
+        str: r3.strength.toFixed(3),
+        dex: r3.dexterity.toFixed(3),
+        agi: r3.agility.toFixed(3),
+        vit: r3.vitality.toFixed(3),
+        end: r3.endurance.toFixed(3),
+        int: r3.intelligence.toFixed(3),
+        wis: r3.wisdom.toFixed(3),
+        lck: r3.luck.toFixed(3),
+    }
     hero.classScore = SumStats(r3);
 }
 

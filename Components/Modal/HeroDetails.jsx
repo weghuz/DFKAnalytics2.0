@@ -1,7 +1,9 @@
 import { Dialog, Table } from "@mui/material";
 import React from "react";
 import { classVars, FullName } from "../../Logic/HeroBase";
+import ClassScoreCell from "../Hero/ClassScoreCell";
 import ElementCell from "../Hero/ElementCell";
+import GrowthScoreCell from "../Hero/GrowthScoreCell";
 import HeroId from "../Hero/HeroId";
 import PJBadge from "../Hero/PJBadge";
 import PriceCell from "../Hero/PriceCell";
@@ -150,8 +152,8 @@ export default function HeroDetails({ hero, clear }) {
             : {hero.fishing / 10}
           </div>
         </div>
-        <div className="col-6 text-end">Class Score: {hero.classScore}</div>
-        <div className="col-6">Growth Score: {hero.growthScore}</div>
+        <div className="col-6 text-end font-weight-bold">Class Score: <ClassScoreCell>{hero}</ClassScoreCell></div>
+        <div className="col-6 font-weight-bold">Growth Score: <GrowthScoreCell>{hero}</GrowthScoreCell></div>
         <h5 className="text-center">Growth</h5>
         <div className="overflow-auto">
           <table className="table-bordered w-100">
