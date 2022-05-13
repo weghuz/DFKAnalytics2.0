@@ -37,7 +37,13 @@ let columnDefs = [
     field: "id",
     width: 100,
     renderCell: ({ row }) => {
-      return <HeroId>{row.id}</HeroId>;
+      return row.purchasePrice ? (
+        <Tooltip placement="right" title="This is an auction ID">
+          <div>#{row.id}</div>
+        </Tooltip>
+      ) : (
+        <HeroId>{row.id}</HeroId>
+      );
     },
     sortComparator: (a, b) => {
       return a - b;
@@ -538,9 +544,9 @@ let columnDefs = [
     field: "classScore",
     hide: false,
     type: "number",
-    renderCell: ({row}) => {
-      return <ClassScoreCell>{row}</ClassScoreCell>
-    }
+    renderCell: ({ row }) => {
+      return <ClassScoreCell>{row}</ClassScoreCell>;
+    },
   },
   {
     headerName: "C Score/J",

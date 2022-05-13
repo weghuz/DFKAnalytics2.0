@@ -17,9 +17,17 @@ export default function PriceCell({ children }) {
       }}
     >
       <span className="me-auto">
-        {children.saleAuction ? parseFloat(FixSalePrice(children.salePrice).toFixed(2)) : children.assistingPrice ? parseFloat(FixSalePrice(children.assistingPrice).toFixed(2)) : ""}
+        {children.purchasePrice ? parseFloat(FixSalePrice(children.purchasePrice).toFixed(2)) : children.saleAuction ? parseFloat(FixSalePrice(children.salePrice).toFixed(2)) : children.assistingPrice ? parseFloat(FixSalePrice(children.assistingPrice).toFixed(2)) : ""}
       </span>
       {
+        children.purchasePrice ? <Tooltip
+        placement="right"
+        title={`This hero was purchased for ${parseFloat(FixSalePrice(children.purchasePrice).toFixed(2))} Jewel (Crtystalvale auctions not yet separated)`}
+      >
+        <span>
+          <Image src={Jewel} alt="Jewel" height="24px" width="24px" />
+        </span>
+      </Tooltip> : 
       children.saleAuction || children.assistingPrice ? (
         children.network == "dfk" ? (
           <Tooltip

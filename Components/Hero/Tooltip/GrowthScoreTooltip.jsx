@@ -6,13 +6,11 @@ export default function GrowthScoreTooltip({ children }) {
       <div className="col-12">
         <label>Growth Score</label>
         <p>
-          Growth Score represents a measurement of the Stat Growth the hero
-          has relative to it's main class.
+          Growth Score represents the Stat Growth of the hero relative to its main class ({children.mainClass}).
         </p>
         <span>A way to think about it is:</span>
         <p>
-          How valuable the stats this hero will gain per level relative to its
-          main class.
+          The value of average stats gained per level, relative to the heroes main class ({children.mainClass})
         </p>
       </div>
       <div className="col-12 foont-weight-bold">Breakdown</div>

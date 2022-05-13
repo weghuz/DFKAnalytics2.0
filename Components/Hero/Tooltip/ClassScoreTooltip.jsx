@@ -7,12 +7,12 @@ export default function GrowthScoreTooltip({ children }) {
         <label>Class Score</label>
         <p>
           Class Score represents a measurement of the Stats the hero
-          has relative to it's main class.
+          has relative to it's main class ({children.mainClass}).
         </p>
         <span>A way to think about it is:</span>
         <p>
-          How valuable the stats this hero has right now relative to its
-          main class.
+          How valuable the stats this hero has are, relative to its
+          main class ({children.mainClass}).
         </p>
       </div>
       <div className="col-12 foont-weight-bold">Breakdown</div>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { columnDefs } from "../../Logic/GridTableColumns";
 import {
@@ -8,12 +8,13 @@ import {
   TrainStat,
 } from "../../Logic/HeroBase";
 import HeroDetails from "../Modal/HeroDetails";
-export default function Table({ update }) {
+export default function Table({ update, specialColumns }) {
   const [pageSize, setPageSize] = useState(100);
   const [page, setPage] = useState(0);
   const rowsPerPageOptions = [5, 10, 15, 20, 35, 50, 75, 100];
   const [heroDetails, setHeroDetails] = useState(null);
   const [heroes, setHeroes] = useState([]);
+  const [columns, setColumns] = useState([]);
   update((newHeroes, clear) => {
     newHeroes.forEach((h) => {
       getRecessives(h);

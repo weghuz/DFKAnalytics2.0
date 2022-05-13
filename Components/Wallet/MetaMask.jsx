@@ -21,7 +21,7 @@ export default function MetaMask() {
     if (address.length == 42) {
       queryContext.setQuery({
         ...queryContext.query,
-        wallet: `owner: "${address}",`,
+        wallet: address,
       });
     }
   }, [address]);

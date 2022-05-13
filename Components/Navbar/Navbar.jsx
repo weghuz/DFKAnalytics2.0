@@ -9,10 +9,7 @@ export default function Navbar() {
   return (
     <div className={style.Navbar}>
       <span className={style.text}>
-        <Link href="/">
-          DFKAnalytics
-        </Link>{" "}
-        a
+        <Link href="/">DFKAnalytics</Link> a
       </span>
       <a
         className={style.DFKLogo}
@@ -34,9 +31,11 @@ export default function Navbar() {
         <Link href={"/"} passHref>
           <Button variant={"text"}>Tavern</Button>
         </Link>
-        {/* <Link href={"/Auctions"}>Auctions</Link> */}
         <Link href={"/Wallet"} passHref>
           <Button variant={"text"}>Wallet</Button>
+        </Link>
+        <Link href={"/Auctions"} passHref>
+          <Button variant={"text"} color={"warning"}>new! Auctions</Button>
         </Link>
         <Link href={"/Resources"} passHref>
           <Button variant={"text"}>Resources</Button>

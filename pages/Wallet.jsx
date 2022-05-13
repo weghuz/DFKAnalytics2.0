@@ -21,11 +21,13 @@ export default function Wallet() {
     }
   };
   const requestContext = useContext(RequestContext);
-console.log(`{heroes(first:${first},skip:${skip},${
-  requestContext.query.query.length > 0
-    ? `where: {${requestContext.query.wallet},${requestContext.query.query}`
-    : `where: {${requestContext.query.wallet}}`
-}){${heroData}}}`);
+  console.log(
+    `{heroes(first:${first},skip:${skip},${
+      requestContext.query.query.length > 0
+        ? `where: {owner: "${requestContext.query.wallet}", ${requestContext.query.query}`
+        : `where: {owner: "${requestContext.query.wallet}"}`
+    }){${heroData}}}`
+  );
   const testRequest = async () => {
     return fetch(base, {
       method: "POST",
@@ -35,8 +37,8 @@ console.log(`{heroes(first:${first},skip:${skip},${
       body: JSON.stringify({
         query: `{heroes(first:${first},skip:${skip},${
           requestContext.query.query.length > 0
-            ? `where: {${requestContext.query.wallet}${requestContext.query.query}`
-            : `where: {${requestContext.query.wallet}}`
+            ? `where: {owner: "${requestContext.query.wallet}", ${requestContext.query.query}`
+            : `where: {owner: "${requestContext.query.wallet}"}`
         }){${heroData}}}`,
       }),
     });
@@ -60,8 +62,9 @@ console.log(`{heroes(first:${first},skip:${skip},${
           return;
         }
         console.log(
-          result.q, "\n",
-            requestContext.query.query + requestContext.query.wallet
+          result.q,
+          "\n",
+          requestContext.query.query + requestContext.query.wallet
         );
         if (
           result.q !=
