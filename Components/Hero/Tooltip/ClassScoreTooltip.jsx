@@ -7,7 +7,7 @@ export default function GrowthScoreTooltip({ children }) {
         <label>Class Score</label>
         <p>
           Class Score represents a measurement of the Stats the hero
-          has relative to it's main class ({children.mainClass}).
+          has relative to its main class ({children.mainClass}).
         </p>
         <span>A way to think about it is:</span>
         <p>
@@ -25,7 +25,7 @@ export default function GrowthScoreTooltip({ children }) {
       <div className="col-6">Wis: {children.classScoreBreakdown.wis}</div>
       <div className="col-6">Lck: {children.classScoreBreakdown.lck}</div>
       <p>
-          Tip!: If you want to read more about how Class Score works. Read my article on <a href="https://medium.com/@Weghuz/advanced-theory-part-1-scoring-heroes-in-defi-kingdoms-1ffd043fcd1c" target="_blank">medium HERE!</a>
+          Tip!: If you want to read more about how Class Score works. Read my article on <a rel="noreferrer" href="https://medium.com/@Weghuz/advanced-theory-part-1-scoring-heroes-in-defi-kingdoms-1ffd043fcd1c" target="_blank">medium HERE!</a>
       </p>
     </div>
   );
