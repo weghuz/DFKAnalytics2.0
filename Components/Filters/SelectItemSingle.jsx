@@ -16,6 +16,7 @@ export default function SelectItemSingle({
     <Grid item xs={12} sm={6} md={4} xl={3} className={columns}>
       <label className="font-weight-bold">{title}</label>
       <Select
+        style={{ color: "#888" }}
         onBlur={callback}
         clearable={true}
         searchBy={label}
