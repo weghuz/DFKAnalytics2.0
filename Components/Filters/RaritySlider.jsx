@@ -6,6 +6,7 @@ import Uncommon from "../../public/Gems/Uncommon.png";
 import Rare from "../../public/Gems/Rare.png";
 import Legendary from "../../public/Gems/Legendary.png";
 import Mythic from "../../public/Gems/Mythic.png";
+import { Grid } from "@mui/material";
 
 export default function RaritySlider({ setQueryRarity, clear }) {
   const [rarity, setRarity] = useState([0, 4]);
@@ -15,8 +16,8 @@ export default function RaritySlider({ setQueryRarity, clear }) {
 
   clear(clearState);
   return (
-    <div className={`col-sm-6 col-md-4 col-xl-3`}>
-      <label className="font-weight-bold text-white">Rarity</label>
+    <Grid item xs={12} sm={6} md={4} xl={3}>
+      <label className="font-weight-bold">Rarity</label>
       <Slider
         getAriaLabel={(val) => {
           switch (val) {
@@ -67,6 +68,6 @@ export default function RaritySlider({ setQueryRarity, clear }) {
           }
         }}
       />
-    </div>
+    </Grid>
   );
 }

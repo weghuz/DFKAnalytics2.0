@@ -1,3 +1,4 @@
+import { Grid } from "@mui/material";
 import React from "react";
 import Select from "react-dropdown-select";
 
@@ -9,16 +10,12 @@ export default function SelectItemSingle({
   label,
   value,
   columns,
-  color,
   callback,
 }) {
   return (
-    <div className={columns}>
-      <label className="font-weight-bold" style={{ color: color }}>
-        {title}
-      </label>
+    <Grid item xs={12} sm={6} md={4} xl={3} className={columns}>
+      <label className="font-weight-bold">{title}</label>
       <Select
-        style={{ color: color }}
         onBlur={callback}
         clearable={true}
         searchBy={label}
@@ -29,11 +26,10 @@ export default function SelectItemSingle({
         placeholder={title}
         onChange={(values) => setValues(values)}
       />
-    </div>
+    </Grid>
   );
 }
 
 SelectItemSingle.defaultProps = {
   columns: "col-sm-6 col-md-4 col-xl-3",
-  color: "white",
 };

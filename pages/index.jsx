@@ -4,10 +4,10 @@ import HeroFilters from "../Components/HeroFilters";
 import HeroTable from "../Components/Table/HeroTable";
 import { base, heroData } from "../Logic/Query";
 import RequestContext from "../Context/Context";
-import { Button, Dialog, LinearProgress } from "@mui/material";
-import { RestaurantMenuTwoTone } from "@mui/icons-material";
+import { Button, LinearProgress } from "@mui/material";
+import Grid from "@mui/material/Grid";
+
 export default function Home() {
-  const filtersRef = useRef(null);
   const [filtersHidden, setFiltersHidden] = useState(false);
   const [first, setFirst] = useState(100);
   const [skip, setSkip] = useState(0);
@@ -15,12 +15,17 @@ export default function Home() {
   const lastRequest = useRef();
   const toggleFilters = (e) => {
     if (typeof window) {
-      filtersRef.current.classList.toggle("collapse");
       setFiltersHidden((hidden) => !hidden);
     }
   };
   const requestContext = useContext(RequestContext);
-  console.log(`{heroes(first:${first},skip:${skip},${requestContext.query.query.length > 0 ? `where: {${requestContext.query.query}` : ``}){${heroData}}}`);
+  console.log(
+    `{heroes(first:${first},skip:${skip},${
+      requestContext.query.query.length > 0
+        ? `where: {${requestContext.query.query}`
+        : ``
+    }){${heroData}}}`
+  );
   const testRequest = async () => {
     return fetch(base, {
       method: "POST",
@@ -28,7 +33,11 @@ export default function Home() {
         "Content-Type": "application/json;charset=UTF-8",
       },
       body: JSON.stringify({
-        query: `{heroes(first:${first},skip:${skip},${requestContext.query.query.length > 0 ? `where: {${requestContext.query.query}` : ``}){${heroData}}}`,
+        query: `{heroes(first:${first},skip:${skip},${
+          requestContext.query.query.length > 0
+            ? `where: {${requestContext.query.query}`
+            : ``
+        }){${heroData}}}`,
       }),
     });
   };
@@ -72,8 +81,8 @@ export default function Home() {
   });
   return (
     <>
-      <div>
-        <div className="text-center mb-3">
+      <Grid container justifyContent="center" marginBottom={1}>
+        <Grid item>
           <Button
             variant="contained"
             color={filtersHidden ? "primary" : "secondary"}
@@ -81,19 +90,17 @@ export default function Home() {
           >
             Filters
           </Button>
-        </div>
-        <div>
-          <HeroFilters
-            includeSalePrice={true}
-            onSaleDefault={true}
-            ref={filtersRef}
-          />
-        </div>
-      </div>
-      {result.isLoading && <LinearProgress style={{height:10,margin:"5px 50px"}} />}
-      <HeroTable
-        update={(updateFunc) => (updateHeroes.current = updateFunc)}
+        </Grid>
+      </Grid>
+      <HeroFilters
+        includeSalePrice={true}
+        onSaleDefault={true}
+        visible={filtersHidden}
       />
+      {result.isLoading && (
+        <LinearProgress style={{ height: 10, margin: "5px 50px" }} />
+      )}
+      <HeroTable update={(updateFunc) => (updateHeroes.current = updateFunc)} />
     </>
   );
 }

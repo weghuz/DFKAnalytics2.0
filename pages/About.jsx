@@ -3,12 +3,13 @@ import Image from "next/image";
 import StamPot from "../public/StaminaPotion.png";
 import { useState } from "react";
 import TipModal from "../Components/Modal/TipModal";
+import { Box, Container } from "@mui/material";
 
 export default function About() {
   const [showTipModal, setShowTipModal] = useState(false);
   return (
     <>
-      <div className="text-light container">
+      <Container className="container">
         <h2 className="text-center">About</h2>
         <div>
           <p>
@@ -69,7 +70,7 @@ export default function About() {
             . All credit for the art assets goes to the amazing team behind DeFi Kingdoms.
           </p>
         </div>
-      </div>
+      </Container>
       {showTipModal ? <TipModal closeModalFunction={() => setShowTipModal(false)} /> : ""}
     </>
   );

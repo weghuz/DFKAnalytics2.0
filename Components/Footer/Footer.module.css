@@ -1,4 +1,5 @@
 .Footer {
+    border-top: 1px solid rgb(105, 105, 105);
     text-align: center;
     font-size: 1.4rem;
     line-height: 1.5rem;
@@ -6,9 +7,7 @@
     flex-wrap: wrap;
     padding: 12px 0 5px 0;
     width: "100%";
-    color: rgb(89, 100, 255);
 }
 .Footer>* {
     font-size: 1rem;
-    color:white;
 }

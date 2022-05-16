@@ -21,6 +21,16 @@ import PriceCell from "../Components/Hero/PriceCell";
 import RarityCell from "../Components/Hero/RarityCell";
 
 let columnDefs = [
+  // {
+  //   headerName: "AuctionId",
+  //   field: "auctionId",
+  //   hide: true,
+  // },
+  // {
+  //   headerName: "Purchase Price",
+  //   field: "purchasePrice",
+  //   hide: true,
+  // },
   {
     headerName: "Cost",
     field: "salePrice",
@@ -35,15 +45,10 @@ let columnDefs = [
   {
     headerName: "Id",
     field: "id",
+    hide: false,
     width: 100,
     renderCell: ({ row }) => {
-      return row.purchasePrice ? (
-        <Tooltip placement="right" title="This is an auction ID">
-          <div>#{row.id}</div>
-        </Tooltip>
-      ) : (
-        <HeroId>{row.id}</HeroId>
-      );
+      <HeroId>{row.heroId > 0 ? row.heroId : row.id}</HeroId>;
     },
     sortComparator: (a, b) => {
       return a - b;
@@ -53,6 +58,7 @@ let columnDefs = [
     headerName: "Rarity",
     field: "rarity",
     width: 60,
+    hide: false,
     type: "number",
     renderCell: ({ row }) => {
       return <RarityCell rarity={row.rarity} />;

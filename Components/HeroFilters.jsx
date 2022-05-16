@@ -12,22 +12,25 @@ import SelectItem from "./Filters/SelectItem";
 import RaritySlider from "./Filters/RaritySlider";
 import NumberSlider from "./Filters/NumberSlider";
 import {
+  Box,
   Button,
   Checkbox,
+  Container,
   FormControlLabel,
+  Grid,
   Input,
   InputAdornment,
   InputLabel,
+  Typography,
 } from "@mui/material";
 import RequestContext from "../Context/Context";
 import SelectItemSingle from "./Filters/SelectItemSingle";
 import { femaleFirstNames, lastNames, maleFirstNames } from "../Logic/HeroBase";
 import IdInput from "./Filters/IdInput";
+import { useTheme } from "@mui/system";
 
-const HeroFilters = forwardRef(function HeroFilters(
-  { onSaleDefault, includeSalePrice, visible },
-  ref
-) {
+const HeroFilters = function HeroFilters({ includeSalePrice, visible }) {
+  const theme = useTheme();
   const [mainClass, setMainClass] = useState([]);
   const [subClass, setSubClass] = useState([]);
   const [professions, setProfessions] = useState([]);
@@ -55,10 +58,10 @@ const HeroFilters = forwardRef(function HeroFilters(
   const [Passive2, setPassive2] = useState([]);
   const [section, setSection] = useState("Main");
   const queryContext = useContext(RequestContext);
-  let clearRarity = null,
-    clearGeneration = null,
-    clearSummons = null,
-    clearLevel = null;
+  const clearRarity = useRef(null);
+  const clearGeneration = useRef(null);
+  const clearSummons = useRef(null);
+  const clearLevel = useRef(null);
   const UpdateCountDown = (cd) => {
     if (cd <= 0) {
       UpdateQuery();
@@ -292,8 +295,7 @@ const HeroFilters = forwardRef(function HeroFilters(
         }
       }
     }
-    if(includeSalePrice)
-    {
+    if (includeSalePrice) {
       switch (target[0].value) {
         case "Tavern":
           query += "salePrice_not: null} orderBy: salePrice";
@@ -302,14 +304,12 @@ const HeroFilters = forwardRef(function HeroFilters(
           query += "assistingPrice_not: null}  orderBy: assistingPrice";
           break;
         case "All":
-          if(query.length > 0)
-          {
+          if (query.length > 0) {
             query += "}";
           }
           break;
       }
-    }
-    else{
+    } else {
       query += "}";
     }
     console.log(query);
@@ -378,10 +378,10 @@ const HeroFilters = forwardRef(function HeroFilters(
       setMinSalePrice(0);
       setMaxSalePrice(9999999);
     }
-    clearRarity();
-    clearGeneration();
-    clearSummons();
-    clearLevel();
+    clearRarity.current();
+    clearGeneration.current();
+    clearSummons.current();
+    clearLevel.current();
     setFFName([]);
     setMFName([]);
     setLName([]);
@@ -392,27 +392,35 @@ const HeroFilters = forwardRef(function HeroFilters(
     setIdInput("");
   };
   return (
-    <div className={`container ${visible ? "" : "collapse"}`} ref={ref}>
-      <div>
-        <Button
-          className="me-2"
-          variant="contained"
-          color={section == "Main" ? "primary" : "secondary"}
-          onClick={() => setSection("Main")}
-        >
-          Main
-        </Button>
-        <Button
-          className="me-2"
-          variant="contained"
-          color={section == "Cosmetic" ? "primary" : "secondary"}
-          onClick={() => setSection("Cosmetic")}
-        >
-          Cosmetic
-        </Button>
-      </div>
+    <Container sx={{ display: `${visible ? "none" : "inherit"}` }}>
+      <Grid
+        container
+        item
+        marginY={1}
+        justifyContent="center"
+        columnSpacing={2}
+      >
+        <Grid item>
+          <Button
+            variant="contained"
+            color={section == "Main" ? "primary" : "secondary"}
+            onClick={() => setSection("Main")}
+          >
+            Main
+          </Button>
+        </Grid>
+        <Grid item>
+          <Button
+            variant="contained"
+            color={section == "Cosmetic" ? "primary" : "secondary"}
+            onClick={() => setSection("Cosmetic")}
+          >
+            Cosmetic
+          </Button>
+        </Grid>
+      </Grid>
       {section == "Cosmetic" && (
-        <div className="row">
+        <Grid container columnSpacing={3}>
           {fFName.length == 0 && (
             <SelectItem
               title="Male First Names"
@@ -440,10 +448,10 @@ const HeroFilters = forwardRef(function HeroFilters(
               return { value: i, label: n };
             })}
           </SelectItem>
-        </div>
+        </Grid>
       )}
       {section == "Main" && (
-        <div className={`row`}>
+        <Grid container columnSpacing={3} rowSpacing={1}>
           {includeSalePrice && (
             <SelectItemSingle
               title="I want to ... heroes"
@@ -511,11 +519,11 @@ const HeroFilters = forwardRef(function HeroFilters(
           </SelectItem>
           <RaritySlider
             setQueryRarity={setRarity}
-            clear={(clearFunc) => (clearRarity = clearFunc)}
+            clear={(clearFunc) => (clearRarity.current = clearFunc)}
           />
           <NumberSlider
             title={"Generation"}
-            clear={(clearFunc) => (clearGeneration = clearFunc)}
+            clear={(clearFunc) => (clearGeneration.current = clearFunc)}
             min={0}
             max={14}
             callback={(val) => setGeneration(val)}
@@ -539,7 +547,7 @@ const HeroFilters = forwardRef(function HeroFilters(
           />
           <NumberSlider
             title={"Summons"}
-            clear={(clearFunc) => (clearSummons = clearFunc)}
+            clear={(clearFunc) => (clearSummons.current = clearFunc)}
             min={0}
             max={10}
             callback={(val) => setSummons(val)}
@@ -559,7 +567,7 @@ const HeroFilters = forwardRef(function HeroFilters(
           />
           <NumberSlider
             title={"Level"}
-            clear={(clearFunc) => (clearLevel = clearFunc)}
+            clear={(clearFunc) => (clearLevel.current = clearFunc)}
             marks={[
               { value: 0, label: 0 },
               { value: 25, label: 25 },
@@ -573,7 +581,7 @@ const HeroFilters = forwardRef(function HeroFilters(
           />
           {includeSalePrice && (
             <>
-              <div className={`col-sm-6 col-md-4 col-xl-3 my-1 `}>
+              <Grid item xs={12} sm={6} md={4} xl={3}>
                 <InputLabel htmlFor="minPrice" className="text-white">
                   Min Price
                 </InputLabel>
@@ -583,7 +591,7 @@ const HeroFilters = forwardRef(function HeroFilters(
                   id="minPrice"
                   onChange={(e) => setMinSalePrice(e.target.value)}
                   onBlur={(e) => startUpdateTimer()}
-                  sx={{ color: "white", width: "100%" }}
+                  sx={{ width: "100%" }}
                   type="number"
                   startAdornment={
                     <InputAdornment position="start" sx={{ width: "30px" }}>
@@ -596,8 +604,8 @@ const HeroFilters = forwardRef(function HeroFilters(
                     </InputAdornment>
                   }
                 ></Input>
-              </div>
-              <div className={`col-sm-6 col-md-4 col-xl-3 my-1`}>
+              </Grid>
+              <Grid item xs={12} sm={6} md={4} xl={3}>
                 <InputLabel htmlFor="minPrice" className="text-white">
                   Max Price
                 </InputLabel>
@@ -607,7 +615,7 @@ const HeroFilters = forwardRef(function HeroFilters(
                   id="maxPrice"
                   onChange={(e) => setMaxSalePrice(e.target.value)}
                   onBlur={(e) => startUpdateTimer()}
-                  sx={{ color: "white", width: "100%" }}
+                  sx={{ width: "100%" }}
                   type="number"
                   startAdornment={
                     <InputAdornment position="start" sx={{ width: "30px" }}>
@@ -620,12 +628,11 @@ const HeroFilters = forwardRef(function HeroFilters(
                     </InputAdornment>
                   }
                 ></Input>
-              </div>
+              </Grid>
             </>
           )}
-          <div className={`col-sm-6 col-md-4 col-xl-3 my-1 text-center`}>
+          <Grid item xs={12} sm={6} md={4} xl={3}>
             <FormControlLabel
-              sx={{ color: "white" }}
               control={<Checkbox />}
               label="Auto Update"
               checked={autoUpdate}
@@ -633,7 +640,7 @@ const HeroFilters = forwardRef(function HeroFilters(
                 setAutoUpdate(e.target.checked);
               }}
             />
-          </div>
+          </Grid>
           <IdInput
             value={idInput}
             setValue={(val) => {
@@ -641,31 +648,40 @@ const HeroFilters = forwardRef(function HeroFilters(
               setTarget([Targets[0]]);
             }}
           />
-        </div>
+        </Grid>
       )}
-      <div className="text-center text-success my-3">
-        <h5>{countdown > 0 ? `Autoupdating in ${countdown}` : ""}</h5>
-      </div>
-      <div className="text-center my-1">
-        <Button
-          variant="contained"
-          color="success"
-          onClick={() => UpdateQuery(true)}
-        >
-          Search
-        </Button>
-        <Button
-          sx={{ marginLeft: ".5rem" }}
-          variant="contained"
-          color="secondary"
-          onClick={ClearFilters}
-        >
-          Clear Filters
-        </Button>
-      </div>
-    </div>
+      <Grid container item columnSpacing={2} marginY={1} justifyContent={"center"}>
+        <Grid item>
+          <Button
+            variant="contained"
+            color="success"
+            onClick={() => UpdateQuery(true)}
+          >
+            Search
+          </Button>
+        </Grid>
+        <Grid item>
+          <Button
+            sx={{ marginLeft: ".5rem" }}
+            variant="contained"
+            color="secondary"
+            onClick={ClearFilters}
+          >
+            Clear Filters
+          </Button>
+        </Grid>
+      </Grid>
+      <Typography
+        variant="h5"
+        marginY={1}
+        color={theme.palette.success.main}
+        align="center"
+      >
+        {countdown > 0 ? `Autoupdating in ${countdown}` : ""}
+      </Typography>
+    </Container>
   );
-});
+};
 HeroFilters.defaultProps = {
   onSaleDefault: true,
   includeSalePrice: false,

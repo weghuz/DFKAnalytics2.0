@@ -2,16 +2,14 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 }
 
 .space {
   margin: 10px 0;
 }
 
-body {
-  background-color: #1a1b1b;
+a{
+  color: #2196f3;
 }
 
 .common {
@@ -30,6 +28,11 @@ body {
   border: 1px solid #bd45fd;
 }
 
+a {
+  text-decoration: none;
+}
+
+
 .MuiSlider-markLabel{
   min-height: 35px;
   min-width: 35px;
@@ -46,69 +49,6 @@ ul {
 
 li {
   list-style: none;
-}
-
-a {
-  color: rgb(98, 129, 224);
-  text-decoration: none;
-}
-
-a:hover {
-  color: royalblue;
-}
-
-a:active {
-  color: red;
-  text-decoration: none;
-}
-
-.react-dropdown-select-input{
-  color:whitesmoke;
-}
-.react-dropdown-select-clear{
-  color:whitesmoke;
-}
-.react-dropdown-select-dropdown>span{
-  background-color: #161818;
-  color: whitesmoke;
-}
-.react-dropdown-select-dropdown>span:hover{
-  background-color: gray;
-  color: whitesmoke;
-}
-textarea.MuiOutlinedInput-input{
-  color:whitesmoke;
-}
-
-span.react-dropdown-select-option{
-  background-color: rgb(14,14,14);
-}
-.MuiInputLabel-root.MuiInputLabel-formControl{
-  color:rgb(114, 114, 114);
-}
-.MuiOutlinedInput-notchedOutline {
-  border-color: rgb(114, 114, 114);
-}
-.MuiOutlinedInput-notchedOutline:hover {
-  border-color: whitesmoke;
-}
-.MuiInput-root.MuiInput-underline::before{
-  border-bottom-color: whitesmoke;
-}
-.MuiSlider-root>span.MuiSlider-markLabel{
-  color:whitesmoke;
-}
-div.MuiTablePagination-select{
-  color:whitesmoke;
-}
-p{
-  color:whitesmoke;
-}
-svg.MuiSvgIcon-root{
-  color:rgb(114, 114, 114);
-}
-button.svg.MuiSvgIcon-root{
-  color:whitesmoke;
 }
 
 /* Scrollbar */

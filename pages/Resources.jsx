@@ -1,9 +1,10 @@
+import { Container } from "@mui/material";
 import Layout from "../Components/Layout";
 
 export default function Resources() {
   return (
     <>
-      <div className="text-left text-light container">
+      <Container>
         <h2 className="text-center">Resources</h2>
         <h4 className="text-center">Medium</h4>
         <ul>
@@ -152,7 +153,7 @@ export default function Resources() {
             dedicated discord and podcast.
           </li>
         </ul>
-        <h4 className="text-center">Charts</h4>
+        {/* <h4 className="text-center">Charts</h4>
         <ul>
           <li>
             <a
@@ -451,8 +452,8 @@ export default function Resources() {
         <h5 className="text-center">Mining</h5>
         <ul>
           <li>Yellow Egg - Missing Liquidity</li>
-        </ul>
-      </div>
+        </ul> */}
+      </Container>
     </>
   );
 }

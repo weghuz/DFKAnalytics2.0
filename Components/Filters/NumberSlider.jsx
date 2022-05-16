@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Slider from "@mui/material/Slider";
+import { Grid } from "@mui/material";
 
 export default function NumberSlider({
   title,
@@ -15,7 +16,7 @@ export default function NumberSlider({
   };
   clear(clearState);
   return (
-    <div className={`col-sm-6 col-md-4 col-xl-3`}>
+    <Grid item xs={12} sm={6} md={4} xl={3}>
       <label className="font-weight-bold text-white">{title}</label>
       <Slider
         valueLabelDisplay="auto"
@@ -32,6 +33,6 @@ export default function NumberSlider({
         }}
         sx={{ color: "#0074D9" }}
       />
-    </div>
+    </Grid>
   );
 }

@@ -3,7 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import DisconnectWalletModal from "./Modal/DisconnectWalletModal";
 import QuestionModal from "./Modal/QuestionModal";
 import QueryContext from "../../Context/Context";
-import { Button } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 
 export default function MetaMask() {
   const [connected, setConnected] = useState(true);
@@ -41,9 +41,8 @@ export default function MetaMask() {
     console.log("setInterval");
     const intervalId = setInterval(() => {
       console.log(connectionText);
-      setConnectionText(text => {
-        if(text.length < 3)
-        {
+      setConnectionText((text) => {
+        if (text.length < 3) {
           return text + ".";
         }
         return "";
@@ -110,7 +109,12 @@ export default function MetaMask() {
   };
   if (connecting) {
     return (
-      <div style={{width:"100px"}} className="text-start d-inline-block text-success mx-2">Connecting{connectionText}</div>
+      <div
+        style={{ width: "100px" }}
+        className="text-start d-inline-block text-success mx-2"
+      >
+        Connecting{connectionText}
+      </div>
     );
   }
   if (textInterval !== 0) {
@@ -122,17 +126,19 @@ export default function MetaMask() {
   if (!metaMaskInstalled) {
     return (
       <>
-        <div className="d-inline-block mx-2">
-          <Button
-            variant="contained"
-            color="success"
-            onClick={() => {
-              setShowQuestionsModal(true);
-            }}
-          >
-            Why connect?
-          </Button>
-        </div>
+        <Grid container spacing={2}>
+          <Grid item>
+            <Button
+              variant="contained"
+              color="success"
+              onClick={() => {
+                setShowQuestionsModal(true);
+              }}
+            >
+              Why connect?
+            </Button>
+          </Grid>
+        </Grid>
         {showQuestionsModal && (
           <QuestionModal
             HideQuestionsModal={HideQuestionsModal}
@@ -144,8 +150,8 @@ export default function MetaMask() {
   }
   if (!connected) {
     return (
-      <>
-        <div className="d-inline-block mx-2">
+      <Grid container spacing={2}>
+        <Grid item className="d-inline-block mx-2">
           <Button
             variant="contained"
             color="success"
@@ -153,8 +159,8 @@ export default function MetaMask() {
           >
             Connect 🦊
           </Button>
-        </div>
-        <div className="d-inline-block mx-2">
+        </Grid>
+        <Grid item className="d-inline-block mx-2">
           <Button
             variant="contained"
             color="success"
@@ -164,7 +170,7 @@ export default function MetaMask() {
           >
             Why connect?
           </Button>
-        </div>
+        </Grid>
         {showQuestionsModal ? (
           <QuestionModal
             HideQuestionsModal={HideQuestionsModal}
@@ -173,24 +179,27 @@ export default function MetaMask() {
         ) : (
           ""
         )}
-      </>
+      </Grid>
     );
   }
   return (
-    <>
-      <label className="font-weight-bold text-white me-2">Connected with</label>
-      <Button
-        className="mx-2"
-        variant="contained"
-        color="success"
-        onClick={() => setShowConnectedInformation(true)}
-      >
-        {`${
-          address.substring(2, 6) +
-          "..." +
-          address.substring(address.length - 4, address.length)
-        }`}
-      </Button>
+    <Grid container spacing={2} alignItems={"center"}>
+      <Grid item sx={{ fontWeight: "bold" }}>
+        Connected with
+      </Grid>
+      <Grid item>
+        <Button
+          variant="contained"
+          color="success"
+          onClick={() => setShowConnectedInformation(true)}
+        >
+          {`${
+            address.substring(2, 6) +
+            "..." +
+            address.substring(address.length - 4, address.length)
+          }`}
+        </Button>
+      </Grid>
       {showConnectedInformation && (
         <DisconnectWalletModal
           closeModalFunction={() => setShowConnectedInformation(false)}
@@ -199,6 +208,6 @@ export default function MetaMask() {
           disconnectWalletCallback={DisconnectWallet}
         />
       )}
-    </>
+    </Grid>
   );
 }

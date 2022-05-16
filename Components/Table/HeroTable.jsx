@@ -8,6 +8,7 @@ import {
   TrainStat,
 } from "../../Logic/HeroBase";
 import HeroDetails from "../Modal/HeroDetails";
+import { Box } from "@mui/material";
 export default function Table({ update, specialColumns }) {
   const [pageSize, setPageSize] = useState(100);
   const [page, setPage] = useState(0);
@@ -36,7 +37,7 @@ export default function Table({ update, specialColumns }) {
     setHeroDetails((h) => hero);
   };
   return (
-    <div style={{ margin: "0 1%", color: "black" }}>
+    <Box bgcolor={"background.paper"}>
       <DataGrid
         density="compact"
         autoHeight={true}
@@ -66,7 +67,6 @@ export default function Table({ update, specialColumns }) {
         pageSize={pageSize}
         onPageSizeChange={(val) => setPageSize(val)}
         rowsPerPageOptions={rowsPerPageOptions}
-        style={{ color: "white" }}
         components={{
           Toolbar: GridToolbar,
         }}
@@ -74,6 +74,6 @@ export default function Table({ update, specialColumns }) {
       {heroDetails !== null && (
         <HeroDetails hero={heroDetails} clear={() => setHeroDetails(null)} />
       )}
-    </div>
+    </Box>
   );
 }

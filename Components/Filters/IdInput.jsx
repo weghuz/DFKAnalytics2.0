@@ -1,9 +1,9 @@
-import { TextField } from "@mui/material";
+import { Grid, TextField } from "@mui/material";
 import React from "react";
 
 export default function IdInput({ callback, value, setValue }) {
   return (
-    <div className={`col-12`}>
+    <Grid item xs={12}>
       <TextField
         variant="outlined"
         label="Id and 0x Address Input, you can't search for hero Ids and Wallets at the same time (yet)."
@@ -15,6 +15,6 @@ export default function IdInput({ callback, value, setValue }) {
         rows={4}
         fullWidth={true}
       />
-    </div>
+    </Grid>
   );
 }

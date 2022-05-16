@@ -1,4 +1,4 @@
-import { Button, LinearProgress } from "@mui/material";
+import { Button, Grid, LinearProgress, Typography } from "@mui/material";
 import { useContext, useEffect, useRef, useState } from "react";
 import { useQuery } from "react-query";
 import MetaMask from "../Components/Wallet/MetaMask";
@@ -53,7 +53,10 @@ export default function Auctions() {
           return;
         }
 
-        if (result.q != requestContext.query.query + requestContext.query.wallet) {
+        if (
+          result.q !=
+          requestContext.query.query + requestContext.query.wallet
+        ) {
           return;
         }
         if (first == data.saleAuctions.length) {
@@ -63,6 +66,7 @@ export default function Auctions() {
         updateHeroes.current(
           data.saleAuctions.map((a) => {
             a.tokenId.purchasePrice = a.purchasePrice;
+            a.tokenId.heroId = a.tokenId.id;
             a.tokenId.id = a.id;
             return a.tokenId;
           }),
@@ -84,26 +88,28 @@ export default function Auctions() {
   });
   return (
     <>
-      <div>
-        <div className="text-center mb-3">
+      <Grid container marginBottom={1} spacing={2} justifyContent={"center"}>
+        <Grid item>
           <MetaMask />
-          <Button
+          {/* <Button
             variant="contained"
             color={filtersHidden ? "primary" : "secondary"}
             onClick={toggleFilters}
           >
             Filters
-          </Button>
-        </div>
-        <div>
+          </Button> */}
+        </Grid>
+        <Grid item>
           {/* <HeroFilters
             includeSalePrice={true}
             onSaleDefault={true}
             ref={filtersRef}
           /> */}
-          <h3 className="text-center text-white">{requestContext.query.wallet} Sold Heroes</h3>
-        </div>
-      </div>
+          <Typography variant="h5" textAlign={"center"}>
+            {requestContext.query.wallet} Sold Heroes
+          </Typography>
+        </Grid>
+      </Grid>
       {result.isLoading && (
         <LinearProgress style={{ height: 10, margin: "5px 50px" }} />
       )}

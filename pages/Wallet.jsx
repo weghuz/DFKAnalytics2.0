@@ -5,10 +5,9 @@ import HeroTable from "../Components/Table/HeroTable";
 import { base, heroData } from "../Logic/Query";
 import RequestContext from "../Context/Context";
 import MetaMask from "../Components/Wallet/MetaMask";
-import { Button, LinearProgress } from "@mui/material";
+import { Button, Grid, LinearProgress } from "@mui/material";
 
 export default function Wallet() {
-  const filtersRef = useRef(null);
   const [filtersHidden, setFiltersHidden] = useState(false);
   const [first, setFirst] = useState(100);
   const [skip, setSkip] = useState(0);
@@ -16,7 +15,6 @@ export default function Wallet() {
   const lastRequest = useRef();
   const toggleFilters = (e) => {
     if (typeof window) {
-      filtersRef.current.classList.toggle("collapse");
       setFiltersHidden((hidden) => !hidden);
     }
   };
@@ -98,22 +96,24 @@ export default function Wallet() {
   });
   return (
     <>
-      <div className="text-center mb-3">
-        <MetaMask />
-        <Button
-          className="mx-2"
-          variant="contained"
-          color={filtersHidden ? "primary" : "secondary"}
-          onClick={toggleFilters}
-        >
-          Filters
-        </Button>
-      </div>
-
+      <Grid container columnSpacing={2} marginBottom={1} justifyContent="center">
+        <Grid item>
+          <MetaMask />
+        </Grid>
+        <Grid item>
+          <Button
+            variant="contained"
+            color={filtersHidden ? "primary" : "secondary"}
+            onClick={toggleFilters}
+          >
+            Filters
+          </Button>
+        </Grid>
+      </Grid>
       <HeroFilters
         onSaleDefault={false}
         includeSalePrice={false}
-        ref={filtersRef}
+        visible={filtersHidden}
       />
       {result.isLoading && (
         <LinearProgress style={{ height: 10, margin: "5px 50px" }} />

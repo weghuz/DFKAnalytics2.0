@@ -1,13 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Image from "next/image";
 import DFKLogo from "../../public/DFKLogo.png";
 import style from "./Navbar.module.css";
 import Link from "next/link";
-import { Button } from "@mui/material";
+import { Button, Container, IconButton } from "@mui/material";
+import { Brightness4, Brightness7 } from "@mui/icons-material";
+import Context from "../../Context/Context";
+import { useTheme } from "@emotion/react";
 
 export default function Navbar() {
+  const theme = useTheme();
+  const queryContext = useContext(Context);
   return (
-    <div className={style.Navbar}>
+    <Container className={style.Navbar}>
       <span className={style.text}>
         <Link href="/">DFKAnalytics</Link> a
       </span>
@@ -35,7 +40,9 @@ export default function Navbar() {
           <Button variant={"text"}>Wallet</Button>
         </Link>
         <Link href={"/Auctions"} passHref>
-          <Button variant={"text"} color={"warning"}>new! Auctions</Button>
+          <Button variant={"text"} color={"warning"}>
+            new! Auctions
+          </Button>
         </Link>
         <Link href={"/Resources"} passHref>
           <Button variant={"text"}>Resources</Button>
@@ -43,7 +50,20 @@ export default function Navbar() {
         <Link href={"/About"} passHref>
           <Button variant={"text"}>About</Button>
         </Link>
+        <IconButton
+          sx={{ ml: 1 }}
+          onClick={() => {
+            queryContext.query.toggleTheme();
+          }}
+          color="inherit"
+        >
+          {theme.palette && theme.palette.mode === "dark" ? (
+            <Brightness7 />
+          ) : (
+            <Brightness4 />
+          )}
+        </IconButton>
       </div>
-    </div>
+    </Container>
   );
 }
