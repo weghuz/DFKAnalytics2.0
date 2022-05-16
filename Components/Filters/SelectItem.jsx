@@ -1,4 +1,4 @@
-import { Grid } from "@mui/material";
+import { Grid, useTheme } from "@mui/material";
 import React from "react";
 import Select from "react-dropdown-select";
 
@@ -12,12 +12,13 @@ export default function SelectItem({
   columns,
   color,
 }) {
+  const theme = useTheme();
+  console.log(theme.palette.background.default);
   return (
     <Grid item xs={12} sm={6} md={4} xl={3} className={columns}>
-      <label className="font-weight-bold">
-        {title}
-      </label>
+      <label className="font-weight-bold">{title}</label>
       <Select
+        style={{ color: "#888" }}
         clearable={true}
         searchBy={label}
         labelField={label}
