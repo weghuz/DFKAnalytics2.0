@@ -6,18 +6,15 @@ import { base, heroData } from "../Logic/Query";
 import RequestContext from "../Context/Context";
 import { Button, LinearProgress } from "@mui/material";
 import Grid from "@mui/material/Grid";
+import useFilterState from "../Store/Store";
 
 export default function Home() {
-  const [filtersHidden, setFiltersHidden] = useState(false);
+  const hideFilters = useFilterState(state => state.hideFilters)
+  const toggleFilters = useFilterState(state => state.toggleFilters)
   const [first, setFirst] = useState(100);
   const [skip, setSkip] = useState(0);
   const updateHeroes = useRef();
   const lastRequest = useRef();
-  const toggleFilters = (e) => {
-    if (typeof window) {
-      setFiltersHidden((hidden) => !hidden);
-    }
-  };
   const requestContext = useContext(RequestContext);
   console.log(
     `{heroes(first:${first},skip:${skip},${
@@ -85,7 +82,7 @@ export default function Home() {
         <Grid item>
           <Button
             variant="contained"
-            color={filtersHidden ? "primary" : "secondary"}
+            color={hideFilters ? "primary" : "secondary"}
             onClick={toggleFilters}
           >
             Filters
@@ -95,7 +92,7 @@ export default function Home() {
       <HeroFilters
         includeSalePrice={true}
         onSaleDefault={true}
-        visible={filtersHidden}
+        visible={hideFilters}
       />
       {result.isLoading && (
         <LinearProgress style={{ height: 10, margin: "5px 50px" }} />

@@ -39,15 +39,16 @@ export default function Table({ update, specialColumns }) {
     <Grid
       container
       bgcolor={"background.paper"}
-      height={"100vh"}
       width={"100%"}
       justifyContent={"center"}
     >
       <Grid item width={"100%"} maxWidth={1920}>
         <DataGrid
+          bgcolor={"background.paper"}
           density="compact"
           rows={heroes}
           columns={columnDefs}
+          autoHeight={true}
           onSortModelChange={() => setPage(0)}
           onRowClick={({ row }) => {
             clickedHero(row);

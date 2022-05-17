@@ -5,7 +5,7 @@ import Rare from "../../public/Gems/Rare.png";
 import Legendary from "../../public/Gems/Legendary.png";
 import Mythic from "../../public/Gems/Mythic.png";
 import Image from "next/image";
-import { Tooltip } from "@mui/material";
+import { Box, Tooltip } from "@mui/material";
 import { rarities } from "../../Logic/HeroBase";
 
 export default function RarityCell({ rarity, width, height }) {
@@ -26,6 +26,6 @@ export default function RarityCell({ rarity, width, height }) {
 
   return(
   <Tooltip placement="left" title={rarities[rarity]}>
-    <div style={{width:"100%", display:"flex", justifyContent:"center"}}>{gem()}</div>
+    <Box sx={{width:"100%", display:"flex", justifyContent:"center"}}>{gem()}</Box>
   </Tooltip>);
 }

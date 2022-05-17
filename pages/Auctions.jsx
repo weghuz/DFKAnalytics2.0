@@ -7,18 +7,12 @@ import { base, heroData } from "../Logic/Query";
 import HeroTable from "../Components/Table/HeroTable";
 
 export default function Auctions() {
-  const filtersRef = useRef(null);
-  const [filtersHidden, setFiltersHidden] = useState(false);
+  // const hideFilters = useFilterState(state => state.hideFilters)
+  // const toggleFilters = useFilterState(state => state.toggleFilters)
   const [first, setFirst] = useState(100);
   const [skip, setSkip] = useState(0);
   const updateHeroes = useRef();
   const lastRequest = useRef();
-  const toggleFilters = (e) => {
-    if (typeof window) {
-      filtersRef.current.classList.toggle("collapse");
-      setFiltersHidden((hidden) => !hidden);
-    }
-  };
   const requestContext = useContext(RequestContext);
   console.log(
     `{saleAuctions(first:${first},skip:${skip},where: {seller: "${requestContext.query.wallet}", purchasePrice_gt:"1"}, orderBy:startedAt, orderDirection:desc){id purchasePrice startedAt tokenId {${heroData}}}}`
@@ -88,9 +82,11 @@ export default function Auctions() {
   });
   return (
     <>
-      <Grid container marginBottom={1} spacing={2} justifyContent={"center"}>
-        <Grid item>
-          <MetaMask />
+      <Grid container marginBottom={1} spacing={1}>
+        <Grid item container xs={12} justifyContent={"center"}>
+          <Grid item>
+            <MetaMask />
+          </Grid>
           {/* <Button
             variant="contained"
             color={filtersHidden ? "primary" : "secondary"}
@@ -99,14 +95,14 @@ export default function Auctions() {
             Filters
           </Button> */}
         </Grid>
-        <Grid item>
+        <Grid item xs={12}>
           {/* <HeroFilters
             includeSalePrice={true}
             onSaleDefault={true}
             ref={filtersRef}
           /> */}
           <Typography variant="h5" textAlign={"center"}>
-            {requestContext.query.wallet} Sold Heroes
+            Sold Heroes
           </Typography>
         </Grid>
       </Grid>

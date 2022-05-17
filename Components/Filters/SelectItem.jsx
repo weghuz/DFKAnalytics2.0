@@ -13,7 +13,6 @@ export default function SelectItem({
   color,
 }) {
   const theme = useTheme();
-  console.log(theme.palette.background.default);
   return (
     <Grid item xs={12} sm={6} md={4} xl={3} className={columns}>
       <label className="font-weight-bold">{title}</label>

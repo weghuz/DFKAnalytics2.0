@@ -15,9 +15,12 @@ export default function PriceCell({ children }) {
             children.purchasePrice
           )} Jewel.`}
         >
-          <Grid container spacing={2} justifyContent={"space-between"}>
-            <Grid item>{FixSalePrice(children.purchasePrice)}</Grid>
-            <Grid item>
+          <Grid
+            container
+            justifyContent={"space-between"}
+          >
+            <Grid item sx={{ alignSelf: "center" }}>{FixSalePrice(children.purchasePrice)}</Grid>
+            <Grid item sx={{ marginTop:"4px" }}>
               <Image src={Jewel} alt="Jewel" height="24px" width="24px" />
             </Grid>
           </Grid>
@@ -30,13 +33,16 @@ export default function PriceCell({ children }) {
               children.saleAuction ? "Sold" : "Rented out"
             } in CrystalVale for Crystal.`}
           >
-            <Grid container spacing={2} justifyContent={"space-between"}>
-              <Grid item>
+            <Grid
+              container
+              justifyContent={"space-between"}
+            >
+              <Grid item sx={{ alignSelf: "center" }}>
                 {children.saleAuction
                   ? FixSalePrice(children.salePrice)
                   : FixSalePrice(children.assistingPrice)}
               </Grid>
-              <Grid item>
+              <Grid item sx={{ marginTop:"4px" }}>
                 <Image src={Crystal} alt="Crystal" height="24px" width="24px" />
               </Grid>
             </Grid>
@@ -48,13 +54,16 @@ export default function PriceCell({ children }) {
               children.saleAuction ? "Sold" : "Rented out"
             } in Serendale for Jewel.`}
           >
-            <Grid container spacing={2} justifyContent={"space-between"}>
-              <Grid item>
+            <Grid
+              container
+              justifyContent={"space-between"}
+            >
+              <Grid item sx={{ alignSelf: "center" }}>
                 {children.saleAuction
                   ? FixSalePrice(children.salePrice)
                   : FixSalePrice(children.assistingPrice)}
               </Grid>
-              <Grid item>
+              <Grid item sx={{ marginTop:"4px" }}>
                 <Image src={Jewel} alt="Jewel" height="24px" width="24px" />
               </Grid>
             </Grid>

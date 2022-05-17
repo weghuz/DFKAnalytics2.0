@@ -4,7 +4,6 @@ import React from "react";
 import sdid from "../../public/SDID.png";
 
 export default function HeroId({ children }) {
-  console.log("test");
   return (
     <>
       {parseInt(children) > 1000000000000 ? (
