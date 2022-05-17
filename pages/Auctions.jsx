@@ -113,29 +113,7 @@ export default function Auctions() {
       {result.isLoading && (
         <LinearProgress style={{ height: 10, margin: "5px 50px" }} />
       )}
-      <HeroTable
-        specialColumns={[
-          {
-            headerName: "Auction ID",
-            field: "Auction ID",
-            hide: false,
-            type: "number",
-            valueGetter: ({ row }) => {
-              return row.saleAuction.id;
-            },
-          },
-          {
-            headerName: "Sold Price",
-            field: "Sold Price",
-            hide: false,
-            type: "number",
-            valueGetter: ({ row }) => {
-              return row.saleAuction.purchasePrice;
-            },
-          },
-        ]}
-        update={(updateFunc) => (updateHeroes.current = updateFunc)}
-      />
+      <HeroTable update={(updateFunc) => (updateHeroes.current = updateFunc)} />
     </>
   );
 }

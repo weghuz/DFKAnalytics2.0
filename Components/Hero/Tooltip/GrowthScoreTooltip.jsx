@@ -3,7 +3,7 @@ import React from "react";
 
 export default function GrowthScoreTooltip({ children }) {
   return (
-    <Grid container xs={12}>
+    <Grid container>
       <Grid item container xs={12}>
         <label>Growth Score</label>
         <p>

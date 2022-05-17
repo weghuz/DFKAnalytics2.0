@@ -1,3 +1,5 @@
+const { useTheme } = require("@mui/system");
+
 const professions = ["mining", "foraging", "gardening", "fishing"];
 const professionStats = {
   mining: ["strength", "endurance"],
@@ -28,7 +30,7 @@ const classes = [
   "wizard",
 ];
 
-const TrainStat = (hero) => {
+const TrainStat = (hero, theme) => {
   let stats = [
     {
       name: "STR",
@@ -92,11 +94,11 @@ const TrainStat = (hero) => {
   );
   highest.color = "";
   if (highest.name == hero.statBoost1 && highest.name == hero.statBoost2) {
-    highest.color = "purple";
+    highest.color = "info.main";
   } else if (highest.name == hero.statBoost1) {
-    highest.color = "green";
+    highest.color = "success.main";
   } else if (highest.name == hero.statBoost2) {
-    highest.color = "royalblue";
+    highest.color = "primary.main";
   }
   hero.TrainStat = highest;
   return hero.TrainStat;

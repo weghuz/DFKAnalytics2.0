@@ -8,6 +8,7 @@ import {
   TableHead,
   TableRow,
   Typography,
+  useTheme,
 } from "@mui/material";
 import React from "react";
 import { classVars, FullName } from "../../Logic/HeroBase";
@@ -20,27 +21,28 @@ import PriceCell from "../Hero/PriceCell";
 import RarityCell from "../Hero/RarityCell";
 
 export default function HeroDetails({ hero, clear }) {
+  const theme = useTheme();
   const getStatColor = (stat) => {
     if (stat == hero.statBoost1 && stat == hero.statBoost2) {
-      return "purple";
+      return theme.palette.info.main;
     } else if (stat == hero.statBoost1) {
-      return "green";
+      return theme.palette.success.main;
     } else if (stat == hero.statBoost2) {
-      return "royalblue";
+      return theme.palette.primary.main;
     } else {
       return "";
     }
   };
   const getProfessionColor = (profession) => {
     if (profession == hero.profession) {
-      return "green";
+      return theme.palette.success.main;
     } else {
       return "";
     }
   };
   return (
     <Dialog open={true} onClose={clear} fullWidth={true} maxWidth="md">
-      <Grid container justifyContent={"center"} spacing={2}>
+      <Grid container justifyContent={"center"} spacing={2} bgcolor={"background.default"}>
         <Grid container item xs={12} textAlign={"center"}>
           <Grid item xs={12}>
             <Typography variant={"h5"} marginY={1}>

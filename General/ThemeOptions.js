@@ -1,6 +1,36 @@
 import { createTheme } from "@mui/material";
 
 const themeDark = {
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: `
+        a{
+          color: #90caf9;
+        }
+        .common {
+          border: 1px solid rgba(128, 128, 148, 1);
+        }
+        .uncommon {
+          border: 1px solid #66bb6a;
+        }
+        .rare {
+          border: 1px solid #90caf9;
+        }
+        .legendary {
+          border: 1px solid #ff9a02;
+        }
+        .mythic {
+          border: 1px solid #b942e2;
+        }
+        .react-dropdown-select-dropdown.react-dropdown-select-dropdown-position-bottom{
+          background-color:#2d2d2d;
+        }
+        .react-dropdown-select-input{
+          color:#eeeeee;
+        }
+      `,
+    },
+  },
   palette: {
     mode: "dark",
     // primary: {
@@ -13,32 +43,68 @@ const themeDark = {
       primary: "#eeeeee",
     },
     background: {
-      default: '#202020',
-      paper: '#2d2d2d',
+      default: "#202020",
+      paper: "#2d2d2d",
     },
-    // success: {
-    //   main: '#4ead52',
-    // },
+    info: {
+      main: "#b942e2",
+    },
+    success: {
+      main: "#66bb6a",
+    },
   },
 };
 
 const themeLight = {
+  components: {
+    MuiCssBaseline: {
+      styleOverrides: `
+        a{
+          color: #1976d2;
+        }
+        .common {
+          border: 1px solid rgba(100, 100, 120, 1);
+        }
+        .uncommon {
+          border: 1px solid #2e7d32;
+        }
+        .rare {
+          border: 1px solid #1976d2;
+        }
+        .legendary {
+          border: 1px solid #ff9a02;
+        }
+        .mythic {
+          border: 1px solid #b942e2;
+        }
+        .react-dropdown-select-dropdown.react-dropdown-select-dropdown-position-bottom{
+          background-color:#e2e2e2;
+        }
+        .react-dropdown-select-input{
+          color:#212121;
+        }
+      `,
+    },
+  },
   palette: {
-    mode: 'light',
+    mode: "light",
     // primary: {
     //   main: '#3f51b5',
     // },
     secondary: {
-      main: '#777',
+      main: "#777",
     },
     background: {
-      default: '#ececec',
-      paper: '#e2e2e2',
+      default: "#ececec",
+      paper: "#e2e2e2",
     },
     text: {
-      primary: '#212121',
+      primary: "#212121",
+    },
+    info: {
+      main: "#b942e2",
     },
   },
-}
+};
 
-export default {light: createTheme(themeLight), dark: createTheme(themeDark) };
+export default { light: createTheme(themeLight), dark: createTheme(themeDark) };

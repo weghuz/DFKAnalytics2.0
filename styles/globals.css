@@ -8,30 +8,9 @@ body {
   margin: 10px 0;
 }
 
-a{
-  color: #2196f3;
-}
-
-.common {
-  border: 1px solid #4b5457;
-}
-.uncommon {
-  border: 1px solid #00ffa2b2;
-}
-.rare {
-  border: 1px solid #1d54f1;
-}
-.legendary {
-  border: 1px solid #ff9a02;
-}
-.mythic {
-  border: 1px solid #bd45fd;
-}
-
 a {
   text-decoration: none;
 }
-
 
 .MuiSlider-markLabel{
   min-height: 35px;

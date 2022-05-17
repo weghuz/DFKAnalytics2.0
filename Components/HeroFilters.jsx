@@ -455,6 +455,7 @@ const HeroFilters = function HeroFilters({ includeSalePrice, visible }) {
           {includeSalePrice && (
             <SelectItemSingle
               title="I want to ... heroes"
+              clearable={false}
               values={target}
               setValues={setTarget}
             >
@@ -478,7 +479,12 @@ const HeroFilters = function HeroFilters({ includeSalePrice, visible }) {
           >
             {DFKBase.Professions}
           </SelectItem>
-          <SelectItemSingle title="PJ Status" values={PJ} setValues={setPJ}>
+          <SelectItemSingle
+            title="PJ Status"
+            values={PJ}
+            setValues={setPJ}
+            clearable={true}
+          >
             {DFKBase.PJSurvivor}
           </SelectItemSingle>
           <SelectItem title="Active 1" values={active1} setValues={setActive1}>
@@ -650,7 +656,13 @@ const HeroFilters = function HeroFilters({ includeSalePrice, visible }) {
           />
         </Grid>
       )}
-      <Grid container item columnSpacing={2} marginY={1} justifyContent={"center"}>
+      <Grid
+        container
+        item
+        columnSpacing={2}
+        marginY={1}
+        justifyContent={"center"}
+      >
         <Grid item>
           <Button
             variant="contained"

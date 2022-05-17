@@ -18,7 +18,6 @@ export default function SelectItem({
     <Grid item xs={12} sm={6} md={4} xl={3} className={columns}>
       <label className="font-weight-bold">{title}</label>
       <Select
-        style={{ color: "#888" }}
         clearable={true}
         searchBy={label}
         labelField={label}

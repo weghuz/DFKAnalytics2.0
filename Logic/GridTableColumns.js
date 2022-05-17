@@ -12,6 +12,7 @@ const {
   statBoost,
 } = require("./HeroBase");
 import { Tooltip } from "@mui/material";
+import { Box } from "@mui/system";
 import ClassScoreCell from "../Components/Hero/ClassScoreCell";
 import ElementCell from "../Components/Hero/ElementCell";
 import GrowthScoreCell from "../Components/Hero/GrowthScoreCell";
@@ -21,16 +22,6 @@ import PriceCell from "../Components/Hero/PriceCell";
 import RarityCell from "../Components/Hero/RarityCell";
 
 let columnDefs = [
-  // {
-  //   headerName: "AuctionId",
-  //   field: "auctionId",
-  //   hide: true,
-  // },
-  // {
-  //   headerName: "Purchase Price",
-  //   field: "purchasePrice",
-  //   hide: true,
-  // },
   {
     headerName: "Cost",
     field: "salePrice",
@@ -48,7 +39,7 @@ let columnDefs = [
     hide: false,
     width: 100,
     renderCell: ({ row }) => {
-      <HeroId>{row.heroId > 0 ? row.heroId : row.id}</HeroId>;
+      return <HeroId>{row.heroId > 0 ? row.heroId : row.id}</HeroId>;
     },
     sortComparator: (a, b) => {
       return a - b;
@@ -322,9 +313,9 @@ let columnDefs = [
           }
           placement="left"
         >
-          <div style={{ color: value.color }}>
+          <Box sx={{ color: value.color }}>
             {value.name} {value.amount}
-          </div>
+          </Box>
         </Tooltip>
       );
     },
