@@ -1,40 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import { columnDefs } from "../../Logic/GridTableColumns";
-import {
-  ClassScore,
-  getRecessives,
-  GrowthScore,
-  TrainStat,
-} from "../../Logic/HeroBase";
 import HeroDetails from "../Modal/HeroDetails";
-import { Box, Grid, useTheme } from "@mui/material";
-export default function Table({ update, specialColumns }) {
+import { Grid } from "@mui/material";
+export default function Table({
+  heroes,
+  columns,
+  visibilityChanged,
+  columnVisibilityModel,
+}) {
   const [pageSize, setPageSize] = useState(100);
   const [page, setPage] = useState(0);
   const rowsPerPageOptions = [5, 10, 15, 20, 35, 50, 75, 100];
   const [heroDetails, setHeroDetails] = useState(null);
-  const [heroes, setHeroes] = useState([]);
-  update((newHeroes, clear) => {
-    newHeroes.forEach((h) => {
-      getRecessives(h);
-      ClassScore(h);
-      GrowthScore(h);
-      TrainStat(h);
-      h.stats = { hp: h.hp };
-      h.id = h.id;
-    });
-    setHeroes((heroes) => {
-      if (clear) {
-        return newHeroes;
-      }
-      return heroes.concat(newHeroes);
-    });
-    console.log(newHeroes, heroes);
-  });
   const clickedHero = (hero) => {
     setHeroDetails((h) => hero);
   };
+  const GetVisibility = () => {
+    console.log(columnVisibilityModel)
+    return columnVisibilityModel;
+  }
   return (
     <Grid
       container
@@ -47,8 +31,12 @@ export default function Table({ update, specialColumns }) {
           bgcolor={"background.paper"}
           density="compact"
           rows={heroes}
-          columns={columnDefs}
+          columns={columns}
           autoHeight={true}
+          columnVisibilityModel={GetVisibility()}
+          onColumnVisibilityModelChange={(visibilityModel) => {
+            visibilityChanged(visibilityModel);
+          }}
           onSortModelChange={() => setPage(0)}
           onRowClick={({ row }) => {
             clickedHero(row);

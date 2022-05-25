@@ -8,19 +8,34 @@ const themeDark = {
           color: #90caf9;
         }
         .common {
-          border: 1px solid rgba(128, 128, 148, 1);
+          border-bottom: 2px solid rgba(128, 128, 148, 1);
+        }
+        .commonBg {
+          background-color: rgba(128, 128, 148, 1);
         }
         .uncommon {
           border: 1px solid #66bb6a;
         }
+        .uncommonBg {
+          background-color: #66bb6a;
+        }
         .rare {
           border: 1px solid #90caf9;
+        }
+        .rareBg {
+          background-color: #90caf9;
         }
         .legendary {
           border: 1px solid #ff9a02;
         }
+        .legendaryBg {
+          background-color: #ff9a02;
+        }
         .mythic {
           border: 1px solid #b942e2;
+        }
+        .mythicBg {
+          background-color: #b942e2;
         }
         .react-dropdown-select-dropdown.react-dropdown-select-dropdown-position-bottom{
           background-color:#2d2d2d;

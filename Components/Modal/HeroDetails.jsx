@@ -1,4 +1,5 @@
 import {
+  Box,
   Dialog,
   Grid,
   Table,
@@ -42,7 +43,12 @@ export default function HeroDetails({ hero, clear }) {
   };
   return (
     <Dialog open={true} onClose={clear} fullWidth={true} maxWidth="md">
-      <Grid container justifyContent={"center"} spacing={2} bgcolor={"background.default"}>
+      <Grid
+        container
+        justifyContent={"center"}
+        spacing={2}
+        bgcolor={"background.default"}
+      >
         <Grid container item xs={12} textAlign={"center"}>
           <Grid item xs={12}>
             <Typography variant={"h5"} marginY={1}>
@@ -94,89 +100,98 @@ export default function HeroDetails({ hero, clear }) {
             </Grid>
           </Grid>
         </Grid>
-        <Grid item xs={12} textAlign={"center"}>
-          <Typography variant="h5">Stats</Typography>
+        <Grid container item sm={6} xs={12} columnSpacing={2}>
+          <Grid item xs={12} textAlign={"center"}>
+            <Typography variant="h5">Stats</Typography>
+          </Grid>
+          <Grid item xs={6} textAlign={"end"}>
+            <div>
+              <span style={{ color: getStatColor("STR") }}>STR</span>:{" "}
+              {hero.strength} (+
+              {hero.strength - classVars[hero.mainClass].base.str})
+            </div>
+            <div>
+              <span style={{ color: getStatColor("AGI") }}>AGI</span>:{" "}
+              {hero.agility} (+
+              {hero.agility - classVars[hero.mainClass].base.agi})
+            </div>
+            <div>
+              <span style={{ color: getStatColor("END") }}>END</span>:{" "}
+              {hero.endurance} (+
+              {hero.endurance - classVars[hero.mainClass].base.end})
+            </div>
+            <div>
+              <span style={{ color: getStatColor("WIS") }}>WIS</span>:{" "}
+              {hero.wisdom} (+
+              {hero.wisdom - classVars[hero.mainClass].base.wis})
+            </div>
+          </Grid>
+          <Grid item xs={6}>
+            <div>
+              <span style={{ color: getStatColor("DEX") }}>DEX</span>:{" "}
+              {hero.dexterity} (+
+              {hero.dexterity - classVars[hero.mainClass].base.dex})
+            </div>
+            <div>
+              <span style={{ color: getStatColor("VIT") }}>VIT</span>:{" "}
+              {hero.vitality} (+
+              {hero.vitality - classVars[hero.mainClass].base.vit})
+            </div>
+            <div>
+              <span style={{ color: getStatColor("INT") }}>INT</span>:{" "}
+              {hero.intelligence} (+
+              {hero.intelligence - classVars[hero.mainClass].base.int})
+            </div>
+            <div>
+              <span style={{ color: getStatColor("LCK") }}>LCK</span>:{" "}
+              {hero.luck} (+
+              {hero.luck - classVars[hero.mainClass].base.lck})
+            </div>
+          </Grid>
         </Grid>
-        <Grid item xs={6} textAlign={"end"}>
-          <div>
-            <span style={{ color: getStatColor("STR") }}>STR</span>:{" "}
-            {hero.strength} (+
-            {hero.strength - classVars[hero.mainClass].base.str})
-          </div>
-          <div>
-            <span style={{ color: getStatColor("AGI") }}>AGI</span>:{" "}
-            {hero.agility} (+
-            {hero.agility - classVars[hero.mainClass].base.agi})
-          </div>
-          <div>
-            <span style={{ color: getStatColor("END") }}>END</span>:{" "}
-            {hero.endurance} (+
-            {hero.endurance - classVars[hero.mainClass].base.end})
-          </div>
-          <div>
-            <span style={{ color: getStatColor("WIS") }}>WIS</span>:{" "}
-            {hero.wisdom} (+
-            {hero.wisdom - classVars[hero.mainClass].base.wis})
-          </div>
-        </Grid>
-        <Grid item xs={6}>
-          <div>
-            <span style={{ color: getStatColor("DEX") }}>DEX</span>:{" "}
-            {hero.dexterity} (+
-            {hero.dexterity - classVars[hero.mainClass].base.dex})
-          </div>
-          <div>
-            <span style={{ color: getStatColor("VIT") }}>VIT</span>:{" "}
-            {hero.vitality} (+
-            {hero.vitality - classVars[hero.mainClass].base.vit})
-          </div>
-          <div>
-            <span style={{ color: getStatColor("INT") }}>INT</span>:{" "}
-            {hero.intelligence} (+
-            {hero.intelligence - classVars[hero.mainClass].base.int})
-          </div>
-          <div>
-            <span style={{ color: getStatColor("LCK") }}>LCK</span>: {hero.luck}{" "}
-            (+
-            {hero.luck - classVars[hero.mainClass].base.lck})
-          </div>
-        </Grid>
-        <Grid item xs={12}>
-          <Typography variant="h5" textAlign={"center"}>
-            Professions
-          </Typography>
-        </Grid>
-        <Grid item xs={6} textAlign={"end"}>
-          <div>
-            <span style={{ color: getProfessionColor("mining") }}>Mining</span>:{" "}
-            {hero.mining / 10}
-          </div>
-          <div>
-            <span style={{ color: getProfessionColor("foraging") }}>
-              Foraging
-            </span>
-            : {hero.foraging / 10}
-          </div>
-        </Grid>
-        <Grid item xs={6}>
-          <div>
-            <span style={{ color: getProfessionColor("gardening") }}>
-              Gardening
-            </span>
-            : {hero.gardening / 10}
-          </div>
-          <div>
-            <span style={{ color: getProfessionColor("fishing") }}>
-              Fishing
-            </span>
-            : {hero.fishing / 10}
-          </div>
+        <Grid container item sm={6} xs={12} columnSpacing={2}>
+          <Grid item xs={12}>
+            <Typography variant="h5" textAlign={"center"}>
+              Professions
+            </Typography>
+          </Grid>
+          <Grid item xs={6} textAlign={"end"}>
+            <div>
+              <span style={{ color: getProfessionColor("mining") }}>
+                Mining
+              </span>
+              : {hero.mining / 10}
+            </div>
+            <div>
+              <span style={{ color: getProfessionColor("foraging") }}>
+                Foraging
+              </span>
+              : {hero.foraging / 10}
+            </div>
+          </Grid>
+          <Grid item xs={6}>
+            <div>
+              <span style={{ color: getProfessionColor("gardening") }}>
+                Gardening
+              </span>
+              : {hero.gardening / 10}
+            </div>
+            <div>
+              <span style={{ color: getProfessionColor("fishing") }}>
+                Fishing
+              </span>
+              : {hero.fishing / 10}
+            </div>
+          </Grid>
         </Grid>
         <Grid item xs={6} textAlign={"end"}>
           Class Score: <ClassScoreCell>{hero}</ClassScoreCell>
         </Grid>
         <Grid item xs={6}>
-          Growth Score: <GrowthScoreCell>{hero}</GrowthScoreCell>
+          Growth Score:
+          <Box maxWidth={50}>
+            <GrowthScoreCell>{hero}</GrowthScoreCell>
+          </Box>
         </Grid>
         <Grid item xs={12}>
           <Typography variant={"h5"} textAlign={"center"}>

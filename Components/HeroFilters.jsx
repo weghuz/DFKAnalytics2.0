@@ -261,8 +261,6 @@ const HeroFilters = function HeroFilters({ includeSalePrice, visible }) {
       }
     }
     if (idInput.length > 0) {
-      console.log(idInput);
-
       if (idInput.length > 0) {
         console.log(idInput);
         let splitIds = idInput.split(/,| |\n/);
@@ -392,306 +390,400 @@ const HeroFilters = function HeroFilters({ includeSalePrice, visible }) {
     setIdInput("");
   };
   return (
-    <Container sx={{ display: `${visible ? "none" : "inherit"}` }}>
-      <Grid
-        container
-        item
-        marginY={1}
-        justifyContent="center"
-        columnSpacing={2}
-      >
-        <Grid item>
-          <Button
-            variant="contained"
-            color={section == "Main" ? "primary" : "secondary"}
-            onClick={() => setSection("Main")}
+    <>
+      {visible && (
+        <Container>
+          <Grid
+            container
+            item
+            marginY={1}
+            justifyContent="center"
+            columnSpacing={2}
           >
-            Main
-          </Button>
-        </Grid>
-        <Grid item>
-          <Button
-            variant="contained"
-            color={section == "Cosmetic" ? "primary" : "secondary"}
-            onClick={() => setSection("Cosmetic")}
-          >
-            Cosmetic
-          </Button>
-        </Grid>
-      </Grid>
-      {section == "Cosmetic" && (
-        <Grid container columnSpacing={3}>
-          {fFName.length == 0 && (
-            <SelectItem
-              title="Male First Names"
-              values={mFName}
-              setValues={setMFName}
-            >
-              {maleFirstNames.map((n, i) => {
-                return { value: i, label: n };
-              })}
-            </SelectItem>
-          )}
-          {mFName.length == 0 && (
-            <SelectItem
-              title="Female First Names"
-              values={fFName}
-              setValues={setFFName}
-            >
-              {femaleFirstNames.map((n, i) => {
-                return { value: i, label: n };
-              })}
-            </SelectItem>
-          )}
-          <SelectItem title="Last Name" values={lName} setValues={setLName}>
-            {lastNames.map((n, i) => {
-              return { value: i, label: n };
-            })}
-          </SelectItem>
-        </Grid>
-      )}
-      {section == "Main" && (
-        <Grid container columnSpacing={3} rowSpacing={1}>
-          {includeSalePrice && (
-            <SelectItemSingle
-              title="I want to ... heroes"
-              clearable={false}
-              values={target}
-              setValues={setTarget}
-            >
-              {Targets}
-            </SelectItemSingle>
-          )}
-          <SelectItem title="Class" values={mainClass} setValues={setMainClass}>
-            {DFKBase.Classes}
-          </SelectItem>
-          <SelectItem
-            title="Subclass"
-            values={subClass}
-            setValues={setSubClass}
-          >
-            {DFKBase.Classes}
-          </SelectItem>
-          <SelectItem
-            title="Profession"
-            values={professions}
-            setValues={setProfessions}
-          >
-            {DFKBase.Professions}
-          </SelectItem>
-          <SelectItemSingle
-            title="PJ Status"
-            values={PJ}
-            setValues={setPJ}
-            clearable={true}
-          >
-            {DFKBase.PJSurvivor}
-          </SelectItemSingle>
-          <SelectItem title="Active 1" values={active1} setValues={setActive1}>
-            {Skills}
-          </SelectItem>
-          <SelectItem title="Active 2" values={active2} setValues={setActive2}>
-            {Skills}
-          </SelectItem>
-          <SelectItem
-            title="Passive 1"
-            values={Passive1}
-            setValues={setPassive1}
-          >
-            {Skills}
-          </SelectItem>
-          <SelectItem
-            title="Passive 2"
-            values={Passive2}
-            setValues={setPassive2}
-          >
-            {Skills}
-          </SelectItem>
-          <SelectItem
-            title="+2 Stats"
-            color="#11BB11"
-            values={SB1}
-            setValues={setSB1}
-          >
-            {DFKBase.StatBoosts}
-          </SelectItem>
-          <SelectItem
-            title="2%/4% Growth"
-            color="#0055FF"
-            values={SB2}
-            setValues={setSB2}
-          >
-            {DFKBase.StatBoosts}
-          </SelectItem>
-          <RaritySlider
-            setQueryRarity={setRarity}
-            clear={(clearFunc) => (clearRarity.current = clearFunc)}
-          />
-          <NumberSlider
-            title={"Generation"}
-            clear={(clearFunc) => (clearGeneration.current = clearFunc)}
-            min={0}
-            max={14}
-            callback={(val) => setGeneration(val)}
-            marks={[
-              { value: 0, label: <div style={{ fontSize: "11px" }}>0</div> },
-              { value: 1, label: <div style={{ fontSize: "11px" }}>1</div> },
-              { value: 2, label: <div style={{ fontSize: "11px" }}>2</div> },
-              { value: 3, label: <div style={{ fontSize: "11px" }}>3</div> },
-              { value: 4, label: <div style={{ fontSize: "11px" }}>4</div> },
-              { value: 5, label: <div style={{ fontSize: "11px" }}>5</div> },
-              { value: 6, label: <div style={{ fontSize: "11px" }}>6</div> },
-              { value: 7, label: <div style={{ fontSize: "11px" }}>7</div> },
-              { value: 8, label: <div style={{ fontSize: "11px" }}>8</div> },
-              { value: 9, label: <div style={{ fontSize: "11px" }}>9</div> },
-              { value: 10, label: <div style={{ fontSize: "11px" }}>10</div> },
-              { value: 11, label: <div style={{ fontSize: "11px" }}>11</div> },
-              { value: 12, label: <div style={{ fontSize: "11px" }}>12</div> },
-              { value: 13, label: <div style={{ fontSize: "11px" }}>13</div> },
-              { value: 14, label: <div style={{ fontSize: "11px" }}>14</div> },
-            ]}
-          />
-          <NumberSlider
-            title={"Summons"}
-            clear={(clearFunc) => (clearSummons.current = clearFunc)}
-            min={0}
-            max={10}
-            callback={(val) => setSummons(val)}
-            marks={[
-              { value: 0, label: <div style={{ fontSize: "11px" }}>0</div> },
-              { value: 1, label: <div style={{ fontSize: "11px" }}>1</div> },
-              { value: 2, label: <div style={{ fontSize: "11px" }}>2</div> },
-              { value: 3, label: <div style={{ fontSize: "11px" }}>3</div> },
-              { value: 4, label: <div style={{ fontSize: "11px" }}>4</div> },
-              { value: 5, label: <div style={{ fontSize: "11px" }}>5</div> },
-              { value: 6, label: <div style={{ fontSize: "11px" }}>6</div> },
-              { value: 7, label: <div style={{ fontSize: "11px" }}>7</div> },
-              { value: 8, label: <div style={{ fontSize: "11px" }}>8</div> },
-              { value: 9, label: <div style={{ fontSize: "11px" }}>9</div> },
-              { value: 10, label: <div style={{ fontSize: "11px" }}>10</div> },
-            ]}
-          />
-          <NumberSlider
-            title={"Level"}
-            clear={(clearFunc) => (clearLevel.current = clearFunc)}
-            marks={[
-              { value: 0, label: 0 },
-              { value: 25, label: 25 },
-              { value: 50, label: 50 },
-              { value: 75, label: 75 },
-              { value: 100, label: 100 },
-            ]}
-            min={0}
-            max={100}
-            callback={(val) => setLevel(val)}
-          />
-          {includeSalePrice && (
-            <>
-              <Grid item xs={12} sm={6} md={4} xl={3}>
-                <InputLabel htmlFor="minPrice" className="text-white">
-                  Min Price
-                </InputLabel>
-                <Input
-                  placeholder="0"
-                  value={minSalePrice}
-                  id="minPrice"
-                  onChange={(e) => setMinSalePrice(e.target.value)}
-                  onBlur={(e) => startUpdateTimer()}
-                  sx={{ width: "100%" }}
-                  type="number"
-                  startAdornment={
-                    <InputAdornment position="start" sx={{ width: "30px" }}>
-                      <Image
-                        src={Jewel}
-                        alt="Jewel"
-                        width={24}
-                        height={24}
-                      ></Image>
-                    </InputAdornment>
-                  }
-                ></Input>
-              </Grid>
-              <Grid item xs={12} sm={6} md={4} xl={3}>
-                <InputLabel htmlFor="minPrice" className="text-white">
-                  Max Price
-                </InputLabel>
-                <Input
-                  placeholder="9999999"
-                  value={maxSalePrice}
-                  id="maxPrice"
-                  onChange={(e) => setMaxSalePrice(e.target.value)}
-                  onBlur={(e) => startUpdateTimer()}
-                  sx={{ width: "100%" }}
-                  type="number"
-                  startAdornment={
-                    <InputAdornment position="start" sx={{ width: "30px" }}>
-                      <Image
-                        src={Jewel}
-                        alt="Jewel"
-                        width={24}
-                        height={24}
-                      ></Image>
-                    </InputAdornment>
-                  }
-                ></Input>
-              </Grid>
-            </>
-          )}
-          <Grid item xs={12} sm={6} md={4} xl={3}>
-            <FormControlLabel
-              control={<Checkbox />}
-              label="Auto Update"
-              checked={autoUpdate}
-              onChange={(e) => {
-                setAutoUpdate(e.target.checked);
-              }}
-            />
+            <Grid item>
+              <Button
+                variant="contained"
+                color={section == "Main" ? "primary" : "secondary"}
+                onClick={() => setSection("Main")}
+              >
+                Main
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button
+                variant="contained"
+                color={section == "Cosmetic" ? "primary" : "secondary"}
+                onClick={() => setSection("Cosmetic")}
+              >
+                Cosmetic
+              </Button>
+            </Grid>
           </Grid>
-          <IdInput
-            value={idInput}
-            setValue={(val) => {
-              setIdInput(val);
-              setTarget([Targets[0]]);
-            }}
-          />
-        </Grid>
+          {section == "Cosmetic" && (
+            <Grid container columnSpacing={2}>
+              {fFName.length == 0 && (
+                <SelectItem
+                  title="Male First Names"
+                  values={mFName}
+                  setValues={setMFName}
+                >
+                  {maleFirstNames.map((n, i) => {
+                    return { value: i, label: n };
+                  })}
+                </SelectItem>
+              )}
+              {mFName.length == 0 && (
+                <SelectItem
+                  title="Female First Names"
+                  values={fFName}
+                  setValues={setFFName}
+                >
+                  {femaleFirstNames.map((n, i) => {
+                    return { value: i, label: n };
+                  })}
+                </SelectItem>
+              )}
+              <SelectItem title="Last Name" values={lName} setValues={setLName}>
+                {lastNames.map((n, i) => {
+                  return { value: i, label: n };
+                })}
+              </SelectItem>
+            </Grid>
+          )}
+          {section == "Main" && (
+            <Grid container columnSpacing={3}>
+              {includeSalePrice && (
+                <SelectItemSingle
+                  title="I want to ... heroes"
+                  clearable={false}
+                  values={target}
+                  setValues={setTarget}
+                >
+                  {Targets}
+                </SelectItemSingle>
+              )}
+              <SelectItem
+                title="Class"
+                values={mainClass}
+                setValues={setMainClass}
+              >
+                {DFKBase.Classes}
+              </SelectItem>
+              <SelectItem
+                title="Subclass"
+                values={subClass}
+                setValues={setSubClass}
+              >
+                {DFKBase.Classes}
+              </SelectItem>
+              <SelectItem
+                title="Profession"
+                values={professions}
+                setValues={setProfessions}
+              >
+                {DFKBase.Professions}
+              </SelectItem>
+              <SelectItemSingle
+                title="PJ Status"
+                values={PJ}
+                setValues={setPJ}
+                clearable={true}
+              >
+                {DFKBase.PJSurvivor}
+              </SelectItemSingle>
+              <SelectItem
+                title="Active 1"
+                values={active1}
+                setValues={setActive1}
+              >
+                {Skills}
+              </SelectItem>
+              <SelectItem
+                title="Active 2"
+                values={active2}
+                setValues={setActive2}
+              >
+                {Skills}
+              </SelectItem>
+              <SelectItem
+                title="Passive 1"
+                values={Passive1}
+                setValues={setPassive1}
+              >
+                {Skills}
+              </SelectItem>
+              <SelectItem
+                title="Passive 2"
+                values={Passive2}
+                setValues={setPassive2}
+              >
+                {Skills}
+              </SelectItem>
+              <SelectItem
+                title="+2 Stats"
+                color="#11BB11"
+                values={SB1}
+                setValues={setSB1}
+              >
+                {DFKBase.StatBoosts}
+              </SelectItem>
+              <SelectItem
+                title="2%/4% Growth"
+                color="#0055FF"
+                values={SB2}
+                setValues={setSB2}
+              >
+                {DFKBase.StatBoosts}
+              </SelectItem>
+              <RaritySlider
+                setQueryRarity={setRarity}
+                clear={(clearFunc) => (clearRarity.current = clearFunc)}
+              />
+              <NumberSlider
+                title={"Generation"}
+                clear={(clearFunc) => (clearGeneration.current = clearFunc)}
+                min={0}
+                max={14}
+                callback={(val) => setGeneration(val)}
+                marks={[
+                  {
+                    value: 0,
+                    label: <div style={{ fontSize: "11px" }}>0</div>,
+                  },
+                  {
+                    value: 1,
+                    label: <div style={{ fontSize: "11px" }}>1</div>,
+                  },
+                  {
+                    value: 2,
+                    label: <div style={{ fontSize: "11px" }}>2</div>,
+                  },
+                  {
+                    value: 3,
+                    label: <div style={{ fontSize: "11px" }}>3</div>,
+                  },
+                  {
+                    value: 4,
+                    label: <div style={{ fontSize: "11px" }}>4</div>,
+                  },
+                  {
+                    value: 5,
+                    label: <div style={{ fontSize: "11px" }}>5</div>,
+                  },
+                  {
+                    value: 6,
+                    label: <div style={{ fontSize: "11px" }}>6</div>,
+                  },
+                  {
+                    value: 7,
+                    label: <div style={{ fontSize: "11px" }}>7</div>,
+                  },
+                  {
+                    value: 8,
+                    label: <div style={{ fontSize: "11px" }}>8</div>,
+                  },
+                  {
+                    value: 9,
+                    label: <div style={{ fontSize: "11px" }}>9</div>,
+                  },
+                  {
+                    value: 10,
+                    label: <div style={{ fontSize: "11px" }}>10</div>,
+                  },
+                  {
+                    value: 11,
+                    label: <div style={{ fontSize: "11px" }}>11</div>,
+                  },
+                  {
+                    value: 12,
+                    label: <div style={{ fontSize: "11px" }}>12</div>,
+                  },
+                  {
+                    value: 13,
+                    label: <div style={{ fontSize: "11px" }}>13</div>,
+                  },
+                  {
+                    value: 14,
+                    label: <div style={{ fontSize: "11px" }}>14</div>,
+                  },
+                ]}
+              />
+              <NumberSlider
+                title={"Summons"}
+                clear={(clearFunc) => (clearSummons.current = clearFunc)}
+                min={0}
+                max={10}
+                callback={(val) => setSummons(val)}
+                marks={[
+                  {
+                    value: 0,
+                    label: <div style={{ fontSize: "11px" }}>0</div>,
+                  },
+                  {
+                    value: 1,
+                    label: <div style={{ fontSize: "11px" }}>1</div>,
+                  },
+                  {
+                    value: 2,
+                    label: <div style={{ fontSize: "11px" }}>2</div>,
+                  },
+                  {
+                    value: 3,
+                    label: <div style={{ fontSize: "11px" }}>3</div>,
+                  },
+                  {
+                    value: 4,
+                    label: <div style={{ fontSize: "11px" }}>4</div>,
+                  },
+                  {
+                    value: 5,
+                    label: <div style={{ fontSize: "11px" }}>5</div>,
+                  },
+                  {
+                    value: 6,
+                    label: <div style={{ fontSize: "11px" }}>6</div>,
+                  },
+                  {
+                    value: 7,
+                    label: <div style={{ fontSize: "11px" }}>7</div>,
+                  },
+                  {
+                    value: 8,
+                    label: <div style={{ fontSize: "11px" }}>8</div>,
+                  },
+                  {
+                    value: 9,
+                    label: <div style={{ fontSize: "11px" }}>9</div>,
+                  },
+                  {
+                    value: 10,
+                    label: <div style={{ fontSize: "11px" }}>10</div>,
+                  },
+                ]}
+              />
+              <NumberSlider
+                title={"Level"}
+                clear={(clearFunc) => (clearLevel.current = clearFunc)}
+                marks={[
+                  { value: 0, label: 0 },
+                  { value: 25, label: 25 },
+                  { value: 50, label: 50 },
+                  { value: 75, label: 75 },
+                  { value: 100, label: 100 },
+                ]}
+                min={0}
+                max={100}
+                callback={(val) => setLevel(val)}
+              />
+              {includeSalePrice && (
+                <>
+                  <Grid item xs={12} sm={6} md={4} xl={3}>
+                    <InputLabel htmlFor="minPrice" className="text-white">
+                      Min Price
+                    </InputLabel>
+                    <Input
+                      placeholder="0"
+                      value={minSalePrice}
+                      id="minPrice"
+                      onChange={(e) => setMinSalePrice(e.target.value)}
+                      onBlur={(e) => startUpdateTimer()}
+                      sx={{ width: "100%" }}
+                      type="number"
+                      startAdornment={
+                        <InputAdornment position="start" sx={{ width: "30px" }}>
+                          <Image
+                            src={Jewel}
+                            alt="Jewel"
+                            width={24}
+                            height={24}
+                          ></Image>
+                        </InputAdornment>
+                      }
+                    ></Input>
+                  </Grid>
+                  <Grid item xs={12} sm={6} md={4} xl={3}>
+                    <InputLabel htmlFor="minPrice" className="text-white">
+                      Max Price
+                    </InputLabel>
+                    <Input
+                      placeholder="9999999"
+                      value={maxSalePrice}
+                      id="maxPrice"
+                      onChange={(e) => setMaxSalePrice(e.target.value)}
+                      onBlur={(e) => startUpdateTimer()}
+                      sx={{ width: "100%" }}
+                      type="number"
+                      startAdornment={
+                        <InputAdornment position="start" sx={{ width: "30px" }}>
+                          <Image
+                            src={Jewel}
+                            alt="Jewel"
+                            width={24}
+                            height={24}
+                          ></Image>
+                        </InputAdornment>
+                      }
+                    ></Input>
+                  </Grid>
+                </>
+              )}
+              <Grid item xs={12} sm={6} md={4} xl={3}>
+                <FormControlLabel
+                  control={<Checkbox />}
+                  label="Auto Update"
+                  checked={autoUpdate}
+                  onChange={(e) => {
+                    setAutoUpdate(e.target.checked);
+                  }}
+                />
+              </Grid>
+              <IdInput
+                value={idInput}
+                setValue={(val) => {
+                  setIdInput(val);
+                  setTarget([Targets[0]]);
+                }}
+              />
+            </Grid>
+          )}
+          <Grid
+            container
+            item
+            columnSpacing={2}
+            marginY={1}
+            justifyContent={"center"}
+          >
+            <Grid item>
+              <Button
+                variant="contained"
+                color="success"
+                onClick={() => UpdateQuery(true)}
+              >
+                Search
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button
+                sx={{ marginLeft: ".5rem" }}
+                variant="contained"
+                color="secondary"
+                onClick={ClearFilters}
+              >
+                Clear Filters
+              </Button>
+            </Grid>
+          </Grid>
+          <Typography
+            variant="h5"
+            marginY={1}
+            color={theme.palette.success.main}
+            align="center"
+          >
+            {countdown > 0 ? `Autoupdating in ${countdown}` : ""}
+          </Typography>
+        </Container>
       )}
-      <Grid
-        container
-        item
-        columnSpacing={2}
-        marginY={1}
-        justifyContent={"center"}
-      >
-        <Grid item>
-          <Button
-            variant="contained"
-            color="success"
-            onClick={() => UpdateQuery(true)}
-          >
-            Search
-          </Button>
-        </Grid>
-        <Grid item>
-          <Button
-            sx={{ marginLeft: ".5rem" }}
-            variant="contained"
-            color="secondary"
-            onClick={ClearFilters}
-          >
-            Clear Filters
-          </Button>
-        </Grid>
-      </Grid>
-      <Typography
-        variant="h5"
-        marginY={1}
-        color={theme.palette.success.main}
-        align="center"
-      >
-        {countdown > 0 ? `Autoupdating in ${countdown}` : ""}
-      </Typography>
-    </Container>
+    </>
   );
 };
 HeroFilters.defaultProps = {

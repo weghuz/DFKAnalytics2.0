@@ -5,13 +5,16 @@ import MetaMask from "../Components/Wallet/MetaMask";
 import RequestContext from "../Context/Context";
 import { base, heroData } from "../Logic/Query";
 import HeroTable from "../Components/Table/HeroTable";
+import { useAuctions } from "../Store/Store.js";
+import { columnDefs } from "../Logic/GridTableColumns";
 
 export default function Auctions() {
-  // const hideFilters = useFilterState(state => state.hideFilters)
-  // const toggleFilters = useFilterState(state => state.toggleFilters)
+  const visibilityModel = useAuctions((state) => state.visibilityModel);
+  const setVisibilityModel = useAuctions((state) => state.setVisibilityModel);
+  const heroes = useAuctions((state) => state.heroes);
+  const setHeroes = useAuctions((state) => state.setHeroes);
   const [first, setFirst] = useState(100);
   const [skip, setSkip] = useState(0);
-  const updateHeroes = useRef();
   const lastRequest = useRef();
   const requestContext = useContext(RequestContext);
   console.log(
@@ -57,7 +60,7 @@ export default function Auctions() {
           setSkip((s) => s + first);
           setFirst((f) => 1000);
         }
-        updateHeroes.current(
+        setHeroes(
           data.saleAuctions.map((a) => {
             a.tokenId.purchasePrice = a.purchasePrice;
             a.tokenId.heroId = a.tokenId.id;
@@ -76,10 +79,20 @@ export default function Auctions() {
     }
     console.log("Clear Search");
     lastRequest.current = requestContext.query.query;
-    updateHeroes.current([], true);
+    setHeroes([], true);
     setSkip((s) => 0);
     setFirst((f) => 100);
   });
+  useEffect(() => {
+    let columnsVisibilityModel = JSON.parse(
+      localStorage.getItem("AuctionsColumnVisiblityModel")
+    );
+    console.log(columnsVisibilityModel);
+    if (columnsVisibilityModel !== null) {
+      setVisibilityModel(columnsVisibilityModel);
+    }
+    console.log(visibilityModel);
+  }, []);
   return (
     <>
       <Grid container marginBottom={1} spacing={1}>
@@ -109,7 +122,12 @@ export default function Auctions() {
       {result.isLoading && (
         <LinearProgress style={{ height: 10, margin: "5px 50px" }} />
       )}
-      <HeroTable update={(updateFunc) => (updateHeroes.current = updateFunc)} />
+      <HeroTable
+        heroes={heroes}
+        columns={columnDefs}
+        columnVisibilityModel={visibilityModel}
+        visibilityChanged={setVisibilityModel}
+      />
     </>
   );
 }

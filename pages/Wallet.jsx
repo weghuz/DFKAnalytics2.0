@@ -6,14 +6,18 @@ import { base, heroData } from "../Logic/Query";
 import RequestContext from "../Context/Context";
 import MetaMask from "../Components/Wallet/MetaMask";
 import { Button, Grid, LinearProgress } from "@mui/material";
-import useFilterState from "../Store/Store";
+import { useWallet } from "../Store/Store";
+import { columnDefs } from "../Logic/GridTableColumns";
 
 export default function Wallet() {
-  const hideFilters = useFilterState(state => state.hideFilters)
-  const toggleFilters = useFilterState(state => state.toggleFilters)
+  const hideFilters = useWallet((state) => state.hideFilters);
+  const toggleFilters = useWallet((state) => state.toggleFilters);
+  const visibilityModel = useWallet((state) => state.visibilityModel);
+  const setVisibilityModel = useWallet((state) => state.setVisibilityModel);
+  const heroes = useWallet((state) => state.heroes);
+  const setHeroes = useWallet((state) => state.setHeroes);
   const [first, setFirst] = useState(100);
   const [skip, setSkip] = useState(0);
-  const updateHeroes = useRef();
   const lastRequest = useRef();
   const requestContext = useContext(RequestContext);
   console.log(
@@ -71,7 +75,7 @@ export default function Wallet() {
           setSkip((s) => s + first);
           setFirst((f) => 1000);
         }
-        updateHeroes.current(data.heroes, false);
+        setHeroes(data.heroes, false);
       },
     }
   );
@@ -87,13 +91,35 @@ export default function Wallet() {
     console.log("Clear Search");
     lastRequest.current =
       requestContext.query.query + requestContext.query.wallet;
-    updateHeroes.current([], true);
+    setHeroes([], true);
     setSkip((s) => 0);
     setFirst((f) => 100);
   });
+  useEffect(() => {
+    let filterVisible = JSON.parse(
+      localStorage.getItem("WalletHeroFilterVisible")
+    );
+    let columnsVisibilityModel = JSON.parse(
+      localStorage.getItem("WalletColumnVisiblityModel")
+    );
+    console.log(columnsVisibilityModel);
+    if (columnsVisibilityModel !== null) {
+      setVisibilityModel(columnsVisibilityModel);
+    }
+    console.log(visibilityModel);
+    if (hideFilters != filterVisible && filterVisible !== null) {
+      console.log(hideFilters, filterVisible);
+      toggleFilters();
+    }
+  }, []);
   return (
     <>
-      <Grid container columnSpacing={2} marginBottom={1} justifyContent="center">
+      <Grid
+        container
+        columnSpacing={2}
+        marginBottom={1}
+        justifyContent="center"
+      >
         <Grid item>
           <MetaMask />
         </Grid>
@@ -115,7 +141,12 @@ export default function Wallet() {
       {result.isLoading && (
         <LinearProgress style={{ height: 10, margin: "5px 50px" }} />
       )}
-      <HeroTable update={(updateFunc) => (updateHeroes.current = updateFunc)} />
+      <HeroTable
+        heroes={heroes}
+        columns={columnDefs}
+        visibilityChanged={setVisibilityModel}
+        columnVisibilityModel={visibilityModel}
+      />
     </>
   );
 }

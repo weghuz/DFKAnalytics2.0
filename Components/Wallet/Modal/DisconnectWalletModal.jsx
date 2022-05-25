@@ -9,7 +9,7 @@ export default function DisconnectWalletModal({
   disconnectWalletCallback,
 }) {
   return (
-    <Dialog Title="Why connect?" open={true} onClose={closeModalFunction}>
+    <Dialog open={true} onClose={closeModalFunction}>
       <Container>
         <Grid container spacing={2}>
           <Grid item>

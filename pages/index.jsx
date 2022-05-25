@@ -6,23 +6,28 @@ import { base, heroData } from "../Logic/Query";
 import RequestContext from "../Context/Context";
 import { Button, LinearProgress } from "@mui/material";
 import Grid from "@mui/material/Grid";
-import useFilterState from "../Store/Store";
-
+import { useIndex } from "../Store/Store";
+import { columnDefs } from "../Logic/GridTableColumns";
 export default function Home() {
-  const hideFilters = useFilterState(state => state.hideFilters)
-  const toggleFilters = useFilterState(state => state.toggleFilters)
+  const hideFilters = useIndex((state) => state.hideFilters);
+  const toggleFilters = useIndex((state) => state.toggleFilters);
+  const visibilityModel = useIndex((state) => state.visibilityModel);
+  const setVisibilityModel = useIndex(
+    (state) => state.setVisibilityModel
+  );
+  const heroes = useIndex((state) => state.heroes);
+  const setHeroes = useIndex((state) => state.setHeroes);
   const [first, setFirst] = useState(100);
   const [skip, setSkip] = useState(0);
-  const updateHeroes = useRef();
   const lastRequest = useRef();
   const requestContext = useContext(RequestContext);
-  console.log(
-    `{heroes(first:${first},skip:${skip},${
-      requestContext.query.query.length > 0
-        ? `where: {${requestContext.query.query}`
-        : ``
-    }){${heroData}}}`
-  );
+  // console.log(
+  //   `{heroes(first:${first},skip:${skip},${
+  //     requestContext.query.query.length > 0
+  //       ? `where: {${requestContext.query.query}`
+  //       : ``
+  //   }){${heroData}}}`
+  // );
   const testRequest = async () => {
     return fetch(base, {
       method: "POST",
@@ -38,6 +43,7 @@ export default function Home() {
       }),
     });
   };
+
   const result = useQuery(
     ["request", requestContext.query.query + first + skip],
     async () => {
@@ -61,7 +67,7 @@ export default function Home() {
           setSkip((s) => s + first);
           setFirst((f) => 1000);
         }
-        updateHeroes.current(data.heroes, false);
+        setHeroes(data.heroes, false);
       },
     }
   );
@@ -70,12 +76,29 @@ export default function Home() {
       console.log("Didn't clear search");
       return;
     }
-    console.log("Clear Search");
+    // console.log("Clear Search");
     lastRequest.current = requestContext.query.query;
-    updateHeroes.current([], true);
+    setHeroes([], true);
     setSkip((s) => 0);
     setFirst((f) => 100);
   });
+  useEffect(() => {
+    let filterVisible = JSON.parse(
+      localStorage.getItem("IndexHeroFilterVisible")
+    );
+    let columnsVisibilityModel = JSON.parse(
+      localStorage.getItem("IndexColumnVisiblityModel")
+    );
+    console.log(columnsVisibilityModel);
+    if (columnsVisibilityModel !== null) {
+      setVisibilityModel(columnsVisibilityModel);
+    }
+    console.log(visibilityModel);
+    if (hideFilters != filterVisible && filterVisible !== null) {
+      console.log(hideFilters, filterVisible);
+      toggleFilters();
+    }
+  }, []);
   return (
     <>
       <Grid container justifyContent="center" marginBottom={1}>
@@ -97,7 +120,12 @@ export default function Home() {
       {result.isLoading && (
         <LinearProgress style={{ height: 10, margin: "5px 50px" }} />
       )}
-      <HeroTable update={(updateFunc) => (updateHeroes.current = updateFunc)} />
+      <HeroTable
+        heroes={heroes}
+        columns={columnDefs}
+        visibilityChanged={setVisibilityModel}
+        columnVisibilityModel={visibilityModel}
+      />
     </>
   );
 }
