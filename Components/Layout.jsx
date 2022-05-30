@@ -2,22 +2,27 @@ import React from "react";
 import Head from "next/head";
 import Footer from "./Footer/Footer";
 import Navbar from "./Navbar/Navbar";
+import { Box } from "@mui/material";
 
 export default function Layout({ children, Title }) {
   const getTitle = () => {
-    if(typeof window !== "undefined")
-    {
-      switch(window.location.pathname)
-      {
-        case "/": return "DFKAnalytics";
-        case "/Auctions": return "DFKA - Auctions";
-        case "/Wallet": return "DFKA - Wallet";
-        case "/Resources": return "DFKA - Resources";
-        case "/About": return "DFKA - About";
-        default: "DFKAnalytics";
+    if (typeof window !== "undefined") {
+      switch (window.location.pathname) {
+        case "/":
+          return "DFKAnalytics";
+        case "/Auctions":
+          return "DFKA - Auctions";
+        case "/Wallet":
+          return "DFKA - Wallet";
+        case "/Resources":
+          return "DFKA - Resources";
+        case "/About":
+          return "DFKA - About";
+        default:
+          "DFKAnalytics";
       }
     }
-  }
+  };
   return (
     <>
       <Head>
@@ -26,7 +31,7 @@ export default function Layout({ children, Title }) {
         <title>{getTitle()}</title>
       </Head>
       <Navbar />
-      {children}
+      <Box minHeight={800}>{children}</Box>
       <Footer />
       <div id="modalContainer" />
     </>

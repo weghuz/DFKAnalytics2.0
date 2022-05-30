@@ -1,24 +1,19 @@
 import React, { useEffect, useState } from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import HeroDetails from "../Modal/HeroDetails";
 import { Grid } from "@mui/material";
-export default function Table({
-  heroes,
+export default function DFKATable({
+  rows,
   columns,
   visibilityChanged,
   columnVisibilityModel,
+  onRowClick,
 }) {
   const [pageSize, setPageSize] = useState(100);
   const [page, setPage] = useState(0);
   const rowsPerPageOptions = [5, 10, 15, 20, 35, 50, 75, 100];
-  const [heroDetails, setHeroDetails] = useState(null);
-  const clickedHero = (hero) => {
-    setHeroDetails((h) => hero);
-  };
   const GetVisibility = () => {
-    console.log(columnVisibilityModel)
     return columnVisibilityModel;
-  }
+  };
   return (
     <Grid
       container
@@ -30,7 +25,7 @@ export default function Table({
         <DataGrid
           bgcolor={"background.paper"}
           density="compact"
-          rows={heroes}
+          rows={rows}
           columns={columns}
           autoHeight={true}
           columnVisibilityModel={GetVisibility()}
@@ -39,10 +34,14 @@ export default function Table({
           }}
           onSortModelChange={() => setPage(0)}
           onRowClick={({ row }) => {
-            clickedHero(row);
+            if (onRowClick) {
+              onRowClick(row);
+            }
           }}
           getRowClassName={({ row }) => {
             switch (row.rarity) {
+              case 0:
+                return "common";
               case 1:
                 return "uncommon";
               case 2:
@@ -52,7 +51,7 @@ export default function Table({
               case 4:
                 return "mythic";
               default:
-                return "common";
+                return;
             }
           }}
           page={page}
@@ -65,9 +64,6 @@ export default function Table({
             Toolbar: GridToolbar,
           }}
         />
-        {heroDetails !== null && (
-          <HeroDetails hero={heroDetails} clear={() => setHeroDetails(null)} />
-        )}
       </Grid>
     </Grid>
   );

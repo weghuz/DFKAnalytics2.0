@@ -237,14 +237,15 @@ const HeroFilters = function HeroFilters({ includeSalePrice, visible }) {
         switch (target[0].value) {
           case "Tavern":
             query += "salePrice_gte: ";
+            query += `"${minSalePrice}000000000000000000",`;
             break;
           case "Hire":
             query += "assistingPrice_gte: ";
+            query += `"${minSalePrice}000000000000000000",`;
             break;
           case "All":
             break;
         }
-        query += `"${minSalePrice}000000000000000000",`;
       }
       if (maxSalePrice !== 9999999) {
         switch (target[0].value) {

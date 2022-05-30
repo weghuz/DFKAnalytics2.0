@@ -1,21 +1,24 @@
 import { useContext, useEffect, useRef, useState } from "react";
 import { useQuery } from "react-query";
-import HeroFilters from "../Components/HeroFilters";
-import HeroTable from "../Components/Table/HeroTable";
-import { base, heroData } from "../Logic/Query";
-import RequestContext from "../Context/Context";
-import MetaMask from "../Components/Wallet/MetaMask";
+import HeroFilters from "../../Components/HeroFilters";
+import { base, heroData } from "../../Logic/Query";
+import RequestContext from "../../Context/Context";
+import MetaMask from "../../Components/Wallet/MetaMask";
 import { Button, Grid, LinearProgress } from "@mui/material";
-import { useWallet } from "../Store/Store";
-import { columnDefs } from "../Logic/GridTableColumns";
+import { columnDefs } from "../../Logic/GridTableColumns";
+import useWallet from "../../Store/WalletHeroesStore";
+import DFKATable from "../../Components/Table/DFKATable";
+import useWalletHeroes from "../../Store/WalletHeroesStore";
 
 export default function Wallet() {
-  const hideFilters = useWallet((state) => state.hideFilters);
-  const toggleFilters = useWallet((state) => state.toggleFilters);
-  const visibilityModel = useWallet((state) => state.visibilityModel);
-  const setVisibilityModel = useWallet((state) => state.setVisibilityModel);
-  const heroes = useWallet((state) => state.heroes);
-  const setHeroes = useWallet((state) => state.setHeroes);
+  const hideFilters = useWalletHeroes((state) => state.hideFilters);
+  const toggleFilters = useWalletHeroes((state) => state.toggleFilters);
+  const visibilityModel = useWalletHeroes((state) => state.visibilityModel);
+  const setVisibilityModel = useWalletHeroes(
+    (state) => state.setVisibilityModel
+  );
+  const heroes = useWalletHeroes((state) => state.heroes);
+  const setHeroes = useWalletHeroes((state) => state.setHeroes);
   const [first, setFirst] = useState(100);
   const [skip, setSkip] = useState(0);
   const lastRequest = useRef();
@@ -132,6 +135,9 @@ export default function Wallet() {
             Filters
           </Button>
         </Grid>
+        <Grid item xs={12} textAlign={"center"}>
+          <Typography variant="h5">Your Heroes</Typography>
+        </Grid>
       </Grid>
       <HeroFilters
         onSaleDefault={false}
@@ -141,8 +147,8 @@ export default function Wallet() {
       {result.isLoading && (
         <LinearProgress style={{ height: 10, margin: "5px 50px" }} />
       )}
-      <HeroTable
-        heroes={heroes}
+      <DFKATable
+        rows={heroes}
         columns={columnDefs}
         visibilityChanged={setVisibilityModel}
         columnVisibilityModel={visibilityModel}

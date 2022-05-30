@@ -1,5 +1,4 @@
 import { Container } from "@mui/material";
-import Layout from "../Components/Layout";
 
 export default function Resources() {
   return (

@@ -4,10 +4,10 @@ import React from "react";
 import CVID from "../../public/CVID.png";
 import SDID from "../../public/SDID10.png";
 
-export default function HeroId({ children }) {
+export default function PetId({ children }) {
   return (
     <>
-      {parseInt(children) > 1000000000000 ? (
+      {children.network == "hmy" ? (
         <Tooltip
           placement="right"
           title="Crystalvale ID. Starts at 1000000000001."

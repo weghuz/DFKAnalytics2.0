@@ -3,10 +3,10 @@ import React from "react";
 
 export default function IdInput({ callback, value, setValue }) {
   return (
-    <Grid item xs={12}>
+    <Grid item xs={12} marginTop={"15px"}>
       <TextField
         variant="outlined"
-        label="Id and 0x Address Input, you can't search for hero Ids and Wallets at the same time (yet)."
+        label="Id and 0x Address Input, you can't search for Ids and Wallets at the same time (yet)."
         multiline
         value={value}
         onChange={(e) => setValue(e.target.value)}

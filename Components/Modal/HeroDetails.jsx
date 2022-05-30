@@ -184,8 +184,13 @@ export default function HeroDetails({ hero, clear }) {
             </div>
           </Grid>
         </Grid>
-        <Grid item xs={6} textAlign={"end"}>
-          Class Score: <ClassScoreCell>{hero}</ClassScoreCell>
+        <Grid container item xs={6} justifyContent={"end"}>
+          <Grid item xs={12} textAlign={"end"}>
+            Class Score:
+          </Grid>
+          <Grid item maxWidth={50}>
+            <ClassScoreCell>{hero}</ClassScoreCell>
+          </Grid>
         </Grid>
         <Grid item xs={6}>
           Growth Score:

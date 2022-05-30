@@ -912,6 +912,7 @@ let columnDefs = [
     headerName: "Previous Owner",
     field: "previousOwner",
     hide: true,
+    width: 150,
     valueGetter: ({ row }) => {
       if (row.previousOwner == null) return null;
       return row.previousOwner.name;
@@ -921,6 +922,7 @@ let columnDefs = [
     headerName: "Previous Owner Address",
     field: "previousOwnerAddress",
     hide: true,
+    width: 375,
     valueGetter: ({ row }) => {
       if (row.previousOwner == null) return null;
       return row.previousOwner.id;
@@ -930,6 +932,7 @@ let columnDefs = [
     headerName: "Owner",
     field: "owner",
     hide: true,
+    width: 150,
     valueGetter: ({ row }) => {
       if (row.owner == null) return row.owner;
       if (row.owner.id == "undefined") return null;
@@ -940,6 +943,7 @@ let columnDefs = [
     headerName: "Owner Address",
     field: "ownerAddress",
     hide: true,
+    width: 375,
     valueGetter: ({ row }) => {
       if (row.owner == null) return row.owner;
       if (row.owner.id == "undefined") return null;

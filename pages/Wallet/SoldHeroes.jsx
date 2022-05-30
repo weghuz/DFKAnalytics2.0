@@ -1,12 +1,12 @@
 import { Button, Grid, LinearProgress, Typography } from "@mui/material";
 import { useContext, useEffect, useRef, useState } from "react";
 import { useQuery } from "react-query";
-import MetaMask from "../Components/Wallet/MetaMask";
-import RequestContext from "../Context/Context";
-import { base, heroData } from "../Logic/Query";
-import HeroTable from "../Components/Table/HeroTable";
-import { useAuctions } from "../Store/Store.js";
-import { columnDefs } from "../Logic/GridTableColumns";
+import MetaMask from "../../Components/Wallet/MetaMask";
+import RequestContext from "../../Context/Context";
+import { base, heroData } from "../../Logic/Query";
+import { columnDefs } from "../../Logic/GridTableColumns";
+import useAuctions from "../../Store/AuctionsStore";
+import DFKATable from "../../Components/Table/DFKATable";
 
 export default function Auctions() {
   const visibilityModel = useAuctions((state) => state.visibilityModel);
@@ -100,20 +100,8 @@ export default function Auctions() {
           <Grid item>
             <MetaMask />
           </Grid>
-          {/* <Button
-            variant="contained"
-            color={filtersHidden ? "primary" : "secondary"}
-            onClick={toggleFilters}
-          >
-            Filters
-          </Button> */}
         </Grid>
         <Grid item xs={12}>
-          {/* <HeroFilters
-            includeSalePrice={true}
-            onSaleDefault={true}
-            ref={filtersRef}
-          /> */}
           <Typography variant="h5" textAlign={"center"}>
             Sold Heroes
           </Typography>
@@ -122,8 +110,8 @@ export default function Auctions() {
       {result.isLoading && (
         <LinearProgress style={{ height: 10, margin: "5px 50px" }} />
       )}
-      <HeroTable
-        heroes={heroes}
+      <DFKATable
+        rows={heroes}
         columns={columnDefs}
         columnVisibilityModel={visibilityModel}
         visibilityChanged={setVisibilityModel}

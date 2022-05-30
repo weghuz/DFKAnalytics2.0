@@ -1,8 +1,7 @@
-import Layout from "../Components/Layout";
 import Image from "next/image";
-import StamPot from "../public/StaminaPotion.png";
+import StamPot from "../../public/StaminaPotion.png";
 import { useState } from "react";
-import TipModal from "../Components/Modal/TipModal";
+import TipModal from "../../Components/Modal/TipModal";
 import { Box, Container } from "@mui/material";
 
 export default function About() {
@@ -14,8 +13,8 @@ export default function About() {
         <div>
           <p>
             For any feedback about the site feel free to dm me on Discord at
-            weghuz#1978. I hang around in the DFK discord a lot, you can find
-            me in the hero and price discussion channels.
+            weghuz#1978. I hang around in the DFK discord a lot, you can find me
+            in the hero and price discussion channels.
           </p>
           <p>
             You can find my most recent analysis of how I use formulas to
@@ -32,8 +31,8 @@ export default function About() {
           </p>
           <p>
             The &quot;Growth Score&quot; is a growth based score. It&apos;s
-            based on a heroes Stat Growth Values. A medium article about it
-            will come out at some point and then get linked in this section.
+            based on a heroes Stat Growth Values. A medium article about it will
+            come out at some point and then get linked in this section.
           </p>
           <h5>
             Tip a developer, click the potion:
@@ -67,11 +66,16 @@ export default function About() {
             >
               DefikingdomStudios.io
             </a>
-            . All credit for the art assets goes to the amazing team behind DeFi Kingdoms.
+            . All credit for the art assets goes to the amazing team behind DeFi
+            Kingdoms.
           </p>
         </div>
       </Container>
-      {showTipModal ? <TipModal closeModalFunction={() => setShowTipModal(false)} /> : ""}
+      {showTipModal ? (
+        <TipModal closeModalFunction={() => setShowTipModal(false)} />
+      ) : (
+        ""
+      )}
     </>
   );
 }
