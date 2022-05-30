@@ -104,6 +104,15 @@ export default function Resources() {
         <h4 className="text-center">Sites</h4>
         <ul>
           <li>
+            <a href="https://dfkeggspert.com" target="_blank" rel="noreferrer">
+              DFKEggspert
+            </a>{" "}
+            {`An insane amount of information in one place. It's like the DFK docs
+            but enhanced. Very useful information coming out of this site and
+            it's growing every day. A must visit for any knowledgeable DFK
+            player.`}
+          </li>
+          <li>
             <a href="https://kingdom.watch/" target="_blank" rel="noreferrer">
               Kingdom.Watch
             </a>{" "}
