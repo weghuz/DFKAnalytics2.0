@@ -4,7 +4,7 @@ import HeroFilters from "../../Components/HeroFilters";
 import { base, heroData } from "../../Logic/Query";
 import RequestContext from "../../Context/Context";
 import MetaMask from "../../Components/Wallet/MetaMask";
-import { Button, Grid, LinearProgress } from "@mui/material";
+import { Button, Grid, LinearProgress, Typography } from "@mui/material";
 import { columnDefs } from "../../Logic/GridTableColumns";
 import useWallet from "../../Store/WalletHeroesStore";
 import DFKATable from "../../Components/Table/DFKATable";
