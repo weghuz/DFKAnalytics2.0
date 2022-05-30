@@ -28,6 +28,7 @@ export default function TipModal({ closeModalFunction }) {
           <h6>{`Tip top tippers:`}</h6>
           <ul>
             <li>{`Sovrezd: Hero #188624`}</li>
+            <li>{`Grouillot: 1 Green Egg`}</li>
             <li>{`Thorik Ẅood: 28.2J`}</li>
             <li>{`Afromaster🍍Burnmaster🍕Gamemaster: 6.969J`}</li>
             <li>{`royie: 5J`}</li>
