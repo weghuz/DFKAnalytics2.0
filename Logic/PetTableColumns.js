@@ -76,7 +76,7 @@ let petColumnDefs = [
   },
   {
     headerName: "Profession ⭐",
-    field: "profession",
+    field: "profBonus",
     hide: false,
     width: 150,
     renderCell: ({ row }) => {
@@ -85,7 +85,7 @@ let petColumnDefs = [
   },
   {
     headerName: "Crafting ⭐",
-    field: "crafting",
+    field: "craftBonus",
     hide: false,
     width: 160,
     renderCell: ({ row }) => {
@@ -94,7 +94,7 @@ let petColumnDefs = [
   },
   {
     headerName: "Combat ⭐",
-    field: "combat",
+    field: "combatBonus",
     hide: false,
     width: 150,
     renderCell: ({ row }) => {

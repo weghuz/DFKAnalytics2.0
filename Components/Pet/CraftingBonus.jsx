@@ -10,7 +10,7 @@ export default function CraftingBonus({ children }) {
         case "water":
           return "Goldsmithing";
         case "earth":
-          return "Amorsmithing";
+          return "Armorsmithing";
         case "wind":
           return "Woodworking";
         case "lightning":
