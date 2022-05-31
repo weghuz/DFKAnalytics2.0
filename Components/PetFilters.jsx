@@ -22,12 +22,7 @@ import {
 } from "../Logic/PetDropdownOptions";
 import NumberSlider from "./Filters/NumberSlider";
 
-export default function PetFilters({
-  visible,
-  includeSalePrice,
-  setFilter,
-  setOrder,
-}) {
+export default function PetFilters({ visible, includeSalePrice, setFilter }) {
   const [minSalePrice, setMinSalePrice] = useState(0);
   const [maxSalePrice, setMaxSalePrice] = useState(9999999);
   const [bonusCount, setBonusCount] = useState([1, 3]);
@@ -47,12 +42,13 @@ export default function PetFilters({
   const clearRarity = useRef(null);
   const bonusMap = [1, 80, 160];
   const UpdateQuery = () => {
-    let filters = ``;
+    let filters = ``,
+      order = ``;
     if (forSale) {
       filters += `salePrice_not:null,`;
-      setOrder(`orderBy:salePrice`);
+      order = `orderBy:salePrice`;
     } else {
-      setOrder(`orderBy:id`);
+      order = `orderBy:id`;
     }
     if (eggType.length > 0) {
       filters += `eggType_in: [`;
@@ -170,14 +166,14 @@ export default function PetFilters({
         }
       }
     }
-    setFilter(filters);
+    setFilter(filters, order);
   };
   const ClearFilters = () => {
     if (includeSalePrice) {
       setMinSalePrice(0);
       setMaxSalePrice(9999999);
+      setForSale(true);
     }
-    setForSale(true);
     setRarity([0, 4]);
     clearRarity.current();
     clearProfBonus.current();

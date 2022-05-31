@@ -2,22 +2,34 @@ import create from "zustand";
 import initiatePet from "../Logic/PetBase";
 import { petData } from "../Logic/Query";
 
+const updateQuery = (state) => {
+  console.log(
+    "query: ",
+    `{pets(first:${state.first},skip:${state.skip},where:{owner:"${state.address}",${state.filter}},${state.order})${petData}}`
+  );
+  state.query = `{pets(first:${state.first},skip:${state.skip},where:{owner:"${state.address}",${state.filter}},${state.order})${petData}}`;
+};
+
 const useWalletPets = create((set, get) => ({
   pets: [],
   first: 1000,
+  address: ``,
+  setAddress: (newAddress) =>
+    set((state) => {
+      if (state.address == newAddress) return;
+      state.address = newAddress;
+      state.setFilter("", "");
+    }),
   filter: "",
-  setFilter: (newFilter) =>
-    set((state) => {
-      return { filter: newFilter, skip: 0, pets: [] };
-    }),
   order: "",
-  setOrder: (newOrder) =>
+  setFilter: (filter, order) =>
     set((state) => {
-      return { order: newOrder, skip: 0, pets: [] };
-    }),
-  setSkip: (newFirst) =>
-    set((state) => {
-      return { first: newFirst };
+      state.filter = filter;
+      state.order = order;
+      state.skip = 0;
+      state.first = 100;
+      state.pets = [];
+      updateQuery(state);
     }),
   skip: 0,
   setSkip: (newSkip) =>
@@ -34,12 +46,21 @@ const useWalletPets = create((set, get) => ({
   },
   setPets: (newPets, clear) =>
     set((state) => {
-      console.log(newPets);
-      newPets = newPets.filter((p) => initiatePet(p));
-      if (state.skip == 0) {
-        return { pets: newPets };
+      newPets = newPets.filter((np) => state.pets.every((p) => p.id !== np.id));
+      if (newPets.length == 0) {
+        console.log("Finished Query");
+        return;
       }
-      return { pets: state.pets.concat(newPets) };
+      newPets = newPets.filter((p) => initiatePet(p));
+      console.log("New Pets: ", newPets);
+      state.skip = state.skip + state.first;
+      state.first = 1000;
+      updateQuery(state);
+      if (state.pets.length == 0) {
+        state.pets = newPets;
+        return;
+      }
+      state.pets = state.pets.concat(newPets);
     }),
   visibilityModel: undefined,
   setVisibilityModel: (visibilityModel) =>

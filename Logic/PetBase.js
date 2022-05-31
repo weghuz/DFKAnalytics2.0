@@ -16,7 +16,8 @@ export const backgrounds = {
 
 const initiatePet = (pet) => {
   if (pet.displayName) {
-    return;
+    console.log("Already Initiated", pet);
+    return false;
   }
   let data = null;
   switch (pet.eggType) {
@@ -30,6 +31,7 @@ const initiatePet = (pet) => {
       return;
   }
   if (data == null) {
+    console.log("NULL PET", pet);
     return false;
   }
   pet.season = data.season;

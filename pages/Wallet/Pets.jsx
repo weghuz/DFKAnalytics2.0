@@ -36,6 +36,7 @@ export default function Home() {
   const setFilter = useWalletPets((state) => state.setFilter);
   const order = useWalletPets((state) => state.order);
   const setOrder = useWalletPets((state) => state.setOrder);
+  const setAddress = useWalletPets((state) => state.setAddress);
 
   const requestPets = async (state) => {
     return fetch(base, {
@@ -52,24 +53,14 @@ export default function Home() {
   const result = useQuery(
     ["petsRequest", query + first + skip + address],
     async () => {
-      console.log("petsRequest", query + first + skip);
-      const petsRes = await requestPets();
-      console.log(petsRes);
-      return await petsRes.json();
-    },
-    {
-      onSuccess: async (result) => {
-        console.log(result);
-        let data = result.data;
-
-        if (data == null) {
-          return;
+      if (query.length > 0 && address.length > 0) {
+        let petsRequest = await requestPets();
+        if (petsRequest.status >= 200 && petsRequest.status <= 300) {
+          let json = await petsRequest.json();
+          let pets = json.data.pets;
+          setPets(pets, false);
         }
-        let pets = data.pets;
-        if (first == data.pets.length) {
-        }
-        setPets(pets, false);
-      },
+      }
     }
   );
   useEffect(() => {
@@ -77,7 +68,6 @@ export default function Home() {
       localStorage.getItem("PetsWalletFilterVisible")
     );
     if (hideFilters != filterVisible && filterVisible !== null) {
-      console.log(hideFilters, filterVisible);
       toggleFilters();
     }
     let columnsVisibilityModel = JSON.parse(
@@ -88,20 +78,8 @@ export default function Home() {
     }
   }, []);
   useEffect(() => {
-    console.log(skip + first, pets.length);
-    if (skip + first == pets.length) {
-      setSkip(skip + first);
-      console.log(address);
-      setQuery(
-        `{pets(first:${first},skip:${skip},where:{owner:"${address}",${filter}},${order})${petData}}`
-      );
-    }
-    if (pets.length == 0) {
-      setQuery(
-        `{pets(first:${first},skip:${skip},where:{owner:"${address}",${filter}},${order})${petData}}`
-      );
-    }
-  }, [pets, address, filter, order]);
+    setAddress(address);
+  }, [address]);
   return (
     <>
       <Grid container justifyContent="center" marginBottom={1} spacing={1}>

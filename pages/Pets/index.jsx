@@ -38,26 +38,16 @@ export default function Home() {
       }),
     });
   };
-  const result = useQuery(
-    ["petsRequest", query + first + skip],
-    async () => {
-      const petsRes = await requestPets();
-      return await petsRes.json();
-    },
-    {
-      onSuccess: async (result) => {
-        let data = result.data;
-
-        if (data == null) {
-          return;
-        }
-        let pets = data.pets;
-        if (first == data.pets.length) {
-        }
+  const result = useQuery(["petsRequest", query + first + skip], async () => {
+    if (query.length > 0) {
+      let petsRequest = await requestPets();
+      if (petsRequest.status >= 200 && petsRequest.status <= 300) {
+        let json = await petsRequest.json();
+        let pets = json.data.pets;
         setPets(pets, false);
-      },
+      }
     }
-  );
+  });
   useEffect(() => {
     let filterVisible = JSON.parse(
       localStorage.getItem("PetsIndexFilterVisible")
@@ -73,27 +63,14 @@ export default function Home() {
     }
   }, []);
   useEffect(() => {
-    if (skip + first == pets.length) {
-      setSkip(skip + first);
-      setQuery(
-        `{pets(first:${first},skip:${skip},${
-          filter.length > 0 ? `where:{${filter}}` : ``
-        },${order})${petData}}`
-      );
-    }
     if (pets.length == 0) {
       setQuery(
-        `{pets(first:${first},skip:${skip},${
-          filter.length > 0 ? `where:{${filter}}` : ``
+        `{pets(first:${first},skip:${skip}${
+          filter.length > 0 ? `,where:{${filter}}` : ``
         },${order})${petData}}`
       );
     }
-    console.log(
-      `{pets(first:${first},skip:${skip},${
-        filter.length > 0 ? `where:{${filter}}` : ``
-      },${order})${petData}}`
-    );
-  }, [pets, filter, order, petData]);
+  }, []);
   return (
     <>
       <Grid container justifyContent="center" marginBottom={1}>
