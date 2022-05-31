@@ -21,15 +21,15 @@ export default function index() {
           <Card sx={{ width: "100%" }}>
             <CardContent>
               <Typography variant="h5" component="div">
-                {`Join the Discord community`}
+                {`DFKAnalytics official discord channel!`}
               </Typography>
               <Typography variant="body2">
-                {`Find likeminded individuals to talk to about anything DFK or otherwise. Also a great way to provide feedback.`}
+                {`Provide feedback about the site, chat with people about DFKA and Heroes/Pets or just hang out.`}
               </Typography>
             </CardContent>
             <CardActions>
               <Link href={"https://discord.gg/kuy5tSrH9C"} passhref>
-                <Button size="small">{"Discord"}</Button>
+                <Button size="small">{"DFKAnalytics Discord"}</Button>
               </Link>
             </CardActions>
           </Card>
