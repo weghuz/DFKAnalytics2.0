@@ -78,6 +78,7 @@ let petColumnDefs = [
     headerName: "Profession ⭐",
     field: "profBonus",
     hide: false,
+    type: "number",
     width: 150,
     renderCell: ({ row }) => {
       return <ProfessionBonus>{row}</ProfessionBonus>;
@@ -87,6 +88,7 @@ let petColumnDefs = [
     headerName: "Crafting ⭐",
     field: "craftBonus",
     hide: false,
+    type: "number",
     width: 160,
     renderCell: ({ row }) => {
       return <CraftingBonus>{row}</CraftingBonus>;
@@ -96,6 +98,7 @@ let petColumnDefs = [
     headerName: "Combat ⭐",
     field: "combatBonus",
     hide: false,
+    type: "number",
     width: 150,
     renderCell: ({ row }) => {
       return <CombatBonus>{row}</CombatBonus>;
@@ -105,6 +108,7 @@ let petColumnDefs = [
     headerName: "Egg",
     field: "eggType",
     hide: false,
+    type: "number",
     width: 50,
     renderCell: ({ row }) => {
       return <EggCell>{row}</EggCell>;

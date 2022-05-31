@@ -18,7 +18,7 @@ const initiatePet = (pet) => {
   if (pet.displayName) {
     return;
   }
-  let data;
+  let data = null;
   switch (pet.eggType) {
     case 0:
       data = blueEggData[pet.appearance - 1];
@@ -28,6 +28,9 @@ const initiatePet = (pet) => {
       break;
     default:
       return;
+  }
+  if (data == null) {
+    return false;
   }
   pet.season = data.season;
   pet.family = data.family;
@@ -64,6 +67,7 @@ const initiatePet = (pet) => {
       pet.elementName = "dark";
       break;
   }
+  return true;
 };
 
 export default initiatePet;

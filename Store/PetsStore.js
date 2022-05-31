@@ -33,10 +33,7 @@ const usePets = create((set, get) => ({
   },
   setPets: (newPets, clear) =>
     set((state) => {
-      console.log(newPets);
-      newPets.forEach((p) => {
-        initiatePet(p);
-      });
+      newPets = newPets.filter((p) => initiatePet(p));
       if (state.skip == 0) {
         return { pets: newPets };
       }

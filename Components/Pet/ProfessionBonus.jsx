@@ -33,6 +33,7 @@ export default function ProfessionBonus({ children }) {
   return (
     <Tooltip
       title={`The profession bonus is mapped to the pets Egg Type. ${bonusType()} is mapped to ${eggType()} Eggs`}
+      placement={"right"}
     >
       <Box>
         {bonusType()} {bonus()}
