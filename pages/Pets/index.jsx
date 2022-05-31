@@ -121,14 +121,12 @@ export default function Home() {
       {result.isLoading && (
         <LinearProgress style={{ height: 10, margin: "5px 50px" }} />
       )}
-      {pets.length > 0 && (
-        <DFKATable
-          rows={pets}
-          columns={petColumnDefs}
-          columnVisibilityModel={visibilityModel}
-          visibilityChanged={setVisibilityModel}
-        ></DFKATable>
-      )}
+      <DFKATable
+        rows={pets}
+        columns={petColumnDefs}
+        columnVisibilityModel={visibilityModel}
+        visibilityChanged={setVisibilityModel}
+      ></DFKATable>
     </>
   );
 }
