@@ -20,7 +20,7 @@ export default function Auctions() {
   const requestContext = useContext(RequestContext);
   const router = useRouter();
   const clickedHero = (hero) => {
-    router.push(`/hero/${hero.id}`);
+    router.push(`/hero/${hero.heroId}`);
   };
   console.log(
     `{saleAuctions(first:${first},skip:${skip},where: {seller: "${requestContext.query.wallet}", purchasePrice_gt:"1"}, orderBy:startedAt, orderDirection:desc){id purchasePrice startedAt tokenId {${heroData}}}}`
