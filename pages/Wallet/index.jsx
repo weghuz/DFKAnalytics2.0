@@ -9,6 +9,7 @@ import { columnDefs } from "../../Logic/GridTableColumns";
 import useWallet from "../../Store/WalletHeroesStore";
 import DFKATable from "../../Components/Table/DFKATable";
 import useWalletHeroes from "../../Store/WalletHeroesStore";
+import { useRouter } from "next/router";
 
 export default function Wallet() {
   const hideFilters = useWalletHeroes((state) => state.hideFilters);
@@ -23,6 +24,10 @@ export default function Wallet() {
   const [skip, setSkip] = useState(0);
   const lastRequest = useRef();
   const requestContext = useContext(RequestContext);
+  const router = useRouter();
+  const clickedHero = (hero) => {
+    router.push(`/hero/${hero.id}`);
+  };
   console.log(
     `{heroes(first:${first},skip:${skip},${
       requestContext.query.query.length > 0
@@ -152,6 +157,7 @@ export default function Wallet() {
         columns={columnDefs}
         visibilityChanged={setVisibilityModel}
         columnVisibilityModel={visibilityModel}
+        onRowClick={clickedHero}
       />
     </>
   );

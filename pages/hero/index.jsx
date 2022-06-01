@@ -7,9 +7,12 @@ import { Button, LinearProgress, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { columnDefs } from "../../Logic/GridTableColumns";
 import useIndex from "../../Store/HeroesStore";
-import HeroDetails from "../../Components/Modal/HeroDetails";
+import HeroDetails from "../../Components/Hero/HeroDetails";
 import DFKATable from "../../Components/Table/DFKATable";
-export default function Home() {
+import useHeroDetails from "../../Store/HeroDetailsStore";
+import { useRouter } from "next/router";
+
+export default function Home({ id }) {
   const hideFilters = useIndex((state) => state.hideFilters);
   const toggleFilters = useIndex((state) => state.toggleFilters);
   const visibilityModel = useIndex((state) => state.visibilityModel);
@@ -18,9 +21,9 @@ export default function Home() {
   const setHeroes = useIndex((state) => state.setHeroes);
   const [first, setFirst] = useState(100);
   const [skip, setSkip] = useState(0);
-  const [heroDetails, setHeroDetails] = useState(null);
+  const router = useRouter();
   const clickedHero = (hero) => {
-    setHeroDetails((h) => hero);
+    router.push(`/hero/${hero.id}`);
   };
   const lastRequest = useRef();
   const requestContext = useContext(RequestContext);
@@ -132,9 +135,6 @@ export default function Home() {
         columnVisibilityModel={visibilityModel}
         onRowClick={clickedHero}
       />
-      {heroDetails !== null && (
-        <HeroDetails hero={heroDetails} clear={() => setHeroDetails(null)} />
-      )}
     </>
   );
 }

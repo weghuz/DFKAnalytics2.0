@@ -7,6 +7,7 @@ import { base, heroData } from "../../Logic/Query";
 import { columnDefs } from "../../Logic/GridTableColumns";
 import useAuctions from "../../Store/AuctionsStore";
 import DFKATable from "../../Components/Table/DFKATable";
+import { useRouter } from "next/router";
 
 export default function Auctions() {
   const visibilityModel = useAuctions((state) => state.visibilityModel);
@@ -17,6 +18,10 @@ export default function Auctions() {
   const [skip, setSkip] = useState(0);
   const lastRequest = useRef();
   const requestContext = useContext(RequestContext);
+  const router = useRouter();
+  const clickedHero = (hero) => {
+    router.push(`/hero/${hero.id}`);
+  };
   console.log(
     `{saleAuctions(first:${first},skip:${skip},where: {seller: "${requestContext.query.wallet}", purchasePrice_gt:"1"}, orderBy:startedAt, orderDirection:desc){id purchasePrice startedAt tokenId {${heroData}}}}`
   );
@@ -111,6 +116,7 @@ export default function Auctions() {
         <LinearProgress style={{ height: 10, margin: "5px 50px" }} />
       )}
       <DFKATable
+        onRowClick={clickedHero}
         rows={heroes}
         columns={columnDefs}
         columnVisibilityModel={visibilityModel}

@@ -38,33 +38,33 @@ export default function Navbar() {
       <Grid container spacing={1} justifyContent={"center"}>
         <Grid item>
           <Button variant={"text"}>
-            <Link href={"/Heroes"}>Heroes</Link>
+            <Link href={"/hero"}>Heroes</Link>
           </Button>
         </Grid>
         <Grid item>
           <Button variant={"text"}>
-            <Link href={"/Pets"}>Pets</Link>
+            <Link href={"/pet"}>Pets</Link>
           </Button>
         </Grid>
-        <DropDownButton title={"Wallet"}>
+        <DropDownButton title={"wallet"}>
           <MenuItem>
-            <Link href={"/Wallet/"}>Heroes</Link>
+            <Link href={"/wallet/"}>Heroes</Link>
           </MenuItem>
 
           <MenuItem>
-            <Link href={"/Wallet/SoldHeroes"}>Sold Heroes</Link>
+            <Link href={"/wallet/soldheroes"}>Sold Heroes</Link>
           </MenuItem>
 
           <MenuItem>
-            <Link href={"/Wallet/Pets"}>Pets</Link>
+            <Link href={"/wallet/pets"}>Pets</Link>
           </MenuItem>
         </DropDownButton>
         <DropDownButton title={"Misc"}>
           <MenuItem variant={"text"}>
-            <Link href={"/Misc/Resources"}>Resources</Link>
+            <Link href={"/misc/resources"}>Resources</Link>
           </MenuItem>
           <MenuItem variant={"text"}>
-            <Link href={"/Misc/About"} passHref>
+            <Link href={"/misc/about"} passHref>
               About
             </Link>
           </MenuItem>

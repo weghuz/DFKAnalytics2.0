@@ -15,12 +15,7 @@ export default function DFKATable({
     return columnVisibilityModel;
   };
   return (
-    <Grid
-      container
-      bgcolor={"background.paper"}
-      width={"100%"}
-      justifyContent={"center"}
-    >
+    <Grid container bgcolor={"background.paper"} justifyContent={"center"}>
       <Grid item width={"100%"} maxWidth={1920}>
         <DataGrid
           bgcolor={"background.paper"}
