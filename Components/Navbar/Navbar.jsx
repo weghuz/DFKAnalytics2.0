@@ -52,19 +52,19 @@ export default function Navbar() {
           </MenuItem>
 
           <MenuItem>
-            <Link href={"/Wallet/soldheroes"}>Sold Heroes</Link>
+            <Link href={"/Wallet/SoldHeroes"}>Sold Heroes</Link>
           </MenuItem>
 
           <MenuItem>
-            <Link href={"/Wallet/pets"}>Pets</Link>
+            <Link href={"/Wallet/Pets"}>Pets</Link>
           </MenuItem>
         </DropDownButton>
         <DropDownButton title={"Misc"}>
           <MenuItem variant={"text"}>
-            <Link href={"/Misc/resources"}>Resources</Link>
+            <Link href={"/Misc/Resources"}>Resources</Link>
           </MenuItem>
           <MenuItem variant={"text"}>
-            <Link href={"/Misc/about"} passHref>
+            <Link href={"/Misc/About"} passHref>
               About
             </Link>
           </MenuItem>
