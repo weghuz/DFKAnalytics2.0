@@ -46,25 +46,25 @@ export default function Navbar() {
             <Link href={"/pet"}>Pets</Link>
           </Button>
         </Grid>
-        <DropDownButton title={"wallet"}>
+        <DropDownButton title={"Wallet"}>
           <MenuItem>
-            <Link href={"/wallet"}>Heroes</Link>
+            <Link href={"/Wallet"}>Heroes</Link>
           </MenuItem>
 
           <MenuItem>
-            <Link href={"/wallet/soldheroes"}>Sold Heroes</Link>
+            <Link href={"/Wallet/soldheroes"}>Sold Heroes</Link>
           </MenuItem>
 
           <MenuItem>
-            <Link href={"/wallet/pets"}>Pets</Link>
+            <Link href={"/Wallet/pets"}>Pets</Link>
           </MenuItem>
         </DropDownButton>
         <DropDownButton title={"Misc"}>
           <MenuItem variant={"text"}>
-            <Link href={"/misc/resources"}>Resources</Link>
+            <Link href={"/Misc/resources"}>Resources</Link>
           </MenuItem>
           <MenuItem variant={"text"}>
-            <Link href={"/misc/about"} passHref>
+            <Link href={"/Misc/about"} passHref>
               About
             </Link>
           </MenuItem>
