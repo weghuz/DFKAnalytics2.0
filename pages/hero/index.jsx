@@ -21,7 +21,7 @@ export default function Home({ id }) {
   const [skip, setSkip] = useState(0);
   const router = useRouter();
   const clickedHero = (hero) => {
-    router.push(`/hero/[id]`, `/hero/${hero.heroId}`);
+    router.push(`/hero/[id]`, `/hero/${hero.id}`);
   };
   const lastRequest = useRef();
   const requestContext = useContext(RequestContext);
