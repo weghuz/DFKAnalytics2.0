@@ -36,32 +36,38 @@ export default function Navbar() {
         <span className={style.text}>third party site</span>
       </Container>
       <Grid container spacing={1} justifyContent={"center"}>
-        <DropDownButton title={"Tavern"}>
-          <Link href={"/Heroes"} passHref>
-            <MenuItem>Heroes</MenuItem>
-          </Link>
-          <Link href={"/Pets"} passHref>
-            <MenuItem>Pets</MenuItem>
-          </Link>
-        </DropDownButton>
+        <Grid item>
+          <Button variant={"text"}>
+            <Link href={"/Heroes"}>Heroes</Link>
+          </Button>
+        </Grid>
+        <Grid item>
+          <Button variant={"text"}>
+            <Link href={"/Pets"}>Pets</Link>
+          </Button>
+        </Grid>
         <DropDownButton title={"Wallet"}>
-          <Link href={"/Wallet/"} passHref>
-            <MenuItem>Heroes</MenuItem>
-          </Link>
-          <Link href={"/Wallet/SoldHeroes"} passHref>
-            <MenuItem>Sold Heroes</MenuItem>
-          </Link>
-          <Link href={"/Wallet/Pets"} passHref>
-            <MenuItem>Pets</MenuItem>
-          </Link>
+          <MenuItem>
+            <Link href={"/Wallet/"}>Heroes</Link>
+          </MenuItem>
+
+          <MenuItem>
+            <Link href={"/Wallet/SoldHeroes"}>Sold Heroes</Link>
+          </MenuItem>
+
+          <MenuItem>
+            <Link href={"/Wallet/Pets"}>Pets</Link>
+          </MenuItem>
         </DropDownButton>
         <DropDownButton title={"Misc"}>
-          <Link href={"/Misc/Resources"} passHref>
-            <MenuItem variant={"text"}>Resources</MenuItem>
-          </Link>
-          <Link href={"/Misc/About"} passHref>
-            <MenuItem variant={"text"}>About</MenuItem>
-          </Link>
+          <MenuItem variant={"text"}>
+            <Link href={"/Misc/Resources"}>Resources</Link>
+          </MenuItem>
+          <MenuItem variant={"text"}>
+            <Link href={"/Misc/About"} passHref>
+              About
+            </Link>
+          </MenuItem>
         </DropDownButton>
         <IconButton
           sx={{ ml: 1 }}
