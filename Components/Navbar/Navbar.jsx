@@ -48,7 +48,7 @@ export default function Navbar() {
         </Grid>
         <DropDownButton title={"wallet"}>
           <MenuItem>
-            <Link href={"/wallet/"}>Heroes</Link>
+            <Link href={"/wallet"}>Heroes</Link>
           </MenuItem>
 
           <MenuItem>

@@ -26,7 +26,7 @@ export default function Wallet() {
   const requestContext = useContext(RequestContext);
   const router = useRouter();
   const clickedHero = (hero) => {
-    router.push(`/hero/${hero.id}`);
+    router.push(`/hero/[id]`,`/hero/${hero.id}`);
   };
   console.log(
     `{heroes(first:${first},skip:${skip},${

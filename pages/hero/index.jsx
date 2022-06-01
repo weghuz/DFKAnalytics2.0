@@ -7,9 +7,7 @@ import { Button, LinearProgress, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { columnDefs } from "../../Logic/GridTableColumns";
 import useIndex from "../../Store/HeroesStore";
-import HeroDetails from "../../Components/Hero/HeroDetails";
 import DFKATable from "../../Components/Table/DFKATable";
-import useHeroDetails from "../../Store/HeroDetailsStore";
 import { useRouter } from "next/router";
 
 export default function Home({ id }) {
@@ -23,7 +21,7 @@ export default function Home({ id }) {
   const [skip, setSkip] = useState(0);
   const router = useRouter();
   const clickedHero = (hero) => {
-    router.push(`/hero/${hero.id}`);
+    router.push(`/hero/[id]`, `/hero/${hero.heroId}`);
   };
   const lastRequest = useRef();
   const requestContext = useContext(RequestContext);
