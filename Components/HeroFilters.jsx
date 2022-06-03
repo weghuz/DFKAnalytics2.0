@@ -27,14 +27,12 @@ import RequestContext from "../Context/Context";
 import SelectItemSingle from "./Filters/SelectItemSingle";
 import { femaleFirstNames, lastNames, maleFirstNames } from "../Logic/HeroBase";
 import IdInput from "./Filters/IdInput";
-import { useTheme } from "@mui/system";
 
 const HeroFilters = function HeroFilters({
   includeSalePrice,
   visible,
   setFilter,
 }) {
-  const theme = useTheme();
   const [mainClass, setMainClass] = useState([]);
   const [subClass, setSubClass] = useState([]);
   const [professions, setProfessions] = useState([]);
@@ -52,8 +50,6 @@ const HeroFilters = function HeroFilters({
   const [fFName, setFFName] = useState([]);
   const [lName, setLName] = useState([]);
   const [idInput, setIdInput] = useState("");
-  const [countdown, setCountdown] = useState(0);
-  const [autoUpdate, setAutoUpdate] = useState(true);
   const [active1, setActive1] = useState([]);
   const [active2, setActive2] = useState([]);
   const [Passive1, setPassive1] = useState([]);
@@ -665,16 +661,6 @@ const HeroFilters = function HeroFilters({
                   </Grid>
                 </>
               )}
-              <Grid item xs={12} sm={6} md={4} xl={3}>
-                <FormControlLabel
-                  control={<Checkbox />}
-                  label="Auto Update"
-                  checked={autoUpdate}
-                  onChange={(e) => {
-                    setAutoUpdate(e.target.checked);
-                  }}
-                />
-              </Grid>
               <IdInput
                 value={idInput}
                 setValue={(val) => {
@@ -711,14 +697,6 @@ const HeroFilters = function HeroFilters({
               </Button>
             </Grid>
           </Grid>
-          <Typography
-            variant="h5"
-            marginY={1}
-            color={theme.palette.success.main}
-            align="center"
-          >
-            {countdown > 0 ? `Autoupdating in ${countdown}` : ""}
-          </Typography>
         </Container>
       )}
     </>
