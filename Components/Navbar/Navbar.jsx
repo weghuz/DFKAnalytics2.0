@@ -1,17 +1,24 @@
-import React, { useContext } from "react";
+import React from "react";
 import Image from "next/image";
 import DFKLogo from "../../public/DFKLogo.png";
 import style from "./Navbar.module.css";
 import Link from "next/link";
-import { Button, Container, Grid, IconButton, MenuItem } from "@mui/material";
+import {
+  Box,
+  Button,
+  Container,
+  Grid,
+  IconButton,
+  MenuItem,
+} from "@mui/material";
 import { Brightness4, Brightness7 } from "@mui/icons-material";
-import Context from "../../Context/Context";
 import { useTheme } from "@emotion/react";
 import DropDownButton from "./DropDownButton";
+import useUser from "../../Store/UserStore";
 
 export default function Navbar() {
   const theme = useTheme();
-  const queryContext = useContext(Context);
+  const toggleTheme = useUser((state) => state.toggleTheme);
   return (
     <>
       <Container className={style.Navbar}>
@@ -29,7 +36,7 @@ export default function Navbar() {
             alt="DeFi Kingdoms Logo"
             placeholder="blur"
             src={DFKLogo}
-            height="30"
+            height="26"
             width="184"
           />
         </a>
@@ -72,7 +79,7 @@ export default function Navbar() {
         <IconButton
           sx={{ ml: 1 }}
           onClick={() => {
-            queryContext.query.toggleTheme();
+            toggleTheme();
           }}
           color="inherit"
         >

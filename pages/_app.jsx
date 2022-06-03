@@ -8,20 +8,15 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import Layout from "../Components/Layout";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import ThemeOptions from "../General/ThemeOptions";
+import useUser from "../Store/UserStore";
 function MyApp({ Component, pageProps }) {
   const queryClient = new QueryClient();
-  const [theme, setTheme] = useState("dark");
-  const ToggleTheme = () =>
-    setTheme((theme) => {
-      theme = theme == "light" ? "dark" : "light";
-      window.localStorage.setItem("prefers-color-scheme", theme);
-      console.log(theme);
-      return theme;
-    });
+  const theme = useUser((state) => state.theme);
+  const toggleTheme = useUser((state) => state.toggleTheme);
   useEffect(() => {
     let storedColorScheme = window.localStorage.getItem("prefers-color-scheme");
     if (storedColorScheme == "light") {
-      ToggleTheme();
+      toggleTheme();
     }
   }, []);
   return (
