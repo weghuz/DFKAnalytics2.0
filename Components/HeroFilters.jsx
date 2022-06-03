@@ -29,7 +29,11 @@ import { femaleFirstNames, lastNames, maleFirstNames } from "../Logic/HeroBase";
 import IdInput from "./Filters/IdInput";
 import { useTheme } from "@mui/system";
 
-const HeroFilters = function HeroFilters({ includeSalePrice, visible }) {
+const HeroFilters = function HeroFilters({
+  includeSalePrice,
+  visible,
+  setFilter,
+}) {
   const theme = useTheme();
   const [mainClass, setMainClass] = useState([]);
   const [subClass, setSubClass] = useState([]);
@@ -48,38 +52,19 @@ const HeroFilters = function HeroFilters({ includeSalePrice, visible }) {
   const [fFName, setFFName] = useState([]);
   const [lName, setLName] = useState([]);
   const [idInput, setIdInput] = useState("");
-  const [updateTimeout, setUpdateTimeout] = useState(0);
   const [countdown, setCountdown] = useState(0);
   const [autoUpdate, setAutoUpdate] = useState(true);
-  const [initiated, setInitiated] = useState(false);
   const [active1, setActive1] = useState([]);
   const [active2, setActive2] = useState([]);
   const [Passive1, setPassive1] = useState([]);
   const [Passive2, setPassive2] = useState([]);
   const [section, setSection] = useState("Main");
-  const queryContext = useContext(RequestContext);
   const clearRarity = useRef(null);
   const clearGeneration = useRef(null);
   const clearSummons = useRef(null);
   const clearLevel = useRef(null);
-  const UpdateCountDown = (cd) => {
-    if (cd <= 0) {
-      UpdateQuery();
-      return;
-    }
-    setUpdateTimeout(
-      setTimeout(() => {
-        cd -= 1;
-        setCountdown(cd);
-        console.log(cd);
-        UpdateCountDown(cd);
-      }, 1000)
-    );
-  };
 
-  const UpdateQuery = (forceUpdate) => {
-    clearTimeout(updateTimeout);
-    setCountdown(0);
+  const UpdateQuery = () => {
     let query = ``;
     if (mainClass.length > 0) {
       query += `mainClass_in: [`;
@@ -294,73 +279,25 @@ const HeroFilters = function HeroFilters({ includeSalePrice, visible }) {
         }
       }
     }
+    let order = ``;
     if (includeSalePrice) {
       switch (target[0].value) {
         case "Tavern":
-          query += "salePrice_not: null} orderBy: salePrice";
+          query += `salePrice_not: null`;
+          order += "orderBy: salePrice";
           break;
         case "Hire":
-          query += "assistingPrice_not: null}  orderBy: assistingPrice";
+          query += `assistingPrice_not: null`;
+          order += "orderBy: assistingPrice";
           break;
         case "All":
-          if (query.length > 0) {
-            query += "}";
-          }
           break;
       }
-    } else {
-      query += "}";
     }
-    console.log(query);
-    if (forceUpdate || queryContext.query.query !== query) {
-      queryContext.setQuery({ ...queryContext.query, query });
-      console.log(queryContext.query.query);
-    }
-  };
-  const startUpdateTimer = () => {
-    if (autoUpdate) {
-      clearTimeout(updateTimeout);
-      setCountdown(3);
-      UpdateCountDown(3);
-    }
-  };
-  useEffect(() => {
-    if (autoUpdate && initiated) {
-      startUpdateTimer();
-    } else {
-      clearTimeout(updateTimeout);
-      setCountdown(0);
-    }
-  }, [autoUpdate]);
 
-  useEffect(() => {
-    if (initiated) {
-      startUpdateTimer();
-    } else {
-      UpdateQuery(true);
-      setInitiated(true);
-    }
-  }, [
-    mainClass,
-    subClass,
-    rarity,
-    professions,
-    SB1,
-    SB2,
-    PJ,
-    generation,
-    summons,
-    level,
-    fFName,
-    mFName,
-    lName,
-    idInput,
-    active1,
-    active2,
-    Passive1,
-    Passive2,
-    target,
-  ]);
+    setFilter(query, order);
+  };
+
   const ClearFilters = () => {
     setMainClass([]);
     setSubClass([]);
@@ -758,7 +695,7 @@ const HeroFilters = function HeroFilters({ includeSalePrice, visible }) {
               <Button
                 variant="contained"
                 color="success"
-                onClick={() => UpdateQuery(true)}
+                onClick={() => UpdateQuery()}
               >
                 Search
               </Button>

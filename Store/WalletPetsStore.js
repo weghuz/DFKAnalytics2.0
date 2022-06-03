@@ -2,11 +2,7 @@ import create from "zustand";
 import initiatePet from "../Logic/PetBase";
 import { petData } from "../Logic/Query";
 
-const updateQuery = (state) => {
-  console.log(
-    "query: ",
-    `{pets(first:${state.first},skip:${state.skip},where:{owner:"${state.address}",${state.filter}},${state.order})${petData}}`
-  );
+const UpdateQuery = (state) => {
   state.query = `{pets(first:${state.first},skip:${state.skip},where:{owner:"${state.address}",${state.filter}},${state.order})${petData}}`;
 };
 
@@ -29,7 +25,7 @@ const useWalletPets = create((set, get) => ({
       state.skip = 0;
       state.first = 100;
       state.pets = [];
-      updateQuery(state);
+      UpdateQuery(state);
     }),
   skip: 0,
   setSkip: (newSkip) =>
@@ -55,18 +51,38 @@ const useWalletPets = create((set, get) => ({
       console.log("New Pets: ", newPets);
       state.skip = state.skip + state.first;
       state.first = 1000;
-      updateQuery(state);
+      UpdateQuery(state);
       if (state.pets.length == 0) {
         state.pets = newPets;
         return;
       }
       state.pets = state.pets.concat(newPets);
     }),
+  initiated: false,
+  initiateStore: () => {
+    set((state) => {
+      if (!state.initiated) {
+        state.initiated = true;
+        let filterVisible = JSON.parse(
+          localStorage.getItem("PetsWalletFilterVisible")
+        );
+        if (state.hideFilters != filterVisible && filterVisible !== null) {
+          state.toggleFilters();
+        }
+        let columnsVisibilityModel = JSON.parse(
+          localStorage.getItem("PetsWalletVisiblityModel")
+        );
+        if (columnsVisibilityModel !== null) {
+          state.visiblityModel = columnsVisibilityModel;
+        }
+      }
+    });
+  },
   visibilityModel: undefined,
   setVisibilityModel: (visibilityModel) =>
     set((state) => {
       localStorage.setItem(
-        "PetsIndexVisiblityModel",
+        "PetsWalletVisiblityModel",
         JSON.stringify(visibilityModel)
       );
       return { visibilityModel: visibilityModel };
@@ -74,7 +90,7 @@ const useWalletPets = create((set, get) => ({
   hideFilters: false,
   toggleFilters: () =>
     set((state) => {
-      localStorage.setItem("PetsIndexFilterVisible", !state.hideFilters);
+      localStorage.setItem("PetsWalletFilterVisible", !state.hideFilters);
       return { hideFilters: !state.hideFilters };
     }),
 }));

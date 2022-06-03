@@ -2,7 +2,7 @@ import create from "zustand";
 import initiatePet from "../Logic/PetBase";
 import { petData } from "../Logic/Query";
 
-const updateQuery = (state) => {
+const UpdateQuery = (state) => {
   console.log(
     "query: ",
     `{pets(first:${state.first},skip:${state.skip}${
@@ -17,8 +17,8 @@ const updateQuery = (state) => {
 const usePets = create((set, get) => ({
   pets: [],
   first: 100,
-  filter: "salePrice_not:null",
-  order: "orderBy:salePrice",
+  filter: ``,
+  order: ``,
   setFilter: (filter, order) =>
     set((state) => {
       state.filter = filter;
@@ -26,7 +26,7 @@ const usePets = create((set, get) => ({
       state.skip = 0;
       state.first = 100;
       state.pets = [];
-      updateQuery(state);
+      UpdateQuery(state);
     }),
   skip: 0,
   setSkip: (newSkip) =>
@@ -34,13 +34,6 @@ const usePets = create((set, get) => ({
       return { skip: newSkip };
     }),
   query: ``,
-  setQuery: (newQuery) => {
-    set((state) => {
-      return {
-        query: newQuery,
-      };
-    });
-  },
   setPets: (newPets, clear) =>
     set((state) => {
       newPets = newPets.filter((np) => state.pets.every((p) => p.id !== np.id));
@@ -52,13 +45,34 @@ const usePets = create((set, get) => ({
       console.log("New Pets: ", newPets);
       state.skip = state.skip + state.first;
       state.first = 1000;
-      updateQuery(state);
+      UpdateQuery(state);
       if (state.pets.length == 0) {
         state.pets = newPets;
         return;
       }
       state.pets = state.pets.concat(newPets);
     }),
+  initiated: false,
+  initiateStore: () => {
+    set((state) => {
+      if (!state.initiated) {
+        state.initiated = true;
+        let filterVisible = JSON.parse(
+          localStorage.getItem("PetsIndexFilterVisible")
+        );
+        if (state.hideFilters != filterVisible && filterVisible !== null) {
+          state.toggleFilters();
+        }
+        let columnsVisibilityModel = JSON.parse(
+          localStorage.getItem("PetsIndexVisiblityModel")
+        );
+        if (columnsVisibilityModel !== null) {
+          state.setVisibilityModel(columnsVisibilityModel);
+        }
+        state.setFilter("salePrice_not:null", "orderBy: salePrice");
+      }
+    });
+  },
   visibilityModel: undefined,
   setVisibilityModel: (visibilityModel) =>
     set((state) => {

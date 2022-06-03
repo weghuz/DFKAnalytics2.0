@@ -14,18 +14,16 @@ export default function Home() {
   const setPets = usePets((state) => state.setPets);
   const pets = usePets((state) => state.pets);
   const query = usePets((state) => state.query);
-  const setQuery = usePets((state) => state.setQuery);
   const first = usePets((state) => state.first);
-  const setSkip = usePets((state) => state.setSkip);
   const skip = usePets((state) => state.skip);
   const visibilityModel = usePets((state) => state.visibilityModel);
   const setVisibilityModel = usePets((state) => state.setVisibilityModel);
   const hideFilters = usePets((state) => state.hideFilters);
   const toggleFilters = usePets((state) => state.toggleFilters);
-  const filter = usePets((state) => state.filter);
   const setFilter = usePets((state) => state.setFilter);
-  const order = usePets((state) => state.order);
   const setOrder = usePets((state) => state.setOrder);
+  const attempt = usePets((state) => state.attempt);
+  const initiateStore = usePets((state) => state.initiateStore);
 
   const requestPets = async (state) => {
     return fetch(base, {
@@ -38,38 +36,21 @@ export default function Home() {
       }),
     });
   };
-  const result = useQuery(["petsRequest", query + first + skip], async () => {
-    if (query.length > 0) {
-      let petsRequest = await requestPets();
-      if (petsRequest.status >= 200 && petsRequest.status <= 300) {
-        let json = await petsRequest.json();
-        let pets = json.data.pets;
-        setPets(pets, false);
+  const result = useQuery(
+    ["petsRequest", attempt + query + first + skip],
+    async () => {
+      if (query.length > 0) {
+        let petsRequest = await requestPets();
+        if (petsRequest.status >= 200 && petsRequest.status <= 300) {
+          let json = await petsRequest.json();
+          let pets = json.data.pets;
+          setPets(pets, false);
+        }
       }
     }
-  });
+  );
   useEffect(() => {
-    let filterVisible = JSON.parse(
-      localStorage.getItem("PetsIndexFilterVisible")
-    );
-    if (hideFilters != filterVisible && filterVisible !== null) {
-      toggleFilters();
-    }
-    let columnsVisibilityModel = JSON.parse(
-      localStorage.getItem("PetsIndexVisiblityModel")
-    );
-    if (columnsVisibilityModel !== null) {
-      setVisibilityModel(columnsVisibilityModel);
-    }
-  }, []);
-  useEffect(() => {
-    if (pets.length == 0) {
-      setQuery(
-        `{pets(first:${first},skip:${skip}${
-          filter.length > 0 ? `,where:{${filter}}` : ``
-        },${order})${petData}}`
-      );
-    }
+    initiateStore();
   }, []);
   return (
     <>

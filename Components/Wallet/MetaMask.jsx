@@ -2,7 +2,6 @@ import { ethers } from "ethers";
 import { useEffect, useState, useContext } from "react";
 import DisconnectWalletModal from "./Modal/DisconnectWalletModal";
 import QuestionModal from "./Modal/QuestionModal";
-import QueryContext from "../../Context/Context";
 import { Button, Grid } from "@mui/material";
 import useWallet from "../../Store/WalletStore";
 
@@ -17,14 +16,9 @@ export default function MetaMask() {
   const [connectionMethod, setConnectionMethod] = useState("");
   const [connectionText, setConnectionText] = useState("");
   const [textInterval, setTextInterval] = useState(0);
-  const queryContext = useContext(QueryContext);
   const setWalletAddress = useWallet((state) => state.setAddress);
   useEffect(() => {
     if (address.length == 42) {
-      queryContext.setQuery({
-        ...queryContext.query,
-        wallet: address,
-      });
       console.log(`set ${address}`);
       setWalletAddress(address);
     }

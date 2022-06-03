@@ -8,7 +8,7 @@ import {
   InputAdornment,
   InputLabel,
 } from "@mui/material";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import PetBonusSlider from "./PetFilters/PetBonusSlider";
 import PetRaritySlider from "./PetFilters/PetRaritySlider";
 import Jewel from "../public/Jewel.png";
@@ -168,6 +168,7 @@ export default function PetFilters({ visible, includeSalePrice, setFilter }) {
     }
     setFilter(filters, order);
   };
+
   const ClearFilters = () => {
     if (includeSalePrice) {
       setMinSalePrice(0);

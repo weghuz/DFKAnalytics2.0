@@ -6,7 +6,7 @@ import RequestContext from "../../Context/Context";
 import MetaMask from "../../Components/Wallet/MetaMask";
 import { Button, Grid, LinearProgress, Typography } from "@mui/material";
 import { columnDefs } from "../../Logic/GridTableColumns";
-import useWallet from "../../Store/WalletHeroesStore";
+import useWallet from "../../Store/WalletStore";
 import DFKATable from "../../Components/Table/DFKATable";
 import useWalletHeroes from "../../Store/WalletHeroesStore";
 import { useRouter } from "next/router";
@@ -20,106 +20,52 @@ export default function Wallet() {
   );
   const heroes = useWalletHeroes((state) => state.heroes);
   const setHeroes = useWalletHeroes((state) => state.setHeroes);
-  const [first, setFirst] = useState(100);
-  const [skip, setSkip] = useState(0);
-  const lastRequest = useRef();
-  const requestContext = useContext(RequestContext);
+  const initiateStore = useWalletHeroes((state) => state.initiateStore);
+  const query = useWalletHeroes((state) => state.query);
+  const skip = useWalletHeroes((state) => state.skip);
+  const attempt = useWalletHeroes((state) => state.attempt);
+  const first = useWalletHeroes((state) => state.first);
+  const setAddress = useWalletHeroes((state) => state.setAddress);
+  const address = useWallet((state) => state.address);
+  const setFilter = useWalletHeroes((state) => state.setFilter);
+
   const router = useRouter();
   const clickedHero = (hero) => {
-    router.push(`/hero/[id]`,`/hero/${hero.id}`);
+    router.push(`/hero/[id]`, `/hero/${hero.id}`);
   };
-  console.log(
-    `{heroes(first:${first},skip:${skip},${
-      requestContext.query.query.length > 0
-        ? `where: {owner: "${requestContext.query.wallet}", ${requestContext.query.query}`
-        : `where: {owner: "${requestContext.query.wallet}"}`
-    }){${heroData}}}`
-  );
-  const testRequest = async () => {
+
+  const requestheroes = async () => {
     return fetch(base, {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=UTF-8",
       },
       body: JSON.stringify({
-        query: `{heroes(first:${first},skip:${skip},${
-          requestContext.query.query.length > 0
-            ? `where: {owner: "${requestContext.query.wallet}", ${requestContext.query.query}`
-            : `where: {owner: "${requestContext.query.wallet}"}`
-        }){${heroData}}}`,
+        query: query,
       }),
     });
   };
   const result = useQuery(
-    [
-      "request",
-      requestContext.query.query + requestContext.query.wallet + first + skip,
-    ],
+    ["request", address + first + skip + attempt + query],
     async () => {
-      return {
-        q: requestContext.query.query + requestContext.query.wallet,
-        res: await (await testRequest()).json(),
-      };
-    },
-    {
-      onSuccess: async (result) => {
-        console.log(result);
-        let data = result.res.data;
-        if (data == null) {
-          return;
+      if (query.length > 0 && address.length > 0) {
+        let auctionsRequest = await requestheroes();
+        if (auctionsRequest.status >= 200 && auctionsRequest.status <= 300) {
+          let json = await auctionsRequest.json();
+          console.log(json.data);
+          let heroes = json.data.heroes;
+          setHeroes(heroes, false);
         }
-        console.log(
-          result.q,
-          "\n",
-          requestContext.query.query + requestContext.query.wallet
-        );
-        if (
-          result.q !=
-          requestContext.query.query + requestContext.query.wallet
-        ) {
-          return;
-        }
-        if (first == data.heroes.length) {
-          setSkip((s) => s + first);
-          setFirst((f) => 1000);
-        }
-        setHeroes(data.heroes, false);
-      },
+      }
     }
   );
-
   useEffect(() => {
-    if (
-      lastRequest.current ==
-      requestContext.query.query + requestContext.query.wallet
-    ) {
-      console.log("Didn't clear search");
-      return;
-    }
-    console.log("Clear Search");
-    lastRequest.current =
-      requestContext.query.query + requestContext.query.wallet;
-    setHeroes([], true);
-    setSkip((s) => 0);
-    setFirst((f) => 100);
-  });
-  useEffect(() => {
-    let filterVisible = JSON.parse(
-      localStorage.getItem("WalletHeroFilterVisible")
-    );
-    let columnsVisibilityModel = JSON.parse(
-      localStorage.getItem("WalletColumnVisiblityModel")
-    );
-    console.log(columnsVisibilityModel);
-    if (columnsVisibilityModel !== null) {
-      setVisibilityModel(columnsVisibilityModel);
-    }
-    console.log(visibilityModel);
-    if (hideFilters != filterVisible && filterVisible !== null) {
-      console.log(hideFilters, filterVisible);
-      toggleFilters();
-    }
+    initiateStore();
   }, []);
+  useEffect(() => {
+    console.log(address);
+    setAddress(address);
+  }, [address]);
   return (
     <>
       <Grid
@@ -148,6 +94,7 @@ export default function Wallet() {
         onSaleDefault={false}
         includeSalePrice={false}
         visible={hideFilters}
+        setFilter={setFilter}
       />
       {result.isLoading && (
         <LinearProgress style={{ height: 10, margin: "5px 50px" }} />

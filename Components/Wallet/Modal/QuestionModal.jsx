@@ -7,7 +7,7 @@ export default function QuestionModal({
 }) {
   const [address, setAddress] = useState("");
   return (
-    <Dialog Title="Why connect?" open={true} onClose={HideQuestionsModal}>
+    <Dialog title="Why connect?" open={true} onClose={HideQuestionsModal}>
       <Container>
         <Grid container spacing={2}>
           <Grid item>

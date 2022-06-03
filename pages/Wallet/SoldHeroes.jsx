@@ -1,102 +1,64 @@
 import { Button, Grid, LinearProgress, Typography } from "@mui/material";
-import { useContext, useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import { useQuery } from "react-query";
 import MetaMask from "../../Components/Wallet/MetaMask";
-import RequestContext from "../../Context/Context";
 import { base, heroData } from "../../Logic/Query";
 import { columnDefs } from "../../Logic/GridTableColumns";
 import useAuctions from "../../Store/AuctionsStore";
 import DFKATable from "../../Components/Table/DFKATable";
 import { useRouter } from "next/router";
+import useWallet from "../../Store/WalletStore";
 
 export default function Auctions() {
   const visibilityModel = useAuctions((state) => state.visibilityModel);
   const setVisibilityModel = useAuctions((state) => state.setVisibilityModel);
-  const heroes = useAuctions((state) => state.heroes);
+  const initiateStore = useAuctions((state) => state.initiateStore);
   const setHeroes = useAuctions((state) => state.setHeroes);
-  const [first, setFirst] = useState(100);
-  const [skip, setSkip] = useState(0);
-  const lastRequest = useRef();
-  const requestContext = useContext(RequestContext);
+  const heroes = useAuctions((state) => state.heroes);
+  const query = useAuctions((state) => state.query);
+  const skip = useAuctions((state) => state.skip);
+  const setAddress = useAuctions((state) => state.setAddress);
+  const address = useWallet((state) => state.address);
   const router = useRouter();
+
   const clickedHero = (hero) => {
-    router.push(`/hero/[id]`,`/hero/${hero.heroId}`);
+    router.push(`/hero/[id]`, `/hero/${hero.heroId}`);
   };
-  console.log(
-    `{saleAuctions(first:${first},skip:${skip},where: {seller: "${requestContext.query.wallet}", purchasePrice_gt:"1"}, orderBy:startedAt, orderDirection:desc){id purchasePrice startedAt tokenId {${heroData}}}}`
-  );
-  const testRequest = async () => {
+
+  const requestAuctions = async () => {
     return fetch(base, {
       method: "POST",
       headers: {
         "Content-Type": "application/json;charset=UTF-8",
       },
       body: JSON.stringify({
-        query: `{saleAuctions(first:${first},skip:${skip},where: {seller: "${requestContext.query.wallet}", purchasePrice_gt:"1"}, orderBy:startedAt, orderDirection:desc){id purchasePrice startedAt tokenId {${heroData}}}}`,
+        query: query,
       }),
     });
   };
-  const result = useQuery(
-    [
-      "request",
-      requestContext.query.query + requestContext.query.wallet + first + skip,
-    ],
-    async () => {
-      return {
-        q: requestContext.query.query + requestContext.query.wallet,
-        res: await (await testRequest()).json(),
-      };
-    },
-    {
-      onSuccess: async (result) => {
-        console.log(result);
-        let data = result.res.data;
-        if (data == null) {
-          return;
-        }
-
-        if (
-          result.q !=
-          requestContext.query.query + requestContext.query.wallet
-        ) {
-          return;
-        }
-        if (first == data.saleAuctions.length) {
-          setSkip((s) => s + first);
-          setFirst((f) => 1000);
-        }
-        setHeroes(
-          data.saleAuctions.map((a) => {
-            a.tokenId.purchasePrice = a.purchasePrice;
-            a.tokenId.heroId = a.tokenId.id;
-            a.tokenId.id = a.id;
-            return a.tokenId;
-          }),
-          false
-        );
-      },
-    }
-  );
   useEffect(() => {
-    if (lastRequest.current == requestContext.query.query) {
-      console.log("Didn't clear search");
-      return;
+    setAddress(address);
+  }, [address]);
+  const result = useQuery(["request", query + address + skip], async () => {
+    if (query.length > 0 && address.length > 0) {
+      let auctionsRequest = await requestAuctions();
+      if (auctionsRequest.status >= 200 && auctionsRequest.status <= 300) {
+        let json = await auctionsRequest.json();
+        console.log(json.data);
+        let auctions = json.data.saleAuctions;
+        console.log(auctions);
+        let heroes = auctions.map((a) => {
+          a.tokenId.purchasePrice = a.purchasePrice;
+          a.tokenId.heroId = a.tokenId.id;
+          a.tokenId.id = a.id;
+          return a.tokenId;
+        });
+        setHeroes(heroes, false);
+      }
     }
-    console.log("Clear Search");
-    lastRequest.current = requestContext.query.query;
-    setHeroes([], true);
-    setSkip((s) => 0);
-    setFirst((f) => 100);
   });
   useEffect(() => {
-    let columnsVisibilityModel = JSON.parse(
-      localStorage.getItem("AuctionsColumnVisiblityModel")
-    );
-    console.log(columnsVisibilityModel);
-    if (columnsVisibilityModel !== null) {
-      setVisibilityModel(columnsVisibilityModel);
-    }
-    console.log(visibilityModel);
+    initiateStore();
   }, []);
   return (
     <>

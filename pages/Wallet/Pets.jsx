@@ -23,20 +23,17 @@ export default function Home() {
   const setPets = useWalletPets((state) => state.setPets);
   const pets = useWalletPets((state) => state.pets);
   const query = useWalletPets((state) => state.query);
-  const setQuery = useWalletPets((state) => state.setQuery);
   const first = useWalletPets((state) => state.first);
-  const setSkip = useWalletPets((state) => state.setSkip);
   const skip = useWalletPets((state) => state.skip);
   const visibilityModel = useWalletPets((state) => state.visibilityModel);
   const setVisibilityModel = useWalletPets((state) => state.setVisibilityModel);
   const hideFilters = useWalletPets((state) => state.hideFilters);
   const toggleFilters = useWalletPets((state) => state.toggleFilters);
   const address = useWallet((state) => state.address);
-  const filter = useWalletPets((state) => state.filter);
   const setFilter = useWalletPets((state) => state.setFilter);
-  const order = useWalletPets((state) => state.order);
   const setOrder = useWalletPets((state) => state.setOrder);
   const setAddress = useWalletPets((state) => state.setAddress);
+  const initiateStore = useWalletPets((state) => state.initiateStore);
 
   const requestPets = async (state) => {
     return fetch(base, {
@@ -64,18 +61,7 @@ export default function Home() {
     }
   );
   useEffect(() => {
-    let filterVisible = JSON.parse(
-      localStorage.getItem("PetsWalletFilterVisible")
-    );
-    if (hideFilters != filterVisible && filterVisible !== null) {
-      toggleFilters();
-    }
-    let columnsVisibilityModel = JSON.parse(
-      localStorage.getItem("PetsWalletVisiblityModel")
-    );
-    if (columnsVisibilityModel !== null) {
-      setVisibilityModel(columnsVisibilityModel);
-    }
+    initiateStore();
   }, []);
   useEffect(() => {
     setAddress(address);

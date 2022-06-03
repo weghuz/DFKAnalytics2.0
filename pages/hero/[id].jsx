@@ -24,7 +24,7 @@ export default function HeroId() {
         "Content-Type": "application/json;charset=UTF-8",
       },
       body: JSON.stringify({
-        query: `{hero(id:"${id}"){${heroData}}}`,
+        query: `{hero(id:"${id}")${heroData}}`,
       }),
     });
   };
@@ -32,13 +32,26 @@ export default function HeroId() {
   const result = useQuery(
     ["request", id],
     async () => {
-      console.log(id);
-      return await (await testRequest()).json();
+      if (id) {
+        let request = await testRequest();
+        if (request.status >= 200 || request.status <= 300) {
+          return await request.json();
+        } else {
+          console.log("Error: ", request);
+        }
+      } else {
+        console.log("Invalid ID", id);
+      }
     },
     {
       onSuccess: (data) => {
+        if (!data) {
+          return;
+        }
+        if (typeof data.errors !== "undefined") {
+          console.log(data.errors[0].message);
+        }
         let hero = data.data.hero;
-        console.log(hero);
         if (hero == null) {
           setFailed(true);
           return;
