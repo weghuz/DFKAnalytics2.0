@@ -19,7 +19,7 @@ export default function index() {
     d.setUTCFullYear(2022);
     d.setUTCMonth(5);
     d.setUTCDate(4);
-    d.setUTCHours(19);
+    d.setUTCHours(17);
 
     return d.toLocaleString("en-GB");
   };
