@@ -26,16 +26,18 @@ export default function index() {
   return (
     <Container>
       <Grid container spacing={5}>
+        <Grid item sm={12} textAlign={"center"}>
+          <Typography variant="h4" component="div">
+            {`Welcome to DFKAnalytics 2.0`}
+          </Typography>
+        </Grid>
         <Grid container item sm={12}>
           <Card sx={{ width: "100%" }}>
             <CardContent>
               <Typography variant="h5" component="div">
-                <Box fontWeight={"bold"}>{`Community Spotlight`}</Box>{" "}
-                {`A Candor Gander: DFK Unmasked - Weghuz`}
+                {`Community Spotlight`}
               </Typography>
-              <Typography variant="h6" component="div">
-                {localDate()}
-              </Typography>
+              <Typography variant="h6" component="div"></Typography>
               <Box display={"flex"} justifyContent={"center"}>
                 <a
                   href="https://www.youtube.com/watch?v=sBOjWZ17r0s"
@@ -51,6 +53,10 @@ export default function index() {
                   />
                 </a>
               </Box>
+              <Typography variant="body2">
+                <Box>{`A Candor Gander: DFK Unmasked - Weghuz`}</Box>
+                <Box>{localDate()}</Box>
+              </Typography>
             </CardContent>
             <CardActions>
               <Button size="small">
