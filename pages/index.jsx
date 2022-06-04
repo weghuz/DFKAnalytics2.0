@@ -25,7 +25,7 @@ export default function index() {
   };
   return (
     <Container>
-      <Grid container spacing={5}>
+      <Grid container spacing={3}>
         <Grid item sm={12} textAlign={"center"}>
           <Typography variant="h4" component="div">
             {`Welcome to DFKAnalytics 2.0`}
