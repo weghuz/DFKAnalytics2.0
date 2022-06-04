@@ -9,13 +9,56 @@ import {
 } from "@mui/material";
 import React from "react";
 import Link from "next/link";
+import { Box } from "@mui/system";
+import Image from "next/image";
+import CommunitySpotlight from "../public/CommunitySpotlight.jpg";
 
 export default function index() {
+  const localDate = () => {
+    let d = new Date("2022-06-04T19:00");
+    d.setUTCFullYear(2022);
+    d.setUTCMonth(5);
+    d.setUTCDate(4);
+    d.setUTCHours(19);
+
+    return d.toLocaleString("en-GB");
+  };
   return (
     <Container>
       <Grid container spacing={5}>
         <Grid item xs={12} textAlign={"center"}>
           <Typography variant="h4">{`Welcome to DFKAnalytics 2.0`}</Typography>
+        </Grid>
+        <Grid container item sm={12}>
+          <Card sx={{ width: "100%" }}>
+            <CardContent>
+              <Typography variant="h5" component="div">
+                <Box fontWeight={"bold"}>{`Community Spotlight`}</Box>{" "}
+                {`A Candor Gander: DFK Unmasked - Weghuz`}
+              </Typography>
+              <Typography variant="h6" component="div">
+                {localDate()}
+              </Typography>
+              <Box display={"flex"} justifyContent={"center"}>
+                <a href="https://www.youtube.com/watch?v=sBOjWZ17r0s">
+                  <Image
+                    layout={"fixed"}
+                    width={800}
+                    height={450}
+                    src={CommunitySpotlight}
+                    alt={"Community Spotlight"}
+                  />
+                </a>
+              </Box>
+            </CardContent>
+            <CardActions>
+              <Button size="small">
+                <a href="https://www.youtube.com/watch?v=sBOjWZ17r0s">
+                  {"Youtube Link"}
+                </a>
+              </Button>
+            </CardActions>
+          </Card>
         </Grid>
         <Grid container item sm={7}>
           <Card sx={{ width: "100%" }}>
@@ -28,9 +71,11 @@ export default function index() {
               </Typography>
             </CardContent>
             <CardActions>
-              <Link href={"https://discord.gg/kuy5tSrH9C"} passhref>
-                <Button size="small">{"DFKAnalytics Discord"}</Button>
-              </Link>
+              <Button size="small">
+                <a href={"https://discord.gg/kuy5tSrH9C"}>
+                  {"DFKAnalytics Discord"}
+                </a>
+              </Button>
             </CardActions>
           </Card>
         </Grid>
@@ -46,9 +91,9 @@ export default function index() {
               </Typography>
             </CardContent>
             <CardActions>
-              <Link href={"/Wallet/"} passhref>
-                <Button size="small">{`Log in`}</Button>
-              </Link>
+              <Button size="small">
+                <Link href={"/Wallet/"}>{`Log in`}</Link>
+              </Button>
             </CardActions>
           </Card>
         </Grid>
@@ -67,9 +112,9 @@ export default function index() {
               </Typography>
             </CardContent>
             <CardActions>
-              <Link href={"/Pets/"} passhref>
-                <Button size="small">{`Pets`}</Button>
-              </Link>
+              <Button size="small">
+                <Link href={"/Pets/"}>{`Pets`}</Link>
+              </Button>
             </CardActions>
           </Card>
         </Grid>
@@ -88,9 +133,9 @@ export default function index() {
               </Typography>
             </CardContent>
             <CardActions>
-              <Link href={"/Heroes/"} passhref>
-                <Button size="small">{`Heroes`}</Button>
-              </Link>
+              <Button size="small">
+                <Link href={"/Heroes/"}>{`Heroes`}</Link>
+              </Button>
             </CardActions>
           </Card>
         </Grid>
@@ -106,9 +151,11 @@ export default function index() {
               </Typography>
             </CardContent>
             <CardActions>
-              <a href={"https://dfkanalytics.azurewebsites.net"}>
-                <Button size="small">{`DFKAnalytics 1.0`}</Button>
-              </a>
+              <Button size="small">
+                <a
+                  href={"https://dfkanalytics.azurewebsites.net"}
+                >{`DFKAnalytics 1.0`}</a>
+              </Button>
             </CardActions>
           </Card>
         </Grid>
