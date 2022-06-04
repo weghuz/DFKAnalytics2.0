@@ -35,6 +35,7 @@ const initiatePet = (pet) => {
     return false;
   }
   pet.season = data.season;
+  pet.appearanceRarity = data.rarity;
   pet.family = data.family;
   pet.displayName = data.displayName;
   pet.variant = data.variant;

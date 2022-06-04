@@ -1,5 +1,4 @@
 import ElementCell from "../Components/Hero/ElementCell";
-import RarityCell from "../Components/Hero/RarityCell";
 import CombatBonus from "../Components/Pet/CombatBonus";
 import CraftingBonus from "../Components/Pet/CraftingBonus";
 import EggCell from "../Components/Pet/EggCell";
@@ -50,6 +49,20 @@ let petColumnDefs = [
     field: "shiny",
     hide: true,
     width: 70,
+  },
+  {
+    headerName: "Appearance Id",
+    field: "appearance",
+    type: "number",
+    hide: true,
+    width: 105,
+  },
+  {
+    headerName: "Appearance Rarity",
+    field: "appearanceRarity",
+    type: "number",
+    hide: true,
+    width: 105,
   },
   {
     headerName: "Display Name",

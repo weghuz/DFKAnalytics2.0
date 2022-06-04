@@ -21,13 +21,14 @@ import {
   PetElements,
 } from "../Logic/PetDropdownOptions";
 import NumberSlider from "./Filters/NumberSlider";
+import Pet03StarSlider from "./PetFilters/Pet03StarSlider";
 
 export default function PetFilters({ visible, includeSalePrice, setFilter }) {
   const [minSalePrice, setMinSalePrice] = useState(0);
   const [maxSalePrice, setMaxSalePrice] = useState(9999999);
   const [bonusCount, setBonusCount] = useState([1, 3]);
-  const [combatBonus, setCombatBonus] = useState([1, 3]);
-  const [craftBonus, setCraftBonus] = useState([1, 3]);
+  const [combatBonus, setCombatBonus] = useState([0, 3]);
+  const [craftBonus, setCraftBonus] = useState([0, 3]);
   const [profBonus, setProfBonus] = useState([1, 3]);
   const [rarity, setRarity] = useState([0, 4]);
   const [idInput, setIdInput] = useState("");
@@ -40,7 +41,7 @@ export default function PetFilters({ visible, includeSalePrice, setFilter }) {
   const clearBonusCount = useRef(null);
   const clearProfBonus = useRef(null);
   const clearRarity = useRef(null);
-  const bonusMap = [1, 80, 160];
+  const bonusMap = [0, 1, 80, 160];
   const UpdateQuery = () => {
     let filters = ``,
       order = ``;
@@ -82,29 +83,29 @@ export default function PetFilters({ visible, includeSalePrice, setFilter }) {
     }
 
     if (profBonus[0] !== 1) {
-      filters += `profBonus_gte:${bonusMap[profBonus[0] - 1]},`;
+      filters += `profBonus_gte:${bonusMap[profBonus[0]]},`;
     }
     if (profBonus[1] !== 3) {
-      filters += `profBonus_lte:${bonusMap[profBonus[1] - 1]},`;
+      filters += `profBonus_lte:${bonusMap[profBonus[1]]},`;
     }
-    if (craftBonus[0] !== 1) {
-      filters += `craftBonus_gte:${bonusMap[craftBonus[0] - 1]},`;
+    if (craftBonus[0] !== 0) {
+      filters += `craftBonus_gte:${bonusMap[craftBonus[0]]},`;
     }
     if (craftBonus[1] !== 3) {
-      filters += `craftBonus_lte:${bonusMap[craftBonus[1] - 1]},`;
+      filters += `craftBonus_lte:${bonusMap[craftBonus[1]]},`;
     }
-    if (bonusCount[0] !== 1) {
+    if (bonusCount[0] !== 0) {
       filters += `bonusCount_gte:${bonusCount[0]},`;
     }
     if (bonusCount[1] !== 3) {
       filters += `bonusCount_lte:${bonusCount[1]},`;
     }
-    // if (combatBonus[0] !== 0) {
-    //   filters += `combatBonus_gte: ${combatBonus[0]},`;
-    // }
-    // if (combatBonus[1] !== 4) {
-    //   filters += `combatBonus_lte:${combatBonus[1]},`;
-    // }
+    if (combatBonus[0] !== 0) {
+      filters += `combatBonus_gte: ${combatBonus[0]},`;
+    }
+    if (combatBonus[1] !== 3) {
+      filters += `combatBonus_lte:${combatBonus[1]},`;
+    }
     if (rarity[0] !== 0) {
       filters += `rarity_gte: ${rarity[0]},`;
     }
@@ -180,12 +181,12 @@ export default function PetFilters({ visible, includeSalePrice, setFilter }) {
     clearProfBonus.current();
     clearCraftBonus.current();
     clearBonusCount.current();
-    // clearCombatBonus.current();
+    clearCombatBonus.current();
     setIdInput("");
     setBonusCount([1, 3]);
     setProfBonus([1, 3]);
-    setCraftBonus([1, 3]);
-    setCombatBonus([1, 3]);
+    setCraftBonus([0, 3]);
+    setCombatBonus([0, 3]);
     setBackground([]);
     setEggType([]);
     setElement([]);
@@ -246,17 +247,16 @@ export default function PetFilters({ visible, includeSalePrice, setFilter }) {
               setValue={setProfBonus}
               clear={(clearFunc) => (clearProfBonus.current = clearFunc)}
             ></PetBonusSlider>
-            <PetBonusSlider
+            <Pet03StarSlider
               bonusName={"Crafting"}
               setValue={setCraftBonus}
               clear={(clearFunc) => (clearCraftBonus.current = clearFunc)}
-            ></PetBonusSlider>
-            <PetBonusSlider
-              disabled={true}
-              bonusName={"(Not in API yet)Combat"}
+            ></Pet03StarSlider>
+            <Pet03StarSlider
+              bonusName={"Combat"}
               setValue={setCombatBonus}
               clear={(clearFunc) => (clearCombatBonus.current = clearFunc)}
-            ></PetBonusSlider>
+            ></Pet03StarSlider>
             {includeSalePrice && (
               <>
                 <Grid item xs={12} sm={6} md={4} xl={3}>
