@@ -43,6 +43,7 @@ export default function index() {
                 <a
                   href="https://www.youtube.com/watch?v=sBOjWZ17r0s"
                   target={"_blank"}
+                  rel={"noreferrer"}
                 >
                   <Image
                     layout={"fixed"}
@@ -59,6 +60,7 @@ export default function index() {
                 <a
                   href="https://www.youtube.com/watch?v=sBOjWZ17r0s"
                   target={"_blank"}
+                  rel={"noreferrer"}
                 >
                   {"Youtube Link"}
                 </a>
@@ -78,7 +80,11 @@ export default function index() {
             </CardContent>
             <CardActions>
               <Button size="small">
-                <a href={"https://discord.gg/kuy5tSrH9C"} target={"_blank"}>
+                <a
+                  href={"https://discord.gg/kuy5tSrH9C"}
+                  target={"_blank"}
+                  rel={"noreferrer"}
+                >
                   {"DFKAnalytics Discord"}
                 </a>
               </Button>
@@ -161,6 +167,7 @@ export default function index() {
                 <a
                   href={"https://dfkanalytics.azurewebsites.net"}
                   target={"_blank"}
+                  rel={"noreferrer"}
                 >{`DFKAnalytics 1.0`}</a>
               </Button>
             </CardActions>
