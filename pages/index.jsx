@@ -40,7 +40,10 @@ export default function index() {
                 {localDate()}
               </Typography>
               <Box display={"flex"} justifyContent={"center"}>
-                <a href="https://www.youtube.com/watch?v=sBOjWZ17r0s">
+                <a
+                  href="https://www.youtube.com/watch?v=sBOjWZ17r0s"
+                  target={"_blank"}
+                >
                   <Image
                     layout={"fixed"}
                     width={800}
@@ -53,7 +56,10 @@ export default function index() {
             </CardContent>
             <CardActions>
               <Button size="small">
-                <a href="https://www.youtube.com/watch?v=sBOjWZ17r0s">
+                <a
+                  href="https://www.youtube.com/watch?v=sBOjWZ17r0s"
+                  target={"_blank"}
+                >
                   {"Youtube Link"}
                 </a>
               </Button>
@@ -72,7 +78,7 @@ export default function index() {
             </CardContent>
             <CardActions>
               <Button size="small">
-                <a href={"https://discord.gg/kuy5tSrH9C"}>
+                <a href={"https://discord.gg/kuy5tSrH9C"} target={"_blank"}>
                   {"DFKAnalytics Discord"}
                 </a>
               </Button>
@@ -154,6 +160,7 @@ export default function index() {
               <Button size="small">
                 <a
                   href={"https://dfkanalytics.azurewebsites.net"}
+                  target={"_blank"}
                 >{`DFKAnalytics 1.0`}</a>
               </Button>
             </CardActions>
