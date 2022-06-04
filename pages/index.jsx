@@ -26,9 +26,6 @@ export default function index() {
   return (
     <Container>
       <Grid container spacing={5}>
-        <Grid item xs={12} textAlign={"center"}>
-          <Typography variant="h4">{`Welcome to DFKAnalytics 2.0`}</Typography>
-        </Grid>
         <Grid container item sm={12}>
           <Card sx={{ width: "100%" }}>
             <CardContent>
@@ -125,7 +122,7 @@ export default function index() {
             </CardContent>
             <CardActions>
               <Button size="small">
-                <Link href={"/Pets/"}>{`Pets`}</Link>
+                <Link href={"/pet/"}>{`Pets`}</Link>
               </Button>
             </CardActions>
           </Card>
@@ -146,7 +143,7 @@ export default function index() {
             </CardContent>
             <CardActions>
               <Button size="small">
-                <Link href={"/Heroes/"}>{`Heroes`}</Link>
+                <Link href={"/hero/"}>{`Heroes`}</Link>
               </Button>
             </CardActions>
           </Card>
