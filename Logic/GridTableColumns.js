@@ -36,7 +36,7 @@ let columnDefs = [
   {
     headerName: "Summoned Time",
     field: "summonedTime",
-    hide: false,
+    hide: true,
     width: 200,
     valueFormatter: ({ value }) => {
       return (
