@@ -34,6 +34,19 @@ let columnDefs = [
     },
   },
   {
+    headerName: "Summoned Time",
+    field: "summonedTime",
+    hide: false,
+    width: 200,
+    valueFormatter: ({ value }) => {
+      return (
+        new Date(value * 1000).toLocaleDateString() +
+        " " +
+        new Date(value * 1000).toLocaleTimeString()
+      );
+    },
+  },
+  {
     headerName: "Id",
     field: "id",
     hide: false,
