@@ -17,9 +17,9 @@ export default function MetaMask() {
   const [connectionText, setConnectionText] = useState("");
   const [textInterval, setTextInterval] = useState(0);
   const setWalletAddress = useWallet((state) => state.setAddress);
+  const savedAddress = useWallet((state) => state.address);
   useEffect(() => {
     if (address.length == 42) {
-      console.log(`set ${address}`);
       setWalletAddress(address);
     }
   }, [address]);
@@ -54,6 +54,7 @@ export default function MetaMask() {
     });
   }, [connecting]);
   useEffect(() => {
+    console.log("Saved Address", savedAddress);
     const OnWindowLoaded = async () => {
       let savedWallet = localStorage.getItem("address");
       if (savedWallet) {

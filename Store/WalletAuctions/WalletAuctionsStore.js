@@ -4,14 +4,14 @@ import {
   getRecessives,
   GrowthScore,
   TrainStat,
-} from "../Logic/HeroBase";
-import { heroData } from "../Logic/Query";
+} from "../../Logic/HeroBase";
+import { heroData } from "../../Logic/Query";
 
 const UpdateQuery = (state) => {
   state.query = `{saleAuctions(first:${state.first},skip:${state.skip},where: {seller: "${state.address}", purchasePrice_gt:"1"}, orderBy:startedAt, orderDirection:desc){id purchasePrice startedAt tokenId ${heroData}}}`;
 };
 
-const useAuctions = create((set, get) => ({
+const useWalletAuctions = create((set) => ({
   heroes: [],
   first: 100,
   attempt: 0,
@@ -47,8 +47,11 @@ const useAuctions = create((set, get) => ({
       state.skip = newSkip;
     }),
   query: ``,
-  setHeroes: (newHeroes) =>
+  setHeroes: (newHeroes, query) =>
     set((state) => {
+      if (query !== state.query) {
+        return;
+      }
       newHeroes = newHeroes.filter(
         (nh) => !state.heroes.some((h) => h.id === nh.id)
       );
@@ -74,44 +77,6 @@ const useAuctions = create((set, get) => ({
       }
       state.heroes = state.heroes.concat(newHeroes);
     }),
-  initiateStore: () => {
-    set((state) => {
-      if (!state.initiated) {
-        state.initiated = true;
-        let columnsVisibilityModel = JSON.parse(
-          localStorage.getItem("AuctionsColumnVisiblityModel")
-        );
-        console.log(columnsVisibilityModel);
-        if (columnsVisibilityModel !== null) {
-          state.visibilityModel = columnsVisibilityModel;
-        }
-        let filterVisible = JSON.parse(
-          localStorage.getItem("AuctionsHeroFilterVisible")
-        );
-        if (state.hideFilters != filterVisible && filterVisible !== null) {
-          state.toggleFilters();
-        }
-        state.setFilter("salePrice_not:null", "orderBy: salePrice");
-      }
-    });
-  },
-  visibilityModel: undefined,
-  setVisibilityModel: (visibilityModel) =>
-    set((state) => {
-      console.log(visibilityModel);
-      console.log(state.visibilityModel);
-      localStorage.setItem(
-        "AuctionsColumnVisiblityModel",
-        JSON.stringify(visibilityModel)
-      );
-      return { visibilityModel: visibilityModel };
-    }),
-  hideFilters: false,
-  toggleFilters: () =>
-    set((state) => {
-      localStorage.setItem("AuctionsHeroFilterVisible", !state.hideFilters);
-      return { hideFilters: !state.hideFilters };
-    }),
 }));
 
-export default useAuctions;
+export default useWalletAuctions;

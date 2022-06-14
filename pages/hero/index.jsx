@@ -1,27 +1,37 @@
-import { useEffect } from "react";
 import { useQuery } from "react-query";
 import HeroFilters from "../../Components/HeroFilters";
 import { base } from "../../Logic/Query";
 import { Button, LinearProgress, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { columnDefs } from "../../Logic/GridTableColumns";
-import useIndex from "../../Store/HeroesStore";
 import DFKATable from "../../Components/Table/DFKATable";
 import { useRouter } from "next/router";
+import useHeroesPersist from "../../Store/hero/HeroesPersistStore";
+import useHeroes from "../../Store/hero/HeroesStore";
+import HeroColumnSetups from "../../Components/HeroColumnSetups";
 
 export default function Home() {
-  const hideFilters = useIndex((state) => state.hideFilters);
-  const toggleFilters = useIndex((state) => state.toggleFilters);
-  const visibilityModel = useIndex((state) => state.visibilityModel);
-  const setVisibilityModel = useIndex((state) => state.setVisibilityModel);
-  const heroes = useIndex((state) => state.heroes);
-  const setHeroes = useIndex((state) => state.setHeroes);
-  const initiateStore = useIndex((state) => state.initiateStore);
-  const query = useIndex((state) => state.query);
-  const setFilter = useIndex((state) => state.setFilter);
-  const attempt = useIndex((state) => state.attempt);
-  const skip = useIndex((state) => state.skip);
-  const first = useIndex((state) => state.first);
+  const hideColumns = useHeroesPersist((state) => state.hideColumns);
+  const toggleHideColumns = useHeroesPersist(
+    (state) => state.toggleHideColumns
+  );
+  const hideFilters = useHeroesPersist((state) => state.hideFilters);
+  const toggleHideFilters = useHeroesPersist(
+    (state) => state.toggleHideFilters
+  );
+  const visibilityModel = useHeroesPersist((state) => state.visibilityModel);
+  const setVisibilityModel = useHeroesPersist(
+    (state) => state.setVisibilityModel
+  );
+  const setHeroSetup = useHeroesPersist((state) => state.setHeroSetup);
+  const heroSetup = useHeroesPersist((state) => state.heroSetup);
+  const heroes = useHeroes((state) => state.heroes);
+  const setHeroes = useHeroes((state) => state.setHeroes);
+  const query = useHeroes((state) => state.query);
+  const attempt = useHeroes((state) => state.attempt);
+  const skip = useHeroes((state) => state.skip);
+  const first = useHeroes((state) => state.first);
+
   const router = useRouter();
   const clickedHero = (hero) => {
     router.push(`/hero/[id]`, `/hero/${hero.id}`);
@@ -43,13 +53,14 @@ export default function Home() {
     ["request", query + attempt + skip + first],
     async () => {
       if (query.length > 0) {
+        let requestId = query;
         let request = await testRequest();
         if (request.status >= 200 && request.status <= 300) {
           let json = await request.json();
           let data = json.data;
           console.log(data.heroes);
 
-          setHeroes(data.heroes);
+          setHeroes(data.heroes, requestId);
         } else {
           console.log("error: ", request);
         }
@@ -57,12 +68,14 @@ export default function Home() {
     }
   );
 
-  useEffect(() => {
-    initiateStore();
-  }, []);
   return (
     <>
-      <Grid container justifyContent="center" marginBottom={1}>
+      <Grid
+        container
+        justifyContent="center"
+        marginBottom={1}
+        columnSpacing={2}
+      >
         <Grid item xs={12} textAlign={"center"}>
           <Typography variant="h5">Heroes Tavern</Typography>
         </Grid>
@@ -70,17 +83,32 @@ export default function Home() {
           <Button
             variant="contained"
             color={hideFilters ? "primary" : "secondary"}
-            onClick={toggleFilters}
+            onClick={toggleHideFilters}
           >
             Filters
           </Button>
         </Grid>
+        <Grid item>
+          <Button
+            variant="contained"
+            color={hideColumns ? "primary" : "secondary"}
+            onClick={toggleHideColumns}
+          >
+            Columns
+          </Button>
+        </Grid>
       </Grid>
+      <HeroColumnSetups
+        visible={hideColumns}
+        visibilityModel={visibilityModel}
+        setVisibilityModel={setVisibilityModel}
+        currentColumnSetup={heroSetup}
+        setCurrentColumnSetup={setHeroSetup}
+      />
       <HeroFilters
         includeSalePrice={true}
-        onSaleDefault={true}
         visible={hideFilters}
-        setFilter={setFilter}
+        useStore={useHeroes}
       />
       {result.isLoading && (
         <LinearProgress style={{ height: 10, margin: "5px 50px" }} />

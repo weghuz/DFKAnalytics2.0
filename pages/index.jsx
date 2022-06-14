@@ -11,18 +11,9 @@ import React from "react";
 import Link from "next/link";
 import { Box } from "@mui/system";
 import Image from "next/image";
-import CommunitySpotlight from "../public/CommunitySpotlight.jpg";
+import CommunitySpotlight from "../public/DFKCommunitySpotlight20220614.png";
 
 export default function index() {
-  const localDate = () => {
-    let d = new Date("2022-06-04T19:00");
-    d.setUTCFullYear(2022);
-    d.setUTCMonth(5);
-    d.setUTCDate(4);
-    d.setUTCHours(17);
-
-    return d.toLocaleString("en-GB");
-  };
   return (
     <Container>
       <Grid container spacing={3}>
@@ -40,7 +31,7 @@ export default function index() {
               <Typography variant="h6" component="div"></Typography>
               <Box display={"flex"} justifyContent={"center"}>
                 <a
-                  href="https://www.youtube.com/watch?v=sBOjWZ17r0s"
+                  href="https://youtu.be/eodzkm2pe1o"
                   target={"_blank"}
                   rel={"noreferrer"}
                 >
@@ -53,9 +44,9 @@ export default function index() {
                   />
                 </a>
               </Box>
-              <Typography variant="body2">
-                <Box>{`A Candor Gander: DFK Unmasked - Weghuz`}</Box>
-                <Box>{localDate()}</Box>
+              <Typography variant="div">
+                <Box>{`Inner Grove - DFK Community Dev Spotlight DFKing, ADFK and DFKAnalytics`}</Box>
+                <Box>{`On this episode they welcome the creator of DFKing.co, Raph from Adventures in DeFi Kingdoms, and Weghuz, creator of DFKAnalytics.`}</Box>
               </Typography>
             </CardContent>
             <CardActions>

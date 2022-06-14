@@ -1,23 +1,16 @@
-import {
-  useContext,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from "react";
+import { useEffect } from "react";
 
 import { Button, LinearProgress, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
-import usePets from "../../Store/PetsStore";
 import { useQuery } from "react-query";
 import { base, petData } from "../../Logic/Query";
 import DFKATable from "../../Components/Table/DFKATable";
 import petColumnDefs from "../../Logic/PetTableColumns";
-import useWalletPets from "../../Store/WalletPetsStore";
 import MetaMask from "../../Components/Wallet/MetaMask";
-import { SettingsBackupRestoreOutlined } from "@mui/icons-material";
 import useWallet from "../../Store/WalletStore";
 import PetFilters from "../../Components/PetFilters";
+import useWalletPets from "../../Store/WalletPets/WalletPetsStore";
+import useWalletPetsPersist from "../../Store/WalletPets/WalletPetsPersistStore";
 
 export default function Home() {
   const setPets = useWalletPets((state) => state.setPets);
@@ -25,17 +18,23 @@ export default function Home() {
   const query = useWalletPets((state) => state.query);
   const first = useWalletPets((state) => state.first);
   const skip = useWalletPets((state) => state.skip);
-  const visibilityModel = useWalletPets((state) => state.visibilityModel);
-  const setVisibilityModel = useWalletPets((state) => state.setVisibilityModel);
-  const hideFilters = useWalletPets((state) => state.hideFilters);
-  const toggleFilters = useWalletPets((state) => state.toggleFilters);
-  const address = useWallet((state) => state.address);
-  const setFilter = useWalletPets((state) => state.setFilter);
-  const setOrder = useWalletPets((state) => state.setOrder);
   const setAddress = useWalletPets((state) => state.setAddress);
-  const initiateStore = useWalletPets((state) => state.initiateStore);
 
-  const requestPets = async (state) => {
+  const visibilityModel = useWalletPetsPersist(
+    (state) => state.visibilityModel
+  );
+  const setVisibilityModel = useWalletPetsPersist(
+    (state) => state.setVisibilityModel
+  );
+  const toggleHideSaved = useWalletPetsPersist(
+    (state) => state.toggleHideSaved
+  );
+  const toggleHideFilters = useWalletPetsPersist(
+    (state) => state.toggleHideFilters
+  );
+  const hideFilters = useWalletPetsPersist((state) => state.hideFilters);
+  const address = useWallet((state) => state.address);
+  const requestPets = async () => {
     return fetch(base, {
       method: "POST",
       headers: {
@@ -51,18 +50,17 @@ export default function Home() {
     ["petsRequest", query + first + skip + address],
     async () => {
       if (query.length > 0 && address.length > 0) {
+        let requestId = query;
         let petsRequest = await requestPets();
         if (petsRequest.status >= 200 && petsRequest.status <= 300) {
           let json = await petsRequest.json();
           let pets = json.data.pets;
-          setPets(pets, false);
+          setPets(pets, requestId);
         }
       }
     }
   );
-  useEffect(() => {
-    initiateStore();
-  }, []);
+
   useEffect(() => {
     setAddress(address);
   }, [address]);
@@ -79,17 +77,17 @@ export default function Home() {
           <Button
             variant="contained"
             color={hideFilters ? "primary" : "secondary"}
-            onClick={toggleFilters}
+            onClick={toggleHideFilters}
           >
             Filters
           </Button>
         </Grid>
         <Grid item xs={12}>
           <PetFilters
+            defaultStorageName={"WalletPetsFilterState"}
             visible={hideFilters}
             includeSalePrice={false}
-            setFilter={setFilter}
-            setOrder={setOrder}
+            useStore={useWalletPets}
           ></PetFilters>
         </Grid>
       </Grid>

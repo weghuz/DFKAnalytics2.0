@@ -7344,6 +7344,7 @@ function SumGrowth(hero) {
       break;
     case "Dragoon":
     case "Sage":
+    case "Shapeshifter":
       sum = sum * 1.33334;
       break;
     case "DreadKnight":

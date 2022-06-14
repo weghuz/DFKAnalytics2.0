@@ -4,20 +4,24 @@ import { useQuery } from "react-query";
 import MetaMask from "../../Components/Wallet/MetaMask";
 import { base, heroData } from "../../Logic/Query";
 import { columnDefs } from "../../Logic/GridTableColumns";
-import useAuctions from "../../Store/AuctionsStore";
 import DFKATable from "../../Components/Table/DFKATable";
 import { useRouter } from "next/router";
 import useWallet from "../../Store/WalletStore";
+import useWalletAuctions from "../../Store/WalletAuctions/WalletAuctionsStore";
+import useWalletAuctionsPersist from "../../Store/WalletAuctions/WalletAuctionsPersistStore";
 
 export default function Auctions() {
-  const visibilityModel = useAuctions((state) => state.visibilityModel);
-  const setVisibilityModel = useAuctions((state) => state.setVisibilityModel);
-  const initiateStore = useAuctions((state) => state.initiateStore);
-  const setHeroes = useAuctions((state) => state.setHeroes);
-  const heroes = useAuctions((state) => state.heroes);
-  const query = useAuctions((state) => state.query);
-  const skip = useAuctions((state) => state.skip);
-  const setAddress = useAuctions((state) => state.setAddress);
+  const visibilityModel = useWalletAuctionsPersist(
+    (state) => state.visibilityModel
+  );
+  const setVisibilityModel = useWalletAuctionsPersist(
+    (state) => state.setVisibilityModel
+  );
+  const setHeroes = useWalletAuctions((state) => state.setHeroes);
+  const heroes = useWalletAuctions((state) => state.heroes);
+  const query = useWalletAuctions((state) => state.query);
+  const skip = useWalletAuctions((state) => state.skip);
+  const setAddress = useWalletAuctions((state) => state.setAddress);
   const address = useWallet((state) => state.address);
   const router = useRouter();
 
@@ -41,6 +45,7 @@ export default function Auctions() {
   }, [address]);
   const result = useQuery(["request", query + address + skip], async () => {
     if (query.length > 0 && address.length > 0) {
+      let requestId = query;
       let auctionsRequest = await requestAuctions();
       if (auctionsRequest.status >= 200 && auctionsRequest.status <= 300) {
         let json = await auctionsRequest.json();
@@ -53,13 +58,10 @@ export default function Auctions() {
           a.tokenId.id = a.id;
           return a.tokenId;
         });
-        setHeroes(heroes, false);
+        setHeroes(heroes, requestId);
       }
     }
   });
-  useEffect(() => {
-    initiateStore();
-  }, []);
   return (
     <>
       <Grid container marginBottom={1} spacing={1}>

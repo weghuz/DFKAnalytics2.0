@@ -8,7 +8,7 @@ import {
   InputAdornment,
   InputLabel,
 } from "@mui/material";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect } from "react";
 import PetBonusSlider from "./PetFilters/PetBonusSlider";
 import PetRaritySlider from "./PetFilters/PetRaritySlider";
 import Jewel from "../public/Jewel.png";
@@ -23,34 +23,50 @@ import {
 import NumberSlider from "./Filters/NumberSlider";
 import Pet03StarSlider from "./PetFilters/Pet03StarSlider";
 
-export default function PetFilters({ visible, includeSalePrice, setFilter }) {
-  const [minSalePrice, setMinSalePrice] = useState(0);
-  const [maxSalePrice, setMaxSalePrice] = useState(9999999);
-  const [bonusCount, setBonusCount] = useState([1, 3]);
-  const [combatBonus, setCombatBonus] = useState([0, 3]);
-  const [craftBonus, setCraftBonus] = useState([0, 3]);
-  const [profBonus, setProfBonus] = useState([1, 3]);
-  const [rarity, setRarity] = useState([0, 4]);
-  const [idInput, setIdInput] = useState("");
-  const [eggType, setEggType] = useState([]);
-  const [element, setElement] = useState([]);
-  const [background, setBackground] = useState([]);
-  const [forSale, setForSale] = useState(includeSalePrice);
-  const clearCombatBonus = useRef(null);
-  const clearCraftBonus = useRef(null);
-  const clearBonusCount = useRef(null);
-  const clearProfBonus = useRef(null);
-  const clearRarity = useRef(null);
+export default function PetFilters({ visible, useStore, includeSalePrice }) {
+  const minSalePrice = useStore((state) => state.minSalePrice);
+  const setMinSalePrice = useStore((state) => state.setMinSalePrice);
+  const maxSalePrice = useStore((state) => state.maxSalePrice);
+  const setMaxSalePrice = useStore((state) => state.setMaxSalePrice);
+  const bonusCount = useStore((state) => state.bonusCount);
+  const setBonusCount = useStore((state) => state.setBonusCount);
+  const combatBonus = useStore((state) => state.combatBonus);
+  const setCombatBonus = useStore((state) => state.setCombatBonus);
+  const craftBonus = useStore((state) => state.craftBonus);
+  const setCraftBonus = useStore((state) => state.setCraftBonus);
+  const profBonus = useStore((state) => state.profBonus);
+  const setProfBonus = useStore((state) => state.setProfBonus);
+  const rarity = useStore((state) => state.rarity);
+  const setRarity = useStore((state) => state.setRarity);
+  const idInput = useStore((state) => state.idInput);
+  const setIdInput = useStore((state) => state.setIdInput);
+  const eggType = useStore((state) => state.eggType);
+  const setEggType = useStore((state) => state.setEggType);
+  const element = useStore((state) => state.element);
+  const setElement = useStore((state) => state.setElement);
+  const background = useStore((state) => state.background);
+  const setBackground = useStore((state) => state.setBackground);
+  const forSale = useStore((state) => state.forSale);
+  const setForSale = useStore((state) => state.setForSale);
+  const clearFilters = useStore((state) => state.clearFilters);
+  const setFilter = useStore((state) => state.setFilter);
+  const pets = useStore((state) => state.pets);
   const bonusMap = [0, 1, 80, 160];
+  useEffect(() => {
+    if (pets.length == 0) {
+      UpdateQuery();
+    }
+  }, []);
   const UpdateQuery = () => {
     let filters = ``,
       order = ``;
-    if (forSale) {
+    if (forSale && includeSalePrice) {
       filters += `salePrice_not:null,`;
       order = `orderBy:salePrice`;
     } else {
       order = `orderBy:id`;
     }
+    console.log(eggType);
     if (eggType.length > 0) {
       filters += `eggType_in: [`;
       eggType.forEach((c, i) => {
@@ -81,7 +97,6 @@ export default function PetFilters({ visible, includeSalePrice, setFilter }) {
       });
       filters += `],`;
     }
-
     if (profBonus[0] !== 1) {
       filters += `profBonus_gte:${bonusMap[profBonus[0]]},`;
     }
@@ -94,7 +109,7 @@ export default function PetFilters({ visible, includeSalePrice, setFilter }) {
     if (craftBonus[1] !== 3) {
       filters += `craftBonus_lte:${bonusMap[craftBonus[1]]},`;
     }
-    if (bonusCount[0] !== 0) {
+    if (bonusCount[0] !== 1) {
       filters += `bonusCount_gte:${bonusCount[0]},`;
     }
     if (bonusCount[1] !== 3) {
@@ -145,51 +160,27 @@ export default function PetFilters({ visible, includeSalePrice, setFilter }) {
         }
       }
     }
-    if (includeSalePrice) {
-      if (minSalePrice !== 0) {
-        switch (forSale) {
-          case true:
-            filters += "salePrice_gte: ";
-            filters += `"${minSalePrice}000000000000000000",`;
-            break;
-          default:
-            break;
-        }
+    if (minSalePrice !== 0) {
+      switch (forSale) {
+        case true:
+          filters += "salePrice_gte: ";
+          filters += `"${minSalePrice}000000000000000000",`;
+          break;
+        default:
+          break;
       }
-      if (maxSalePrice !== 9999999) {
-        switch (forSale) {
-          case true:
-            filters += "salePrice_lte: ";
-            filters += `"${maxSalePrice}000000000000000000",`;
-            break;
-          default:
-            break;
-        }
+    }
+    if (maxSalePrice !== 9999999) {
+      switch (forSale) {
+        case true:
+          filters += "salePrice_lte: ";
+          filters += `"${maxSalePrice}000000000000000000",`;
+          break;
+        default:
+          break;
       }
     }
     setFilter(filters, order);
-  };
-
-  const ClearFilters = () => {
-    if (includeSalePrice) {
-      setMinSalePrice(0);
-      setMaxSalePrice(9999999);
-      setForSale(true);
-    }
-    setRarity([0, 4]);
-    clearRarity.current();
-    clearProfBonus.current();
-    clearCraftBonus.current();
-    clearBonusCount.current();
-    clearCombatBonus.current();
-    setIdInput("");
-    setBonusCount([1, 3]);
-    setProfBonus([1, 3]);
-    setCraftBonus([0, 3]);
-    setCombatBonus([0, 3]);
-    setBackground([]);
-    setEggType([]);
-    setElement([]);
   };
   return (
     <>
@@ -218,10 +209,12 @@ export default function PetFilters({ visible, includeSalePrice, setFilter }) {
               {PetBackgrounds}
             </SelectItem>
             <PetRaritySlider
-              setQueryRarity={setRarity}
-              clear={(clearFunc) => (clearRarity.current = clearFunc)}
+              setRarity={setRarity}
+              rarity={rarity}
             ></PetRaritySlider>
             <NumberSlider
+              value={bonusCount}
+              setValue={setBonusCount}
               title={"Bonus Count"}
               min={1}
               max={3}
@@ -239,23 +232,21 @@ export default function PetFilters({ visible, includeSalePrice, setFilter }) {
                   label: <div>3</div>,
                 },
               ]}
-              clear={(clearFunc) => (clearBonusCount.current = clearFunc)}
-              callback={setBonusCount}
             ></NumberSlider>
             <PetBonusSlider
               bonusName={"Profession"}
+              value={profBonus}
               setValue={setProfBonus}
-              clear={(clearFunc) => (clearProfBonus.current = clearFunc)}
             ></PetBonusSlider>
             <Pet03StarSlider
               bonusName={"Crafting"}
+              value={craftBonus}
               setValue={setCraftBonus}
-              clear={(clearFunc) => (clearCraftBonus.current = clearFunc)}
             ></Pet03StarSlider>
             <Pet03StarSlider
               bonusName={"Combat"}
+              value={combatBonus}
               setValue={setCombatBonus}
-              clear={(clearFunc) => (clearCombatBonus.current = clearFunc)}
             ></Pet03StarSlider>
             {includeSalePrice && (
               <>
@@ -347,7 +338,7 @@ export default function PetFilters({ visible, includeSalePrice, setFilter }) {
                   sx={{ marginLeft: ".5rem" }}
                   variant="contained"
                   color="secondary"
-                  onClick={ClearFilters}
+                  onClick={clearFilters}
                 >
                   Clear Filters
                 </Button>

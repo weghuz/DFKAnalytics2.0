@@ -8,12 +8,7 @@ import Legendary from "../../public/Pet/Legendary.gif";
 import Mythic from "../../public/Pet/Mythic.gif";
 import { Grid } from "@mui/material";
 
-export default function PetRaritySlider({ setQueryRarity, clear }) {
-  const [rarity, setRarity] = useState([0, 4]);
-  const clearState = () => {
-    setRarity([0, 4]);
-  };
-  clear(clearState);
+export default function PetRaritySlider({ setRarity, rarity }) {
   return (
     <Grid item xs={12} sm={6} md={4} xl={3}>
       <label className="font-weight-bold">Rarity</label>
@@ -81,10 +76,6 @@ export default function PetRaritySlider({ setQueryRarity, clear }) {
         ]}
         onChange={(e, val) => {
           setRarity(val);
-        }}
-        onChangeCommitted={(e, val) => {
-          console.log(val);
-          setQueryRarity(val);
         }}
         sx={{ color: "#0074D9" }}
         valueLabelFormat={(val) => {

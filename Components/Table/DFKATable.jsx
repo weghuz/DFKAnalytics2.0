@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { Grid } from "@mui/material";
+import { DataGridPro } from "@mui/x-data-grid-pro";
 export default function DFKATable({
   rows,
   columns,
@@ -17,13 +18,14 @@ export default function DFKATable({
   return (
     <Grid container justifyContent={"center"}>
       <Grid item width={"100%"} maxWidth={1920}>
-        <DataGrid
+        <DataGridPro
           density="compact"
           rows={rows}
           columns={columns}
           autoHeight={true}
           columnVisibilityModel={GetVisibility()}
           onColumnVisibilityModelChange={(visibilityModel) => {
+            console.log(visibilityModel);
             visibilityChanged(visibilityModel);
           }}
           onSortModelChange={() => setPage(0)}

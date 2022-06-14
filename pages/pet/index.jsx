@@ -2,13 +2,13 @@ import { useContext, useEffect, useRef, useState } from "react";
 
 import { Button, LinearProgress, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
-import usePets from "../../Store/PetsStore";
+import usePets from "../../Store/pet/PetsStore";
 import { useQuery } from "react-query";
 import { base, petData } from "../../Logic/Query";
 import DFKATable from "../../Components/Table/DFKATable";
 import petColumnDefs from "../../Logic/PetTableColumns";
-import useWallet from "../../Store/WalletStore";
 import PetFilters from "../../Components/PetFilters";
+import usePetsPersist from "../../Store/pet/PetsPersistStore";
 
 export default function Home() {
   const setPets = usePets((state) => state.setPets);
@@ -16,14 +16,16 @@ export default function Home() {
   const query = usePets((state) => state.query);
   const first = usePets((state) => state.first);
   const skip = usePets((state) => state.skip);
-  const visibilityModel = usePets((state) => state.visibilityModel);
-  const setVisibilityModel = usePets((state) => state.setVisibilityModel);
-  const hideFilters = usePets((state) => state.hideFilters);
-  const toggleFilters = usePets((state) => state.toggleFilters);
-  const setFilter = usePets((state) => state.setFilter);
-  const setOrder = usePets((state) => state.setOrder);
   const attempt = usePets((state) => state.attempt);
-  const initiateStore = usePets((state) => state.initiateStore);
+
+  const visibilityModel = usePetsPersist((state) => state.visibilityModel);
+  const setVisibilityModel = usePetsPersist(
+    (state) => state.setVisibilityModel
+  );
+  const hideFilters = usePetsPersist((state) => state.hideFilters);
+  const toggleHideFilters = usePetsPersist((state) => state.toggleHideFilters);
+  const hideSaved = usePetsPersist((state) => state.hideSaved);
+  const toggleHideSaved = usePetsPersist((state) => state.toggleHideSaved);
 
   const requestPets = async (state) => {
     return fetch(base, {
@@ -40,21 +42,25 @@ export default function Home() {
     ["petsRequest", attempt + query + first + skip],
     async () => {
       if (query.length > 0) {
+        let requestId = query;
         let petsRequest = await requestPets();
         if (petsRequest.status >= 200 && petsRequest.status <= 300) {
           let json = await petsRequest.json();
           let pets = json.data.pets;
-          setPets(pets, false);
+          setPets(pets, requestId);
         }
       }
     }
   );
-  useEffect(() => {
-    initiateStore();
-  }, []);
+  useEffect(() => {}, []);
   return (
     <>
-      <Grid container justifyContent="center" marginBottom={1}>
+      <Grid
+        container
+        justifyContent="center"
+        marginBottom={1}
+        columnSpacing={1}
+      >
         <Grid item xs={12} textAlign={"center"}>
           <Typography variant="h5">Pets Tavern</Typography>
         </Grid>
@@ -62,7 +68,7 @@ export default function Home() {
           <Button
             variant="contained"
             color={hideFilters ? "primary" : "secondary"}
-            onClick={toggleFilters}
+            onClick={toggleHideFilters}
           >
             Filters
           </Button>
@@ -71,8 +77,7 @@ export default function Home() {
           <PetFilters
             visible={hideFilters}
             includeSalePrice={true}
-            setFilter={setFilter}
-            setOrder={setOrder}
+            useStore={usePets}
           ></PetFilters>
         </Grid>
       </Grid>

@@ -5,14 +5,9 @@ import { Grid } from "@mui/material";
 export default function PetBonusSlider({
   bonusName,
   setValue,
-  clear,
+  value,
   disabled,
 }) {
-  const [profBonus, setProfBonus] = useState([1, 3]);
-  const clearState = () => {
-    setProfBonus([1, 3]);
-  };
-  clear(clearState);
   return (
     <Grid item container xs={12} sm={6} md={4} xl={3}>
       <Grid item className="font-weight-bold" textAlign={"center"} xs={12}>
@@ -32,7 +27,7 @@ export default function PetBonusSlider({
             }
           }}
           valueLabelDisplay="auto"
-          value={profBonus}
+          value={value}
           min={1}
           max={3}
           size="small"
@@ -51,9 +46,6 @@ export default function PetBonusSlider({
             },
           ]}
           onChange={(e, val) => {
-            setProfBonus(val);
-          }}
-          onChangeCommitted={(e, val) => {
             setValue(val);
           }}
           sx={{ color: "#0074D9" }}

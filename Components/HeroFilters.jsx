@@ -1,67 +1,75 @@
-import React, {
-  useState,
-  useEffect,
-  useContext,
-  useRef,
-  forwardRef,
-} from "react";
-import DFKBase, { PJSurvivor, Skills, Targets } from "../Logic/Dropdowns";
+import React, { useEffect } from "react";
+import DFKBase, { Skills, Targets } from "../Logic/Dropdowns";
 import Image from "next/image";
 import Jewel from "../public/Jewel.png";
 import SelectItem from "./Filters/SelectItem";
 import RaritySlider from "./Filters/RaritySlider";
 import NumberSlider from "./Filters/NumberSlider";
 import {
-  Box,
   Button,
-  Checkbox,
   Container,
-  FormControlLabel,
   Grid,
   Input,
   InputAdornment,
   InputLabel,
-  Typography,
 } from "@mui/material";
-import RequestContext from "../Context/Context";
 import SelectItemSingle from "./Filters/SelectItemSingle";
 import { femaleFirstNames, lastNames, maleFirstNames } from "../Logic/HeroBase";
 import IdInput from "./Filters/IdInput";
 
-const HeroFilters = function HeroFilters({
-  includeSalePrice,
-  visible,
-  setFilter,
-}) {
-  const [mainClass, setMainClass] = useState([]);
-  const [subClass, setSubClass] = useState([]);
-  const [professions, setProfessions] = useState([]);
-  const [SB1, setSB1] = useState([]);
-  const [SB2, setSB2] = useState([]);
-  const [target, setTarget] = useState([{ label: "Buy", value: "Tavern" }]);
-  const [PJ, setPJ] = useState([]);
-  const [rarity, setRarity] = useState([0, 4]);
-  const [generation, setGeneration] = useState([0, 14]);
-  const [summons, setSummons] = useState([0, 10]);
-  const [level, setLevel] = useState([0, 100]);
-  const [minSalePrice, setMinSalePrice] = useState(0);
-  const [maxSalePrice, setMaxSalePrice] = useState(9999999);
-  const [mFName, setMFName] = useState([]);
-  const [fFName, setFFName] = useState([]);
-  const [lName, setLName] = useState([]);
-  const [idInput, setIdInput] = useState("");
-  const [active1, setActive1] = useState([]);
-  const [active2, setActive2] = useState([]);
-  const [Passive1, setPassive1] = useState([]);
-  const [Passive2, setPassive2] = useState([]);
-  const [section, setSection] = useState("Main");
-  const clearRarity = useRef(null);
-  const clearGeneration = useRef(null);
-  const clearSummons = useRef(null);
-  const clearLevel = useRef(null);
-
+function HeroFilters({ includeSalePrice, visible, useStore }) {
+  const mainClass = useStore((state) => state.mainClass);
+  const setMainClass = useStore((state) => state.setMainClass);
+  const subClass = useStore((state) => state.subClass);
+  const setSubClass = useStore((state) => state.setSubClass);
+  const professions = useStore((state) => state.professions);
+  const setProfessions = useStore((state) => state.setProfessions);
+  const SB1 = useStore((state) => state.SB1);
+  const setSB1 = useStore((state) => state.setSB1);
+  const SB2 = useStore((state) => state.SB2);
+  const setSB2 = useStore((state) => state.setSB2);
+  const target = useStore((state) => state.target);
+  const setTarget = useStore((state) => state.setTarget);
+  const PJ = useStore((state) => state.PJ);
+  const setPJ = useStore((state) => state.setPJ);
+  const rarity = useStore((state) => state.rarity);
+  const setRarity = useStore((state) => state.setRarity);
+  const generation = useStore((state) => state.generation);
+  const setGeneration = useStore((state) => state.setGeneration);
+  const summons = useStore((state) => state.summons);
+  const setSummons = useStore((state) => state.setSummons);
+  const level = useStore((state) => state.level);
+  const setLevel = useStore((state) => state.setLevel);
+  const minSalePrice = useStore((state) => state.minSalePrice);
+  const setMinSalePrice = useStore((state) => state.setMinSalePrice);
+  const maxSalePrice = useStore((state) => state.maxSalePrice);
+  const setMaxSalePrice = useStore((state) => state.setMaxSalePrice);
+  const mFName = useStore((state) => state.mFName);
+  const setMFName = useStore((state) => state.setMFName);
+  const fFName = useStore((state) => state.fFName);
+  const setFFName = useStore((state) => state.setFFName);
+  const lName = useStore((state) => state.lName);
+  const setLName = useStore((state) => state.setLName);
+  const idInput = useStore((state) => state.idInput);
+  const setIdInput = useStore((state) => state.setIdInput);
+  const active1 = useStore((state) => state.active1);
+  const setActive1 = useStore((state) => state.setActive1);
+  const active2 = useStore((state) => state.active2);
+  const setActive2 = useStore((state) => state.setActive2);
+  const passive1 = useStore((state) => state.passive1);
+  const setPassive1 = useStore((state) => state.setPassive1);
+  const passive2 = useStore((state) => state.passive2);
+  const setPassive2 = useStore((state) => state.setPassive2);
+  const section = useStore((state) => state.section);
+  const setSection = useStore((state) => state.setSection);
+  const clearFilters = useStore((state) => state.clearFilters);
+  const setFilter = useStore((state) => state.setFilter);
+  useEffect(() => {
+    UpdateQuery();
+  }, []);
   const UpdateQuery = () => {
     let query = ``;
+    console.log(mainClass); 
     if (mainClass.length > 0) {
       query += `mainClass_in: [`;
       mainClass.forEach((c, i) => {
@@ -112,21 +120,21 @@ const HeroFilters = function HeroFilters({
       });
       query += `],`;
     }
-    if (Passive1.length > 0) {
+    if (passive1.length > 0) {
       query += `passive1_in: [`;
-      Passive1.forEach((c, i) => {
+      passive1.forEach((c, i) => {
         query += `"${c.value}"`;
-        if (i < Passive1.length - 1) {
+        if (i < passive1.length - 1) {
           query += `,`;
         }
       });
       query += `],`;
     }
-    if (Passive2.length > 0) {
+    if (passive2.length > 0) {
       query += `passive2_in: [`;
-      Passive2.forEach((c, i) => {
+      passive2.forEach((c, i) => {
         query += `"${c.value}"`;
-        if (i < Passive2.length - 1) {
+        if (i < passive2.length - 1) {
           query += `,`;
         }
       });
@@ -293,36 +301,6 @@ const HeroFilters = function HeroFilters({
 
     setFilter(query, order);
   };
-
-  const ClearFilters = () => {
-    setMainClass([]);
-    setSubClass([]);
-    setProfessions([]);
-    setSB1([]);
-    setSB2([]);
-    setTarget([{ label: "Buy", value: "Tavern" }]);
-    setPJ([]);
-    setRarity([0, 4]);
-    setGeneration([0, 14]);
-    setSummons([0, 10]);
-    setLevel([0, 100]);
-    if (includeSalePrice) {
-      setMinSalePrice(0);
-      setMaxSalePrice(9999999);
-    }
-    clearRarity.current();
-    clearGeneration.current();
-    clearSummons.current();
-    clearLevel.current();
-    setFFName([]);
-    setMFName([]);
-    setLName([]);
-    setActive1([]);
-    setActive2([]);
-    setPassive1([]);
-    setPassive2([]);
-    setIdInput("");
-  };
   return (
     <>
       {visible && (
@@ -441,14 +419,14 @@ const HeroFilters = function HeroFilters({
               </SelectItem>
               <SelectItem
                 title="Passive 1"
-                values={Passive1}
+                values={passive1}
                 setValues={setPassive1}
               >
                 {Skills}
               </SelectItem>
               <SelectItem
                 title="Passive 2"
-                values={Passive2}
+                values={passive2}
                 setValues={setPassive2}
               >
                 {Skills}
@@ -469,16 +447,13 @@ const HeroFilters = function HeroFilters({
               >
                 {DFKBase.StatBoosts}
               </SelectItem>
-              <RaritySlider
-                setQueryRarity={setRarity}
-                clear={(clearFunc) => (clearRarity.current = clearFunc)}
-              />
+              <RaritySlider rarity={rarity} setRarity={setRarity} />
               <NumberSlider
                 title={"Generation"}
-                clear={(clearFunc) => (clearGeneration.current = clearFunc)}
+                value={generation}
+                setValue={setGeneration}
                 min={0}
                 max={14}
-                callback={(val) => setGeneration(val)}
                 marks={[
                   {
                     value: 0,
@@ -544,10 +519,10 @@ const HeroFilters = function HeroFilters({
               />
               <NumberSlider
                 title={"Summons"}
-                clear={(clearFunc) => (clearSummons.current = clearFunc)}
                 min={0}
                 max={10}
-                callback={(val) => setSummons(val)}
+                value={summons}
+                setValue={setSummons}
                 marks={[
                   {
                     value: 0,
@@ -597,17 +572,17 @@ const HeroFilters = function HeroFilters({
               />
               <NumberSlider
                 title={"Level"}
-                clear={(clearFunc) => (clearLevel.current = clearFunc)}
+                value={level}
+                setValue={setLevel}
                 marks={[
-                  { value: 0, label: 0 },
+                  { value: 1, label: 1 },
                   { value: 25, label: 25 },
                   { value: 50, label: 50 },
                   { value: 75, label: 75 },
                   { value: 100, label: 100 },
                 ]}
-                min={0}
+                min={1}
                 max={100}
-                callback={(val) => setLevel(val)}
               />
               {includeSalePrice && (
                 <>
@@ -691,7 +666,7 @@ const HeroFilters = function HeroFilters({
                 sx={{ marginLeft: ".5rem" }}
                 variant="contained"
                 color="secondary"
-                onClick={ClearFilters}
+                onClick={clearFilters}
               >
                 Clear Filters
               </Button>
@@ -701,11 +676,5 @@ const HeroFilters = function HeroFilters({
       )}
     </>
   );
-};
-HeroFilters.defaultProps = {
-  onSaleDefault: true,
-  includeSalePrice: false,
-  visible: true,
-};
-
+}
 export default HeroFilters;
