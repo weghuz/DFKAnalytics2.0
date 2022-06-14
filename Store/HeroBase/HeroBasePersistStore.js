@@ -1,4 +1,4 @@
-import { BaseHeroVisibilityModels } from "../../Logic/BaseVisibilityModels";
+import { BaseHeroVisibilityModels } from "../../Logic/BaseHeroVisibilityModels";
 
 const HeroBasePersistStore = (set) => ({
   hideFilters: false,
@@ -22,7 +22,7 @@ const HeroBasePersistStore = (set) => ({
   setHeroSetup: (newSetup) =>
     set((state) => {
       return {
-        heroIndexSetup: newSetup,
+        heroSetup: newSetup,
       };
     }),
 });

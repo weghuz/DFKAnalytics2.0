@@ -1,166 +1,187 @@
-import { Container } from "@mui/material";
+import { Container, Paper, Typography } from "@mui/material";
+import { Box } from "@mui/system";
 
 export default function Resources() {
   return (
     <>
       <Container>
-        <h2 className="text-center">Resources</h2>
-        <h4 className="text-center">Medium</h4>
-        <ul>
-          <li>
-            <a
-              href="https://defikingdoms.medium.com/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              DeFi Kingdoms official medium
-            </a>{" "}
-            - Always check this out first for recent info about the game.
-          </li>
-          <li>
-            <a
-              href="https://medium.com/@Samichpunch/index-of-samichpunch-defi-kingdoms-articles-dda9e50327ef"
-              target="_blank"
-              rel="noreferrer"
-            >
-              SamichPunch&apos;s Index of articles.
-            </a>{" "}
-            - A huge resources if you want to get deeper into DFK. Frequently
-            puts out deep informational posts about recent events. A place to
-            start, Samichpunch&apos;s{" "}
-            <a
-              href="https://medium.com/@Samichpunch/beginners-guide-to-defi-kingdoms-how-to-start-playing-defi-kingdoms-88e9041467d2"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Beginner&apos;s guide to DeFi Kingdoms
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://medium.com/@MrZipper7"
-              target="_blank"
-              rel="noreferrer"
-            >
-              MrZippers Data compilations, analysis and weekly reports
-            </a>
-          </li>
-          <li>
-            Mettez{" "}
-            <a
-              href="https://mettez.medium.com/the-facts-on-hero-stats-b2ba9ee9bb3c"
-              target="_blank"
-              rel="noreferrer"
-            >
-              The Facts on Hero Stats
-            </a>
-            . A great guide to start if you&apos;re looking to get deep into
-            breaking down the stats of heroes.
-          </li>
-          <li>
-            <a
-              href="https://medium.com/@Weghuz/advanced-theory-part-1-scoring-heroes-in-defi-kingdoms-1ffd043fcd1c"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Weghuz article on Class Score
-            </a>
-          </li>
-        </ul>
-        <h4 className="text-center">Game</h4>
-        <ul>
-          <li>
-            <a
-              href="https://docs.defikingdoms.com/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Docs
-            </a>
-            : christmas came early this year.
-          </li>
-          <li>
-            <a
-              href="https://docs.google.com/spreadsheets/d/1jfG6E6otW1V6ZLQycF5DumoBr_LrpQaz7cTmDPpwV2s/edit#gid=655220330"
-              target="_blank"
-              rel="noreferrer"
-            >
-              Stat Growth Charts
-            </a>
-            : you can&apos;t make decisions about heroes without these.
-          </li>
-          <li>
-            <a
-              href="https://discord.gg/defikingdoms"
-              target="_blank"
-              rel="noreferrer"
-            >
-              DFK Discord Channel
-            </a>
-            : If you haven&apos;t joined already, join the DFK discord now! It
-            will change your life.
-          </li>
-        </ul>
-        <h4 className="text-center">Sites</h4>
-        <ul>
-          <li>
-            <a href="https://dfkeggspert.com" target="_blank" rel="noreferrer">
-              DFKEggspert
-            </a>{" "}
-            {`An insane amount of information in one place. It's like the DFK docs
+        <Typography variant="h4">Resources</Typography>
+        <Paper elevation={5} sx={{ paddingX: 1 }}>
+          <Box sx={{ paddingY: 0.1 }}>
+            <h4 className="text-center">Medium</h4>
+            <ul>
+              <li>
+                <a
+                  href="https://defikingdoms.medium.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  DeFi Kingdoms official medium
+                </a>{" "}
+                - Always check this out first for recent info about the game.
+              </li>
+              <li>
+                <a
+                  href="https://medium.com/@Samichpunch/index-of-samichpunch-defi-kingdoms-articles-dda9e50327ef"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  SamichPunch&apos;s Index of articles.
+                </a>{" "}
+                - A huge resources if you want to get deeper into DFK.
+                Frequently puts out deep informational posts about recent
+                events. A place to start, Samichpunch&apos;s{" "}
+                <a
+                  href="https://medium.com/@Samichpunch/beginners-guide-to-defi-kingdoms-how-to-start-playing-defi-kingdoms-88e9041467d2"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Beginner&apos;s guide to DeFi Kingdoms
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://medium.com/@MrZipper7"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  MrZippers Data compilations, analysis and weekly reports
+                </a>
+              </li>
+              <li>
+                Mettez{" "}
+                <a
+                  href="https://mettez.medium.com/the-facts-on-hero-stats-b2ba9ee9bb3c"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  The Facts on Hero Stats
+                </a>
+                . A great guide to start if you&apos;re looking to get deep into
+                breaking down the stats of heroes.
+              </li>
+              <li>
+                <a
+                  href="https://medium.com/@Weghuz/advanced-theory-part-1-scoring-heroes-in-defi-kingdoms-1ffd043fcd1c"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Weghuz article on Class Score
+                </a>
+              </li>
+            </ul>
+            <h4 className="text-center">Game</h4>
+            <ul>
+              <li>
+                <a
+                  href="https://docs.defikingdoms.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Docs
+                </a>
+                : christmas came early this year.
+              </li>
+              <li>
+                <a
+                  href="https://docs.google.com/spreadsheets/d/1jfG6E6otW1V6ZLQycF5DumoBr_LrpQaz7cTmDPpwV2s/edit#gid=655220330"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Stat Growth Charts
+                </a>
+                : you can&apos;t make decisions about heroes without these.
+              </li>
+              <li>
+                <a
+                  href="https://discord.gg/defikingdoms"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  DFK Discord Channel
+                </a>
+                : If you haven&apos;t joined already, join the DFK discord now!
+                It will change your life.
+              </li>
+            </ul>
+            <h4 className="text-center">Sites</h4>
+            <ul>
+              <li>
+                <a
+                  href="https://dfkeggspert.com"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  DFKEggspert
+                </a>{" "}
+                {`An insane amount of information in one place. It's like the DFK docs
             but enhanced. Very useful information coming out of this site and
             it's growing every day. A must visit for any knowledgeable DFK
             player.`}
-          </li>
-          <li>
-            <a href="https://kingdom.watch/" target="_blank" rel="noreferrer">
-              Kingdom.Watch
-            </a>{" "}
-            a must use for any DFK enthusiast.
-          </li>
-          <li>
-            <a href="https://dfktracker.app/" target="_blank" rel="noreferrer">
-              dfktracker.app
-            </a>{" "}
-            Portfolio summary and account transaction traversal for heroes and
-            gardens and more.
-          </li>
-          <li>
-            <a href="https://dfktools.com/" target="_blank" rel="noreferrer">
-              dfktools.com
-            </a>{" "}
-            Hero floor reports and filters.
-          </li>
-          <li>
-            <a
-              href="https://dfkreport.cognifact.com/home.py"
-              target="_blank"
-              rel="noreferrer"
-            >
-              DFK Report - Lila&apos;s Ledger
-            </a>{" "}
-            Tax report tool that gives a great summary of your transactions in
-            DFK. You can get a summary in several different formats and your
-            chosen timeframe.
-          </li>
-          <li>
-            <a href="https://dfking.co/" target="_blank" rel="noreferrer">
-              DFKing.co
-            </a>{" "}
-            a feature rich site for analyzing DFK heroes.
-          </li>
-          <li>
-            <a
-              href="https://dfk-adventures.herokuapp.com/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              DFK-Adventures
-            </a>{" "}
-            perfect for analyzing summoning pairs. Well maintained site with a
-            dedicated discord and podcast.
-          </li>
-        </ul>
+              </li>
+              <li>
+                <a
+                  href="https://kingdom.watch/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Kingdom.Watch
+                </a>{" "}
+                a must use for any DFK enthusiast.
+              </li>
+              <li>
+                <a
+                  href="https://dfktracker.app/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  dfktracker.app
+                </a>{" "}
+                Portfolio summary and account transaction traversal for heroes
+                and gardens and more.
+              </li>
+              <li>
+                <a
+                  href="https://dfktools.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  dfktools.com
+                </a>{" "}
+                Hero floor reports and filters.
+              </li>
+              <li>
+                <a
+                  href="https://dfkreport.cognifact.com/home.py"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  DFK Report - Lila&apos;s Ledger
+                </a>{" "}
+                Tax report tool that gives a great summary of your transactions
+                in DFK. You can get a summary in several different formats and
+                your chosen timeframe.
+              </li>
+              <li>
+                <a href="https://dfking.co/" target="_blank" rel="noreferrer">
+                  DFKing.co
+                </a>{" "}
+                a feature rich site for analyzing DFK heroes.
+              </li>
+              <li>
+                <a
+                  href="https://dfk-adventures.herokuapp.com/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  DFK-Adventures
+                </a>{" "}
+                perfect for analyzing summoning pairs. Well maintained site with
+                a dedicated discord and podcast.
+              </li>
+            </ul>
+          </Box>
+        </Paper>
         {/* <h4 className="text-center">Charts</h4>
         <ul>
           <li>

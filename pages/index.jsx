@@ -29,20 +29,19 @@ export default function index() {
                 {`Community Spotlight`}
               </Typography>
               <Typography variant="h6" component="div"></Typography>
-              <Box display={"flex"} justifyContent={"center"}>
-                <a
-                  href="https://youtu.be/eodzkm2pe1o"
-                  target={"_blank"}
-                  rel={"noreferrer"}
-                >
-                  <Image
-                    layout={"fixed"}
-                    width={800}
-                    height={450}
-                    src={CommunitySpotlight}
-                    alt={"Community Spotlight"}
-                  />
-                </a>
+              <Box display={"flex"} justifyContent={"center"} marginBottom={4}>
+                <Box display={"relative"} maxWidth={850} maxHeight={450}>
+                  <a
+                    href="https://youtu.be/eodzkm2pe1o"
+                    target={"_blank"}
+                    rel={"noreferrer"}
+                  >
+                    <Image
+                      src={CommunitySpotlight}
+                      alt={"Community Spotlight"}
+                    />
+                  </a>
+                </Box>
               </Box>
               <Typography variant="div">
                 <Box>{`Inner Grove - DFK Community Dev Spotlight DFKing, ADFK and DFKAnalytics`}</Box>

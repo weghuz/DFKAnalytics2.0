@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import create from "zustand";
 import { persist } from "zustand/middleware";
-import { BaseHeroVisibilityModels } from "../Logic/BaseVisibilityModels";
+import { BaseHeroVisibilityModels } from "../Logic/BaseHeroVisibilityModels";
+import { BasePetVisibilityModels } from "../Logic/BasePetVisibilityModels";
 
 const PersistedStore = create(
   persist(
@@ -24,18 +25,40 @@ const PersistedStore = create(
       },
       removeHeroColumnSetup: (columnSetup) => {
         set((state) => {
-          if (
-            state.savedHeroColumnSetups.some((s) => s.name === columnSetup.name)
-          ) {
+          if (BaseHeroVisibilityModels.some((s) => s.name === columnSetup)) {
             return;
           }
           return {
             savedHeroColumnSetups: state.savedHeroColumnSetups.filter(
-              (s, i) => s.name !== columnSetup.name
+              (s, i) => s.name !== columnSetup
             ),
           };
         });
-        return BaseHeroVisibilityModels[0];
+      },
+      savedPetColumnSetups: BasePetVisibilityModels,
+      savePetColumnSetup: (columnSetup) => {
+        set((state) => {
+          if (
+            state.savedPetColumnSetups.some((s) => s.name === columnSetup.name)
+          ) {
+            return;
+          }
+          return {
+            savedPetColumnSetups: [...state.savedPetColumnSetups, columnSetup],
+          };
+        });
+      },
+      removePetColumnSetup: (columnSetup) => {
+        set((state) => {
+          if (BasePetVisibilityModels.some((s) => s.name === columnSetup)) {
+            return;
+          }
+          return {
+            savedPetColumnSetups: state.savedPetColumnSetups.filter(
+              (s, i) => s.name !== columnSetup
+            ),
+          };
+        });
       },
       address: "",
       theme: "dark",
@@ -69,6 +92,31 @@ const PersistedStoreInit = create(
       }
       set((state) => {
         return { savedHeroColumnSetups: [...savedColumnSetups, columnSetup] };
+      });
+    },
+    savedPetColumnSetups: BasePetVisibilityModels,
+    savePetColumnSetup: (columnSetup) => {
+      set((state) => {
+        if (
+          state.savedPetColumnSetups.some((s) => s.name === columnSetup.name)
+        ) {
+          return;
+        }
+        return {
+          savedPetColumnSetups: [...state.savedPetColumnSetups, columnSetup],
+        };
+      });
+    },
+    removePetColumnSetup: (columnSetup) => {
+      set((state) => {
+        if (BasePetVisibilityModels.some((s) => s.name === columnSetup)) {
+          return;
+        }
+        return {
+          savedPetColumnSetups: state.savedPetColumnSetups.filter(
+            (s, i) => s.name !== columnSetup
+          ),
+        };
       });
     },
     removeHeroColumnSetup: () => {

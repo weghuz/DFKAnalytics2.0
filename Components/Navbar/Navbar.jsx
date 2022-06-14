@@ -68,12 +68,13 @@ export default function Navbar() {
         </DropDownButton>
         <DropDownButton title={"Misc"}>
           <MenuItem variant={"text"}>
+            <Link href={"/Misc/Options"}>Options</Link>
+          </MenuItem>
+          <MenuItem variant={"text"}>
             <Link href={"/Misc/Resources"}>Resources</Link>
           </MenuItem>
           <MenuItem variant={"text"}>
-            <Link href={"/Misc/About"} passHref>
-              About
-            </Link>
+            <Link href={"/Misc/About"}>About</Link>
           </MenuItem>
         </DropDownButton>
         <IconButton

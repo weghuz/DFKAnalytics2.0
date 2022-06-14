@@ -11,6 +11,7 @@ import useWallet from "../../Store/WalletStore";
 import PetFilters from "../../Components/PetFilters";
 import useWalletPets from "../../Store/WalletPets/WalletPetsStore";
 import useWalletPetsPersist from "../../Store/WalletPets/WalletPetsPersistStore";
+import PetColumnSetups from "../../Components/PetColumnSetups";
 
 export default function Home() {
   const setPets = useWalletPets((state) => state.setPets);
@@ -26,14 +27,18 @@ export default function Home() {
   const setVisibilityModel = useWalletPetsPersist(
     (state) => state.setVisibilityModel
   );
-  const toggleHideSaved = useWalletPetsPersist(
-    (state) => state.toggleHideSaved
+  const hideColumns = useWalletPetsPersist((state) => state.hideColumns);
+  const toggleHideColumns = useWalletPetsPersist(
+    (state) => state.toggleHideColumns
   );
   const toggleHideFilters = useWalletPetsPersist(
     (state) => state.toggleHideFilters
   );
   const hideFilters = useWalletPetsPersist((state) => state.hideFilters);
+  const petSetup = useWalletPetsPersist((state) => state.petSetup);
+  const setPetSetup = useWalletPetsPersist((state) => state.setPetSetup);
   const address = useWallet((state) => state.address);
+
   const requestPets = async () => {
     return fetch(base, {
       method: "POST",
@@ -82,7 +87,23 @@ export default function Home() {
             Filters
           </Button>
         </Grid>
+        <Grid item>
+          <Button
+            variant="contained"
+            color={hideColumns ? "primary" : "secondary"}
+            onClick={toggleHideColumns}
+          >
+            Columns
+          </Button>
+        </Grid>
         <Grid item xs={12}>
+          <PetColumnSetups
+            visible={hideColumns}
+            visibilityModel={visibilityModel}
+            setVisibilityModel={setVisibilityModel}
+            currentColumnSetup={petSetup}
+            setCurrentColumnSetup={setPetSetup}
+          />
           <PetFilters
             defaultStorageName={"WalletPetsFilterState"}
             visible={hideFilters}

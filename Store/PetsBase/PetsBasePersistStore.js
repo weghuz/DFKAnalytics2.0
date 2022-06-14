@@ -1,12 +1,19 @@
+import { BasePetVisibilityModels } from "../../Logic/BasePetVisibilityModels";
+
 const PetsBasePersistStore = (set) => ({
   visibilityModel: undefined,
-  hideSaved: false,
   hideFilters: false,
   setVisibilityModel: (visibilityModel) => {
     set((state) => {
       state.visibilityModel = visibilityModel;
     });
   },
+  hideColumns: false,
+  toggleHideColumns: () =>
+    set((state) => {
+      state.hideFilters = false;
+      state.hideColumns = !state.hideColumns;
+    }),
   toggleHideSaved: () => {
     set((state) => {
       state.hideSaved = !state.hideSaved;
@@ -17,6 +24,13 @@ const PetsBasePersistStore = (set) => ({
       state.hideFilters = !state.hideFilters;
     });
   },
+  petSetup: BasePetVisibilityModels[0],
+  setPetSetup: (newSetup) =>
+    set((state) => {
+      return {
+        petSetup: newSetup,
+      };
+    }),
 });
 
 export default PetsBasePersistStore;

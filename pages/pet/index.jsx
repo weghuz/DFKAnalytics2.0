@@ -9,6 +9,7 @@ import DFKATable from "../../Components/Table/DFKATable";
 import petColumnDefs from "../../Logic/PetTableColumns";
 import PetFilters from "../../Components/PetFilters";
 import usePetsPersist from "../../Store/pet/PetsPersistStore";
+import PetColumnSetups from "../../Components/PetColumnSetups";
 
 export default function Home() {
   const setPets = usePets((state) => state.setPets);
@@ -24,8 +25,10 @@ export default function Home() {
   );
   const hideFilters = usePetsPersist((state) => state.hideFilters);
   const toggleHideFilters = usePetsPersist((state) => state.toggleHideFilters);
-  const hideSaved = usePetsPersist((state) => state.hideSaved);
-  const toggleHideSaved = usePetsPersist((state) => state.toggleHideSaved);
+  const hideColumns = usePetsPersist((state) => state.hideColumns);
+  const toggleHideColumns = usePetsPersist((state) => state.toggleHideColumns);
+  const petSetup = usePetsPersist((state) => state.petSetup);
+  const setPetSetup = usePetsPersist((state) => state.setPetSetup);
 
   const requestPets = async (state) => {
     return fetch(base, {
@@ -52,7 +55,6 @@ export default function Home() {
       }
     }
   );
-  useEffect(() => {}, []);
   return (
     <>
       <Grid
@@ -73,7 +75,23 @@ export default function Home() {
             Filters
           </Button>
         </Grid>
+        <Grid item>
+          <Button
+            variant="contained"
+            color={hideColumns ? "primary" : "secondary"}
+            onClick={toggleHideColumns}
+          >
+            Columns
+          </Button>
+        </Grid>
         <Grid item xs={12}>
+          <PetColumnSetups
+            visible={hideColumns}
+            visibilityModel={visibilityModel}
+            setVisibilityModel={setVisibilityModel}
+            currentColumnSetup={petSetup}
+            setCurrentColumnSetup={setPetSetup}
+          />
           <PetFilters
             visible={hideFilters}
             includeSalePrice={true}

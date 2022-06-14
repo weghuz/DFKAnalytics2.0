@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import useUser from "../Store/UserStore";
-import { Button, Container, Grid, MenuItem } from "@mui/material";
+import { Button, Container, Grid } from "@mui/material";
+import { BasePetVisibilityModels } from "../Logic/BasePetVisibilityModels";
 import Select from "react-dropdown-select";
 import { useEffect } from "react";
-import { BaseHeroVisibilityModels } from "../Logic/BaseHeroVisibilityModels";
 
-export default function HeroColumnSetups({
+export default function PetColumnSetups({
   visible,
   visibilityModel,
   setVisibilityModel,
@@ -20,16 +20,16 @@ export default function HeroColumnSetups({
       label: currentColumnSetup.name,
     },
   ]);
-  const removeHeroColumnSetup = useUser((state) => state.removeHeroColumnSetup);
-  const savedHeroColumnSetups = useUser((state) => state.savedHeroColumnSetups);
-  const saveHeroColumnSetup = useUser((state) => state.saveHeroColumnSetup);
+  const removePetColumnSetup = useUser((state) => state.removePetColumnSetup);
+  const savedPetColumnSetups = useUser((state) => state.savedPetColumnSetups);
+  const savePetColumnSetup = useUser((state) => state.savePetColumnSetup);
   const CreateColumnPreset = () => {
-    saveHeroColumnSetup({ name: setupName, model: visibilityModel });
+    savePetColumnSetup({ name: setupName, model: visibilityModel });
     setCurrentColumnSetup({ name: setupName, model: visibilityModel });
     setSetup([{ value: setupName, label: setupName }]);
   };
   useEffect(() => {
-    let newSetup = savedHeroColumnSetups.find((s) => s.name == setup[0].value);
+    let newSetup = savedPetColumnSetups.find((s) => s.name == setup[0].value);
     setCurrentColumnSetup(newSetup);
     setVisibilityModel(newSetup.model);
   }, [setup]);
@@ -44,7 +44,7 @@ export default function HeroColumnSetups({
             <Select
               clearable={false}
               values={setup}
-              options={savedHeroColumnSetups.map((s) => {
+              options={savedPetColumnSetups.map((s) => {
                 return { value: s.name, label: s.name };
               })}
               placeholder={"Select Column Preset to Display"}
@@ -78,16 +78,16 @@ export default function HeroColumnSetups({
               <Button
                 variant="contained"
                 color={"error"}
-                disabled={BaseHeroVisibilityModels.some((s) => {
+                disabled={BasePetVisibilityModels.some((s) => {
                   return setup[0].value === s.name;
                 })}
                 onClick={(e) => {
-                  console.log(removeHeroColumnSetup(setup[0].value));
-                  setVisibilityModel(BaseHeroVisibilityModels[0].model);
+                  console.log(removePetColumnSetup(setup[0].value));
+                  setVisibilityModel(BasePetVisibilityModels[0].model);
                   setSetup([
                     {
-                      value: BaseHeroVisibilityModels[0].name,
-                      label: BaseHeroVisibilityModels[0].name,
+                      value: BasePetVisibilityModels[0].name,
+                      label: BasePetVisibilityModels[0].name,
                     },
                   ]);
                 }}
