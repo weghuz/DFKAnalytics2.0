@@ -1,7 +1,9 @@
 import {
   ClassScore,
+  FixSalePrice,
   getRecessives,
   GrowthScore,
+  NormalizeHero,
   TrainStat,
 } from "../../Logic/HeroBase";
 
@@ -38,12 +40,7 @@ const HeroBaseStore = (set, UpdateQuery) => ({
         return;
       }
       newHeroes.forEach((h) => {
-        getRecessives(h);
-        ClassScore(h);
-        GrowthScore(h);
-        TrainStat(h);
-        h.stats = { hp: h.hp };
-        h.id = h.id;
+        NormalizeHero(h);
       });
       console.log("New Heroes: ", newHeroes);
       state.skip = state.skip + state.first;

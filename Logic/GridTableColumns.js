@@ -1,6 +1,4 @@
 const {
-  FixSalePrice,
-  rarities,
   calculateRequiredXp,
   SumStats,
   RemoveBase,
@@ -9,7 +7,6 @@ const {
   CurrentStaminaHours,
   professionStats,
   FullName,
-  statBoost,
 } = require("./HeroBase");
 import { Tooltip } from "@mui/material";
 import { Box } from "@mui/system";
@@ -20,17 +17,19 @@ import HeroId from "../Components/Hero/HeroId";
 import PJBadge from "../Components/Hero/PJBadge";
 import PriceCell from "../Components/Hero/PriceCell";
 import RarityCell from "../Components/Hero/RarityCell";
+import StatBonusCell from "../Components/Hero/StatBonusCell";
 
 let columnDefs = [
   {
     headerName: "Cost",
     field: "salePrice",
     width: 105,
+    type: "number",
+    valueFormatter: ({ value }) => {
+      return Number(value);
+    },
     renderCell: ({ row }) => {
       return <PriceCell>{row}</PriceCell>;
-    },
-    sortComparator: (a, b) => {
-      return a - b;
     },
   },
   {
@@ -51,11 +50,10 @@ let columnDefs = [
     field: "id",
     hide: false,
     width: 100,
+    type: "number",
+    valueFormatter: ({ value }) => Number(value),
     renderCell: ({ row }) => {
       return <HeroId>{row.heroId > 0 ? row.heroId : row.id}</HeroId>;
-    },
-    sortComparator: (a, b) => {
-      return a - b;
     },
   },
   {
@@ -64,11 +62,9 @@ let columnDefs = [
     width: 60,
     hide: false,
     type: "number",
+    valueFormatter: ({ value }) => Number(value),
     renderCell: ({ row }) => {
       return <RarityCell rarity={row.rarity} />;
-    },
-    sortComparator: (a, b, c, e) => {
-      return a - b;
     },
   },
   {
@@ -149,6 +145,8 @@ let columnDefs = [
     field: "level",
     hide: false,
     width: 60,
+    type: "number",
+    valueFormatter: ({ value }) => Number(value),
   },
   {
     headerName: "XP",
@@ -162,6 +160,8 @@ let columnDefs = [
     headerName: "XP Current",
     field: "XPC",
     hide: true,
+    type: "number",
+    valueFormatter: ({ value }) => Number(value),
     valueGetter: ({ row }) => {
       return row.xp;
     },
@@ -170,6 +170,8 @@ let columnDefs = [
     headerName: "XP Max",
     field: "XPM",
     hide: true,
+    type: "number",
+    valueFormatter: ({ value }) => Number(value),
     valueGetter: ({ row }) => {
       return calculateRequiredXp(row.level);
     },
@@ -184,6 +186,8 @@ let columnDefs = [
     headerName: "Gen",
     field: "generation",
     width: 40,
+    type: "number",
+    valueFormatter: ({ value }) => Number(value),
     hide: false,
   },
   {
@@ -191,37 +195,30 @@ let columnDefs = [
     field: "summons",
     width: 70,
     hide: false,
+    type: "number",
     valueGetter: ({ row }) => {
+      return Number(row.summonsRemaining);
+    },
+    renderCell: ({ row }) => {
       if (row.generation == 0) {
         return `${row.summons}/∞`;
       }
       return `${row.summonsRemaining}/${row.maxSummons}`;
-    },
-    sortComparator: (a, b, c, d) => {
-      return (
-        c.api.getRow(c.id).summonsRemaining -
-        d.api.getRow(d.id).summonsRemaining
-      );
     },
   },
   {
     headerName: "Gen|Sum",
     field: "gen|sum",
     hide: true,
+    type: "number",
     valueGetter: ({ row }) => {
+      return Number(`${row.generation}${row.summonsRemaining}`);
+    },
+    renderCell: ({ row }) => {
       if (row.generation == 0) {
         return `${row.generation} | ${row.summons}/∞`;
       }
       return `${row.generation} | ${row.summonsRemaining}/${row.maxSummons}`;
-    },
-    sortComparator: (a, b, c, d) => {
-      if (c.api.getRow(c.id).generation !== d.api.getRow(d.id).generation) {
-        return c.api.getRow(c.id).generation - d.api.getRow(d.id).generation;
-      }
-      return (
-        d.api.getRow(d.id).summonsRemaining -
-        c.api.getRow(c.id).summonsRemaining
-      );
     },
   },
   {
@@ -229,12 +226,16 @@ let columnDefs = [
     field: "hp",
     width: 60,
     hide: true,
+    type: "number",
+    valueFormatter: ({ value }) => Number(value),
   },
   {
     headerName: "MP",
     field: "mp",
     width: 60,
     hide: true,
+    type: "number",
+    valueFormatter: ({ value }) => Number(value),
   },
   {
     headerName: "SB1",
@@ -310,8 +311,11 @@ let columnDefs = [
     field: "TrainStat",
     width: "80",
     hide: false,
-    type: "string",
-    renderCell: ({ value }) => {
+    type: "number",
+    valueGetter: ({ value }) => {
+      return Number(value.amount);
+    },
+    renderCell: ({ row }) => {
       return (
         <Tooltip
           title={
@@ -319,23 +323,18 @@ let columnDefs = [
               {
                 "Green stat gives +1 and Blue +3 points to a stat for questing. "
               }
-              <a href={value.link} target="_blank" rel="noreferrer">
-                {value.linkName}
+              <a href={row.TrainStat.link} target="_blank" rel="noreferrer">
+                {row.TrainStat.linkName}
               </a>
             </>
           }
           placement="left"
         >
-          <Box sx={{ color: value.color }}>
-            {value.name} {value.amount}
+          <Box sx={{ color: row.TrainStat.color }}>
+            {row.TrainStat.name} {row.TrainStat.amount}
           </Box>
         </Tooltip>
       );
-    },
-    sortComparator: (v1, v2) => {
-      if (statBoost.indexOf(v1.name) !== statBoost.indexOf(v2.name))
-        return statBoost.indexOf(v1.name) - statBoost.indexOf(v2.name);
-      return v1.amount - v2.amount;
     },
   },
   {
@@ -403,8 +402,10 @@ let columnDefs = [
     headerName: "Totstat",
     field: "tostat",
     hide: true,
+    width: 60,
+    type: "number",
     valueGetter: ({ row }) => {
-      return parseInt(SumStats(row)).toFixed(0);
+      return Number(SumStats(row)).toFixed(0);
     },
   },
   {
@@ -412,8 +413,10 @@ let columnDefs = [
     field: "statgain",
     title: "Statgain",
     hide: true,
+    width: 60,
+    type: "number",
     valueGetter: ({ row }) => {
-      return parseInt(SumStats(RemoveBase(row))).toFixed(0);
+      return Number(SumStats(RemoveBase(row))).toFixed(0);
     },
   },
   {
@@ -421,8 +424,9 @@ let columnDefs = [
     field: "Stamina Max",
     title: "Stamina Max",
     hide: true,
+    type: "number",
     valueGetter: ({ row }) => {
-      return parseInt(25 + parseInt(row.level) / 2);
+      return Number(parseInt(25 + parseInt(row.level) / 2));
     },
   },
   {
@@ -430,8 +434,9 @@ let columnDefs = [
     field: "Stamina Current",
     title: "Stamina Current",
     hide: true,
+    type: "number",
     valueGetter: ({ row }) => {
-      return CurrentStamina(row);
+      return Number(CurrentStamina(row));
     },
   },
   {
@@ -439,8 +444,11 @@ let columnDefs = [
     field: "Stamina",
     title: "Stamina",
     hide: true,
+    type: "number",
     valueGetter: ({ row }) => {
-      return `${CurrentStamina(row)}/${parseInt(25 + parseInt(row.level) / 2)}`;
+      return Number(
+        CurrentStamina(row) / parseInt(25 + parseInt(row.level) / 2)
+      );
     },
   },
   {
@@ -479,10 +487,11 @@ let columnDefs = [
     title: "Profession Stats",
     hide: true,
     width: 60,
+    type: "number",
     valueGetter: ({ row }) => {
-      return (
+      return Number(
         row[professionStats[row.profession][0]] +
-        row[professionStats[row.profession][1]]
+          row[professionStats[row.profession][1]]
       );
     },
   },
@@ -492,11 +501,12 @@ let columnDefs = [
     title: "Skill Profession Stats",
     hide: true,
     width: 60,
+    type: "number",
     valueGetter: ({ row }) => {
-      return (
+      return Number(
         row[professionStats[row.profession][0]] +
-        row[professionStats[row.profession][1]] +
-        row[row.profession] * 0.2
+          row[professionStats[row.profession][1]] +
+          row[row.profession] * 0.2
       ).toFixed(1);
     },
   },
@@ -559,13 +569,22 @@ let columnDefs = [
     },
   },
   {
+    headerName: "CScore/Level",
+    field: "classScoreLevel",
+    hide: false,
+    type: "number",
+    valueGetter: ({ row }) => {
+      return Number(row.classScore / row.level).toFixed(2);
+    },
+  },
+  {
     headerName: "C Score/J",
     field: "cScore/J",
     hide: true,
     type: "number",
     valueGetter: ({ row }) => {
       if (row.salePrice == null) return null;
-      return (row.classScore / FixSalePrice(row.salePrice)).toFixed(5);
+      return (row.classScore / row.salePrice).toFixed(5);
     },
   },
   {
@@ -584,7 +603,7 @@ let columnDefs = [
     type: "number",
     valueGetter: ({ row }) => {
       if (row.salePrice == null) return null;
-      return (row.growthScore / FixSalePrice(row.salePrice)).toFixed(5);
+      return (row.growthScore / row.salePrice).toFixed(5);
     },
   },
   {
@@ -842,8 +861,9 @@ let columnDefs = [
     field: "mining",
     hide: true,
     width: 60,
+    type: "number",
     valueFormatter: ({ value }) => {
-      return value / 10;
+      return Number(value / 10);
     },
   },
   {
@@ -851,8 +871,9 @@ let columnDefs = [
     field: "foraging",
     hide: true,
     width: 60,
+    type: "number",
     valueFormatter: ({ value }) => {
-      return value / 10;
+      return Number(value / 10);
     },
   },
   {
@@ -860,8 +881,9 @@ let columnDefs = [
     field: "fishing",
     hide: true,
     width: 60,
+    type: "number",
     valueFormatter: ({ value }) => {
-      return value / 10;
+      return Number(value / 10);
     },
   },
   {
@@ -869,8 +891,9 @@ let columnDefs = [
     field: "gardening",
     hide: true,
     width: 60,
+    type: "number",
     valueFormatter: ({ value }) => {
-      return value / 10;
+      return Number(value / 10);
     },
   },
   {
@@ -878,48 +901,169 @@ let columnDefs = [
     field: "strength",
     width: 60,
     hide: true,
+    type: "number",
+    valueGetter: ({ value }) => {
+      return Number(value);
+    },
+    renderCell: ({ row }) => {
+      return (
+        <StatBonusCell
+          sb1={row.statBoost1}
+          sb2={row.statBoost2}
+          stat={"STR"}
+          statAmount={row.strength}
+          statName={"strength"}
+        />
+      );
+    },
+    hide: true,
   },
   {
     headerName: "Dex",
     field: "dexterity",
     width: 60,
     hide: true,
+    type: "number",
+    valueGetter: ({ value }) => {
+      return Number(value);
+    },
+    renderCell: ({ row }) => {
+      return (
+        <StatBonusCell
+          sb1={row.statBoost1}
+          sb2={row.statBoost2}
+          stat={"DEX"}
+          statAmount={row.dexterity}
+          statName={"dexterity"}
+        />
+      );
+    },
   },
   {
     headerName: "Agi",
     field: "agility",
     width: 60,
     hide: true,
+    type: "number",
+    valueGetter: ({ value }) => {
+      return Number(value);
+    },
+    renderCell: ({ row }) => {
+      return (
+        <StatBonusCell
+          sb1={row.statBoost1}
+          sb2={row.statBoost2}
+          stat={"AGI"}
+          statAmount={row.agility}
+          statName={"agility"}
+        />
+      );
+    },
   },
   {
     headerName: "Vit",
     field: "vitality",
     width: 60,
     hide: true,
+    type: "number",
+    valueGetter: ({ value }) => {
+      return Number(value);
+    },
+    renderCell: ({ row }) => {
+      return (
+        <StatBonusCell
+          sb1={row.statBoost1}
+          sb2={row.statBoost2}
+          stat={"VIT"}
+          statAmount={row.vitality}
+          statName={"vitality"}
+        />
+      );
+    },
   },
   {
     headerName: "End",
     field: "endurance",
     width: 60,
     hide: true,
+    type: "number",
+    valueGetter: ({ value }) => {
+      return Number(value);
+    },
+    renderCell: ({ row }) => {
+      return (
+        <StatBonusCell
+          sb1={row.statBoost1}
+          sb2={row.statBoost2}
+          stat={"END"}
+          statAmount={row.endurance}
+          statName={"endurance"}
+        />
+      );
+    },
   },
   {
     headerName: "Int",
     field: "intelligence",
     width: 60,
     hide: true,
+    type: "number",
+    valueGetter: ({ value }) => {
+      return Number(value);
+    },
+    renderCell: ({ row }) => {
+      return (
+        <StatBonusCell
+          sb1={row.statBoost1}
+          sb2={row.statBoost2}
+          stat={"INT"}
+          statAmount={row.intelligence}
+          statName={"intelligence"}
+        />
+      );
+    },
   },
   {
     headerName: "Wis",
     field: "wisdom",
     width: 60,
     hide: true,
+    type: "number",
+    valueGetter: ({ value }) => {
+      return Number(value);
+    },
+    renderCell: ({ row }) => {
+      return (
+        <StatBonusCell
+          sb1={row.statBoost1}
+          sb2={row.statBoost2}
+          stat={"WIS"}
+          statAmount={row.wisdom}
+          statName={"wisdom"}
+        />
+      );
+    },
   },
   {
     headerName: "lck",
     field: "luck",
     width: 60,
     hide: true,
+    type: "number",
+    valueGetter: ({ value }) => {
+      return Number(value);
+    },
+    renderCell: ({ row }) => {
+      return (
+        <StatBonusCell
+          sb1={row.statBoost1}
+          sb2={row.statBoost2}
+          stat={"LCK"}
+          statAmount={row.luck}
+          statName={"luck"}
+        />
+      );
+    },
   },
   {
     headerName: "Previous Owner",

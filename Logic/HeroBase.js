@@ -7175,6 +7175,16 @@ function CurrentStamina(hero) {
   }
 }
 
+function NormalizeHero(h) {
+  getRecessives(h);
+  ClassScore(h);
+  GrowthScore(h);
+  TrainStat(h);
+  h.salePrice = Number(FixSalePrice(h.salePrice));
+  h.stats = { hp: h.hp };
+  h.id = h.id;
+}
+
 function FixSalePrice(price) {
   return parseFloat((price * 0.000000000000000001).toFixed(2));
 }
@@ -7451,6 +7461,7 @@ module.exports = {
   RemoveBase,
   CurrentStamina,
   TrainStat,
+  NormalizeHero,
   professions,
   professionStats,
   stats,

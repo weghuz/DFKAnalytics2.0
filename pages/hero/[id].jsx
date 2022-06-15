@@ -5,6 +5,7 @@ import HeroDetails from "../../Components/Hero/HeroDetails";
 import { useRouter } from "next/router";
 import {
   ClassScore,
+  FixSalePrice,
   getRecessives,
   GrowthScore,
   TrainStat,
@@ -60,8 +61,8 @@ export default function HeroId() {
         ClassScore(hero);
         GrowthScore(hero);
         TrainStat(hero);
+        hero.salePrice = Number(FixSalePrice(hero.salePrice));
         hero.stats = { hp: hero.hp };
-        console.log(hero);
         setHeroDetails(hero);
       },
     }
