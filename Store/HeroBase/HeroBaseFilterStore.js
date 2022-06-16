@@ -20,6 +20,7 @@ const initialState = {
   active2: [],
   passive1: [],
   passive2: [],
+  background: [],
 };
 
 const HeroBaseFilterStore = (set) => ({
@@ -29,6 +30,10 @@ const HeroBaseFilterStore = (set) => ({
   section: "Main",
   setSection: (section) => {
     set({ section });
+  },
+  background: [],
+  setBackground: (background) => {
+    set({ background });
   },
   mainClass: [],
   setMainClass: (mainClass) => {

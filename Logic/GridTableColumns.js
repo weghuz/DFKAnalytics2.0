@@ -141,6 +141,12 @@ let columnDefs = [
     },
   },
   {
+    headerName: "Background",
+    field: "background",
+    hide: false,
+    type: "string",
+  },
+  {
     headerName: "Lvl",
     field: "level",
     hide: false,

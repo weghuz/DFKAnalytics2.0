@@ -22,6 +22,8 @@ function HeroFilters({ includeSalePrice, visible, useStore }) {
   const setMainClass = useStore((state) => state.setMainClass);
   const subClass = useStore((state) => state.subClass);
   const setSubClass = useStore((state) => state.setSubClass);
+  const background = useStore((state) => state.background);
+  const setBackground = useStore((state) => state.setBackground);
   const professions = useStore((state) => state.professions);
   const setProfessions = useStore((state) => state.setProfessions);
   const SB1 = useStore((state) => state.SB1);
@@ -69,7 +71,7 @@ function HeroFilters({ includeSalePrice, visible, useStore }) {
   }, []);
   const UpdateQuery = () => {
     let query = ``;
-    console.log(mainClass); 
+    console.log(mainClass);
     if (mainClass.length > 0) {
       query += `mainClass_in: [`;
       mainClass.forEach((c, i) => {
@@ -85,6 +87,16 @@ function HeroFilters({ includeSalePrice, visible, useStore }) {
       subClass.forEach((c, i) => {
         query += `"${c.value}"`;
         if (i < subClass.length - 1) {
+          query += `,`;
+        }
+      });
+      query += `],`;
+    }
+    if (background.length > 0) {
+      query += `background_in: [`;
+      background.forEach((c, i) => {
+        query += `"${c.value}"`;
+        if (i < background.length - 1) {
           query += `,`;
         }
       });
@@ -387,6 +399,13 @@ function HeroFilters({ includeSalePrice, visible, useStore }) {
                 setValues={setSubClass}
               >
                 {DFKBase.Classes}
+              </SelectItem>
+              <SelectItem
+                title="Background"
+                values={background}
+                setValues={setBackground}
+              >
+                {DFKBase.Backgrounds}
               </SelectItem>
               <SelectItem
                 title="Profession"
