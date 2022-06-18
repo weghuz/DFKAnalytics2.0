@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import useWallet from "../../Store/WalletStore";
 import useWalletAuctions from "../../Store/WalletAuctions/WalletAuctionsStore";
 import useWalletAuctionsPersist from "../../Store/WalletAuctions/WalletAuctionsPersistStore";
+import { FixSalePrice } from "../../Logic/HeroBase";
 
 export default function Auctions() {
   const visibilityModel = useWalletAuctionsPersist(
@@ -53,7 +54,7 @@ export default function Auctions() {
         let auctions = json.data.saleAuctions;
         console.log(auctions);
         let heroes = auctions.map((a) => {
-          a.tokenId.purchasePrice = a.purchasePrice;
+          a.tokenId.purchasePrice = FixSalePrice(a.purchasePrice);
           a.tokenId.heroId = a.tokenId.id;
           a.tokenId.id = a.id;
           return a.tokenId;
