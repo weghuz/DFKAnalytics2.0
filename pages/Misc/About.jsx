@@ -3,11 +3,15 @@ import StamPot from "../../public/StaminaPotion.png";
 import { useState } from "react";
 import TipModal from "../../Components/Modal/TipModal";
 import { Box, Container, Paper, Typography } from "@mui/material";
+import Head from "next/head";
 
 export default function About() {
   const [showTipModal, setShowTipModal] = useState(false);
   return (
     <>
+      <Head>
+        <title>{`About - DFKAnalytics`}</title>
+      </Head>
       <Container className="container">
         <Typography variant="h4">About</Typography>
         <Paper elevation={5}>

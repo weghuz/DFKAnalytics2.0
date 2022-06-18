@@ -1,9 +1,13 @@
 import { Container, Paper, Typography } from "@mui/material";
 import { Box } from "@mui/system";
+import Head from "next/head";
 
 export default function Resources() {
   return (
     <>
+      <Head>
+        <title>{`Resources - DFKAnalytics`}</title>
+      </Head>
       <Container>
         <Typography variant="h4">Resources</Typography>
         <Paper elevation={5} sx={{ paddingX: 1 }}>

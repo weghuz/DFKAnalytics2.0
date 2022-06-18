@@ -11,6 +11,7 @@ import { useRouter } from "next/router";
 import useWalletHeroes from "../../Store/WalletHeroes/WalletHeroesStore";
 import useWalletHeroesPersist from "../../Store/WalletHeroes/WalletHeroesPersistStore";
 import HeroColumnSetups from "../../Components/HeroColumnSetups";
+import Head from "next/head";
 export default function Wallet() {
   const hideFilters = useWalletHeroesPersist((state) => state.hideFilters);
   const toggleHideFilters = useWalletHeroesPersist(
@@ -73,6 +74,9 @@ export default function Wallet() {
   }, [address]);
   return (
     <>
+      <Head>
+        <title>Wallet Heroes - DFKAnaltyics</title>
+      </Head>
       <Grid
         container
         columnSpacing={2}

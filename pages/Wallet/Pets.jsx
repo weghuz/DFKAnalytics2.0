@@ -12,7 +12,7 @@ import PetFilters from "../../Components/PetFilters";
 import useWalletPets from "../../Store/WalletPets/WalletPetsStore";
 import useWalletPetsPersist from "../../Store/WalletPets/WalletPetsPersistStore";
 import PetColumnSetups from "../../Components/PetColumnSetups";
-
+import Head from "next/head";
 export default function Home() {
   const setPets = useWalletPets((state) => state.setPets);
   const pets = useWalletPets((state) => state.pets);
@@ -71,6 +71,9 @@ export default function Home() {
   }, [address]);
   return (
     <>
+      <Head>
+        <title>Wallet Pets - DFKAnaltyics</title>
+      </Head>
       <Grid container justifyContent="center" marginBottom={1} spacing={1}>
         <Grid item xs={12} textAlign={"center"}>
           <Typography variant="h5">Your Pets</Typography>

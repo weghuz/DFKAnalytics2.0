@@ -12,6 +12,7 @@ import {
 } from "../../Logic/HeroBase";
 import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
+import Head from "next/head";
 
 export default function HeroId() {
   const [heroDetails, setHeroDetails] = useState(null);
@@ -40,8 +41,6 @@ export default function HeroId() {
         } else {
           console.log("Error: ", request);
         }
-      } else {
-        console.log("Invalid ID", id);
       }
     },
     {
@@ -69,6 +68,9 @@ export default function HeroId() {
   );
   return (
     <>
+      <Head>
+        <title>{`Hero ${id} - DFKAnalytics`}</title>
+      </Head>
       {failed && (
         <Box textAlign={"center"} color={"error.main"}>
           <Typography variant="h2">Failed to load Hero {id}</Typography>

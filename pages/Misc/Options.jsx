@@ -1,4 +1,5 @@
 import { Button, Container, Grid, Paper, Typography } from "@mui/material";
+import Head from "next/head";
 
 export default function Options() {
   const ClearLocalStorage = () => {
@@ -7,6 +8,9 @@ export default function Options() {
   };
   return (
     <>
+      <Head>
+        <title>{`Options - DFKAnalytics`}</title>
+      </Head>
       <Container>
         <Grid container columnSpacing={3}>
           <Grid item xs={12}>

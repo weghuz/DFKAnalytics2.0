@@ -9,6 +9,7 @@ import { useRouter } from "next/router";
 import useHeroesPersist from "../../Store/hero/HeroesPersistStore";
 import useHeroes from "../../Store/hero/HeroesStore";
 import HeroColumnSetups from "../../Components/HeroColumnSetups";
+import Head from "next/head";
 
 export default function Home() {
   const hideColumns = useHeroesPersist((state) => state.hideColumns);
@@ -70,6 +71,9 @@ export default function Home() {
 
   return (
     <>
+      <Head>
+        <title>{`Heroes - DFKAnalytics`}</title>
+      </Head>
       <Grid
         container
         justifyContent="center"

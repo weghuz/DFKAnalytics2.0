@@ -10,6 +10,7 @@ import petColumnDefs from "../../Logic/PetTableColumns";
 import PetFilters from "../../Components/PetFilters";
 import usePetsPersist from "../../Store/pet/PetsPersistStore";
 import PetColumnSetups from "../../Components/PetColumnSetups";
+import Head from "next/head";
 
 export default function Home() {
   const setPets = usePets((state) => state.setPets);
@@ -57,6 +58,9 @@ export default function Home() {
   );
   return (
     <>
+      <Head>
+        <title>Pets - DFKAnaltyics</title>
+      </Head>
       <Grid
         container
         justifyContent="center"

@@ -10,6 +10,7 @@ import useWallet from "../../Store/WalletStore";
 import useWalletAuctions from "../../Store/WalletAuctions/WalletAuctionsStore";
 import useWalletAuctionsPersist from "../../Store/WalletAuctions/WalletAuctionsPersistStore";
 import { FixSalePrice } from "../../Logic/HeroBase";
+import Head from "next/head";
 
 export default function Auctions() {
   const visibilityModel = useWalletAuctionsPersist(
@@ -65,6 +66,9 @@ export default function Auctions() {
   });
   return (
     <>
+      <Head>
+        <title>Sold Heroes - DFKAnaltyics</title>
+      </Head>
       <Grid container marginBottom={1} spacing={1}>
         <Grid item container xs={12} justifyContent={"center"}>
           <Grid item>

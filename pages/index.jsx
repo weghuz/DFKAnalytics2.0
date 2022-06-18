@@ -12,10 +12,14 @@ import Link from "next/link";
 import { Box } from "@mui/system";
 import Image from "next/image";
 import CommunitySpotlight from "../public/DFKCommunitySpotlight20220614.png";
+import Head from "next/head";
 
 export default function index() {
   return (
     <Container>
+      <Head>
+        <title>{`DFKAnalytics`}</title>
+      </Head>
       <Grid container spacing={3}>
         <Grid item sm={12} textAlign={"center"}>
           <Typography variant="h4" component="div">
