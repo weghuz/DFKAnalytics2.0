@@ -11,8 +11,9 @@ import React from "react";
 import Link from "next/link";
 import { Box } from "@mui/system";
 import Image from "next/image";
-import CommunitySpotlight from "../public/DFKCommunitySpotlight20220614.png";
+import CommunitySpotlight from "../public/CommunitySpotlightKingdomInformed.jpeg";
 import Head from "next/head";
+import Twitter from "../public/Socials/Twitter.svg";
 
 export default function index() {
   return (
@@ -36,7 +37,7 @@ export default function index() {
               <Box display={"flex"} justifyContent={"center"} marginBottom={4}>
                 <Box display={"relative"} maxWidth={850} maxHeight={450}>
                   <a
-                    href="https://youtu.be/eodzkm2pe1o"
+                    href="https://twitter.com/KingdomInformed"
                     target={"_blank"}
                     rel={"noreferrer"}
                   >
@@ -48,18 +49,30 @@ export default function index() {
                 </Box>
               </Box>
               <Typography variant="div">
-                <Box>{`Inner Grove - DFK Community Dev Spotlight DFKing, ADFK and DFKAnalytics`}</Box>
-                <Box>{`On this episode they welcome the creator of DFKing.co, Raph from Adventures in DeFi Kingdoms, and Weghuz, creator of DFKAnalytics.`}</Box>
+                <Box>{`Kingdom Informed - Twitter account that highlights different DFK Community projects with informative and appealing imagery.`}</Box>
+                <Box>{`Make sure to follow Kingdom Informed for updates on new and exciting community projects!`}</Box>
               </Typography>
             </CardContent>
             <CardActions>
+              <a
+                href="https://twitter.com/KingdomInformed"
+                target={"_blank"}
+                rel={"noreferrer"}
+              >
+                <Image
+                  src={Twitter}
+                  layout={"fixed"}
+                  width={20}
+                  height={20}
+                ></Image>
+              </a>
               <Button size="small">
                 <a
-                  href="https://www.youtube.com/watch?v=sBOjWZ17r0s"
+                  href="https://twitter.com/KingdomInformed"
                   target={"_blank"}
                   rel={"noreferrer"}
                 >
-                  {"Youtube Link"}
+                  {"@KingdomInformed"}
                 </a>
               </Button>
             </CardActions>
