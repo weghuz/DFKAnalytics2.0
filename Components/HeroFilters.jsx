@@ -66,8 +66,12 @@ function HeroFilters({ includeSalePrice, visible, useStore }) {
   const setSection = useStore((state) => state.setSection);
   const clearFilters = useStore((state) => state.clearFilters);
   const setFilter = useStore((state) => state.setFilter);
+  const heroes = useStore((state) => state.heroes);
   useEffect(() => {
-    UpdateQuery();
+    if(heroes.length == 0)
+    {
+      UpdateQuery();
+    }
   }, []);
   const UpdateQuery = () => {
     let query = ``;
