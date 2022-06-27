@@ -11,7 +11,9 @@ export default function DFKATable({
 }) {
   const [pageSize, setPageSize] = useState(100);
   const [page, setPage] = useState(0);
-  const rowsPerPageOptions = [5, 10, 15, 20, 35, 50, 75, 100];
+  const rowsPerPageOptions = [
+    5, 10, 15, 20, 35, 50, 75, 100, 250, 500, 1000, 9999,
+  ];
   const GetVisibility = () => {
     return columnVisibilityModel;
   };

@@ -7181,6 +7181,7 @@ function NormalizeHero(h) {
   GrowthScore(h);
   TrainStat(h);
   h.salePrice = Number(FixSalePrice(h.salePrice));
+  h.assistingPrice = Number(FixSalePrice(h.assistingPrice));
   h.stats = { hp: h.hp };
   h.id = h.id;
 }
