@@ -67,9 +67,10 @@ function HeroFilters({ includeSalePrice, visible, useStore }) {
   const clearFilters = useStore((state) => state.clearFilters);
   const setFilter = useStore((state) => state.setFilter);
   const heroes = useStore((state) => state.heroes);
+  const setRealm = useStore((state) => state.setRealm);
+  const realm = useStore((state) => state.realm);
   useEffect(() => {
-    if(heroes.length == 0)
-    {
+    if (heroes.length == 0) {
       UpdateQuery();
     }
   }, []);
@@ -299,6 +300,16 @@ function HeroFilters({ includeSalePrice, visible, useStore }) {
         }
       }
     }
+    switch (realm[0].value) {
+      case "hmy":
+        query += `network: "hmy",`;
+        break;
+      case "dfk":
+        query += `network: "dfk",`;
+        break;
+      default:
+        break;
+    }
     let order = ``;
     if (includeSalePrice) {
       switch (target[0].value) {
@@ -390,6 +401,18 @@ function HeroFilters({ includeSalePrice, visible, useStore }) {
                   {Targets}
                 </SelectItemSingle>
               )}
+              <SelectItemSingle
+                title="Realm"
+                clearable={false}
+                values={realm}
+                setValues={setRealm}
+              >
+                {[
+                  { value: "hmy", label: "Serendale" },
+                  { value: "dfk", label: "Crystalvale" },
+                  { value: "", label: "Any" },
+                ]}
+              </SelectItemSingle>
               <SelectItem
                 title="Class"
                 values={mainClass}

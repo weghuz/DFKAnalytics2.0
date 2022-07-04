@@ -33,6 +33,14 @@ let columnDefs = [
     },
   },
   {
+    headerName: "Realm",
+    field: "network",
+    hide: false,
+    valueFormatter: ({ value }) => {
+      return value == "hmy" ? "SD" : "CV";
+    },
+  },
+  {
     headerName: "Summoned Time",
     field: "summonedTime",
     hide: true,
