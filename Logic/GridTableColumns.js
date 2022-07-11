@@ -35,7 +35,7 @@ let columnDefs = [
   {
     headerName: "Realm",
     field: "network",
-    hide: false,
+    hide: true,
     valueFormatter: ({ value }) => {
       return value == "hmy" ? "SD" : "CV";
     },
@@ -168,6 +168,14 @@ let columnDefs = [
     hide: true,
     valueGetter: ({ row }) => {
       return `${row.xp}/${calculateRequiredXp(row.level) / 1000}k`;
+    },
+  },
+  {
+    headerName: "XP To Level",
+    field: "XPToLevel",
+    hide: true,
+    valueGetter: ({ row }) => {
+      return calculateRequiredXp(row.level) - row.xp;
     },
   },
   {
@@ -585,7 +593,7 @@ let columnDefs = [
   {
     headerName: "CScore/Level",
     field: "classScoreLevel",
-    hide: false,
+    hide: true,
     type: "number",
     valueGetter: ({ row }) => {
       return Number(row.classScore / row.level).toFixed(2);
