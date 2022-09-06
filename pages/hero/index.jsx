@@ -5,11 +5,13 @@ import { Button, LinearProgress, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { columnDefs } from "../../Logic/GridTableColumns";
 import DFKATable from "../../Components/Table/DFKATable";
-import { useRouter } from "next/router";
 import useHeroesPersist from "../../Store/hero/HeroesPersistStore";
 import useHeroes from "../../Store/hero/HeroesStore";
+import useUser from "../../Store/UserStore";
 import HeroColumnSetups from "../../Components/HeroColumnSetups";
 import Head from "next/head";
+import { useState } from "react";
+import HeroDetailsModal from "../../Components/Hero/HeroDetailsModal";
 
 export default function Home() {
   const hideColumns = useHeroesPersist((state) => state.hideColumns);
@@ -32,10 +34,14 @@ export default function Home() {
   const attempt = useHeroes((state) => state.attempt);
   const skip = useHeroes((state) => state.skip);
   const first = useHeroes((state) => state.first);
-
-  const router = useRouter();
+  const heroDetailsViewType = useUser((state) => state.heroDetailsViewType);
+  const [showingHero, setShowingHero] = useState((hero) => null);
   const clickedHero = (hero) => {
-    router.push(`/hero/[id]`, `/hero/${hero.id}`);
+    if (heroDetailsViewType == "page") {
+      window.open(`/hero/${hero.id}`, `_blank`);
+    } else {
+      setShowingHero((h) => hero);
+    }
   };
 
   const testRequest = async () => {
@@ -124,6 +130,10 @@ export default function Home() {
         columnVisibilityModel={visibilityModel}
         onRowClick={clickedHero}
       />
+      <HeroDetailsModal
+        hero={showingHero}
+        setHero={setShowingHero}
+      ></HeroDetailsModal>
     </>
   );
 }

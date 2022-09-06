@@ -67,6 +67,13 @@ const PersistedStore = create(
           state.theme = state.theme == "light" ? "dark" : "light";
         });
       },
+      heroDetailsViewType: "modal",
+      toggleHeroDetailsViewType: () => {
+        set((state) => {
+          state.heroDetailsViewType =
+            state.heroDetailsViewType == "modal" ? "page" : "modal";
+        });
+      },
     }),
     {
       name: "UserSettings",
@@ -137,6 +144,13 @@ const PersistedStoreInit = create(
     toggleTheme: () => {
       set((state) => {
         state.theme = state.theme == "light" ? "dark" : "light";
+      });
+    },
+    heroDetailsViewType: "modal",
+    toggleHeroDetailsViewType: () => {
+      set((state) => {
+        state.heroDetailsViewType =
+          state.heroDetailsViewType == "modal" ? "page" : "modal";
       });
     },
   }),
