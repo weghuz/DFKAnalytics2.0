@@ -11,7 +11,7 @@ import React from "react";
 import Link from "next/link";
 import { Box } from "@mui/system";
 import Image from "next/image";
-import CommunitySpotlight from "../public/CommunitySpotlightKingdomInformed.jpeg";
+import CommunitySpotlight from "../public/CommunitySpotlight20220907.png";
 import Head from "next/head";
 import Twitter from "../public/Socials/Twitter.svg";
 
@@ -31,48 +31,60 @@ export default function index() {
           <Card sx={{ width: "100%" }}>
             <CardContent>
               <Typography variant="h5" component="div">
-                {`Community Spotlight`}
+                <a
+                  href="https://dfkeggspert.com/"
+                  target={"_blank"}
+                  rel={"noreferrer"}
+                >
+                  {`Community Spotlight - DFK EGGSPERT`}
+                </a>
               </Typography>
               <Typography variant="h6" component="div"></Typography>
               <Box display={"flex"} justifyContent={"center"} marginBottom={4}>
                 <Box display={"relative"} maxWidth={850} maxHeight={450}>
                   <a
-                    href="https://twitter.com/KingdomInformed"
+                    href="https://dfkeggspert.com/"
                     target={"_blank"}
                     rel={"noreferrer"}
                   >
                     <Image
+                      layout={"fixed"}
+                      width={727}
+                      height={476}
                       src={CommunitySpotlight}
-                      alt={"Community Spotlight"}
+                      alt={"DFKEggspert.com"}
                     />
                   </a>
                 </Box>
               </Box>
               <Typography variant="div">
-                <Box>{`Kingdom Informed - Twitter account that highlights different DFK Community projects with informative and appealing imagery.`}</Box>
-                <Box>{`Make sure to follow Kingdom Informed for updates on new and exciting community projects!`}</Box>
+                <Box>{`DFKEggspert - A website for all your DFK needs!`}</Box>
+                <Box>{`Guides, Tips and Insight into DeFi Kingdoms.`}</Box>
               </Typography>
             </CardContent>
             <CardActions>
-              <a
-                href="https://twitter.com/KingdomInformed"
-                target={"_blank"}
-                rel={"noreferrer"}
-              >
-                <Image
-                  src={Twitter}
-                  layout={"fixed"}
-                  width={20}
-                  height={20}
-                ></Image>
-              </a>
               <Button size="small">
                 <a
-                  href="https://twitter.com/KingdomInformed"
+                  href="https://dfkeggspert.com/"
                   target={"_blank"}
                   rel={"noreferrer"}
                 >
-                  {"@KingdomInformed"}
+                  {"https://dfkeggspert.com/"}
+                </a>
+              </Button>
+              <Button size="small">
+                <a
+                  href="https://twitter.com/dfkstronghold"
+                  target={"_blank"}
+                  rel={"noreferrer"}
+                >
+                  <Image
+                    src={Twitter}
+                    layout={"fixed"}
+                    width={20}
+                    height={20}
+                  ></Image>
+                  {"@dfkstronghold"}
                 </a>
               </Button>
             </CardActions>
