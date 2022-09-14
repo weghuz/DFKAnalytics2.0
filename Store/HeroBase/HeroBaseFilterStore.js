@@ -22,11 +22,16 @@ const initialState = {
   passive2: [],
   background: [],
   realm: [{ value: "", label: "Any" }],
+  gender: [],
 };
 
 const HeroBaseFilterStore = (set) => ({
   clearFilters: () => {
     set({ ...initialState });
+  },
+  gender: [],
+  setGender: (gender) => {
+    set({ gender });
   },
   realm: [{ value: "", label: "Any" }],
   setRealm: (realm) => {

@@ -155,6 +155,12 @@ let columnDefs = [
     type: "string",
   },
   {
+    headerName: "Gender",
+    field: "gender",
+    hide: false,
+    type: "string",
+  },
+  {
     headerName: "Lvl",
     field: "level",
     hide: false,

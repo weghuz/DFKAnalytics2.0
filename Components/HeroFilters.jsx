@@ -69,6 +69,8 @@ function HeroFilters({ includeSalePrice, visible, useStore }) {
   const heroes = useStore((state) => state.heroes);
   const setRealm = useStore((state) => state.setRealm);
   const realm = useStore((state) => state.realm);
+  const setGender = useStore((state) => state.setGender);
+  const gender = useStore((state) => state.gender);
   useEffect(() => {
     if (heroes.length == 0) {
       UpdateQuery();
@@ -77,6 +79,16 @@ function HeroFilters({ includeSalePrice, visible, useStore }) {
   const UpdateQuery = () => {
     let query = ``;
     console.log(mainClass);
+    if (gender.length > 0) {
+      query += `gender_in: [`;
+      gender.forEach((c, i) => {
+        query += `"${c.value}"`;
+        if (i < gender.length - 1) {
+          query += `,`;
+        }
+      });
+      query += `],`;
+    }
     if (mainClass.length > 0) {
       query += `mainClass_in: [`;
       mainClass.forEach((c, i) => {
@@ -387,6 +399,12 @@ function HeroFilters({ includeSalePrice, visible, useStore }) {
                   return { value: i, label: n };
                 })}
               </SelectItem>
+              <SelectItem title="Gender" values={gender} setValues={setGender}>
+                {[
+                  { value: `male`, label: `Male` },
+                  { value: `female`, label: `Female` },
+                ]}
+              </SelectItem>
             </Grid>
           )}
           {section == "Main" && (
@@ -641,7 +659,6 @@ function HeroFilters({ includeSalePrice, visible, useStore }) {
                       value={minSalePrice}
                       id="minPrice"
                       onChange={(e) => setMinSalePrice(e.target.value)}
-                      onBlur={(e) => startUpdateTimer()}
                       sx={{ width: "100%" }}
                       type="number"
                       startAdornment={
@@ -665,7 +682,6 @@ function HeroFilters({ includeSalePrice, visible, useStore }) {
                       value={maxSalePrice}
                       id="maxPrice"
                       onChange={(e) => setMaxSalePrice(e.target.value)}
-                      onBlur={(e) => startUpdateTimer()}
                       sx={{ width: "100%" }}
                       type="number"
                       startAdornment={

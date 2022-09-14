@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import HeroFilters from "../../Components/HeroFilters";
 import { base } from "../../Logic/Query";
@@ -7,11 +7,12 @@ import { Button, Grid, LinearProgress, Typography } from "@mui/material";
 import { columnDefs } from "../../Logic/GridTableColumns";
 import useWallet from "../../Store/WalletStore";
 import DFKATable from "../../Components/Table/DFKATable";
-import { useRouter } from "next/router";
 import useWalletHeroes from "../../Store/WalletHeroes/WalletHeroesStore";
 import useWalletHeroesPersist from "../../Store/WalletHeroes/WalletHeroesPersistStore";
 import HeroColumnSetups from "../../Components/HeroColumnSetups";
 import Head from "next/head";
+import HeroDetailsModal from "../../Components/Hero/HeroDetailsModal";
+import useUser from "../../Store/UserStore";
 export default function Wallet() {
   const hideFilters = useWalletHeroesPersist((state) => state.hideFilters);
   const toggleHideFilters = useWalletHeroesPersist(
@@ -37,10 +38,15 @@ export default function Wallet() {
   const first = useWalletHeroes((state) => state.first);
   const setAddress = useWalletHeroes((state) => state.setAddress);
   const address = useWallet((state) => state.address);
+  const heroDetailsViewType = useUser((state) => state.heroDetailsViewType);
 
-  const router = useRouter();
+  const [showingHero, setShowingHero] = useState((hero) => null);
   const clickedHero = (hero) => {
-    router.push(`/hero/[id]`, `/hero/${hero.id}`);
+    if (heroDetailsViewType == "page") {
+      window.open(`/hero/${hero.id}`, `_blank`);
+    } else {
+      setShowingHero((h) => hero);
+    }
   };
 
   const requestheroes = async () => {
@@ -130,6 +136,10 @@ export default function Wallet() {
         columnVisibilityModel={visibilityModel}
         onRowClick={clickedHero}
       />
+      <HeroDetailsModal
+        hero={showingHero}
+        setHero={setShowingHero}
+      ></HeroDetailsModal>
     </>
   );
 }

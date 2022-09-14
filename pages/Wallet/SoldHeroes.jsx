@@ -1,5 +1,5 @@
 import { Button, Grid, LinearProgress, Typography } from "@mui/material";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import MetaMask from "../../Components/Wallet/MetaMask";
 import { base, heroData } from "../../Logic/Query";
@@ -11,6 +11,8 @@ import useWalletAuctions from "../../Store/WalletAuctions/WalletAuctionsStore";
 import useWalletAuctionsPersist from "../../Store/WalletAuctions/WalletAuctionsPersistStore";
 import { FixSalePrice } from "../../Logic/HeroBase";
 import Head from "next/head";
+import HeroDetailsModal from "../../Components/Hero/HeroDetailsModal";
+import useUser from "../../Store/UserStore";
 
 export default function Auctions() {
   const visibilityModel = useWalletAuctionsPersist(
@@ -25,10 +27,15 @@ export default function Auctions() {
   const skip = useWalletAuctions((state) => state.skip);
   const setAddress = useWalletAuctions((state) => state.setAddress);
   const address = useWallet((state) => state.address);
-  const router = useRouter();
+  const heroDetailsViewType = useUser((state) => state.heroDetailsViewType);
 
+  const [showingHero, setShowingHero] = useState((hero) => null);
   const clickedHero = (hero) => {
-    router.push(`/hero/[id]`, `/hero/${hero.heroId}`);
+    if (heroDetailsViewType == "page") {
+      window.open(`/hero/${hero.id}`, `_blank`);
+    } else {
+      setShowingHero((h) => hero);
+    }
   };
 
   const requestAuctions = async () => {
@@ -91,6 +98,10 @@ export default function Auctions() {
         columnVisibilityModel={visibilityModel}
         visibilityChanged={setVisibilityModel}
       />
+      <HeroDetailsModal
+        hero={showingHero}
+        setHero={setShowingHero}
+      ></HeroDetailsModal>
     </>
   );
 }
