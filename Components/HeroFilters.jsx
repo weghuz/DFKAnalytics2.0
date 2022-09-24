@@ -16,6 +16,7 @@ import {
 import SelectItemSingle from "./Filters/SelectItemSingle";
 import { femaleFirstNames, lastNames, maleFirstNames } from "../Logic/HeroBase";
 import IdInput from "./Filters/IdInput";
+import NumberInput from "./Filters/NumberInput";
 
 function HeroFilters({ includeSalePrice, visible, useStore }) {
   const mainClass = useStore((state) => state.mainClass);
@@ -71,6 +72,34 @@ function HeroFilters({ includeSalePrice, visible, useStore }) {
   const realm = useStore((state) => state.realm);
   const setGender = useStore((state) => state.setGender);
   const gender = useStore((state) => state.gender);
+  const setMinStrength = useStore((state) => state.setMinStrength);
+  const minStrength = useStore((state) => state.minStrength);
+  const setMinDexterity = useStore((state) => state.setMinDexterity);
+  const minDexterity = useStore((state) => state.minDexterity);
+  const setMinAgility = useStore((state) => state.setMinAgility);
+  const minAgility = useStore((state) => state.minAgility);
+  const setMinVitality = useStore((state) => state.setMinVitality);
+  const minVitality = useStore((state) => state.minVitality);
+  const setMinEndurance = useStore((state) => state.setMinEndurance);
+  const minEndurance = useStore((state) => state.minEndurance);
+  const setMinIntelligence = useStore((state) => state.setMinIntelligence);
+  const minIntelligence = useStore((state) => state.minIntelligence);
+  const setMinWisdom = useStore((state) => state.setMinWisdom);
+  const minWisdom = useStore((state) => state.minWisdom);
+  const setMinLuck = useStore((state) => state.setMinLuck);
+  const minLuck = useStore((state) => state.minLuck);
+  const setMinMana = useStore((state) => state.setMinMana);
+  const minMana = useStore((state) => state.minMana);
+  const setMinHealth = useStore((state) => state.setMinHealth);
+  const minHealth = useStore((state) => state.minHealth);
+  const setMinMining = useStore((state) => state.setMinMining);
+  const minMining = useStore((state) => state.minMining);
+  const setMinGardening = useStore((state) => state.setMinGardening);
+  const minGardening = useStore((state) => state.minGardening);
+  const setMinForaging = useStore((state) => state.setMinForaging);
+  const minForaging = useStore((state) => state.minForaging);
+  const setMinFishing = useStore((state) => state.setMinFishing);
+  const minFishing = useStore((state) => state.minFishing);
   useEffect(() => {
     if (heroes.length == 0) {
       UpdateQuery();
@@ -79,6 +108,48 @@ function HeroFilters({ includeSalePrice, visible, useStore }) {
   const UpdateQuery = () => {
     let query = ``;
     console.log(mainClass);
+    if (minMining > 0) {
+      query += `mining_gte:${minMining},`;
+    }
+    if (minGardening > 0) {
+      query += `gardening_gte:${minGardening},`;
+    }
+    if (minForaging > 0) {
+      query += `foraging_gte:${minForaging},`;
+    }
+    if (minFishing > 0) {
+      query += `fishing_gte:${minFishing},`;
+    }
+    if (minHealth > 0) {
+      query += `hp_gte:${minHealth},`;
+    }
+    if (minMana > 0) {
+      query += `mp_gte:${minMana},`;
+    }
+    if (minStrength > 0) {
+      query += `strength_gte:${minStrength},`;
+    }
+    if (minDexterity > 0) {
+      query += `dexterity_gte:${minDexterity},`;
+    }
+    if (minAgility > 0) {
+      query += `agility_gte:${minAgility},`;
+    }
+    if (minVitality > 0) {
+      query += `vitality_gte:${minVitality},`;
+    }
+    if (minEndurance > 0) {
+      query += `endurance_gte:${minEndurance},`;
+    }
+    if (minIntelligence > 0) {
+      query += `intelligence_gte:${minIntelligence},`;
+    }
+    if (minWisdom > 0) {
+      query += `wisdom_gte:${minWisdom},`;
+    }
+    if (minLuck > 0) {
+      query += `luck_gte:${minLuck},`;
+    }
     if (gender.length > 0) {
       query += `gender_in: [`;
       gender.forEach((c, i) => {
@@ -363,6 +434,15 @@ function HeroFilters({ includeSalePrice, visible, useStore }) {
             <Grid item>
               <Button
                 variant="contained"
+                color={section == "Stats" ? "primary" : "secondary"}
+                onClick={() => setSection("Stats")}
+              >
+                Stats
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button
+                variant="contained"
                 color={section == "Cosmetic" ? "primary" : "secondary"}
                 onClick={() => setSection("Cosmetic")}
               >
@@ -370,6 +450,84 @@ function HeroFilters({ includeSalePrice, visible, useStore }) {
               </Button>
             </Grid>
           </Grid>
+          {section == "Stats" && (
+            <Grid container columnSpacing={2}>
+              <NumberInput
+                name={"health"}
+                value={minHealth}
+                setValue={setMinHealth}
+              />
+              <NumberInput
+                name={"mana"}
+                value={minMana}
+                setValue={setMinMana}
+              />
+              <NumberInput
+                name={"strength"}
+                value={minStrength}
+                setValue={setMinStrength}
+              />
+              <NumberInput
+                name={"dexterity"}
+                value={minDexterity}
+                setValue={setMinDexterity}
+              />
+              <NumberInput
+                name={"agility"}
+                value={minAgility}
+                setValue={setMinAgility}
+              />
+              <NumberInput
+                name={"vitality"}
+                value={minVitality}
+                setValue={setMinVitality}
+              />
+              <NumberInput
+                name={"endurance"}
+                value={minEndurance}
+                setValue={setMinEndurance}
+              />
+              <NumberInput
+                name={"intelligence"}
+                value={minIntelligence}
+                setValue={setMinIntelligence}
+              />
+              <NumberInput
+                name={"wisdom"}
+                value={minWisdom}
+                setValue={setMinWisdom}
+              />
+              <NumberInput
+                name={"luck"}
+                value={minLuck}
+                setValue={setMinLuck}
+              />
+              <NumberInput
+                name={"mining"}
+                value={minMining}
+                setValue={setMinMining}
+                step={0.1}
+              />
+              <NumberInput
+                name={"gardening"}
+                value={minGardening}
+                setValue={setMinGardening}
+                step={0.1}
+              />
+              <NumberInput
+                name={"foraging"}
+                value={minForaging}
+                setValue={setMinForaging}
+                step={0.1}
+              />
+              <NumberInput
+                name={"fishing"}
+                value={minFishing}
+                setValue={setMinFishing}
+                step={0.1}
+              />
+            </Grid>
+          )}
           {section == "Cosmetic" && (
             <Grid container columnSpacing={2}>
               {fFName.length == 0 && (

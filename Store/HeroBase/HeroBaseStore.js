@@ -1,11 +1,4 @@
-import {
-  ClassScore,
-  FixSalePrice,
-  getRecessives,
-  GrowthScore,
-  NormalizeHero,
-  TrainStat,
-} from "../../Logic/HeroBase";
+import { NormalizeHero } from "../../Logic/HeroBase";
 
 const HeroBaseStore = (set, UpdateQuery) => ({
   heroes: [],

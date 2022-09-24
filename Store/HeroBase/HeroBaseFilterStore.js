@@ -23,11 +23,81 @@ const initialState = {
   background: [],
   realm: [{ value: "", label: "Any" }],
   gender: [],
+  minStrength: 0,
+  minDexterity: 0,
+  minAgility: 0,
+  minVitality: 0,
+  minEndurance: 0,
+  minWisdom: 0,
+  minIntelligence: 0,
+  minLuck: 0,
+  minHealth: 0,
+  minMana: 0,
+  minMining: 0,
+  minGardening: 0,
+  minForaging: 0,
+  minFishing: 0,
 };
 
 const HeroBaseFilterStore = (set) => ({
   clearFilters: () => {
     set({ ...initialState });
+  },
+  minForaging: 0,
+  setMinForaging: (minForaging) => {
+    set({ minForaging });
+  },
+  minFishing: 0,
+  setMinFishing: (minFishing) => {
+    set({ minFishing });
+  },
+  minGardening: 0,
+  setMinGardening: (minGardening) => {
+    set({ minGardening });
+  },
+  minMining: 0,
+  setMinMining: (minMining) => {
+    set({ minMining });
+  },
+  minHealth: 0,
+  setMinHealth: (minHealth) => {
+    set({ minHealth });
+  },
+  minMana: 0,
+  setMinMana: (minMana) => {
+    set({ minMana });
+  },
+  minStrength: 0,
+  setMinStrength: (minStrength) => {
+    set({ minStrength });
+  },
+  minDexterity: 0,
+  setMinDexterity: (minDexterity) => {
+    set({ minDexterity });
+  },
+  minAgility: 0,
+  setMinAgility: (minAgility) => {
+    set({ minAgility });
+  },
+  minVitality: 0,
+  setMinVitality: (MinVitality) => {
+    set({ MinVitality });
+  },
+  minEndurance: 0,
+  setMinEndurance: (minEndurance) => {
+    set({ minEndurance });
+  },
+  minWisdom: 0,
+  setMinWisdom: (minWisdom) => {
+    set({ minWisdom });
+  },
+  minIntelligence: 0,
+  setMinIntelligence: (minIntelligence) => {
+    set({ minIntelligence });
+  },
+  minLuck: 0,
+  setMinLuck: (minLuck) => {
+    set({ minLuck });
   },
   gender: [],
   setGender: (gender) => {
