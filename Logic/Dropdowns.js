@@ -31,7 +31,7 @@ module.exports = {
     { value: "Advanced4", label: "Advanced 4" },
     { value: "Elite1", label: "Elite 1" },
     { value: "Elite2", label: "Elite 2" },
-    { value: "Transcendant1", label: "Transcendant 1" },
+    { value: "Transcendent1", label: "Transcendent 1" },
   ],
   Professions: [
     { value: "mining", label: "Mining" },
