@@ -7,6 +7,10 @@ const {
   CurrentStaminaHours,
   professionStats,
   FullName,
+  appendageColorOrder,
+  hairColorOrder,
+  eyeColorNames,
+  skinColorNames,
 } = require("./HeroBase");
 import { Tooltip } from "@mui/material";
 import { Box } from "@mui/system";
@@ -16,6 +20,7 @@ import GrowthScoreCell from "../Components/Hero/GrowthScoreCell";
 import HeroBackAppendageCell from "../Components/Hero/HeroBackAppendageCell";
 import HeroColorCell from "../Components/Hero/HeroColorCell";
 import HeroHairCell from "../Components/Hero/HeroHairCell";
+import HeroHairColorCell from "../Components/Hero/HeroHairColorCell";
 import HeroHeadAppendageCell from "../Components/Hero/HeroHeadAppendageCell";
 import HeroId from "../Components/Hero/HeroId";
 import PJBadge from "../Components/Hero/PJBadge";
@@ -413,6 +418,9 @@ let columnDefs = [
     headerName: "headAppendage",
     field: "headAppendage",
     hide: false,
+    valueGetter: ({ value }) => {
+      return Number(value);
+    },
     renderCell: ({ row }) => {
       return <HeroHeadAppendageCell hero={row} />;
     },
@@ -421,6 +429,9 @@ let columnDefs = [
     headerName: "backAppendage",
     field: "backAppendage",
     hide: false,
+    valueGetter: ({ value }) => {
+      return Number(value);
+    },
     renderCell: ({ row }) => {
       return <HeroBackAppendageCell hero={row} />;
     },
@@ -429,6 +440,9 @@ let columnDefs = [
     headerName: "hairStyle",
     field: "hairStyle",
     hide: false,
+    valueGetter: ({ value }) => {
+      return Number(value);
+    },
     renderCell: ({ row }) => {
       return <HeroHairCell hero={row} />;
     },
@@ -437,8 +451,13 @@ let columnDefs = [
     headerName: "appendageColor",
     field: "appendageColor",
     hide: false,
-    renderCell: ({ value }) => {
-      return <HeroColorCell>{value}</HeroColorCell>;
+    valueGetter: ({ value }) => {
+      return Number(appendageColorOrder[value]);
+    },
+    renderCell: ({ row }) => {
+      return (
+          <HeroColorCell>{row.appendageColor}</HeroColorCell>
+      );
     },
   },
   {
@@ -447,14 +466,16 @@ let columnDefs = [
     hide: false,
     renderCell: ({ value }) => {
       return (
-        <Box
-          sx={{
-            fontWeight: 1000,
-            color: `#${value}`,
-          }}
-        >
-          {value}
-        </Box>
+        <Tooltip placement="top" title={`Color hex code: #${value}`}>
+          <Box
+            sx={{
+              fontWeight: 1000,
+              color: `#${value}`,
+            }}
+          >
+            {eyeColorNames[value]}
+          </Box>
+        </Tooltip>
       );
     },
   },
@@ -463,41 +484,40 @@ let columnDefs = [
     field: "skinColor",
     hide: false,
     renderCell: ({ value }) => {
-      return <HeroColorCell>{value}</HeroColorCell>;
+      return (
+        <Tooltip placement="top" title={`Color hex code: #${value}`}>
+          <Box
+            sx={{
+              fontWeight: 1000,
+              color: `#${value}`,
+            }}
+          >
+            {skinColorNames[value]}
+          </Box>
+        </Tooltip>
+      );
     },
   },
   {
     headerName: "backAppendageColor",
     field: "backAppendageColor",
     hide: false,
-    renderCell: ({ value }) => {
-      return (
-        <Box
-          sx={{
-            fontWeight: 1000,
-            color: `#${value}`,
-          }}
-        >
-          {value}
-        </Box>
-      );
+    valueGetter: ({ value }) => {
+      return Number(appendageColorOrder[value]);
+    },
+    renderCell: ({ row }) => {
+      return <HeroColorCell>{row.backAppendageColor}</HeroColorCell>;
     },
   },
   {
     headerName: "hairColor",
     field: "hairColor",
     hide: false,
-    renderCell: ({ value }) => {
-      return (
-        <Box
-          sx={{
-            fontWeight: 1000,
-            color: `#${value}`,
-          }}
-        >
-          {value}
-        </Box>
-      );
+    valueGetter: ({ value }) => {
+      return Number(hairColorOrder[value]);
+    },
+    renderCell: ({ row }) => {
+      return <HeroHairColorCell>{row.hairColor}</HeroHairColorCell>;
     },
   },
   {

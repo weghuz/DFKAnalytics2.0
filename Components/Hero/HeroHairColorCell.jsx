@@ -1,8 +1,8 @@
 import { Box, Tooltip } from "@mui/material";
 import React from "react";
-import { appendageColor } from "../../Logic/HeroBase";
+import { hairColor } from "../../Logic/HeroBase";
 
-export default function HeroColorCell({ children }) {
+export default function HeroHairColorCell({ children }) {
   return (
     <Tooltip placement="top" title={`Color hex code: #${children}`}>
       <Box
@@ -11,7 +11,7 @@ export default function HeroColorCell({ children }) {
           color: `#${children}`,
         }}
       >
-        {appendageColor[children]}
+        {hairColor[children]}
       </Box>
     </Tooltip>
   );
