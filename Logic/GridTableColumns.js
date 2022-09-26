@@ -13,6 +13,10 @@ import { Box } from "@mui/system";
 import ClassScoreCell from "../Components/Hero/ClassScoreCell";
 import ElementCell from "../Components/Hero/ElementCell";
 import GrowthScoreCell from "../Components/Hero/GrowthScoreCell";
+import HeroBackAppendageCell from "../Components/Hero/HeroBackAppendageCell";
+import HeroColorCell from "../Components/Hero/HeroColorCell";
+import HeroHairCell from "../Components/Hero/HeroHairCell";
+import HeroHeadAppendageCell from "../Components/Hero/HeroHeadAppendageCell";
 import HeroId from "../Components/Hero/HeroId";
 import PJBadge from "../Components/Hero/PJBadge";
 import PriceCell from "../Components/Hero/PriceCell";
@@ -403,6 +407,97 @@ let columnDefs = [
     hide: true,
     valueGetter: ({ row }) => {
       return row.R1.profession;
+    },
+  },
+  {
+    headerName: "headAppendage",
+    field: "headAppendage",
+    hide: false,
+    renderCell: ({ row }) => {
+      return <HeroHeadAppendageCell hero={row} />;
+    },
+  },
+  {
+    headerName: "backAppendage",
+    field: "backAppendage",
+    hide: false,
+    renderCell: ({ row }) => {
+      return <HeroBackAppendageCell hero={row} />;
+    },
+  },
+  {
+    headerName: "hairStyle",
+    field: "hairStyle",
+    hide: false,
+    renderCell: ({ row }) => {
+      return <HeroHairCell hero={row} />;
+    },
+  },
+  {
+    headerName: "appendageColor",
+    field: "appendageColor",
+    hide: false,
+    renderCell: ({ value }) => {
+      return <HeroColorCell>{value}</HeroColorCell>;
+    },
+  },
+  {
+    headerName: "eyeColor",
+    field: "eyeColor",
+    hide: false,
+    renderCell: ({ value }) => {
+      return (
+        <Box
+          sx={{
+            fontWeight: 1000,
+            color: `#${value}`,
+          }}
+        >
+          {value}
+        </Box>
+      );
+    },
+  },
+  {
+    headerName: "skinColor",
+    field: "skinColor",
+    hide: false,
+    renderCell: ({ value }) => {
+      return <HeroColorCell>{value}</HeroColorCell>;
+    },
+  },
+  {
+    headerName: "backAppendageColor",
+    field: "backAppendageColor",
+    hide: false,
+    renderCell: ({ value }) => {
+      return (
+        <Box
+          sx={{
+            fontWeight: 1000,
+            color: `#${value}`,
+          }}
+        >
+          {value}
+        </Box>
+      );
+    },
+  },
+  {
+    headerName: "hairColor",
+    field: "hairColor",
+    hide: false,
+    renderCell: ({ value }) => {
+      return (
+        <Box
+          sx={{
+            fontWeight: 1000,
+            color: `#${value}`,
+          }}
+        >
+          {value}
+        </Box>
+      );
     },
   },
   {
