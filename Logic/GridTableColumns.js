@@ -19,10 +19,12 @@ import ElementCell from "../Components/Hero/ElementCell";
 import GrowthScoreCell from "../Components/Hero/GrowthScoreCell";
 import HeroBackAppendageCell from "../Components/Hero/HeroBackAppendageCell";
 import HeroColorCell from "../Components/Hero/HeroColorCell";
+import HeroEyeColor from "../Components/Hero/HeroEyeColor";
 import HeroHairCell from "../Components/Hero/HeroHairCell";
 import HeroHairColorCell from "../Components/Hero/HeroHairColorCell";
 import HeroHeadAppendageCell from "../Components/Hero/HeroHeadAppendageCell";
 import HeroId from "../Components/Hero/HeroId";
+import HeroSkinColor from "../Components/Hero/HeroSkinColor";
 import PJBadge from "../Components/Hero/PJBadge";
 import PriceCell from "../Components/Hero/PriceCell";
 import RarityCell from "../Components/Hero/RarityCell";
@@ -455,47 +457,29 @@ let columnDefs = [
       return Number(appendageColorOrder[value]);
     },
     renderCell: ({ row }) => {
-      return (
-          <HeroColorCell>{row.appendageColor}</HeroColorCell>
-      );
+      return <HeroColorCell>{row.appendageColor}</HeroColorCell>;
     },
   },
   {
     headerName: "eyeColor",
     field: "eyeColor",
     hide: false,
+    // valueGetter: ({ value }) => {
+    //   return Number(value);
+    // },
     renderCell: ({ value }) => {
-      return (
-        <Tooltip placement="top" title={`Color hex code: #${value}`}>
-          <Box
-            sx={{
-              fontWeight: 1000,
-              color: `#${value}`,
-            }}
-          >
-            {eyeColorNames[value]}
-          </Box>
-        </Tooltip>
-      );
+      return <HeroEyeColor>{value}</HeroEyeColor>;
     },
   },
   {
     headerName: "skinColor",
     field: "skinColor",
     hide: false,
+    // valueGetter: ({ value }) => {
+    //   return Number(value);
+    // },
     renderCell: ({ value }) => {
-      return (
-        <Tooltip placement="top" title={`Color hex code: #${value}`}>
-          <Box
-            sx={{
-              fontWeight: 1000,
-              color: `#${value}`,
-            }}
-          >
-            {skinColorNames[value]}
-          </Box>
-        </Tooltip>
-      );
+      return <HeroSkinColor>{value}</HeroSkinColor>;
     },
   },
   {

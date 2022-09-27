@@ -67,12 +67,16 @@ const PersistedStore = create(
           state.theme = state.theme == "light" ? "dark" : "light";
         });
       },
-      heroDetailsViewType: "modal",
+      heroDetailsViewType: "Modal",
       toggleHeroDetailsViewType: () => {
         set((state) => {
           state.heroDetailsViewType =
-            state.heroDetailsViewType == "modal" ? "page" : "modal";
+            state.heroDetailsViewType == "Modal" ? "Page" : "Modal";
         });
+      },
+      visualDisplayType: "Names",
+      setVisualDisplayType: (visualDisplayType) => {
+        set((state) => (state.visualDisplayType = visualDisplayType));
       },
     }),
     {
@@ -152,6 +156,10 @@ const PersistedStoreInit = create(
         state.heroDetailsViewType =
           state.heroDetailsViewType == "modal" ? "page" : "modal";
       });
+    },
+    visualDisplayType: [{ label: "Name", value: "Name" }],
+    setVisualDisplayType: (visualDisplayType) => {
+      set((state) => (state.visualDisplayType = visualDisplayType));
     },
   }),
   {

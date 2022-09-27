@@ -1,29 +1,49 @@
+import { Box, Tooltip } from "@mui/material";
 import React from "react";
+import { cosmeticTier, hairStyle } from "../../Logic/HeroBase";
+import useUser from "../../Store/UserStore";
 
 export default function HeroHairCell({ hero }) {
+  const visualDisplayType = useUser((state) => state.visualDisplayType);
+
+  const display = () => {
+    switch (visualDisplayType[0].value) {
+      case "Name":
+        return hairStyle[hero.gender][hero.hairStyle];
+      case "Raw":
+        return hero.hairStyle;
+      case "Tier":
+        return cosmeticTier[hero.hairStyle];
+    }
+  };
+  const tooltip = () => {
+    switch (visualDisplayType[0].value) {
+      case "Name":
+        return (
+          <>
+            Raw: {hero.hairStyle}
+            <br /> Tier: {cosmeticTier[hero.hairStyle]}
+          </>
+        );
+      case "Raw":
+        return (
+          <>
+            Name: {hairStyle[hero.gender][hero.hairStyle]}
+            <br /> Tier: {cosmeticTier[hero.hairStyle]}
+          </>
+        );
+      case "Tier":
+        return (
+          <>
+            Raw: {hero.hairStyle}
+            <br /> Name: {hairStyle[hero.gender][hero.hairStyle]}
+          </>
+        );
+    }
+  };
   return (
-      <>
-        {
-        {
-          0: "Basic1",
-          1: "Basic2",
-          2: "Basic3",
-          3: "Basic4",
-          4: "Basic5",
-          5: "Basic6",
-          6: "Basic7",
-          7: "Basic8",
-          8: "Basic9",
-          9: "Basic10",
-          16: "Advanced1",
-          17: "Advanced2",
-          18: "Advanced3",
-          19: "Advanced4",
-          20: "Advanced5",
-          24: "Elite1",
-          25: "Elite2",
-          28: "Transcendent1",
-        }[hero.hairStyle]}
-      </>
+    <Tooltip placement={"top"} title={tooltip()}>
+      <Box>{display()}</Box>
+    </Tooltip>
   );
 }

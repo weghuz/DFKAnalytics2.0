@@ -1,5 +1,14 @@
-import { Button, Container, Grid, Paper, Typography, Box } from "@mui/material";
+import {
+  Button,
+  Container,
+  Grid,
+  Paper,
+  Typography,
+  Box,
+  Select,
+} from "@mui/material";
 import Head from "next/head";
+import SelectItemSingle from "../../Components/Filters/SelectItemSingle";
 import useUser from "../../Store/UserStore";
 
 export default function Options() {
@@ -11,6 +20,8 @@ export default function Options() {
   const toggleHeroDetailsViewType = useUser(
     (state) => state.toggleHeroDetailsViewType
   );
+  const visualDisplayType = useUser((state) => state.visualDisplayType);
+  const setVisualDisplayType = useUser((state) => state.setVisualDisplayType);
   return (
     <>
       <Head>
@@ -30,6 +41,21 @@ export default function Options() {
                   <Button onClick={toggleHeroDetailsViewType}>
                     Toggle Hero Details Type
                   </Button>
+                </Grid>
+                <Grid item xs={6}>
+                  <Typography variant="h5">Visuals Gene Display ({visualDisplayType[0].value})</Typography>
+                  <SelectItemSingle
+                    title={"Visual Gene Display"}
+                    clearable={false}
+                    values={[{ label: "Name", value: "Name" }]}
+                    setValues={setVisualDisplayType}
+                  >
+                    {[
+                      { label: "Name", value: "Name" },
+                      { label: "Raw", value: "Raw" },
+                      { label: "Tier", value: "Tier" },
+                    ]}
+                  </SelectItemSingle>
                 </Grid>
                 <Grid item xs={6}>
                   <Button onClick={ClearLocalStorage}>Reset Settings</Button>
