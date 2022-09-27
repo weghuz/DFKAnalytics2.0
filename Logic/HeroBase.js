@@ -30,7 +30,7 @@ const eyeColorNames = {
 const skinColorNames = {
   e6a861: "Honey",
   f1ca9e: "Vanilla",
-  e5ac91: "Beige",
+  e5ac91: "Peach",
   c58135: "Bronze",
   aa5c38: "Almond",
   "985e1c": "Golden",
