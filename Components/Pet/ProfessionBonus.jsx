@@ -32,7 +32,7 @@ export default function ProfessionBonus({ children }) {
   };
   return (
     <Tooltip
-      title={`The profession bonus is mapped to the pets Egg Type. ${bonusType()} is mapped to ${eggType()} Eggs`}
+      title={`The profession bonus is mapped to the pets Egg Type. ${bonusType()} is mapped to ${eggType()} Eggs. You can filter the column for star amounts (0, 1, 2 or 3).`}
       placement={"right"}
     >
       <Box>

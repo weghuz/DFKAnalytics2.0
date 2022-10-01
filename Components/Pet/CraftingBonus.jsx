@@ -36,7 +36,7 @@ export default function CraftingBonus({ children }) {
     <Tooltip
       title={`Crafting bonus is mapped to the pets element. ${bonusType()} is mapped to ${
         children.elementName
-      }`}
+      }. You can filter the column for star amounts (0, 1, 2 or 3).`}
       placement={"right"}
     >
       <Box>

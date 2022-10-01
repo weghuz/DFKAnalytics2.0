@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Tooltip } from "@mui/material";
 import React from "react";
 
 export default function CombatBonus({ children }) {
@@ -20,8 +20,13 @@ export default function CombatBonus({ children }) {
     }
   };
   return (
-    <Box>
-      {bonusType()} {bonus()}
-    </Box>
+    <Tooltip
+      placement={`top`}
+      title={`You can filter the column for star amounts (0, 1, 2 or 3).`}
+    >
+      <Box>
+        {bonusType()} {bonus()}
+      </Box>
+    </Tooltip>
   );
 }

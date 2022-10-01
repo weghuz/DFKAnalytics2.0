@@ -14,6 +14,8 @@ export default function HeroColorCell({ children }) {
         return children;
       case "Tier":
         return appendageColorTiers[children];
+      default:
+        return children;
     }
   };
   const tooltip = () => {
@@ -37,6 +39,13 @@ export default function HeroColorCell({ children }) {
           <>
             Color hex code: #{children}
             <br /> Name: {appendageColorNames[children]}
+          </>
+        );
+      default:
+        return (
+          <>
+            Name: {appendageColorNames[children]}
+            <br /> Tier: {appendageColorTiers[children]}
           </>
         );
     }

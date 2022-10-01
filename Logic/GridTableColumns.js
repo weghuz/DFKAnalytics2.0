@@ -11,6 +11,8 @@ const {
   hairColorOrder,
   eyeColorNames,
   skinColorNames,
+  eyeColorTiers,
+  skinColorTiers,
 } = require("./HeroBase");
 import { Tooltip } from "@mui/material";
 import { Box } from "@mui/system";
@@ -34,8 +36,8 @@ let columnDefs = [
   {
     headerName: "Cost",
     field: "salePrice",
-    width: 105,
     type: "number",
+    hide: false,
     valueFormatter: ({ value }) => {
       return Number(value);
     },
@@ -55,7 +57,6 @@ let columnDefs = [
     headerName: "Summoned Time",
     field: "summonedTime",
     hide: true,
-    width: 200,
     valueFormatter: ({ value }) => {
       return (
         new Date(value * 1000).toLocaleDateString() +
@@ -68,7 +69,6 @@ let columnDefs = [
     headerName: "Id",
     field: "id",
     hide: false,
-    width: 100,
     type: "number",
     valueFormatter: ({ value }) => Number(value),
     renderCell: ({ row }) => {
@@ -78,7 +78,6 @@ let columnDefs = [
   {
     headerName: "Rarity",
     field: "rarity",
-    width: 60,
     hide: false,
     type: "number",
     valueFormatter: ({ value }) => Number(value),
@@ -90,7 +89,6 @@ let columnDefs = [
     headerName: "Class",
     field: "mainClass",
     hide: false,
-    width: 110,
     type: "string",
   },
   {
@@ -105,7 +103,6 @@ let columnDefs = [
   {
     headerName: "Class+",
     field: "Class+",
-    minWidth: 150,
     hide: true,
     renderCell: ({ row }) => {
       return (
@@ -127,6 +124,7 @@ let columnDefs = [
   {
     headerName: "Subclass",
     field: "subClass",
+    hide: false,
   },
   {
     headerName: "R1 Subclass",
@@ -140,7 +138,6 @@ let columnDefs = [
   {
     headerName: "Subclass+",
     field: "Subclass+",
-    minWidth: 150,
     hide: true,
     type: "string",
     renderCell: ({ row }) => {
@@ -162,20 +159,19 @@ let columnDefs = [
   {
     headerName: "Background",
     field: "background",
-    hide: false,
+    hide: true,
     type: "string",
   },
   {
     headerName: "Gender",
     field: "gender",
-    hide: false,
+    hide: true,
     type: "string",
   },
   {
     headerName: "Lvl",
     field: "level",
     hide: false,
-    width: 60,
     type: "number",
     valueFormatter: ({ value }) => Number(value),
   },
@@ -219,20 +215,35 @@ let columnDefs = [
     headerName: "Shiny",
     field: "shiny",
     hide: true,
-    width: 70,
   },
   {
     headerName: "Gen",
     field: "generation",
-    width: 40,
     type: "number",
     valueFormatter: ({ value }) => Number(value),
     hide: false,
   },
   {
-    headerName: "Sum",
+    headerName: "Used Summons",
     field: "summons",
-    width: 70,
+    hide: true,
+    type: "number",
+  },
+  {
+    headerName: "Summons Remaining",
+    field: "summonsRemaining",
+    hide: true,
+    type: "number",
+  },
+  {
+    headerName: "Max Summons",
+    field: "maxSummons",
+    hide: true,
+    type: "number",
+  },
+  {
+    headerName: "Summons",
+    field: "Summons",
     hide: false,
     type: "number",
     valueGetter: ({ row }) => {
@@ -263,7 +274,6 @@ let columnDefs = [
   {
     headerName: "HP",
     field: "hp",
-    width: 60,
     hide: true,
     type: "number",
     valueFormatter: ({ value }) => Number(value),
@@ -271,7 +281,6 @@ let columnDefs = [
   {
     headerName: "MP",
     field: "mp",
-    width: 60,
     hide: true,
     type: "number",
     valueFormatter: ({ value }) => Number(value),
@@ -279,13 +288,11 @@ let columnDefs = [
   {
     headerName: "SB1",
     field: "statBoost1",
-    width: 60,
     hide: false,
   },
   {
     headerName: "SB1R1",
     field: "SB1R1",
-    width: 60,
     hide: true,
     valueGetter: ({ row }) => {
       return row.R1.statBoost1;
@@ -314,7 +321,6 @@ let columnDefs = [
   {
     headerName: "SB2",
     field: "statBoost2",
-    width: 60,
     hide: false,
   },
   {
@@ -348,8 +354,7 @@ let columnDefs = [
   {
     headerName: "Train Stat",
     field: "TrainStat",
-    width: "80",
-    hide: false,
+    hide: true,
     type: "number",
     valueGetter: ({ value }) => {
       return Number(value.amount);
@@ -419,7 +424,7 @@ let columnDefs = [
   {
     headerName: "headAppendage",
     field: "headAppendage",
-    hide: false,
+    hide: true,
     valueGetter: ({ value }) => {
       return Number(value);
     },
@@ -430,7 +435,7 @@ let columnDefs = [
   {
     headerName: "backAppendage",
     field: "backAppendage",
-    hide: false,
+    hide: true,
     valueGetter: ({ value }) => {
       return Number(value);
     },
@@ -441,7 +446,7 @@ let columnDefs = [
   {
     headerName: "hairStyle",
     field: "hairStyle",
-    hide: false,
+    hide: true,
     valueGetter: ({ value }) => {
       return Number(value);
     },
@@ -452,7 +457,7 @@ let columnDefs = [
   {
     headerName: "appendageColor",
     field: "appendageColor",
-    hide: false,
+    hide: true,
     valueGetter: ({ value }) => {
       return Number(appendageColorOrder[value]);
     },
@@ -463,29 +468,29 @@ let columnDefs = [
   {
     headerName: "eyeColor",
     field: "eyeColor",
-    hide: false,
-    // valueGetter: ({ value }) => {
-    //   return Number(value);
-    // },
-    renderCell: ({ value }) => {
-      return <HeroEyeColor>{value}</HeroEyeColor>;
+    hide: true,
+    valueGetter: ({ value }) => {
+      return Number(eyeColorTiers[value]);
+    },
+    renderCell: ({ row }) => {
+      return <HeroEyeColor>{row.eyeColor}</HeroEyeColor>;
     },
   },
   {
     headerName: "skinColor",
     field: "skinColor",
-    hide: false,
-    // valueGetter: ({ value }) => {
-    //   return Number(value);
-    // },
-    renderCell: ({ value }) => {
-      return <HeroSkinColor>{value}</HeroSkinColor>;
+    hide: true,
+    valueGetter: ({ value }) => {
+      return Number(skinColorTiers[value]);
+    },
+    renderCell: ({ row }) => {
+      return <HeroSkinColor>{row.skinColor}</HeroSkinColor>;
     },
   },
   {
     headerName: "backAppendageColor",
     field: "backAppendageColor",
-    hide: false,
+    hide: true,
     valueGetter: ({ value }) => {
       return Number(appendageColorOrder[value]);
     },
@@ -496,7 +501,7 @@ let columnDefs = [
   {
     headerName: "hairColor",
     field: "hairColor",
-    hide: false,
+    hide: true,
     valueGetter: ({ value }) => {
       return Number(hairColorOrder[value]);
     },
@@ -507,8 +512,8 @@ let columnDefs = [
   {
     headerName: "PJ",
     field: "pjStatus",
-    width: "60",
     type: "string",
+    hide: true,
     renderCell: ({ row }) => {
       if (row.pjStatus == null) {
         return "";
@@ -528,9 +533,8 @@ let columnDefs = [
   {
     headerName: "Totstat",
     field: "tostat",
-    hide: true,
-    width: 60,
     type: "number",
+    hide: true,
     valueGetter: ({ row }) => {
       return Number(SumStats(row)).toFixed(0);
     },
@@ -539,9 +543,8 @@ let columnDefs = [
     headerName: "Statgain",
     field: "statgain",
     title: "Statgain",
-    hide: true,
-    width: 60,
     type: "number",
+    hide: true,
     valueGetter: ({ row }) => {
       return Number(SumStats(RemoveBase(row))).toFixed(0);
     },
@@ -550,8 +553,8 @@ let columnDefs = [
     headerName: "Stamina Max",
     field: "Stamina Max",
     title: "Stamina Max",
-    hide: true,
     type: "number",
+    hide: true,
     valueGetter: ({ row }) => {
       return Number(parseInt(25 + parseInt(row.level) / 2));
     },
@@ -560,8 +563,8 @@ let columnDefs = [
     headerName: "Stamina Current",
     field: "Stamina Current",
     title: "Stamina Current",
-    hide: true,
     type: "number",
+    hide: true,
     valueGetter: ({ row }) => {
       return Number(CurrentStamina(row));
     },
@@ -570,8 +573,8 @@ let columnDefs = [
     headerName: "Stamina",
     field: "Stamina",
     title: "Stamina",
-    hide: true,
     type: "number",
+    hide: true,
     valueGetter: ({ row }) => {
       return Number(
         CurrentStamina(row) / parseInt(25 + parseInt(row.level) / 2)
@@ -583,7 +586,6 @@ let columnDefs = [
     field: "Stamina Max In",
     title: "Stamina Max In",
     hide: true,
-    width: 75,
     valueGetter: ({ row }) => {
       let fullTime = CurrentStaminaHours(row);
       if (fullTime == 0) {
@@ -598,7 +600,6 @@ let columnDefs = [
     title: "Stamina Full At",
     field: "sFullAt",
     hide: true,
-    width: 125,
     valueGetter: ({ row }) => {
       let fullTime = FullTime(row);
       if (fullTime == 0) {
@@ -613,7 +614,6 @@ let columnDefs = [
     field: "Profession Stats",
     title: "Profession Stats",
     hide: true,
-    width: 60,
     type: "number",
     valueGetter: ({ row }) => {
       return Number(
@@ -627,7 +627,6 @@ let columnDefs = [
     field: "Skill Profession Stats",
     title: "Skill Profession Stats",
     hide: true,
-    width: 60,
     type: "number",
     valueGetter: ({ row }) => {
       return Number(
@@ -641,8 +640,7 @@ let columnDefs = [
     headerName: "Element",
     field: "element",
     Title: "Element",
-    hide: false,
-    width: 50,
+    hide: true,
     renderCell: ({ row }) => {
       return <ElementCell>{row.element}</ElementCell>;
     },
@@ -652,7 +650,6 @@ let columnDefs = [
     field: "R1 Element",
     Title: "R1 Element",
     hide: true,
-    width: 50,
     renderCell: ({ row }) => {
       return <ElementCell>{row.R1.element}</ElementCell>;
     },
@@ -736,7 +733,7 @@ let columnDefs = [
   {
     headerName: "Active1",
     field: "active1",
-    hide: false,
+    hide: true,
   },
   {
     headerName: "A1R1",
@@ -750,7 +747,6 @@ let columnDefs = [
     headerName: "Active1+",
     field: "active1+",
     hide: true,
-    width: 185,
     renderCell: ({ row }) => {
       return (
         <Tooltip
@@ -777,7 +773,7 @@ let columnDefs = [
   {
     headerName: "Active2",
     field: "active2",
-    hide: false,
+    hide: true,
   },
   {
     headerName: "A2R1",
@@ -791,7 +787,6 @@ let columnDefs = [
     headerName: "Active2+",
     field: "active2+",
     hide: true,
-    width: 185,
     renderCell: ({ row }) => {
       return (
         <Tooltip
@@ -817,7 +812,7 @@ let columnDefs = [
   {
     headerName: "Passive1",
     field: "passive1",
-    hide: false,
+    hide: true,
   },
   {
     headerName: "P1R1",
@@ -831,7 +826,6 @@ let columnDefs = [
     headerName: "Passive1+",
     field: "passive1+",
     hide: true,
-    width: 185,
     renderCell: ({ row }) => {
       return (
         <Tooltip
@@ -858,7 +852,7 @@ let columnDefs = [
   {
     headerName: "Passive2",
     field: "passive2",
-    hide: false,
+    hide: true,
   },
   {
     headerName: "P2R1",
@@ -872,7 +866,6 @@ let columnDefs = [
     headerName: "Passive2+",
     field: "passive2+",
     hide: true,
-    width: 185,
     renderCell: ({ row }) => {
       return (
         <Tooltip
@@ -899,13 +892,11 @@ let columnDefs = [
     headerName: "SU1",
     field: "statsUnknown1",
     hide: true,
-    width: 55,
   },
   {
     headerName: "SU1R1",
     field: "su1r1",
     hide: true,
-    width: 55,
     valueGetter: ({ row }) => {
       return row.R1.statsUnknown1;
     },
@@ -915,7 +906,6 @@ let columnDefs = [
     field: "SU1+",
     title: "Status Unknown 1 Recessives",
     hide: true,
-    width: 90,
     renderCell: ({ row }) => {
       return (
         <Tooltip
@@ -944,13 +934,11 @@ let columnDefs = [
     field: "statsUnknown2",
     title: "Status Unknown 2",
     hide: true,
-    width: 55,
   },
   {
     headerName: "SU2R1",
     field: "SU2R1",
     hide: true,
-    width: 55,
     valueGetter: ({ row }) => {
       return row.R1.statsUnknown2;
     },
@@ -959,7 +947,6 @@ let columnDefs = [
     headerName: "SU2+",
     field: "SU2+",
     hide: true,
-    width: 90,
     renderCell: ({ row }) => {
       return (
         <Tooltip
@@ -987,7 +974,6 @@ let columnDefs = [
     headerName: "Mining",
     field: "mining",
     hide: true,
-    width: 60,
     type: "number",
     valueFormatter: ({ value }) => {
       return Number(value / 10);
@@ -997,7 +983,6 @@ let columnDefs = [
     headerName: "Foraging",
     field: "foraging",
     hide: true,
-    width: 60,
     type: "number",
     valueFormatter: ({ value }) => {
       return Number(value / 10);
@@ -1007,7 +992,6 @@ let columnDefs = [
     headerName: "Fishing",
     field: "fishing",
     hide: true,
-    width: 60,
     type: "number",
     valueFormatter: ({ value }) => {
       return Number(value / 10);
@@ -1017,7 +1001,6 @@ let columnDefs = [
     headerName: "Gardening",
     field: "gardening",
     hide: true,
-    width: 60,
     type: "number",
     valueFormatter: ({ value }) => {
       return Number(value / 10);
@@ -1026,7 +1009,6 @@ let columnDefs = [
   {
     headerName: "Str",
     field: "strength",
-    width: 60,
     hide: true,
     type: "number",
     valueGetter: ({ value }) => {
@@ -1043,12 +1025,10 @@ let columnDefs = [
         />
       );
     },
-    hide: true,
   },
   {
     headerName: "Dex",
     field: "dexterity",
-    width: 60,
     hide: true,
     type: "number",
     valueGetter: ({ value }) => {
@@ -1069,7 +1049,6 @@ let columnDefs = [
   {
     headerName: "Agi",
     field: "agility",
-    width: 60,
     hide: true,
     type: "number",
     valueGetter: ({ value }) => {
@@ -1090,7 +1069,6 @@ let columnDefs = [
   {
     headerName: "Vit",
     field: "vitality",
-    width: 60,
     hide: true,
     type: "number",
     valueGetter: ({ value }) => {
@@ -1111,7 +1089,6 @@ let columnDefs = [
   {
     headerName: "End",
     field: "endurance",
-    width: 60,
     hide: true,
     type: "number",
     valueGetter: ({ value }) => {
@@ -1132,7 +1109,6 @@ let columnDefs = [
   {
     headerName: "Int",
     field: "intelligence",
-    width: 60,
     hide: true,
     type: "number",
     valueGetter: ({ value }) => {
@@ -1153,7 +1129,6 @@ let columnDefs = [
   {
     headerName: "Wis",
     field: "wisdom",
-    width: 60,
     hide: true,
     type: "number",
     valueGetter: ({ value }) => {
@@ -1174,7 +1149,6 @@ let columnDefs = [
   {
     headerName: "lck",
     field: "luck",
-    width: 60,
     hide: true,
     type: "number",
     valueGetter: ({ value }) => {
@@ -1196,7 +1170,6 @@ let columnDefs = [
     headerName: "Previous Owner",
     field: "previousOwner",
     hide: true,
-    width: 150,
     valueGetter: ({ row }) => {
       if (row.previousOwner == null) return null;
       return row.previousOwner.name;
@@ -1206,7 +1179,6 @@ let columnDefs = [
     headerName: "Previous Owner Address",
     field: "previousOwnerAddress",
     hide: true,
-    width: 375,
     valueGetter: ({ row }) => {
       if (row.previousOwner == null) return null;
       return row.previousOwner.id;
@@ -1216,7 +1188,6 @@ let columnDefs = [
     headerName: "Owner",
     field: "owner",
     hide: true,
-    width: 150,
     valueGetter: ({ row }) => {
       if (row.owner == null) return row.owner;
       if (row.owner.id == "undefined") return null;
@@ -1227,7 +1198,6 @@ let columnDefs = [
     headerName: "Owner Address",
     field: "ownerAddress",
     hide: true,
-    width: 375,
     valueGetter: ({ row }) => {
       if (row.owner == null) return row.owner;
       if (row.owner.id == "undefined") return null;
@@ -1237,8 +1207,7 @@ let columnDefs = [
   {
     headerName: "Name",
     field: "name",
-    hide: false,
-    width: 190,
+    hide: true,
     type: "string",
     valueGetter: ({ row }) => {
       return FullName(row);

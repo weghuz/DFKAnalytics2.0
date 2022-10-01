@@ -14,6 +14,8 @@ export default function HeroHeadAppendageCell({ hero }) {
         return hero.headAppendage;
       case "Tier":
         return cosmeticTier[hero.headAppendage];
+      default:
+        return hero.headAppendage;
     }
   };
   const tooltip = () => {
@@ -37,6 +39,13 @@ export default function HeroHeadAppendageCell({ hero }) {
           <>
             Raw: {hero.headAppendage}
             <br /> Name: {headAppendage[hero.headAppendage]}
+          </>
+        );
+      default:
+        return (
+          <>
+            Name: {headAppendage[hero.headAppendage]}
+            <br /> Tier: {cosmeticTier[hero.headAppendage]}
           </>
         );
     }

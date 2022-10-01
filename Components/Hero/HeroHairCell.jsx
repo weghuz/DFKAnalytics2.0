@@ -14,6 +14,8 @@ export default function HeroHairCell({ hero }) {
         return hero.hairStyle;
       case "Tier":
         return cosmeticTier[hero.hairStyle];
+      default:
+        return hero.hairStyle;
     }
   };
   const tooltip = () => {
@@ -37,6 +39,13 @@ export default function HeroHairCell({ hero }) {
           <>
             Raw: {hero.hairStyle}
             <br /> Name: {hairStyle[hero.gender][hero.hairStyle]}
+          </>
+        );
+      default:
+        return (
+          <>
+            Name: {hairStyle[hero.gender][hero.hairStyle]}
+            <br /> Tier: {cosmeticTier[hero.hairStyle]}
           </>
         );
     }

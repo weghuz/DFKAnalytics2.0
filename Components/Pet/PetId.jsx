@@ -7,17 +7,7 @@ import SDID from "../../public/SDID10.png";
 export default function PetId({ children }) {
   return (
     <>
-      {children.network == "hmy" ? (
-        <Tooltip
-          placement="right"
-          title="Crystalvale ID. Starts at 1000000000001."
-        >
-          <Box sx={{ display: "inline-block" }}>
-            <Image layout={"fixed"} width={9} height={10} src={CVID} />#
-            {parseInt(children) - 1000000000000}
-          </Box>
-        </Tooltip>
-      ) : (
+      {children.originRealm == "SER1" ? (
         <Tooltip placement="right" title="Serendale ID. Starts at 1.">
           <Box sx={{ display: "inline-block" }}>
             <Image
@@ -27,7 +17,17 @@ export default function PetId({ children }) {
               objectFit={"fill"}
               src={SDID}
             />
-            #{children}
+            #{children.id}
+          </Box>
+        </Tooltip>
+      ) : (
+        <Tooltip
+          placement="right"
+          title="Crystalvale ID. Starts at 1000000000001."
+        >
+          <Box sx={{ display: "inline-block" }}>
+            <Image layout={"fixed"} width={9} height={10} src={CVID} />#
+            {parseInt(children.id) - 1000000000000}
           </Box>
         </Tooltip>
       )}

@@ -14,6 +14,8 @@ export default function HeroHairColorCell({ children }) {
         return children;
       case "Tier":
         return hairColorTiers[children];
+      default:
+        return children;
     }
   };
   const tooltip = () => {
@@ -37,6 +39,13 @@ export default function HeroHairColorCell({ children }) {
           <>
             Color hex code: #{children}
             <br /> Name: {hairColorNames[children]}
+          </>
+        );
+      default:
+        return (
+          <>
+            Name: {hairColorNames[children]}
+            <br /> Tier: {hairColorTiers[children]}
           </>
         );
     }

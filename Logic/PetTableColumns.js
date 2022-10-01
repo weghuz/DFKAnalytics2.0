@@ -12,87 +12,81 @@ let petColumnDefs = [
   {
     headerName: "Cost",
     field: "salePrice",
+    hide: false,
+    valueGetter: ({ value }) => {
+      return Number(value);
+    },
     renderCell: ({ row }) => {
       return <PetPriceCell>{row}</PetPriceCell>;
-    },
-    sortComparator: (a, b) => {
-      return a - b;
     },
   },
   {
     headerName: "Id",
     field: "id",
     hide: false,
-    width: 100,
-    renderCell: ({ row }) => {
-      return <PetId>{row.heroId > 0 ? row.heroId : row.id}</PetId>;
+    valueGetter: ({ value }) => {
+      return Number(value);
     },
-    sortComparator: (a, b) => {
-      return a - b;
+    renderCell: ({ row }) => {
+      return <PetId>{row}</PetId>;
     },
   },
   {
     headerName: "Rarity",
     field: "rarity",
-    width: 60,
-    hide: false,
     type: "number",
+    hide: false,
+    valueGetter: ({ value }) => {
+      return Number(value);
+    },
     renderCell: ({ row }) => {
       return <PetRarityCell rarity={row.rarity} />;
-    },
-    sortComparator: (a, b, c, e) => {
-      return a - b;
     },
   },
   {
     headerName: "Shiny",
     field: "shiny",
     hide: true,
-    width: 70,
   },
   {
     headerName: "Appearance Id",
     field: "appearance",
     type: "number",
     hide: true,
-    width: 105,
   },
   {
     headerName: "Appearance Rarity",
     field: "appearanceRarity",
     type: "number",
     hide: true,
-    width: 105,
   },
   {
     headerName: "Display Name",
     field: "displayName",
     hide: false,
-    width: 160,
   },
   {
     headerName: "Variant",
     field: "variant",
-    width: 160,
   },
   {
     headerName: "Family",
     field: "family",
     hide: false,
-    width: 215,
   },
   {
     headerName: "Background",
     field: "backgroundName",
     hide: false,
-    width: 175,
   },
   {
     headerName: "Profession ⭐",
     field: "profBonus",
-    hide: false,
     type: "number",
-    width: 150,
+    hide: false,
+    valueGetter: ({ value }) => {
+      return Number({ 0: 0, 1: 1, 80: 2, 160: 3 }[value]);
+    },
     renderCell: ({ row }) => {
       return <ProfessionBonus>{row}</ProfessionBonus>;
     },
@@ -100,9 +94,11 @@ let petColumnDefs = [
   {
     headerName: "Crafting ⭐",
     field: "craftBonus",
-    hide: false,
     type: "number",
-    width: 160,
+    hide: false,
+    valueGetter: ({ value }) => {
+      return Number({ 0: 0, 1: 1, 80: 2, 160: 3 }[value]);
+    },
     renderCell: ({ row }) => {
       return <CraftingBonus>{row}</CraftingBonus>;
     },
@@ -110,9 +106,11 @@ let petColumnDefs = [
   {
     headerName: "Combat ⭐",
     field: "combatBonus",
-    hide: false,
     type: "number",
-    width: 150,
+    hide: false,
+    valueGetter: ({ value }) => {
+      return Number({ 0: 0, 1: 1, 80: 2, 160: 3 }[value]);
+    },
     renderCell: ({ row }) => {
       return <CombatBonus>{row}</CombatBonus>;
     },
@@ -122,7 +120,6 @@ let petColumnDefs = [
     field: "eggType",
     hide: false,
     type: "number",
-    width: 50,
     renderCell: ({ row }) => {
       return <EggCell>{row}</EggCell>;
     },
@@ -136,7 +133,6 @@ let petColumnDefs = [
     headerName: "Credits",
     field: "credits",
     hide: false,
-    width: 150,
     renderCell: ({ row }) => {
       return <PetCredits>{row}</PetCredits>;
     },
@@ -146,7 +142,6 @@ let petColumnDefs = [
     field: "element",
     Title: "Element",
     hide: false,
-    width: 70,
     renderCell: ({ row }) => {
       return <ElementCell>{row.elementName}</ElementCell>;
     },
@@ -155,7 +150,6 @@ let petColumnDefs = [
     headerName: "Previous Owner",
     field: "previousOwner",
     hide: true,
-    width: 150,
     valueGetter: ({ row }) => {
       if (row.previousOwner == null) return null;
       return row.previousOwner.name;
@@ -165,7 +159,6 @@ let petColumnDefs = [
     headerName: "Previous Owner Address",
     field: "previousOwnerAddress",
     hide: true,
-    width: 375,
     valueGetter: ({ row }) => {
       if (row.previousOwner == null) return null;
       return row.previousOwner.id;
@@ -174,7 +167,6 @@ let petColumnDefs = [
   {
     headerName: "Owner",
     field: "owner",
-    width: 150,
     hide: true,
     valueGetter: ({ row }) => {
       if (row.owner == null) return row.owner;
@@ -186,7 +178,6 @@ let petColumnDefs = [
     headerName: "Owner Address",
     field: "ownerAddress",
     hide: true,
-    width: 375,
     valueGetter: ({ row }) => {
       if (row.owner == null) return row.owner;
       if (row.owner.id == "undefined") return null;
@@ -197,7 +188,6 @@ let petColumnDefs = [
     headerName: "Name",
     field: "name",
     hide: true,
-    width: 190,
     type: "string",
   },
 ];

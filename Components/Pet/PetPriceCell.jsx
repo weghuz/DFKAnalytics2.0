@@ -2,6 +2,7 @@ import React from "react";
 import { FixSalePrice } from "../../Logic/HeroBase";
 import Image from "next/image";
 import Jewel from "../../public/Jewel.png";
+import Crystal from "../../public/Crystal.png";
 import { Grid, Tooltip } from "@mui/material";
 
 export default function PetPriceCell({ children }) {
@@ -10,14 +11,22 @@ export default function PetPriceCell({ children }) {
       {children.salePrice ? (
         <Tooltip
           placement="right"
-          title={`This pet is being sold in Serendale for Jewel.`}
+          title={
+            children.currentRealm == "SER1"
+              ? `This pet is being sold in Serendale for Jewel.`
+              : `This pet is being sold in Crystalvale for Crystal.`
+          }
         >
           <Grid container justifyContent={"space-between"}>
             <Grid item sx={{ alignSelf: "center" }}>
               {FixSalePrice(children.salePrice)}
             </Grid>
             <Grid item sx={{ marginTop: "4px" }}>
-              <Image src={Jewel} alt="Crystal" height="24px" width="24px" />
+              {children.currentRealm == "SER1" ? (
+                <Image src={Jewel} alt="Jewel" height="24px" width="24px" />
+              ) : (
+                <Image src={Crystal} alt="Crystal" height="24px" width="24px" />
+              )}
             </Grid>
           </Grid>
         </Tooltip>

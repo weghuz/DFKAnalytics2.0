@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import useUser from "../Store/UserStore";
-import { Button, Container, Grid, MenuItem } from "@mui/material";
+import { Button, Container, Grid, MenuItem, Typography } from "@mui/material";
 import Select from "react-dropdown-select";
 import { useEffect } from "react";
 import { BaseHeroVisibilityModels } from "../Logic/BaseHeroVisibilityModels";
@@ -52,6 +52,11 @@ export default function HeroColumnSetups({
             />
           </Grid>
           <Grid container item xs={12} columnSpacing={2}>
+            <Grid item xs={12}>
+              <label className="font-weight-bold">
+                {"Create Column Preset"}
+              </label>
+            </Grid>
             <Grid item xs={6}>
               <TextField
                 fullWidth={true}

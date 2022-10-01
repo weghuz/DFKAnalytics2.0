@@ -14,6 +14,8 @@ export default function HeroSkinColor({ children }) {
         return children;
       case "Tier":
         return skinColorTiers[children];
+      default:
+        return children;
     }
   };
   const tooltip = () => {
@@ -21,7 +23,7 @@ export default function HeroSkinColor({ children }) {
       case "Name":
         return (
           <>
-            Raw: {children}
+            Color hex code: #{children}
             <br /> Tier: {skinColorTiers[children]}
           </>
         );
@@ -35,8 +37,15 @@ export default function HeroSkinColor({ children }) {
       case "Tier":
         return (
           <>
-            Raw: {children}
+            Color hex code: #{children}
             <br /> Name: {skinColorNames[children]}
+          </>
+        );
+      default:
+        return (
+          <>
+            Name: {skinColorNames[children]}
+            <br /> Tier: {skinColorTiers[children]}
           </>
         );
     }
