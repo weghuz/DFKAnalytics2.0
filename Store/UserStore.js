@@ -74,7 +74,7 @@ const PersistedStore = create(
             state.heroDetailsViewType == "Modal" ? "Page" : "Modal";
         });
       },
-      visualDisplayType: "Names",
+      visualDisplayType: [{ label: "Name", value: "Name" }],
       setVisualDisplayType: (visualDisplayType) => {
         set((state) => (state.visualDisplayType = visualDisplayType));
       },

@@ -43,7 +43,9 @@ export default function Options() {
                   </Button>
                 </Grid>
                 <Grid item xs={6}>
-                  <Typography variant="h5">Visuals Gene Display ({visualDisplayType[0].value})</Typography>
+                  <Typography variant="h5">
+                    Visuals Gene Display ({visualDisplayType[0].value})
+                  </Typography>
                   <SelectItemSingle
                     title={"Visual Gene Display"}
                     clearable={false}
@@ -57,7 +59,10 @@ export default function Options() {
                     ]}
                   </SelectItemSingle>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12}>
+                  <Typography variant="h5">
+                    Delete Local Storage Settings
+                  </Typography>
                   <Button onClick={ClearLocalStorage}>Reset Settings</Button>
                 </Grid>
               </Grid>

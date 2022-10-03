@@ -37,11 +37,51 @@ const initialState = {
   minGardening: 0,
   minForaging: 0,
   minFishing: 0,
+  headAppendage: [],
+  appendageColor: [],
+  backAppendage: [],
+  backAppendageColor: [],
+  hairStyle: [],
+  hairColor: [],
+  eyeColor: [],
+  skinColor: [],
 };
 
 const HeroBaseFilterStore = (set) => ({
   clearFilters: () => {
     set({ ...initialState });
+  },
+  headAppendage: [],
+  setHeadAppendage: (headAppendage) => {
+    set({ headAppendage });
+  },
+  appendageColor: [],
+  setAppendageColor: (appendageColor) => {
+    set({ appendageColor });
+  },
+  backAppendage: [],
+  setBackAppendage: (backAppendage) => {
+    set({ backAppendage });
+  },
+  backAppendageColor: [],
+  setBackAppendageColor: (backAppendageColor) => {
+    set({ backAppendageColor });
+  },
+  hairStyle: [],
+  setHairStyle: (hairStyle) => {
+    set({ hairStyle });
+  },
+  hairColor: [],
+  setHairColor: (hairColor) => {
+    set({ hairColor });
+  },
+  eyeColor: [],
+  setEyeColor: (eyeColor) => {
+    set({ eyeColor });
+  },
+  skinColor: [],
+  setSkinColor: (skinColor) => {
+    set({ skinColor });
   },
   minForaging: 0,
   setMinForaging: (minForaging) => {

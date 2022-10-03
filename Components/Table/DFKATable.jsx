@@ -19,12 +19,14 @@ export default function DFKATable({
   };
   return (
     <Grid container justifyContent={"center"}>
-      <Grid item width={"100%"} maxWidth={1920}>
+      <Grid item width={"100vw"} height={"100vh"} maxWidth={1920}>
         <DataGridPro
           density="compact"
           rows={rows}
           columns={columns}
-          autoHeight={true}
+          columnBuffer={25}
+          rowBuffer={15}
+          columnThreshold={15}
           columnVisibilityModel={GetVisibility()}
           onColumnVisibilityModelChange={(visibilityModel) => {
             console.log(visibilityModel);

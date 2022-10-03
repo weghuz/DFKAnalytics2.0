@@ -1,5 +1,12 @@
 import React, { useEffect } from "react";
-import DFKBase, { Skills, Targets } from "../Logic/Dropdowns";
+import DFKBase, {
+  HairColors,
+  HairStylesFemale,
+  HairStylesGeneric,
+  HairStylesMale,
+  Skills,
+  Targets,
+} from "../Logic/Dropdowns";
 import Image from "next/image";
 import Jewel from "../public/Jewel.png";
 import SelectItem from "./Filters/SelectItem";
@@ -100,6 +107,24 @@ function HeroFilters({ includeSalePrice, visible, useStore }) {
   const minForaging = useStore((state) => state.minForaging);
   const setMinFishing = useStore((state) => state.setMinFishing);
   const minFishing = useStore((state) => state.minFishing);
+  const setHairStyle = useStore((state) => state.setHairStyle);
+  const hairStyle = useStore((state) => state.hairStyle);
+  const setHairColor = useStore((state) => state.setHairColor);
+  const hairColor = useStore((state) => state.hairColor);
+  const setHeadAppendage = useStore((state) => state.setHeadAppendage);
+  const headAppendage = useStore((state) => state.headAppendage);
+  const setAppendageColor = useStore((state) => state.setAppendageColor);
+  const appendageColor = useStore((state) => state.appendageColor);
+  const setBackAppendage = useStore((state) => state.setBackAppendage);
+  const backAppendage = useStore((state) => state.backAppendage);
+  const setBackAppendageColor = useStore(
+    (state) => state.setBackAppendageColor
+  );
+  const backAppendageColor = useStore((state) => state.backAppendageColor);
+  const eyeColor = useStore((state) => state.eyeColor);
+  const setEyeColor = useStore((state) => state.setEyeColor);
+  const skinColor = useStore((state) => state.skinColor);
+  const setSkinColor = useStore((state) => state.setSkinColor);
   useEffect(() => {
     if (heroes.length == 0) {
       UpdateQuery();
@@ -107,7 +132,6 @@ function HeroFilters({ includeSalePrice, visible, useStore }) {
   }, []);
   const UpdateQuery = () => {
     let query = ``;
-    console.log(mainClass);
     if (minMining > 0) {
       query += `mining_gte:${minMining},`;
     }
@@ -149,6 +173,27 @@ function HeroFilters({ includeSalePrice, visible, useStore }) {
     }
     if (minLuck > 0) {
       query += `luck_gte:${minLuck},`;
+    }
+
+    if (hairColor.length > 0) {
+      query += `hairColor_in: [`;
+      hairColor.forEach((c, i) => {
+        query += `"${c.value}"`;
+        if (i < hairColor.length - 1) {
+          query += `,`;
+        }
+      });
+      query += `],`;
+    }
+    if (hairStyle.length > 0) {
+      query += `hairStyle_in: [`;
+      hairStyle.forEach((c, i) => {
+        query += `"${c.value}"`;
+        if (i < hairStyle.length - 1) {
+          query += `,`;
+        }
+      });
+      query += `],`;
     }
     if (gender.length > 0) {
       query += `gender_in: [`;
@@ -530,7 +575,38 @@ function HeroFilters({ includeSalePrice, visible, useStore }) {
           )}
           {section == "Cosmetic" && (
             <Grid container columnSpacing={2}>
-              {fFName.length == 0 && (
+              <SelectItem title="Gender" values={gender} setValues={setGender}>
+                {[
+                  { value: `male`, label: `Male` },
+                  { value: `female`, label: `Female` },
+                ]}
+              </SelectItem>
+              {gender.length && gender[0].value == "male" ? (
+                <SelectItem
+                  title="Male Hairstyles"
+                  values={hairStyle}
+                  setValues={setHairStyle}
+                >
+                  {HairStylesMale}
+                </SelectItem>
+              ) : gender.length && gender[0].value == "female" ? (
+                <SelectItem
+                  title="Female Hairstyles"
+                  values={hairStyle}
+                  setValues={setHairStyle}
+                >
+                  {HairStylesFemale}
+                </SelectItem>
+              ) : (
+                <SelectItem
+                  title="Hairstyles (Gender=Names)"
+                  values={hairStyle}
+                  setValues={setHairStyle}
+                >
+                  {HairStylesGeneric}
+                </SelectItem>
+              )}
+              {gender.length && gender[0].value == "male" ? (
                 <SelectItem
                   title="Male First Names"
                   values={mFName}
@@ -540,8 +616,7 @@ function HeroFilters({ includeSalePrice, visible, useStore }) {
                     return { value: i, label: n };
                   })}
                 </SelectItem>
-              )}
-              {mFName.length == 0 && (
+              ) : gender.length && gender[0].value == "female" ? (
                 <SelectItem
                   title="Female First Names"
                   values={fFName}
@@ -551,17 +626,28 @@ function HeroFilters({ includeSalePrice, visible, useStore }) {
                     return { value: i, label: n };
                   })}
                 </SelectItem>
+              ) : (
+                <SelectItem
+                  title="First Names (Gender=Names)"
+                  values={fFName}
+                  setValues={setFFName}
+                >
+                  {[...Array(2055).keys()].map((n, i) => {
+                    return { value: i, label: n };
+                  })}
+                </SelectItem>
               )}
               <SelectItem title="Last Name" values={lName} setValues={setLName}>
                 {lastNames.map((n, i) => {
                   return { value: i, label: n };
                 })}
               </SelectItem>
-              <SelectItem title="Gender" values={gender} setValues={setGender}>
-                {[
-                  { value: `male`, label: `Male` },
-                  { value: `female`, label: `Female` },
-                ]}
+              <SelectItem
+                title="Hair Color"
+                values={hairColor}
+                setValues={setHairColor}
+              >
+                {HairColors}
               </SelectItem>
             </Grid>
           )}

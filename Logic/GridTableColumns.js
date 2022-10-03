@@ -38,6 +38,8 @@ let columnDefs = [
     field: "salePrice",
     type: "number",
     hide: false,
+    minWidth: 105,
+    flex: 1,
     valueFormatter: ({ value }) => {
       return Number(value);
     },
@@ -49,6 +51,8 @@ let columnDefs = [
     headerName: "Realm",
     field: "network",
     hide: true,
+    minWidth: 50,
+    flex: 1,
     valueFormatter: ({ value }) => {
       return value == "hmy" ? "SD" : "CV";
     },
@@ -57,6 +61,8 @@ let columnDefs = [
     headerName: "Summoned Time",
     field: "summonedTime",
     hide: true,
+    minWidth: 180,
+    flex: 1,
     valueFormatter: ({ value }) => {
       return (
         new Date(value * 1000).toLocaleDateString() +
@@ -69,6 +75,8 @@ let columnDefs = [
     headerName: "Id",
     field: "id",
     hide: false,
+    minWidth: 80,
+    flex: 1,
     type: "number",
     valueFormatter: ({ value }) => Number(value),
     renderCell: ({ row }) => {
@@ -78,8 +86,10 @@ let columnDefs = [
   {
     headerName: "Rarity",
     field: "rarity",
-    hide: false,
     type: "number",
+    hide: false,
+    minWidth: 50,
+    flex: 1,
     valueFormatter: ({ value }) => Number(value),
     renderCell: ({ row }) => {
       return <RarityCell rarity={row.rarity} />;
@@ -104,6 +114,8 @@ let columnDefs = [
     headerName: "Class+",
     field: "Class+",
     hide: true,
+    minWidth: 150,
+    flex: 2,
     renderCell: ({ row }) => {
       return (
         <div
@@ -139,6 +151,8 @@ let columnDefs = [
     headerName: "Subclass+",
     field: "Subclass+",
     hide: true,
+    minWidth: 150,
+    flex: 2,
     type: "string",
     renderCell: ({ row }) => {
       return (
@@ -160,25 +174,33 @@ let columnDefs = [
     headerName: "Background",
     field: "background",
     hide: true,
+    flex: 1,
+    minWidth: 90,
     type: "string",
   },
   {
     headerName: "Gender",
     field: "gender",
     hide: true,
+    flex: 1,
+    minWidth: 60,
     type: "string",
   },
   {
     headerName: "Lvl",
     field: "level",
-    hide: false,
     type: "number",
+    minWidth: 50,
+    flex: 1,
+    hide: false,
     valueFormatter: ({ value }) => Number(value),
   },
   {
     headerName: "XP",
     field: "XP",
     hide: true,
+    flex: 1,
+    minWidth: 100,
     valueGetter: ({ row }) => {
       return `${row.xp}/${calculateRequiredXp(row.level) / 1000}k`;
     },
@@ -187,6 +209,8 @@ let columnDefs = [
     headerName: "XP To Level",
     field: "XPToLevel",
     hide: true,
+    flex: 1,
+    minWidth: 80,
     valueGetter: ({ row }) => {
       return calculateRequiredXp(row.level) - row.xp;
     },
@@ -196,6 +220,8 @@ let columnDefs = [
     field: "XPC",
     hide: true,
     type: "number",
+    flex: 1,
+    minWidth: 80,
     valueFormatter: ({ value }) => Number(value),
     valueGetter: ({ row }) => {
       return row.xp;
@@ -206,6 +232,8 @@ let columnDefs = [
     field: "XPM",
     hide: true,
     type: "number",
+    flex: 1,
+    minWidth: 80,
     valueFormatter: ({ value }) => Number(value),
     valueGetter: ({ row }) => {
       return calculateRequiredXp(row.level);
@@ -215,37 +243,50 @@ let columnDefs = [
     headerName: "Shiny",
     field: "shiny",
     hide: true,
+    valueFormatter: ({ value }) => (value ? "✨" : "❌"),
+    flex: 1,
+    minWidth: 50,
   },
   {
     headerName: "Gen",
     field: "generation",
     type: "number",
+    minWidth: 50,
+    flex: 1,
     valueFormatter: ({ value }) => Number(value),
     hide: false,
   },
   {
     headerName: "Used Summons",
     field: "summons",
-    hide: true,
     type: "number",
+    hide: true,
+    minWidth: 50,
+    flex: 1,
   },
   {
     headerName: "Summons Remaining",
     field: "summonsRemaining",
-    hide: true,
     type: "number",
+    hide: true,
+    minWidth: 50,
+    flex: 1,
   },
   {
     headerName: "Max Summons",
     field: "maxSummons",
-    hide: true,
     type: "number",
+    hide: true,
+    minWidth: 50,
+    flex: 1,
   },
   {
     headerName: "Summons",
     field: "Summons",
-    hide: false,
     type: "number",
+    hide: false,
+    minWidth: 50,
+    flex: 1,
     valueGetter: ({ row }) => {
       return Number(row.summonsRemaining);
     },
@@ -275,6 +316,8 @@ let columnDefs = [
     headerName: "HP",
     field: "hp",
     hide: true,
+    minWidth: 50,
+    flex: 1,
     type: "number",
     valueFormatter: ({ value }) => Number(value),
   },
@@ -282,6 +325,8 @@ let columnDefs = [
     headerName: "MP",
     field: "mp",
     hide: true,
+    minWidth: 50,
+    flex: 1,
     type: "number",
     valueFormatter: ({ value }) => Number(value),
   },
@@ -289,11 +334,15 @@ let columnDefs = [
     headerName: "SB1",
     field: "statBoost1",
     hide: false,
+    minWidth: 50,
+    flex: 1,
   },
   {
     headerName: "SB1R1",
     field: "SB1R1",
     hide: true,
+    minWidth: 50,
+    flex: 1,
     valueGetter: ({ row }) => {
       return row.R1.statBoost1;
     },
@@ -302,6 +351,8 @@ let columnDefs = [
     headerName: "SB1+",
     field: "sb1+",
     hide: true,
+    minWidth: 150,
+    flex: 2,
     renderCell: ({ row }) => {
       return (
         <div
@@ -322,11 +373,15 @@ let columnDefs = [
     headerName: "SB2",
     field: "statBoost2",
     hide: false,
+    minWidth: 50,
+    flex: 1,
   },
   {
     headerName: "SB2R1",
     field: "sb2r1",
     hide: true,
+    minWidth: 50,
+    flex: 1,
     valueGetter: ({ row }) => {
       return row.R1.statBoost2;
     },
@@ -335,6 +390,8 @@ let columnDefs = [
     headerName: "SB2+",
     field: "sb2+",
     hide: true,
+    minWidth: 150,
+    flex: 2,
     renderCell: ({ row }) => {
       return (
         <div
@@ -390,6 +447,8 @@ let columnDefs = [
     headerName: "Profession+",
     field: "professionRecessives",
     hide: true,
+    minWidth: 100,
+    flex: 1.5,
     renderCell: ({ row }) => {
       return (
         <Tooltip
@@ -417,14 +476,18 @@ let columnDefs = [
     headerName: "ProfR1",
     field: "profR1",
     hide: true,
+    minWidth: 90,
+    flex: 1,
     valueGetter: ({ row }) => {
       return row.R1.profession;
     },
   },
   {
-    headerName: "headAppendage",
+    headerName: "Head Appendage",
     field: "headAppendage",
     hide: true,
+    minWidth: 100,
+    flex: 1,
     valueGetter: ({ value }) => {
       return Number(value);
     },
@@ -433,31 +496,11 @@ let columnDefs = [
     },
   },
   {
-    headerName: "backAppendage",
-    field: "backAppendage",
-    hide: true,
-    valueGetter: ({ value }) => {
-      return Number(value);
-    },
-    renderCell: ({ row }) => {
-      return <HeroBackAppendageCell hero={row} />;
-    },
-  },
-  {
-    headerName: "hairStyle",
-    field: "hairStyle",
-    hide: true,
-    valueGetter: ({ value }) => {
-      return Number(value);
-    },
-    renderCell: ({ row }) => {
-      return <HeroHairCell hero={row} />;
-    },
-  },
-  {
-    headerName: "appendageColor",
+    headerName: "Appendage Color",
     field: "appendageColor",
     hide: true,
+    minWidth: 100,
+    flex: 1,
     valueGetter: ({ value }) => {
       return Number(appendageColorOrder[value]);
     },
@@ -466,31 +509,24 @@ let columnDefs = [
     },
   },
   {
-    headerName: "eyeColor",
-    field: "eyeColor",
+    headerName: "Back Appendage",
+    field: "backAppendage",
     hide: true,
+    minWidth: 100,
+    flex: 1,
     valueGetter: ({ value }) => {
-      return Number(eyeColorTiers[value]);
+      return Number(value);
     },
     renderCell: ({ row }) => {
-      return <HeroEyeColor>{row.eyeColor}</HeroEyeColor>;
+      return <HeroBackAppendageCell hero={row} />;
     },
   },
   {
-    headerName: "skinColor",
-    field: "skinColor",
-    hide: true,
-    valueGetter: ({ value }) => {
-      return Number(skinColorTiers[value]);
-    },
-    renderCell: ({ row }) => {
-      return <HeroSkinColor>{row.skinColor}</HeroSkinColor>;
-    },
-  },
-  {
-    headerName: "backAppendageColor",
+    headerName: "Back Appendage Color",
     field: "backAppendageColor",
     hide: true,
+    minWidth: 100,
+    flex: 1,
     valueGetter: ({ value }) => {
       return Number(appendageColorOrder[value]);
     },
@@ -499,9 +535,24 @@ let columnDefs = [
     },
   },
   {
-    headerName: "hairColor",
+    headerName: "Hairstyle",
+    field: "hairStyle",
+    hide: true,
+    minWidth: 100,
+    flex: 1,
+    valueGetter: ({ value }) => {
+      return Number(value);
+    },
+    renderCell: ({ row }) => {
+      return <HeroHairCell hero={row} />;
+    },
+  },
+  {
+    headerName: "Hair Color",
     field: "hairColor",
     hide: true,
+    minWidth: 100,
+    flex: 1,
     valueGetter: ({ value }) => {
       return Number(hairColorOrder[value]);
     },
@@ -510,13 +561,41 @@ let columnDefs = [
     },
   },
   {
+    headerName: "Eye color",
+    field: "eyeColor",
+    hide: true,
+    minWidth: 100,
+    flex: 1,
+    valueGetter: ({ value }) => {
+      return Number(eyeColorTiers[value]);
+    },
+    renderCell: ({ row }) => {
+      return <HeroEyeColor>{row.eyeColor}</HeroEyeColor>;
+    },
+  },
+  {
+    headerName: "Skin color",
+    field: "skinColor",
+    hide: true,
+    minWidth: 100,
+    flex: 1,
+    valueGetter: ({ value }) => {
+      return Number(skinColorTiers[value]);
+    },
+    renderCell: ({ row }) => {
+      return <HeroSkinColor>{row.skinColor}</HeroSkinColor>;
+    },
+  },
+  {
     headerName: "PJ",
     field: "pjStatus",
     type: "string",
     hide: true,
+    minWidth: 70,
+    flex: 1,
     renderCell: ({ row }) => {
       if (row.pjStatus == null) {
-        return "";
+        return "❌";
       } else if (row.pjStatus == "SURVIVED") {
         return <PJBadge />;
       }
@@ -535,6 +614,8 @@ let columnDefs = [
     field: "tostat",
     type: "number",
     hide: true,
+    minWidth: 60,
+    flex: 1,
     valueGetter: ({ row }) => {
       return Number(SumStats(row)).toFixed(0);
     },
@@ -545,6 +626,8 @@ let columnDefs = [
     title: "Statgain",
     type: "number",
     hide: true,
+    minWidth: 60,
+    flex: 1,
     valueGetter: ({ row }) => {
       return Number(SumStats(RemoveBase(row))).toFixed(0);
     },
@@ -555,6 +638,8 @@ let columnDefs = [
     title: "Stamina Max",
     type: "number",
     hide: true,
+    minWidth: 40,
+    flex: 1,
     valueGetter: ({ row }) => {
       return Number(parseInt(25 + parseInt(row.level) / 2));
     },
@@ -565,6 +650,8 @@ let columnDefs = [
     title: "Stamina Current",
     type: "number",
     hide: true,
+    minWidth: 40,
+    flex: 1,
     valueGetter: ({ row }) => {
       return Number(CurrentStamina(row));
     },
@@ -575,10 +662,12 @@ let columnDefs = [
     title: "Stamina",
     type: "number",
     hide: true,
+    minWidth: 70,
+    flex: 1,
     valueGetter: ({ row }) => {
-      return Number(
-        CurrentStamina(row) / parseInt(25 + parseInt(row.level) / 2)
-      );
+      return `${CurrentStamina(row)} / ${parseInt(
+        25 + parseInt(row.level) / 2
+      )}`;
     },
   },
   {
@@ -586,6 +675,8 @@ let columnDefs = [
     field: "Stamina Max In",
     title: "Stamina Max In",
     hide: true,
+    minWidth: 70,
+    flex: 1,
     valueGetter: ({ row }) => {
       let fullTime = CurrentStaminaHours(row);
       if (fullTime == 0) {
@@ -600,6 +691,8 @@ let columnDefs = [
     title: "Stamina Full At",
     field: "sFullAt",
     hide: true,
+    minWidth: 115,
+    flex: 1,
     valueGetter: ({ row }) => {
       let fullTime = FullTime(row);
       if (fullTime == 0) {
@@ -614,6 +707,8 @@ let columnDefs = [
     field: "Profession Stats",
     title: "Profession Stats",
     hide: true,
+    minWidth: 50,
+    flex: 1,
     type: "number",
     valueGetter: ({ row }) => {
       return Number(
@@ -627,6 +722,8 @@ let columnDefs = [
     field: "Skill Profession Stats",
     title: "Skill Profession Stats",
     hide: true,
+    minWidth: 50,
+    flex: 1,
     type: "number",
     valueGetter: ({ row }) => {
       return Number(
@@ -641,6 +738,8 @@ let columnDefs = [
     field: "element",
     Title: "Element",
     hide: true,
+    minWidth: 50,
+    flex: 1,
     renderCell: ({ row }) => {
       return <ElementCell>{row.element}</ElementCell>;
     },
@@ -650,6 +749,8 @@ let columnDefs = [
     field: "R1 Element",
     Title: "R1 Element",
     hide: true,
+    minWidth: 50,
+    flex: 1,
     renderCell: ({ row }) => {
       return <ElementCell>{row.R1.element}</ElementCell>;
     },
@@ -658,6 +759,8 @@ let columnDefs = [
     headerName: "Element+",
     field: "element+",
     hide: true,
+    minWidth: 100,
+    flex: 1,
     renderCell: ({ row }) => {
       return (
         <Tooltip
@@ -687,6 +790,8 @@ let columnDefs = [
     headerName: "Class Score",
     field: "classScore",
     hide: false,
+    minWidth: 60,
+    flex: 1,
     type: "number",
     renderCell: ({ row }) => {
       return <ClassScoreCell>{row}</ClassScoreCell>;
@@ -696,6 +801,8 @@ let columnDefs = [
     headerName: "CScore/Level",
     field: "classScoreLevel",
     hide: true,
+    minWidth: 90,
+    flex: 1,
     type: "number",
     valueGetter: ({ row }) => {
       return Number(row.classScore / row.level).toFixed(2);
@@ -705,6 +812,8 @@ let columnDefs = [
     headerName: "C Score/J",
     field: "cScore/J",
     hide: true,
+    minWidth: 60,
+    flex: 1,
     type: "number",
     valueGetter: ({ row }) => {
       if (row.salePrice == null) return null;
@@ -715,6 +824,8 @@ let columnDefs = [
     headerName: "Growth Score",
     field: "growthScore",
     hide: false,
+    minWidth: 60,
+    flex: 1,
     type: "number",
     renderCell: ({ row }) => {
       return <GrowthScoreCell>{row}</GrowthScoreCell>;
@@ -724,6 +835,8 @@ let columnDefs = [
     headerName: `G Score/J`,
     field: "gScore/J",
     hide: true,
+    minWidth: 60,
+    flex: 1,
     type: "number",
     valueGetter: ({ row }) => {
       if (row.salePrice == null) return null;
@@ -734,11 +847,15 @@ let columnDefs = [
     headerName: "Active1",
     field: "active1",
     hide: true,
+    minWidth: 100,
+    flex: 1,
   },
   {
     headerName: "A1R1",
     field: "a1r1",
     hide: true,
+    minWidth: 100,
+    flex: 1,
     valueGetter: ({ row }) => {
       return row.R1.active1;
     },
@@ -747,6 +864,8 @@ let columnDefs = [
     headerName: "Active1+",
     field: "active1+",
     hide: true,
+    minWidth: 150,
+    flex: 2,
     renderCell: ({ row }) => {
       return (
         <Tooltip
@@ -774,11 +893,15 @@ let columnDefs = [
     headerName: "Active2",
     field: "active2",
     hide: true,
+    minWidth: 100,
+    flex: 1,
   },
   {
     headerName: "A2R1",
     field: "a2r1",
     hide: true,
+    minWidth: 100,
+    flex: 1,
     valueGetter: ({ row }) => {
       return row.R1.active2;
     },
@@ -787,6 +910,8 @@ let columnDefs = [
     headerName: "Active2+",
     field: "active2+",
     hide: true,
+    minWidth: 150,
+    flex: 2,
     renderCell: ({ row }) => {
       return (
         <Tooltip
@@ -813,11 +938,15 @@ let columnDefs = [
     headerName: "Passive1",
     field: "passive1",
     hide: true,
+    minWidth: 100,
+    flex: 1,
   },
   {
     headerName: "P1R1",
     field: "p1r1",
     hide: true,
+    minWidth: 100,
+    flex: 1,
     renderCell: ({ row }) => {
       return row.R1.passive1;
     },
@@ -826,6 +955,8 @@ let columnDefs = [
     headerName: "Passive1+",
     field: "passive1+",
     hide: true,
+    minWidth: 150,
+    flex: 2,
     renderCell: ({ row }) => {
       return (
         <Tooltip
@@ -853,11 +984,15 @@ let columnDefs = [
     headerName: "Passive2",
     field: "passive2",
     hide: true,
+    minWidth: 100,
+    flex: 1,
   },
   {
     headerName: "P2R1",
     field: "p2r1",
     hide: true,
+    minWidth: 100,
+    flex: 1,
     renderCell: ({ row }) => {
       return row.R1.passive2;
     },
@@ -866,6 +1001,8 @@ let columnDefs = [
     headerName: "Passive2+",
     field: "passive2+",
     hide: true,
+    minWidth: 150,
+    flex: 2,
     renderCell: ({ row }) => {
       return (
         <Tooltip
@@ -892,11 +1029,15 @@ let columnDefs = [
     headerName: "SU1",
     field: "statsUnknown1",
     hide: true,
+    minWidth: 40,
+    flex: 1,
   },
   {
     headerName: "SU1R1",
     field: "su1r1",
     hide: true,
+    minWidth: 40,
+    flex: 1,
     valueGetter: ({ row }) => {
       return row.R1.statsUnknown1;
     },
@@ -906,6 +1047,8 @@ let columnDefs = [
     field: "SU1+",
     title: "Status Unknown 1 Recessives",
     hide: true,
+    minWidth: 100,
+    flex: 1.5,
     renderCell: ({ row }) => {
       return (
         <Tooltip
@@ -934,11 +1077,15 @@ let columnDefs = [
     field: "statsUnknown2",
     title: "Status Unknown 2",
     hide: true,
+    minWidth: 40,
+    flex: 1,
   },
   {
     headerName: "SU2R1",
     field: "SU2R1",
     hide: true,
+    minWidth: 40,
+    flex: 1,
     valueGetter: ({ row }) => {
       return row.R1.statsUnknown2;
     },
@@ -947,6 +1094,8 @@ let columnDefs = [
     headerName: "SU2+",
     field: "SU2+",
     hide: true,
+    minWidth: 100,
+    flex: 1.5,
     renderCell: ({ row }) => {
       return (
         <Tooltip
@@ -975,6 +1124,8 @@ let columnDefs = [
     field: "mining",
     hide: true,
     type: "number",
+    minWidth: 40,
+    flex: 1,
     valueFormatter: ({ value }) => {
       return Number(value / 10);
     },
@@ -984,6 +1135,8 @@ let columnDefs = [
     field: "foraging",
     hide: true,
     type: "number",
+    minWidth: 40,
+    flex: 1,
     valueFormatter: ({ value }) => {
       return Number(value / 10);
     },
@@ -993,6 +1146,8 @@ let columnDefs = [
     field: "fishing",
     hide: true,
     type: "number",
+    minWidth: 40,
+    flex: 1,
     valueFormatter: ({ value }) => {
       return Number(value / 10);
     },
@@ -1002,6 +1157,8 @@ let columnDefs = [
     field: "gardening",
     hide: true,
     type: "number",
+    minWidth: 40,
+    flex: 1,
     valueFormatter: ({ value }) => {
       return Number(value / 10);
     },
@@ -1009,8 +1166,10 @@ let columnDefs = [
   {
     headerName: "Str",
     field: "strength",
-    hide: true,
     type: "number",
+    hide: true,
+    minWidth: 40,
+    flex: 1,
     valueGetter: ({ value }) => {
       return Number(value);
     },
@@ -1029,8 +1188,10 @@ let columnDefs = [
   {
     headerName: "Dex",
     field: "dexterity",
-    hide: true,
     type: "number",
+    hide: true,
+    minWidth: 40,
+    flex: 1,
     valueGetter: ({ value }) => {
       return Number(value);
     },
@@ -1049,8 +1210,10 @@ let columnDefs = [
   {
     headerName: "Agi",
     field: "agility",
-    hide: true,
     type: "number",
+    hide: true,
+    minWidth: 40,
+    flex: 1,
     valueGetter: ({ value }) => {
       return Number(value);
     },
@@ -1069,8 +1232,10 @@ let columnDefs = [
   {
     headerName: "Vit",
     field: "vitality",
-    hide: true,
     type: "number",
+    hide: true,
+    minWidth: 40,
+    flex: 1,
     valueGetter: ({ value }) => {
       return Number(value);
     },
@@ -1090,6 +1255,8 @@ let columnDefs = [
     headerName: "End",
     field: "endurance",
     hide: true,
+    minWidth: 40,
+    flex: 1,
     type: "number",
     valueGetter: ({ value }) => {
       return Number(value);
@@ -1110,6 +1277,8 @@ let columnDefs = [
     headerName: "Int",
     field: "intelligence",
     hide: true,
+    minWidth: 40,
+    flex: 1,
     type: "number",
     valueGetter: ({ value }) => {
       return Number(value);
@@ -1130,6 +1299,8 @@ let columnDefs = [
     headerName: "Wis",
     field: "wisdom",
     hide: true,
+    minWidth: 40,
+    flex: 1,
     type: "number",
     valueGetter: ({ value }) => {
       return Number(value);
@@ -1150,6 +1321,8 @@ let columnDefs = [
     headerName: "lck",
     field: "luck",
     hide: true,
+    minWidth: 40,
+    flex: 1,
     type: "number",
     valueGetter: ({ value }) => {
       return Number(value);
