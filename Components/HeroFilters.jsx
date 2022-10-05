@@ -1,10 +1,15 @@
 import React, { useEffect } from "react";
 import DFKBase, {
+  AppendageColor,
+  BackAppendages,
+  EyeColors,
   HairColors,
   HairStylesFemale,
   HairStylesGeneric,
   HairStylesMale,
+  HeadAppendages,
   Skills,
+  SkinColors,
   Targets,
 } from "../Logic/Dropdowns";
 import Image from "next/image";
@@ -175,6 +180,66 @@ function HeroFilters({ includeSalePrice, visible, useStore }) {
       query += `luck_gte:${minLuck},`;
     }
 
+    if (skinColor.length > 0) {
+      query += `skinColor_in: [`;
+      skinColor.forEach((c, i) => {
+        query += `"${c.value}"`;
+        if (i < skinColor.length - 1) {
+          query += `,`;
+        }
+      });
+      query += `],`;
+    }
+    if (eyeColor.length > 0) {
+      query += `eyeColor_in: [`;
+      eyeColor.forEach((c, i) => {
+        query += `"${c.value}"`;
+        if (i < eyeColor.length - 1) {
+          query += `,`;
+        }
+      });
+      query += `],`;
+    }
+    if (backAppendageColor.length > 0) {
+      query += `backAppendageColor_in: [`;
+      backAppendageColor.forEach((c, i) => {
+        query += `"${c.value}"`;
+        if (i < backAppendageColor.length - 1) {
+          query += `,`;
+        }
+      });
+      query += `],`;
+    }
+    if (backAppendage.length > 0) {
+      query += `backAppendage_in: [`;
+      backAppendage.forEach((c, i) => {
+        query += `"${c.value}"`;
+        if (i < backAppendage.length - 1) {
+          query += `,`;
+        }
+      });
+      query += `],`;
+    }
+    if (headAppendage.length > 0) {
+      query += `headAppendage_in: [`;
+      headAppendage.forEach((c, i) => {
+        query += `"${c.value}"`;
+        if (i < headAppendage.length - 1) {
+          query += `,`;
+        }
+      });
+      query += `],`;
+    }
+    if (appendageColor.length > 0) {
+      query += `appendageColor_in: [`;
+      appendageColor.forEach((c, i) => {
+        query += `"${c.value}"`;
+        if (i < appendageColor.length - 1) {
+          query += `,`;
+        }
+      });
+      query += `],`;
+    }
     if (hairColor.length > 0) {
       query += `hairColor_in: [`;
       hairColor.forEach((c, i) => {
@@ -574,81 +639,136 @@ function HeroFilters({ includeSalePrice, visible, useStore }) {
             </Grid>
           )}
           {section == "Cosmetic" && (
-            <Grid container columnSpacing={2}>
-              <SelectItem title="Gender" values={gender} setValues={setGender}>
-                {[
-                  { value: `male`, label: `Male` },
-                  { value: `female`, label: `Female` },
-                ]}
-              </SelectItem>
-              {gender.length && gender[0].value == "male" ? (
+            <Grid container>
+              <Grid item container xs={12} columnSpacing={2}>
                 <SelectItem
-                  title="Male Hairstyles"
-                  values={hairStyle}
-                  setValues={setHairStyle}
+                  title="Gender"
+                  values={gender}
+                  setValues={setGender}
                 >
-                  {HairStylesMale}
+                  {[
+                    { value: `male`, label: `Male` },
+                    { value: `female`, label: `Female` },
+                  ]}
                 </SelectItem>
-              ) : gender.length && gender[0].value == "female" ? (
+                {gender.length && gender[0].value == "male" ? (
+                  <SelectItem
+                    title="Male First Names"
+                    values={mFName}
+                    setValues={setMFName}
+                  >
+                    {maleFirstNames.map((n, i) => {
+                      return { value: i, label: n };
+                    })}
+                  </SelectItem>
+                ) : gender.length && gender[0].value == "female" ? (
+                  <SelectItem
+                    title="Female First Names"
+                    values={fFName}
+                    setValues={setFFName}
+                  >
+                    {femaleFirstNames.map((n, i) => {
+                      return { value: i, label: n };
+                    })}
+                  </SelectItem>
+                ) : (
+                  <SelectItem
+                    title="First Names (Gender=Names)"
+                    values={fFName}
+                    setValues={setFFName}
+                  >
+                    {[...Array(2055).keys()].map((n, i) => {
+                      return { value: i, label: n };
+                    })}
+                  </SelectItem>
+                )}
                 <SelectItem
-                  title="Female Hairstyles"
-                  values={hairStyle}
-                  setValues={setHairStyle}
+                  title="Last Name"
+                  values={lName}
+                  setValues={setLName}
                 >
-                  {HairStylesFemale}
-                </SelectItem>
-              ) : (
-                <SelectItem
-                  title="Hairstyles (Gender=Names)"
-                  values={hairStyle}
-                  setValues={setHairStyle}
-                >
-                  {HairStylesGeneric}
-                </SelectItem>
-              )}
-              {gender.length && gender[0].value == "male" ? (
-                <SelectItem
-                  title="Male First Names"
-                  values={mFName}
-                  setValues={setMFName}
-                >
-                  {maleFirstNames.map((n, i) => {
+                  {lastNames.map((n, i) => {
                     return { value: i, label: n };
                   })}
                 </SelectItem>
-              ) : gender.length && gender[0].value == "female" ? (
+              </Grid>
+
+              <Grid item container xs={12} columnSpacing={2}>
+                {gender.length && gender[0].value == "male" ? (
+                  <SelectItem
+                    title="Male Hairstyles"
+                    values={hairStyle}
+                    setValues={setHairStyle}
+                  >
+                    {HairStylesMale}
+                  </SelectItem>
+                ) : gender.length && gender[0].value == "female" ? (
+                  <SelectItem
+                    title="Female Hairstyles"
+                    values={hairStyle}
+                    setValues={setHairStyle}
+                  >
+                    {HairStylesFemale}
+                  </SelectItem>
+                ) : (
+                  <SelectItem
+                    title="Hairstyles (Gender=Names)"
+                    values={hairStyle}
+                    setValues={setHairStyle}
+                  >
+                    {HairStylesGeneric}
+                  </SelectItem>
+                )}
                 <SelectItem
-                  title="Female First Names"
-                  values={fFName}
-                  setValues={setFFName}
+                  title="Hair Color"
+                  values={hairColor}
+                  setValues={setHairColor}
                 >
-                  {femaleFirstNames.map((n, i) => {
-                    return { value: i, label: n };
-                  })}
+                  {HairColors}
                 </SelectItem>
-              ) : (
                 <SelectItem
-                  title="First Names (Gender=Names)"
-                  values={fFName}
-                  setValues={setFFName}
+                  title="Head Appendage"
+                  values={headAppendage}
+                  setValues={setHeadAppendage}
                 >
-                  {[...Array(2055).keys()].map((n, i) => {
-                    return { value: i, label: n };
-                  })}
+                  {HeadAppendages}
                 </SelectItem>
-              )}
-              <SelectItem title="Last Name" values={lName} setValues={setLName}>
-                {lastNames.map((n, i) => {
-                  return { value: i, label: n };
-                })}
-              </SelectItem>
-              <SelectItem
-                title="Hair Color"
-                values={hairColor}
-                setValues={setHairColor}
-              >
-                {HairColors}
-              </SelectItem>
+                <SelectItem
+                  title="Head Appendage Color"
+                  values={appendageColor}
+                  setValues={setAppendageColor}
+                >
+                  {AppendageColor}
+                </SelectItem>
+                <SelectItem
+                  title="Back Appendage"
+                  values={backAppendage}
+                  setValues={setBackAppendage}
+                >
+                  {BackAppendages}
+                </SelectItem>
+                <SelectItem
+                  title="Back Appendage Color"
+                  values={backAppendageColor}
+                  setValues={setBackAppendageColor}
+                >
+                  {AppendageColor}
+                </SelectItem>
+                <SelectItem
+                  title="Eye Color"
+                  values={eyeColor}
+                  setValues={setEyeColor}
+                >
+                  {EyeColors}
+                </SelectItem>
+                <SelectItem
+                  title="Skin Color"
+                  values={skinColor}
+                  setValues={setSkinColor}
+                >
+                  {SkinColors}
+                </SelectItem>
+              </Grid>
             </Grid>
           )}
           {section == "Main" && (
