@@ -99,6 +99,7 @@ export const BaseHeroVisibilityModels = [
       skinColor: false,
       backAppendageColor: false,
       hairColor: false,
+      nextSummonTime: true,
     },
   },
   {
@@ -201,6 +202,7 @@ export const BaseHeroVisibilityModels = [
       skinColor: false,
       backAppendageColor: false,
       hairColor: false,
+      nextSummonTime: true,
     },
   },
   {
@@ -303,6 +305,7 @@ export const BaseHeroVisibilityModels = [
       skinColor: false,
       backAppendageColor: false,
       hairColor: false,
+      nextSummonTime: false,
     },
   },
   {
@@ -406,6 +409,7 @@ export const BaseHeroVisibilityModels = [
       backAppendageColor: true,
       hairColor: true,
       Summons: false,
+      nextSummonTime: false,
     },
   },
 ];

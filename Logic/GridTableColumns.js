@@ -13,8 +13,9 @@ const {
   skinColorNames,
   eyeColorTiers,
   skinColorTiers,
+  HoursToSummon,
 } = require("./HeroBase");
-import { Tooltip } from "@mui/material";
+import { Tooltip, Typography } from "@mui/material";
 import { Box } from "@mui/system";
 import ClassScoreCell from "../Components/Hero/ClassScoreCell";
 import ElementCell from "../Components/Hero/ElementCell";
@@ -271,6 +272,30 @@ let columnDefs = [
         return `${row.summons}/∞`;
       }
       return `${row.summonsRemaining}/${row.maxSummons}`;
+    },
+  },
+  {
+    headerName: "Next Summon",
+    field: "nextSummonTime",
+    minWidth: 100,
+    flex: 1,
+    valueGetter: ({ row }) => {
+      let val = HoursToSummon(row);
+      return val;
+    },
+    renderCell: ({ value }) => {
+      return value === "Now" ? (
+        <Tooltip placement={"right"} title={`Summon is available now.`}>
+          <Box sx={{ color: `success.main` }}>{value}</Box>
+        </Tooltip>
+      ) : (
+        <Tooltip
+          placement={"right"}
+          title={`Summon will be available in ${value} hours.`}
+        >
+          <Box sx={{ color: "error.main" }}>{value}</Box>
+        </Tooltip>
+      );
     },
   },
   {

@@ -24,9 +24,10 @@ export default function DFKATable({
           density="compact"
           rows={rows}
           columns={columns}
-          columnBuffer={25}
-          rowBuffer={15}
-          columnThreshold={15}
+          columnBuffer={100}
+          rowBuffer={100}
+          rowThreshold={100}
+          columnThreshold={100}
           columnVisibilityModel={GetVisibility()}
           onColumnVisibilityModelChange={(visibilityModel) => {
             console.log(visibilityModel);

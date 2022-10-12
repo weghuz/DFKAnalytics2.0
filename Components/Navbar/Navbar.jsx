@@ -44,38 +44,37 @@ export default function Navbar() {
       </Container>
       <Grid container spacing={1} justifyContent={"center"}>
         <Grid item>
-          <Button variant={"text"}>
-            <Link href={"/hero"}>Heroes</Link>
-          </Button>
+          <Link href={"/hero"} passHref>
+            <Button variant={"text"}>Heroes</Button>
+          </Link>
         </Grid>
         <Grid item>
-          <Button variant={"text"}>
-            <Link href={"/pet"}>Pets</Link>
-          </Button>
+          <Link href={"/pet"} passHref>
+            <Button variant={"text"}>Pets</Button>
+          </Link>
         </Grid>
         <DropDownButton title={"Wallet"}>
-          <MenuItem>
-            <Link href={"/Wallet"}>Heroes</Link>
-          </MenuItem>
+          <Link href={"/Wallet"} passhref>
+            <MenuItem>Heroes</MenuItem>
+          </Link>
+          <Link href={"/Wallet/SoldHeroes"} passhref>
+            <MenuItem>Sold Heroes</MenuItem>
+          </Link>
 
-          <MenuItem>
-            <Link href={"/Wallet/SoldHeroes"}>Sold Heroes</Link>
-          </MenuItem>
-
-          <MenuItem>
-            <Link href={"/Wallet/Pets"}>Pets</Link>
-          </MenuItem>
+          <Link href={"/Wallet/Pets"} passhref>
+            <MenuItem>Pets</MenuItem>
+          </Link>
         </DropDownButton>
         <DropDownButton title={"Misc"}>
-          <MenuItem variant={"text"}>
-            <Link href={"/Misc/Options"}>Options</Link>
-          </MenuItem>
-          <MenuItem variant={"text"}>
-            <Link href={"/Misc/Resources"}>Resources</Link>
-          </MenuItem>
-          <MenuItem variant={"text"}>
-            <Link href={"/Misc/About"}>About</Link>
-          </MenuItem>
+          <Link href={"/Misc/Options"} passhref>
+            <MenuItem variant={"text"}>Options</MenuItem>
+          </Link>
+          <Link href={"/Misc/Resources"} passhref>
+            <MenuItem variant={"text"}>Resources</MenuItem>
+          </Link>
+          <Link href={"/Misc/About"} passhref>
+            <MenuItem variant={"text"}>About</MenuItem>
+          </Link>
         </DropDownButton>
         <IconButton
           sx={{ ml: 1 }}

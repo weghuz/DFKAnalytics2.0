@@ -7409,6 +7409,16 @@ var lastNames = [
   "d\xfagheli",
 ];
 
+function HoursToSummon(hero) {
+  let currSecond = new Date().getTime() / 1000;
+  if (currSecond > hero.nextSummonTime) {
+    return "Now";
+  } else {
+    let current = (hero.nextSummonTime - currSecond) / 3600;
+    return `${current.toFixed(2)} H`;
+  }
+}
+
 function FullTime(hero) {
   let currSecond = new Date().getTime() / 1000;
   if (currSecond > hero.staminaFullAt) {
@@ -7710,6 +7720,7 @@ function SumStats(hero) {
 }
 
 module.exports = {
+  HoursToSummon,
   ClassScore,
   GrowthScore,
   calculateRequiredXp,
