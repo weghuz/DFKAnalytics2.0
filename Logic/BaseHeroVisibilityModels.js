@@ -100,7 +100,15 @@ export const BaseHeroVisibilityModels = [
       backAppendageColor: false,
       hairColor: false,
       nextSummonTime: true,
-    },
+      luckBonus: false,
+      WisBonus: false,
+      IntBonus: false,
+      EndBonus: false,
+      VitBonus: false,
+      AgiBonus: false,
+      DexBonus: false,
+      StrBonus: false
+    }
   },
   {
     name: "Summoning",
@@ -203,7 +211,15 @@ export const BaseHeroVisibilityModels = [
       backAppendageColor: false,
       hairColor: false,
       nextSummonTime: true,
-    },
+      luckBonus: false,
+      WisBonus: false,
+      IntBonus: false,
+      EndBonus: false,
+      VitBonus: false,
+      AgiBonus: false,
+      DexBonus: false,
+      StrBonus: false
+    }
   },
   {
     name: "Stats",
@@ -277,14 +293,14 @@ export const BaseHeroVisibilityModels = [
       foraging: false,
       fishing: false,
       gardening: false,
-      strength: true,
-      dexterity: true,
-      agility: true,
-      vitality: true,
-      endurance: true,
-      intelligence: true,
-      wisdom: true,
-      luck: true,
+      strength: false,
+      dexterity: false,
+      agility: false,
+      vitality: false,
+      endurance: false,
+      intelligence: false,
+      wisdom: false,
+      luck: false,
       previousOwner: false,
       previousOwnerAddress: false,
       owner: false,
@@ -306,7 +322,15 @@ export const BaseHeroVisibilityModels = [
       backAppendageColor: false,
       hairColor: false,
       nextSummonTime: false,
-    },
+      luckBonus: true,
+      WisBonus: true,
+      IntBonus: true,
+      EndBonus: true,
+      VitBonus: true,
+      AgiBonus: true,
+      DexBonus: true,
+      StrBonus: true
+    }
   },
   {
     name: "Visual",
@@ -410,6 +434,14 @@ export const BaseHeroVisibilityModels = [
       hairColor: true,
       Summons: false,
       nextSummonTime: false,
-    },
-  },
-];
+      luckBonus: false,
+      WisBonus: false,
+      IntBonus: false,
+      EndBonus: false,
+      VitBonus: false,
+      AgiBonus: false,
+      DexBonus: false,
+      StrBonus: false
+    }
+  }
+]

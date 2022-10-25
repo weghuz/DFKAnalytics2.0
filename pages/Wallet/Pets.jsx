@@ -1,74 +1,72 @@
-import { useEffect } from "react";
+import { useEffect } from "react"
 
-import { Button, LinearProgress, Typography } from "@mui/material";
-import Grid from "@mui/material/Grid";
-import { useQuery } from "react-query";
-import { base, petData } from "../../Logic/Query";
-import DFKATable from "../../Components/Table/DFKATable";
-import petColumnDefs from "../../Logic/PetTableColumns";
-import MetaMask from "../../Components/Wallet/MetaMask";
-import useWallet from "../../Store/WalletStore";
-import PetFilters from "../../Components/PetFilters";
-import useWalletPets from "../../Store/WalletPets/WalletPetsStore";
-import useWalletPetsPersist from "../../Store/WalletPets/WalletPetsPersistStore";
-import PetColumnSetups from "../../Components/PetColumnSetups";
-import Head from "next/head";
+import { Button, LinearProgress, Typography } from "@mui/material"
+import Grid from "@mui/material/Grid"
+import { useQuery } from "react-query"
+import { base, petData } from "../../Logic/Query"
+import DFKATable from "../../Components/Table/DFKATable"
+import petColumnDefs from "../../Logic/PetTableColumns"
+import MetaMask from "../../Components/Wallet/MetaMask"
+import useWallet from "../../Store/WalletStore"
+import PetFilters from "../../Components/PetFilters"
+import useWalletPets from "../../Store/WalletPets/WalletPetsStore"
+import useWalletPetsPersist from "../../Store/WalletPets/WalletPetsPersistStore"
+import PetColumnSetups from "../../Components/PetColumnSetups"
+import Head from "next/head"
 export default function Home() {
-  const setPets = useWalletPets((state) => state.setPets);
-  const pets = useWalletPets((state) => state.pets);
-  const query = useWalletPets((state) => state.query);
-  const first = useWalletPets((state) => state.first);
-  const skip = useWalletPets((state) => state.skip);
-  const setAddress = useWalletPets((state) => state.setAddress);
+  const setPets = useWalletPets((state) => state.setPets)
+  const pets = useWalletPets((state) => state.pets)
+  const query = useWalletPets((state) => state.query)
+  const first = useWalletPets((state) => state.first)
+  const skip = useWalletPets((state) => state.skip)
+  const setAddress = useWalletPets((state) => state.setAddress)
 
-  const visibilityModel = useWalletPetsPersist(
-    (state) => state.visibilityModel
-  );
+  const visibilityModel = useWalletPetsPersist((state) => state.visibilityModel)
   const setVisibilityModel = useWalletPetsPersist(
     (state) => state.setVisibilityModel
-  );
-  const hideColumns = useWalletPetsPersist((state) => state.hideColumns);
+  )
+  const hideColumns = useWalletPetsPersist((state) => state.hideColumns)
   const toggleHideColumns = useWalletPetsPersist(
     (state) => state.toggleHideColumns
-  );
+  )
   const toggleHideFilters = useWalletPetsPersist(
     (state) => state.toggleHideFilters
-  );
-  const hideFilters = useWalletPetsPersist((state) => state.hideFilters);
-  const petSetup = useWalletPetsPersist((state) => state.petSetup);
-  const setPetSetup = useWalletPetsPersist((state) => state.setPetSetup);
-  const address = useWallet((state) => state.address);
+  )
+  const hideFilters = useWalletPetsPersist((state) => state.hideFilters)
+  const petSetup = useWalletPetsPersist((state) => state.petSetup)
+  const setPetSetup = useWalletPetsPersist((state) => state.setPetSetup)
+  const address = useWallet((state) => state.address)
 
   const requestPets = async () => {
     return fetch(base, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json;charset=UTF-8",
+        "Content-Type": "application/json;charset=UTF-8"
       },
       body: JSON.stringify({
-        query: query,
-      }),
-    });
-  };
+        query: query
+      })
+    })
+  }
 
   const result = useQuery(
     ["petsRequest", query + first + skip + address],
     async () => {
       if (query.length > 0 && address.length > 0) {
-        let requestId = query;
-        let petsRequest = await requestPets();
+        let requestId = query
+        let petsRequest = await requestPets()
         if (petsRequest.status >= 200 && petsRequest.status <= 300) {
-          let json = await petsRequest.json();
-          let pets = json.data.pets;
-          setPets(pets, requestId);
+          let json = await petsRequest.json()
+          let pets = json.data.pets
+          setPets(pets, requestId)
         }
       }
     }
-  );
+  )
 
   useEffect(() => {
-    setAddress(address);
-  }, [address]);
+    setAddress(address)
+  }, [address])
   return (
     <>
       <Head>
@@ -125,5 +123,5 @@ export default function Home() {
         visibilityChanged={setVisibilityModel}
       ></DFKATable>
     </>
-  );
+  )
 }

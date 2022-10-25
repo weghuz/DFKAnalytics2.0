@@ -1,66 +1,368 @@
-import {
-  Box,
-  Container,
-  Dialog,
-  Grid,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Typography,
-  useTheme,
-} from "@mui/material";
-import React from "react";
-import { classVars, FullName } from "../../Logic/HeroBase";
-import DFKATable from "../Table/DFKATable";
-import ClassScoreCell from "./ClassScoreCell";
-import ElementCell from "./ElementCell";
-import GrowthScoreCell from "./GrowthScoreCell";
-import HeroId from "./HeroId";
-import PJBadge from "./PJBadge";
-import PriceCell from "./PriceCell";
-import RarityCell from "./RarityCell";
+import { Box, Grid, Paper, Typography, useTheme } from "@mui/material"
+import { DataGrid } from "@mui/x-data-grid"
+import { DataGridPro } from "@mui/x-data-grid-pro"
+import React from "react"
+import { classVars, FullName } from "../../Logic/HeroBase"
+import ClassScoreCell from "./ClassScoreCell"
+import ElementCell from "./ElementCell"
+import GrowthScoreCell from "./GrowthScoreCell"
+import HeroGenderCell from "./HeroGenderCell"
+import HeroId from "./HeroId"
+import HeroSummonsNext from "./HeroSummonsNext"
+import PJBadge from "./PJBadge"
+import PriceCell from "./PriceCell"
+import RarityCell from "./RarityCell"
+import StatBonusCell from "./StatBonusCell"
 
 export default function HeroDetails({ hero }) {
-  const theme = useTheme();
-  const getStatColor = (stat) => {
-    if (stat == hero.statBoost1 && stat == hero.statBoost2) {
-      return theme.palette.info.main;
-    } else if (stat == hero.statBoost1) {
-      return theme.palette.success.main;
-    } else if (stat == hero.statBoost2) {
-      return theme.palette.primary.main;
-    } else {
-      return "";
-    }
-  };
-  const getProfessionColor = (profession) => {
-    if (profession == hero.profession) {
-      return theme.palette.success.main;
-    } else {
-      return "";
-    }
-  };
+  const theme = useTheme()
+  const getBasicColumns = () => {
+    return [
+      {
+        headerName: "Cost",
+        field: "salePrice",
+        type: "number",
+        minWidth: 120,
+        flex: 1,
+        valueFormatter: ({ value }) => {
+          return Number(value)
+        },
+        renderCell: ({ row }) => {
+          return <PriceCell>{row}</PriceCell>
+        }
+      },
+      { headerName: "Class", field: "mainClass", width: 100, flex: 1 },
+      { headerName: "Subclass", field: "subClass", width: 100, flex: 1 },
+      {
+        headerName: "Gen",
+        field: "generation",
+        type: "number",
+        minWidth: 50,
+        flex: 1,
+        valueFormatter: ({ value }) => Number(value)
+      },
+      {
+        headerName: "Rarity",
+        field: "rarity",
+        type: "number",
+        minWidth: 50,
+        flex: 1,
+        valueFormatter: ({ value }) => Number(value),
+        renderCell: ({ row }) => {
+          return <RarityCell rarity={row.rarity} />
+        }
+      }
+    ]
+  }
+  const getBasicColumns2 = () => {
+    return [
+      {
+        headerName: "C Score",
+        field: "classScore",
+        minWidth: 60,
+        flex: 1,
+        type: "number",
+        renderCell: ({ row }) => {
+          return <ClassScoreCell>{row}</ClassScoreCell>
+        }
+      },
+      {
+        headerName: "G Score",
+        field: "growthScore",
+        minWidth: 60,
+        flex: 1,
+        type: "number",
+        renderCell: ({ row }) => {
+          return <GrowthScoreCell>{row}</GrowthScoreCell>
+        }
+      },
+      {
+        headerName: "Level",
+        field: "level",
+        width: 100,
+        flex: 1
+      },
+      {
+        headerName: "Element",
+        field: "element",
+        Title: "Element",
+        minWidth: 50,
+        flex: 1,
+        renderCell: ({ row }) => {
+          return <ElementCell>{row.element}</ElementCell>
+        }
+      },
+      {
+        headerName: "Gender",
+        field: "gender",
+        flex: 1,
+        minWidth: 60,
+        type: "string",
+        renderCell: ({ value }) => {
+          return <HeroGenderCell>{value}</HeroGenderCell>
+        }
+      },
+      {
+        headerName: "Shiny",
+        field: "shiny",
+        valueFormatter: ({ value }) => (value ? "✨" : "❌"),
+        flex: 1,
+        minWidth: 50
+      }
+    ]
+  }
+  const getStatsColumns = () => {
+    return [
+      {
+        headerName: "Str",
+        field: "strength",
+        type: "number",
+        minWidth: 40,
+        flex: 1,
+        valueGetter: ({ value }) => {
+          return Number(value)
+        },
+        renderCell: ({ row }) => {
+          return (
+            <>
+              <StatBonusCell
+                sb1={row.statBoost1}
+                sb2={row.statBoost2}
+                stat={"STR"}
+                statAmount={row.strength}
+                statName={"strength"}
+                showBonus={true}
+                mainClass={hero.mainClass}
+              />
+            </>
+          )
+        }
+      },
+      {
+        headerName: "Dex",
+        field: "dexterity",
+        type: "number",
+        minWidth: 40,
+        flex: 1,
+        valueGetter: ({ value }) => {
+          return Number(value)
+        },
+        renderCell: ({ row }) => {
+          return (
+            <StatBonusCell
+              sb1={row.statBoost1}
+              sb2={row.statBoost2}
+              stat={"DEX"}
+              statAmount={row.dexterity}
+              statName={"dexterity"}
+              showBonus={true}
+              mainClass={hero.mainClass}
+            />
+          )
+        }
+      },
+      {
+        headerName: "Agi",
+        field: "agility",
+        type: "number",
+        minWidth: 40,
+        flex: 1,
+        valueGetter: ({ value }) => {
+          return Number(value)
+        },
+        renderCell: ({ row }) => {
+          return (
+            <StatBonusCell
+              sb1={row.statBoost1}
+              sb2={row.statBoost2}
+              stat={"AGI"}
+              statAmount={row.agility}
+              statName={"agility"}
+              showBonus={true}
+              mainClass={hero.mainClass}
+            />
+          )
+        }
+      },
+      {
+        headerName: "Vit",
+        field: "vitality",
+        type: "number",
+        minWidth: 40,
+        flex: 1,
+        valueGetter: ({ value }) => {
+          return Number(value)
+        },
+        renderCell: ({ row }) => {
+          return (
+            <StatBonusCell
+              sb1={row.statBoost1}
+              sb2={row.statBoost2}
+              stat={"VIT"}
+              statAmount={row.vitality}
+              statName={"vitality"}
+              showBonus={true}
+              mainClass={hero.mainClass}
+            />
+          )
+        }
+      },
+      {
+        headerName: "End",
+        field: "endurance",
+        minWidth: 40,
+        flex: 1,
+        type: "number",
+        valueGetter: ({ value }) => {
+          return Number(value)
+        },
+        renderCell: ({ row }) => {
+          return (
+            <StatBonusCell
+              sb1={row.statBoost1}
+              sb2={row.statBoost2}
+              stat={"END"}
+              statAmount={row.endurance}
+              statName={"endurance"}
+              showBonus={true}
+              mainClass={hero.mainClass}
+            />
+          )
+        }
+      },
+      {
+        headerName: "Int",
+        field: "intelligence",
+        minWidth: 40,
+        flex: 1,
+        type: "number",
+        valueGetter: ({ value }) => {
+          return Number(value)
+        },
+        renderCell: ({ row }) => {
+          return (
+            <StatBonusCell
+              sb1={row.statBoost1}
+              sb2={row.statBoost2}
+              stat={"INT"}
+              statAmount={row.intelligence}
+              statName={"intelligence"}
+              showBonus={true}
+              mainClass={hero.mainClass}
+            />
+          )
+        }
+      },
+      {
+        headerName: "Wis",
+        field: "wisdom",
+        minWidth: 40,
+        flex: 1,
+        type: "number",
+        valueGetter: ({ value }) => {
+          return Number(value)
+        },
+        renderCell: ({ row }) => {
+          return (
+            <StatBonusCell
+              sb1={row.statBoost1}
+              sb2={row.statBoost2}
+              stat={"WIS"}
+              statAmount={row.wisdom}
+              statName={"wisdom"}
+              showBonus={true}
+              mainClass={hero.mainClass}
+            />
+          )
+        }
+      },
+      {
+        headerName: "lck",
+        field: "luck",
+        minWidth: 40,
+        flex: 1,
+        type: "number",
+        valueGetter: ({ value }) => {
+          return Number(value)
+        },
+        renderCell: ({ row }) => {
+          return (
+            <StatBonusCell
+              sb1={row.statBoost1}
+              sb2={row.statBoost2}
+              stat={"LCK"}
+              statAmount={row.luck}
+              statName={"luck"}
+              showBonus={true}
+              mainClass={hero.mainClass}
+            />
+          )
+        }
+      }
+    ]
+  }
+  const getProfessionColumns = () => {
+    return [
+      {
+        headerName: "Mining",
+        field: "mining",
+        type: "number",
+        minWidth: 40,
+        flex: 1,
+        valueFormatter: ({ value }) => {
+          return Number(value / 10)
+        }
+      },
+      {
+        headerName: "Foraging",
+        field: "foraging",
+        type: "number",
+        minWidth: 40,
+        flex: 1,
+        valueFormatter: ({ value }) => {
+          return Number(value / 10)
+        }
+      },
+      {
+        headerName: "Fishing",
+        field: "fishing",
+        type: "number",
+        minWidth: 40,
+        flex: 1,
+        valueFormatter: ({ value }) => {
+          return Number(value / 10)
+        }
+      },
+      {
+        headerName: "Gardening",
+        field: "gardening",
+        type: "number",
+        minWidth: 40,
+        flex: 1,
+        valueFormatter: ({ value }) => {
+          return Number(value / 10)
+        }
+      }
+    ]
+  }
   const getGrowthColumns = () => {
     return [
-      { headerName: "Class", field: "class", width: 100 },
-      { headerName: "STR", field: "strengthGrowth", width: 60 },
-      { headerName: "DEX", field: "dexterityGrowth", width: 60 },
-      { headerName: "AGI", field: "agilityGrowth", width: 60 },
-      { headerName: "VIT", field: "vitalityGrowth", width: 60 },
-      { headerName: "END", field: "enduranceGrowth", width: 60 },
-      { headerName: "INT", field: "intelligenceGrowth", width: 60 },
-      { headerName: "WIS", field: "wisdomGrowth", width: 60 },
-      { headerName: "LCK", field: "luckGrowth", width: 60 },
-    ];
-  };
+      { headerName: "Growth", field: "class", width: 100, flex: 1 },
+      { headerName: "STR", field: "strengthGrowth", width: 60, flex: 1 },
+      { headerName: "DEX", field: "dexterityGrowth", width: 60, flex: 1 },
+      { headerName: "AGI", field: "agilityGrowth", width: 60, flex: 1 },
+      { headerName: "VIT", field: "vitalityGrowth", width: 60, flex: 1 },
+      { headerName: "END", field: "enduranceGrowth", width: 60, flex: 1 },
+      { headerName: "INT", field: "intelligenceGrowth", width: 60, flex: 1 },
+      { headerName: "WIS", field: "wisdomGrowth", width: 60, flex: 1 },
+      { headerName: "LCK", field: "luckGrowth", width: 60, flex: 1 }
+    ]
+  }
   const getGrowthRows = () => {
     let rows = [
       {
-        id: "class",
-        class: `main:${hero.mainClass}`,
+        id: "Growth",
+        class: `${hero.mainClass}`,
         strengthGrowth: parseFloat(hero.strengthGrowthP.toFixed(2)),
         dexterityGrowth: parseFloat(hero.dexterityGrowthP.toFixed(2)),
         agilityGrowth: parseFloat(hero.agilityGrowthP.toFixed(2)),
@@ -68,11 +370,11 @@ export default function HeroDetails({ hero }) {
         enduranceGrowth: parseFloat(hero.enduranceGrowthP.toFixed(2)),
         intelligenceGrowth: parseFloat(hero.intelligenceGrowthP.toFixed(2)),
         wisdomGrowth: parseFloat(hero.wisdomGrowthP.toFixed(2)),
-        luckGrowth: parseFloat(hero.luckGrowthP.toFixed(2)),
+        luckGrowth: parseFloat(hero.luckGrowthP.toFixed(2))
       },
       {
         id: "subclass",
-        class: `sub:${hero.subClass}`,
+        class: `${hero.subClass}`,
         strengthGrowth: parseFloat(hero.strengthGrowthS.toFixed(2)),
         dexterityGrowth: parseFloat(hero.dexterityGrowthS.toFixed(2)),
         agilityGrowth: parseFloat(hero.agilityGrowthS.toFixed(2)),
@@ -80,7 +382,7 @@ export default function HeroDetails({ hero }) {
         enduranceGrowth: parseFloat(hero.enduranceGrowthS.toFixed(2)),
         intelligenceGrowth: parseFloat(hero.intelligenceGrowthS.toFixed(2)),
         wisdomGrowth: parseFloat(hero.wisdomGrowthS.toFixed(2)),
-        luckGrowth: parseFloat(hero.luckGrowthS.toFixed(2)),
+        luckGrowth: parseFloat(hero.luckGrowthS.toFixed(2))
       },
       {
         id: "total",
@@ -106,22 +408,20 @@ export default function HeroDetails({ hero }) {
         wisdomGrowth: parseFloat(
           (hero.wisdomGrowthP + hero.wisdomGrowthS).toFixed(2)
         ),
-        luckGrowth: parseFloat(
-          (hero.luckGrowthP + hero.luckGrowthS).toFixed(2)
-        ),
-      },
-    ];
-    return rows;
-  };
+        luckGrowth: parseFloat((hero.luckGrowthP + hero.luckGrowthS).toFixed(2))
+      }
+    ]
+    return rows
+  }
   const getRecessiveColumns = () => {
     return [
-      { headerName: "Stat", field: "Stat" },
-      { headername: "D", field: "D" },
-      { headername: "R1", field: "R1" },
-      { headername: "R2", field: "R2" },
-      { headername: "R3", field: "R3" },
-    ];
-  };
+      { headerName: "Recessives", field: "Stat", flex: 1 },
+      { headername: "D", field: "D", flex: 1 },
+      { headername: "R1", field: "R1", flex: 1 },
+      { headername: "R2", field: "R2", flex: 1 },
+      { headername: "R3", field: "R3", flex: 1 }
+    ]
+  }
   const getRecessiveRows = () => {
     return [
       {
@@ -130,7 +430,7 @@ export default function HeroDetails({ hero }) {
         D: hero.mainClass,
         R1: hero.R1.mainClass,
         R2: hero.R2.mainClass,
-        R3: hero.R3.mainClass,
+        R3: hero.R3.mainClass
       },
       {
         id: "subClass",
@@ -138,7 +438,7 @@ export default function HeroDetails({ hero }) {
         D: hero.subClass,
         R1: hero.R1.subClass,
         R2: hero.R2.subClass,
-        R3: hero.R3.subClass,
+        R3: hero.R3.subClass
       },
       {
         id: "profession",
@@ -146,7 +446,7 @@ export default function HeroDetails({ hero }) {
         D: hero.profession,
         R1: hero.R1.profession,
         R2: hero.R2.profession,
-        R3: hero.R3.profession,
+        R3: hero.R3.profession
       },
       {
         id: "statBoost1",
@@ -154,7 +454,7 @@ export default function HeroDetails({ hero }) {
         D: hero.statBoost1,
         R1: hero.R1.statBoost1,
         R2: hero.R2.statBoost1,
-        R3: hero.R3.statBoost1,
+        R3: hero.R3.statBoost1
       },
       {
         id: "statBoost2",
@@ -162,7 +462,7 @@ export default function HeroDetails({ hero }) {
         D: hero.statBoost2,
         R1: hero.R1.statBoost2,
         R2: hero.R2.statBoost2,
-        R3: hero.R3.statBoost2,
+        R3: hero.R3.statBoost2
       },
       {
         id: "active1",
@@ -170,7 +470,7 @@ export default function HeroDetails({ hero }) {
         D: hero.active1,
         R1: hero.R1.active1,
         R2: hero.R2.active1,
-        R3: hero.R3.active1,
+        R3: hero.R3.active1
       },
       {
         id: "active2",
@@ -178,7 +478,7 @@ export default function HeroDetails({ hero }) {
         D: hero.active2,
         R1: hero.R1.active2,
         R2: hero.R2.active2,
-        R3: hero.R3.active2,
+        R3: hero.R3.active2
       },
       {
         id: "passive1",
@@ -186,7 +486,7 @@ export default function HeroDetails({ hero }) {
         D: hero.passive1,
         R1: hero.R1.passive1,
         R2: hero.R2.passive1,
-        R3: hero.R3.passive1,
+        R3: hero.R3.passive1
       },
       {
         id: "passive2",
@@ -194,7 +494,7 @@ export default function HeroDetails({ hero }) {
         D: hero.passive2,
         R1: hero.R1.passive2,
         R2: hero.R2.passive2,
-        R3: hero.R3.passive2,
+        R3: hero.R3.passive2
       },
       {
         id: "element",
@@ -202,7 +502,7 @@ export default function HeroDetails({ hero }) {
         D: hero.element,
         R1: hero.R1.element,
         R2: hero.R2.element,
-        R3: hero.R3.element,
+        R3: hero.R3.element
       },
       {
         id: "Status Unknown 2",
@@ -210,7 +510,7 @@ export default function HeroDetails({ hero }) {
         D: hero.statsUnknown2,
         R1: hero.R1.statsUnknown2,
         R2: hero.R2.statsUnknown2,
-        R3: hero.R3.statsUnknown2,
+        R3: hero.R3.statsUnknown2
       },
       {
         id: "Status Unknown 1",
@@ -218,25 +518,23 @@ export default function HeroDetails({ hero }) {
         D: hero.statsUnknown1,
         R1: hero.R1.statsUnknown1,
         R2: hero.R2.statsUnknown1,
-        R3: hero.R3.statsUnknown1,
-      },
-    ];
-  };
+        R3: hero.R3.statsUnknown1
+      }
+    ]
+  }
   return (
-    <Grid container justifyContent={"center"}>
+    <Grid container justifyContent={"center"} bgcolor={"background.default"}>
       <Grid
         container
         justifyContent={"center"}
         alignSelf={"center"}
         spacing={2}
-        bgcolor={"background.default"}
       >
         <Grid
           container
           item
           textAlign={"center"}
           xs={12}
-          lg={8}
           justifyContent={"center"}
         >
           <Grid item xs={12}>
@@ -245,175 +543,104 @@ export default function HeroDetails({ hero }) {
               {FullName(hero)}
             </Typography>
           </Grid>
-          <Grid item xs={6} sm={4}>
-            {hero.mainClass}
-          </Grid>
-          <Grid item xs={6} sm={4}>
-            {hero.subClass}
-          </Grid>
-          <Grid item xs={6} sm={4}>
-            Level {hero.level}
-          </Grid>
-          <Grid item container xs={6} sm={4} justifyContent={"center"}>
-            <Grid item sx={{ maxWidth: "20px" }}>
-              <ElementCell>{hero.element}</ElementCell>
+          <Grid
+            item
+            container
+            xs={12}
+            justifyContent={"center"}
+            marginBottom={"50px"}
+          >
+            <Grid
+              item
+              minWidth={"300px"}
+              width={"100%"}
+              maxWidth={"500px"}
+              margin={"5px"}
+            >
+              <DataGridPro
+                columns={getBasicColumns()}
+                rows={[hero]}
+                autoHeight={true}
+                density={"compact"}
+                hideFooter={true}
+              ></DataGridPro>
+            </Grid>
+            <Grid
+              minWidth={"200px"}
+              width={"100%"}
+              maxWidth={"500px"}
+              margin={"5px"}
+            >
+              <DataGridPro
+                columns={getBasicColumns2()}
+                width={"100%"}
+                rows={[hero]}
+                autoHeight={true}
+                density={"compact"}
+                hideFooter={true}
+              ></DataGridPro>
+            </Grid>
+            <Grid
+              minWidth={"200px"}
+              width={"100%"}
+              maxWidth={"800px"}
+              margin={"5px"}
+            >
+              <DataGridPro
+                columns={getStatsColumns()}
+                width={"100%"}
+                rows={[hero]}
+                autoHeight={true}
+                density={"compact"}
+                hideFooter={true}
+              ></DataGridPro>
+            </Grid>
+            <Grid
+              minWidth={"200px"}
+              width={"100%"}
+              maxWidth={"400px"}
+              margin={"5px"}
+            >
+              <DataGridPro
+                columns={getProfessionColumns()}
+                width={"100%"}
+                rows={[hero]}
+                autoHeight={true}
+                density={"compact"}
+                hideFooter={true}
+              ></DataGridPro>
+            </Grid>
+            <Grid
+              minWidth={"200px"}
+              width={"100%"}
+              maxWidth={"600px"}
+              margin={"5px"}
+            >
+              <DataGridPro
+                autoHeight={true}
+                density={"compact"}
+                columns={getGrowthColumns()}
+                rows={getGrowthRows()}
+                hideFooter={true}
+              ></DataGridPro>
+            </Grid>
+            <Grid
+              minWidth={"200px"}
+              width={"100%"}
+              maxWidth={"500px"}
+              margin={"5px"}
+            >
+              <DataGridPro
+                autoHeight={true}
+                density={"compact"}
+                columns={getRecessiveColumns()}
+                rows={getRecessiveRows()}
+                hideFooter={true}
+              ></DataGridPro>
             </Grid>
           </Grid>
-          <Grid item xs={6} sm={4}>
-            {hero.gender == "male" ? "♂️" : "♀️"}
-          </Grid>
-          <Grid item xs={6} sm={4}>
-            {hero.shiny ? "Shiny" : "Ordinary"}
-          </Grid>
-          <Grid item xs={6} sm={4}>
-            Generation: {hero.generation}
-          </Grid>
-          <Grid item container justifyContent={"center"} xs={6} sm={4}>
-            Price:{" "}
-            <Grid item style={{ marginLeft: "10px", minWidth: "60px" }}>
-              <PriceCell>{hero}</PriceCell>
-            </Grid>
-          </Grid>
-          <Grid item container justifyContent={"center"} xs={6} sm={4}>
-            <Grid item style={{ maxWidth: "35px" }}>
-              <RarityCell rarity={hero.rarity} />
-            </Grid>
-          </Grid>
-          <Grid item container justifyContent={"center"} xs={12}>
-            <Grid item style={{ marginLeft: "10px", maxWidth: "60px" }}>
-              {hero.pjStatus == "SURVIVED" && <PJBadge></PJBadge>}
-              {hero.pjStatus == "DIED" &&
-                `${FullName(
-                  hero
-                )} died a glorious death at sea looking to discover the promised land of Crystalvale.`}
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid container item xs={12} justifyContent={"center"}>
-          <Grid container item maxWidth={900}>
-            <Grid container item sm={6} xs={12} columnSpacing={2}>
-              <Grid item xs={12} textAlign={"center"}>
-                <Typography variant="h5">Stats</Typography>
-              </Grid>
-              <Grid item xs={6} textAlign={"end"}>
-                <div>
-                  <span style={{ color: getStatColor("STR") }}>STR</span>:{" "}
-                  {hero.strength} (+
-                  {hero.strength - classVars[hero.mainClass].base.str})
-                </div>
-                <div>
-                  <span style={{ color: getStatColor("AGI") }}>AGI</span>:{" "}
-                  {hero.agility} (+
-                  {hero.agility - classVars[hero.mainClass].base.agi})
-                </div>
-                <div>
-                  <span style={{ color: getStatColor("END") }}>END</span>:{" "}
-                  {hero.endurance} (+
-                  {hero.endurance - classVars[hero.mainClass].base.end})
-                </div>
-                <div>
-                  <span style={{ color: getStatColor("WIS") }}>WIS</span>:{" "}
-                  {hero.wisdom} (+
-                  {hero.wisdom - classVars[hero.mainClass].base.wis})
-                </div>
-              </Grid>
-              <Grid item xs={6}>
-                <div>
-                  <span style={{ color: getStatColor("DEX") }}>DEX</span>:{" "}
-                  {hero.dexterity} (+
-                  {hero.dexterity - classVars[hero.mainClass].base.dex})
-                </div>
-                <div>
-                  <span style={{ color: getStatColor("VIT") }}>VIT</span>:{" "}
-                  {hero.vitality} (+
-                  {hero.vitality - classVars[hero.mainClass].base.vit})
-                </div>
-                <div>
-                  <span style={{ color: getStatColor("INT") }}>INT</span>:{" "}
-                  {hero.intelligence} (+
-                  {hero.intelligence - classVars[hero.mainClass].base.int})
-                </div>
-                <div>
-                  <span style={{ color: getStatColor("LCK") }}>LCK</span>:{" "}
-                  {hero.luck} (+
-                  {hero.luck - classVars[hero.mainClass].base.lck})
-                </div>
-              </Grid>
-            </Grid>
-            <Grid container item sm={6} xs={12} columnSpacing={2}>
-              <Grid item xs={12}>
-                <Typography variant="h5" textAlign={"center"}>
-                  Professions
-                </Typography>
-              </Grid>
-              <Grid item xs={6} textAlign={"end"}>
-                <div>
-                  <span style={{ color: getProfessionColor("mining") }}>
-                    Mining
-                  </span>
-                  : {hero.mining / 10}
-                </div>
-                <div>
-                  <span style={{ color: getProfessionColor("foraging") }}>
-                    Foraging
-                  </span>
-                  : {hero.foraging / 10}
-                </div>
-              </Grid>
-              <Grid item xs={6}>
-                <div>
-                  <span style={{ color: getProfessionColor("gardening") }}>
-                    Gardening
-                  </span>
-                  : {hero.gardening / 10}
-                </div>
-                <div>
-                  <span style={{ color: getProfessionColor("fishing") }}>
-                    Fishing
-                  </span>
-                  : {hero.fishing / 10}
-                </div>
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid container item columnSpacing={2}>
-            <Grid container item xs={6} justifyContent={"end"}>
-              <Grid item xs={12} textAlign={"end"}>
-                Class Score:
-              </Grid>
-              <Grid item maxWidth={50}>
-                <ClassScoreCell>{hero}</ClassScoreCell>
-              </Grid>
-            </Grid>
-            <Grid item xs={6}>
-              Growth Score:
-              <Box maxWidth={50}>
-                <GrowthScoreCell>{hero}</GrowthScoreCell>
-              </Box>
-            </Grid>
-          </Grid>
-        </Grid>
-        <Grid container item sm={12} xl={6}>
-          <Grid item xs={12}>
-            <Typography variant={"h5"} textAlign={"center"}>
-              Growth
-            </Typography>
-            <DFKATable
-              columns={getGrowthColumns()}
-              rows={getGrowthRows()}
-            ></DFKATable>
-          </Grid>
-        </Grid>
-        <Grid item xs={12} xl={6}>
-          <Typography variant={"h5"} textAlign={"center"}>
-            Recessives
-          </Typography>
-          <DFKATable
-            columns={getRecessiveColumns()}
-            rows={getRecessiveRows()}
-          ></DFKATable>
         </Grid>
       </Grid>
     </Grid>
-  );
+  )
 }

@@ -5,15 +5,15 @@ import {
   CardContent,
   Container,
   Grid,
-  Typography,
-} from "@mui/material";
-import React from "react";
-import Link from "next/link";
-import { Box } from "@mui/system";
-import Image from "next/image";
-import CommunitySpotlight from "../public/CommunitySpotlight20220907.png";
-import Head from "next/head";
-import Twitter from "../public/Socials/Twitter.svg";
+  Typography
+} from "@mui/material"
+import React from "react"
+import Link from "next/link"
+import { Box } from "@mui/system"
+import Image from "next/image"
+import CommunitySpotlight from "../public/CommunitySpotlight20220907.png"
+import Head from "next/head"
+import Twitter from "../public/Socials/Twitter.svg"
 
 export default function index() {
   return (
@@ -197,5 +197,5 @@ export default function index() {
         </Grid>
       </Grid>
     </Container>
-  );
+  )
 }

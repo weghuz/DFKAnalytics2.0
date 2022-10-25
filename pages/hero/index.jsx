@@ -1,79 +1,75 @@
-import { useQuery } from "react-query";
-import HeroFilters from "../../Components/HeroFilters";
-import { base } from "../../Logic/Query";
-import { Button, LinearProgress, Typography } from "@mui/material";
-import Grid from "@mui/material/Grid";
-import { columnDefs } from "../../Logic/GridTableColumns";
-import DFKATable from "../../Components/Table/DFKATable";
-import useHeroesPersist from "../../Store/hero/HeroesPersistStore";
-import useHeroes from "../../Store/hero/HeroesStore";
-import useUser from "../../Store/UserStore";
-import HeroColumnSetups from "../../Components/HeroColumnSetups";
-import Head from "next/head";
-import { useState } from "react";
-import HeroDetailsModal from "../../Components/Hero/HeroDetailsModal";
+import { useQuery } from "react-query"
+import HeroFilters from "../../Components/HeroFilters"
+import { base } from "../../Logic/Query"
+import { Button, LinearProgress, Typography } from "@mui/material"
+import Grid from "@mui/material/Grid"
+import { columnDefs } from "../../Logic/GridTableColumns"
+import DFKATable from "../../Components/Table/DFKATable"
+import useHeroesPersist from "../../Store/hero/HeroesPersistStore"
+import useHeroes from "../../Store/hero/HeroesStore"
+import useUser from "../../Store/UserStore"
+import HeroColumnSetups from "../../Components/HeroColumnSetups"
+import Head from "next/head"
+import { useState } from "react"
+import HeroDetailsModal from "../../Components/Hero/HeroDetailsModal"
 
 export default function Home() {
-  const hideColumns = useHeroesPersist((state) => state.hideColumns);
-  const toggleHideColumns = useHeroesPersist(
-    (state) => state.toggleHideColumns
-  );
-  const hideFilters = useHeroesPersist((state) => state.hideFilters);
-  const toggleHideFilters = useHeroesPersist(
-    (state) => state.toggleHideFilters
-  );
-  const visibilityModel = useHeroesPersist((state) => state.visibilityModel);
+  const hideColumns = useHeroesPersist((state) => state.hideColumns)
+  const toggleHideColumns = useHeroesPersist((state) => state.toggleHideColumns)
+  const hideFilters = useHeroesPersist((state) => state.hideFilters)
+  const toggleHideFilters = useHeroesPersist((state) => state.toggleHideFilters)
+  const visibilityModel = useHeroesPersist((state) => state.visibilityModel)
   const setVisibilityModel = useHeroesPersist(
     (state) => state.setVisibilityModel
-  );
-  const setHeroSetup = useHeroesPersist((state) => state.setHeroSetup);
-  const heroSetup = useHeroesPersist((state) => state.heroSetup);
-  const heroes = useHeroes((state) => state.heroes);
-  const setHeroes = useHeroes((state) => state.setHeroes);
-  const query = useHeroes((state) => state.query);
-  const attempt = useHeroes((state) => state.attempt);
-  const skip = useHeroes((state) => state.skip);
-  const first = useHeroes((state) => state.first);
-  const heroDetailsViewType = useUser((state) => state.heroDetailsViewType);
-  const [showingHero, setShowingHero] = useState((hero) => null);
+  )
+  const setHeroSetup = useHeroesPersist((state) => state.setHeroSetup)
+  const heroSetup = useHeroesPersist((state) => state.heroSetup)
+  const heroes = useHeroes((state) => state.heroes)
+  const setHeroes = useHeroes((state) => state.setHeroes)
+  const query = useHeroes((state) => state.query)
+  const attempt = useHeroes((state) => state.attempt)
+  const skip = useHeroes((state) => state.skip)
+  const first = useHeroes((state) => state.first)
+  const heroDetailsViewType = useUser((state) => state.heroDetailsViewType)
+  const [showingHero, setShowingHero] = useState((hero) => null)
   const clickedHero = (hero) => {
     if (heroDetailsViewType == "page") {
-      window.open(`/hero/${hero.id}`, `_blank`);
+      window.open(`/hero/${hero.id}`, `_blank`)
     } else {
-      setShowingHero((h) => hero);
+      setShowingHero((h) => hero)
     }
-  };
+  }
 
   const testRequest = async () => {
     return fetch(base, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json;charset=UTF-8",
+        "Content-Type": "application/json;charset=UTF-8"
       },
       body: JSON.stringify({
-        query: query,
-      }),
-    });
-  };
+        query: query
+      })
+    })
+  }
 
   const result = useQuery(
     ["request", query + attempt + skip + first],
     async () => {
       if (query.length > 0) {
-        let requestId = query;
-        let request = await testRequest();
+        let requestId = query
+        let request = await testRequest()
         if (request.status >= 200 && request.status <= 300) {
-          let json = await request.json();
-          let data = json.data;
-          console.log(data.heroes);
+          let json = await request.json()
+          let data = json.data
+          console.log(data.heroes)
 
-          setHeroes(data.heroes, requestId);
+          setHeroes(data.heroes, requestId)
         } else {
-          console.log("error: ", request);
+          console.log("error: ", request)
         }
       }
     }
-  );
+  )
 
   return (
     <>
@@ -135,5 +131,5 @@ export default function Home() {
         setHero={setShowingHero}
       ></HeroDetailsModal>
     </>
-  );
+  )
 }

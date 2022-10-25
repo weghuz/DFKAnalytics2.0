@@ -1,22 +1,26 @@
-import { Box, Button, Dialog, Grid } from "@mui/material";
-import React from "react";
-import HeroDetails from "./HeroDetails";
-import { useRouter } from "next/router";
+import { Box, Button, Dialog, Grid } from "@mui/material"
+import React from "react"
+import HeroDetails from "./HeroDetails"
+import { useRouter } from "next/router"
 
 export default function HeroDetailsModal({ hero, setHero }) {
-  const router = useRouter();
+  const router = useRouter()
   const navigateHero = () => {
-    window.open(`/hero/${hero.id}`, `_blank`);
-  };
+    window.open(`/hero/${hero.id}`, `_blank`)
+  }
   return (
     <Dialog
       open={hero !== null}
       maxWidth={"xl"}
       onClose={() => {
-        setHero((h) => null);
+        setHero((h) => null)
       }}
     >
-      <Grid container sx={{ paddingBottom: "20px" }}>
+      <Grid
+        container
+        sx={{ paddingBottom: "20px" }}
+        bgcolor={"background.default"}
+      >
         <Grid item xs={6}>
           <Button variant={"text"} color={"primary"} onClick={navigateHero}>
             Show External Page
@@ -41,5 +45,5 @@ export default function HeroDetailsModal({ hero, setHero }) {
       </Grid>
       {hero !== null && <HeroDetails hero={hero}></HeroDetails>}
     </Dialog>
-  );
+  )
 }
