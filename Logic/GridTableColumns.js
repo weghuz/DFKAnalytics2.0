@@ -1263,7 +1263,7 @@ let columnDefs = [
     headerName: "StrBonus",
     field: "StrBonus",
     type: "number",
-    minWidth: 40,
+    minWidth: 55,
     flex: 1,
     visibility: true,
     valueGetter: ({ row }) => {
@@ -1289,7 +1289,7 @@ let columnDefs = [
     headerName: "DexBonus",
     field: "DexBonus",
     type: "number",
-    minWidth: 40,
+    minWidth: 55,
     flex: 1,
     visibility: true,
     valueGetter: ({ row }) => {
@@ -1313,7 +1313,7 @@ let columnDefs = [
     headerName: "AgiBonus",
     field: "AgiBonus",
     type: "number",
-    minWidth: 40,
+    minWidth: 55,
     flex: 1,
     visibility: true,
     valueGetter: ({ row }) => {
@@ -1337,7 +1337,7 @@ let columnDefs = [
     headerName: "VitBonus",
     field: "VitBonus",
     type: "number",
-    minWidth: 40,
+    minWidth: 55,
     flex: 1,
     visibility: true,
     valueGetter: ({ row }) => {
@@ -1360,7 +1360,7 @@ let columnDefs = [
   {
     headerName: "EndBonus",
     field: "EndBonus",
-    minWidth: 40,
+    minWidth: 55,
     flex: 1,
     visibility: true,
     type: "number",
@@ -1384,7 +1384,7 @@ let columnDefs = [
   {
     headerName: "IntBonus",
     field: "IntBonus",
-    minWidth: 40,
+    minWidth: 55,
     flex: 1,
     visibility: true,
     type: "number",
@@ -1408,7 +1408,7 @@ let columnDefs = [
   {
     headerName: "WisBonus",
     field: "WisBonus",
-    minWidth: 40,
+    minWidth: 55,
     flex: 1,
     visibility: true,
     type: "number",
