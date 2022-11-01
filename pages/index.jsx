@@ -160,10 +160,10 @@ export default function index() {
               </Typography>
               <Typography variant="body2">
                 {`Discover heroes using the powerful query tools of DFKAnalytics.
-                There are 81 different columns you can expose in the tables
+                There are over 100 different columns you can expose in the tables
                 comparing hundreds of heroes at a time. There are filters that
                 aren't available ingame yet like Perilous Journey stats and even
-                a filters for hero names.`}
+                a filter for hero names.`}
               </Typography>
             </CardContent>
             <CardActions>

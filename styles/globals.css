@@ -11,6 +11,10 @@ body {
 a {
   text-decoration: none;
 }
+p {
+  padding: 1px;
+  margin: 2px;
+}
 
 .MuiSlider-markLabel {
   min-height: 35px;

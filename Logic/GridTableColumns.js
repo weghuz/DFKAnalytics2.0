@@ -104,6 +104,22 @@ let columnDefs = [
     }
   },
   {
+    headerName: "ClassR2",
+    field: "R2.mainClass",
+    type: "string",
+    valueGetter: ({ row }) => {
+      return row.R2.mainClass
+    }
+  },
+  {
+    headerName: "ClassR3",
+    field: "R3.mainClass",
+    type: "string",
+    valueGetter: ({ row }) => {
+      return row.R3.mainClass
+    }
+  },
+  {
     headerName: "Class+",
     field: "Class+",
     minWidth: 150,
@@ -135,6 +151,22 @@ let columnDefs = [
     title: "R1 Subclass",
     valueGetter: ({ row }) => {
       return row.R1.subClass
+    }
+  },
+  {
+    headerName: "R2 Subclass",
+    field: "R2 Subclass",
+    title: "R2 Subclass",
+    valueGetter: ({ row }) => {
+      return row.R2.subClass
+    }
+  },
+  {
+    headerName: "R3 Subclass",
+    field: "R3 Subclass",
+    title: "R3 Subclass",
+    valueGetter: ({ row }) => {
+      return row.R3.subClass
     }
   },
   {
@@ -332,6 +364,24 @@ let columnDefs = [
     }
   },
   {
+    headerName: "SB1R2",
+    field: "SB1R2",
+    minWidth: 50,
+    flex: 1,
+    valueGetter: ({ row }) => {
+      return row.R2.statBoost1
+    }
+  },
+  {
+    headerName: "SB1R3",
+    field: "SB1R3",
+    minWidth: 50,
+    flex: 1,
+    valueGetter: ({ row }) => {
+      return row.R3.statBoost1
+    }
+  },
+  {
     headerName: "SB1+",
     field: "sb1+",
     minWidth: 150,
@@ -365,6 +415,24 @@ let columnDefs = [
     flex: 1,
     valueGetter: ({ row }) => {
       return row.R1.statBoost2
+    }
+  },
+  {
+    headerName: "SB2R2",
+    field: "sb2R2",
+    minWidth: 50,
+    flex: 1,
+    valueGetter: ({ row }) => {
+      return row.R2.statBoost2
+    }
+  },
+  {
+    headerName: "SB2R3",
+    field: "sb2R3",
+    minWidth: 50,
+    flex: 1,
+    valueGetter: ({ row }) => {
+      return row.R3.statBoost2
     }
   },
   {
@@ -422,6 +490,33 @@ let columnDefs = [
     field: "profession"
   },
   {
+    headerName: "ProfR1",
+    field: "profR1",
+    minWidth: 90,
+    flex: 1,
+    valueGetter: ({ row }) => {
+      return row.R1.profession
+    }
+  },
+  {
+    headerName: "ProfR2",
+    field: "profR2",
+    minWidth: 90,
+    flex: 1,
+    valueGetter: ({ row }) => {
+      return row.R2.profession
+    }
+  },
+  {
+    headerName: "ProfR3",
+    field: "profR3",
+    minWidth: 90,
+    flex: 1,
+    valueGetter: ({ row }) => {
+      return row.R3.profession
+    }
+  },
+  {
     headerName: "Profession+",
     field: "professionRecessives",
     minWidth: 100,
@@ -447,15 +542,6 @@ let columnDefs = [
           </div>
         </Tooltip>
       )
-    }
-  },
-  {
-    headerName: "ProfR1",
-    field: "profR1",
-    minWidth: 90,
-    flex: 1,
-    valueGetter: ({ row }) => {
-      return row.R1.profession
     }
   },
   {
@@ -712,6 +798,26 @@ let columnDefs = [
     }
   },
   {
+    headerName: "R2 Element",
+    field: "R2 Element",
+    Title: "R2 Element",
+    minWidth: 50,
+    flex: 1,
+    renderCell: ({ row }) => {
+      return <ElementCell>{row.R2.element}</ElementCell>
+    }
+  },
+  {
+    headerName: "R3 Element",
+    field: "R3 Element",
+    Title: "R3 Element",
+    minWidth: 50,
+    flex: 1,
+    renderCell: ({ row }) => {
+      return <ElementCell>{row.R3.element}</ElementCell>
+    }
+  },
+  {
     headerName: "Element+",
     field: "element+",
     minWidth: 100,
@@ -809,6 +915,24 @@ let columnDefs = [
     }
   },
   {
+    headerName: "A1R2",
+    field: "a1R2",
+    minWidth: 100,
+    flex: 1,
+    valueGetter: ({ row }) => {
+      return row.R2.active1
+    }
+  },
+  {
+    headerName: "A1R3",
+    field: "a1R3",
+    minWidth: 100,
+    flex: 1,
+    valueGetter: ({ row }) => {
+      return row.R3.active1
+    }
+  },
+  {
     headerName: "Active1+",
     field: "active1+",
     minWidth: 150,
@@ -852,6 +976,24 @@ let columnDefs = [
     }
   },
   {
+    headerName: "A2R2",
+    field: "a2R2",
+    minWidth: 100,
+    flex: 1,
+    valueGetter: ({ row }) => {
+      return row.R2.active2
+    }
+  },
+  {
+    headerName: "A2R3",
+    field: "a2R3",
+    minWidth: 100,
+    flex: 1,
+    valueGetter: ({ row }) => {
+      return row.R3.active2
+    }
+  },
+  {
     headerName: "Active2+",
     field: "active2+",
     minWidth: 150,
@@ -891,6 +1033,24 @@ let columnDefs = [
     flex: 1,
     renderCell: ({ row }) => {
       return row.R1.passive1
+    }
+  },
+  {
+    headerName: "P1R2",
+    field: "p1R2",
+    minWidth: 100,
+    flex: 1,
+    renderCell: ({ row }) => {
+      return row.R2.passive1
+    }
+  },
+  {
+    headerName: "P1R3",
+    field: "p1R3",
+    minWidth: 100,
+    flex: 1,
+    renderCell: ({ row }) => {
+      return row.R3.passive1
     }
   },
   {
@@ -937,6 +1097,24 @@ let columnDefs = [
     }
   },
   {
+    headerName: "P2R2",
+    field: "p2R2",
+    minWidth: 100,
+    flex: 1,
+    renderCell: ({ row }) => {
+      return row.R2.passive2
+    }
+  },
+  {
+    headerName: "P2R3",
+    field: "p2R3",
+    minWidth: 100,
+    flex: 1,
+    renderCell: ({ row }) => {
+      return row.R3.passive2
+    }
+  },
+  {
     headerName: "Passive2+",
     field: "passive2+",
     minWidth: 150,
@@ -976,6 +1154,24 @@ let columnDefs = [
     flex: 1,
     valueGetter: ({ row }) => {
       return row.R1.statsUnknown1
+    }
+  },
+  {
+    headerName: "SU1R2",
+    field: "su1R2",
+    minWidth: 40,
+    flex: 1,
+    valueGetter: ({ row }) => {
+      return row.R2.statsUnknown1
+    }
+  },
+  {
+    headerName: "SU1R3",
+    field: "su1R3",
+    minWidth: 40,
+    flex: 1,
+    valueGetter: ({ row }) => {
+      return row.R3.statsUnknown1
     }
   },
   {
@@ -1021,6 +1217,24 @@ let columnDefs = [
     flex: 1,
     valueGetter: ({ row }) => {
       return row.R1.statsUnknown2
+    }
+  },
+  {
+    headerName: "SU2R2",
+    field: "SU2R2",
+    minWidth: 40,
+    flex: 1,
+    valueGetter: ({ row }) => {
+      return row.R2.statsUnknown2
+    }
+  },
+  {
+    headerName: "SU2R3",
+    field: "SU2R3",
+    minWidth: 40,
+    flex: 1,
+    valueGetter: ({ row }) => {
+      return row.R3.statsUnknown2
     }
   },
   {
@@ -1263,7 +1477,7 @@ let columnDefs = [
     headerName: "StrBonus",
     field: "StrBonus",
     type: "number",
-    minWidth: 55,
+    minWidth: 65,
     flex: 1,
     visibility: true,
     valueGetter: ({ row }) => {
@@ -1289,7 +1503,7 @@ let columnDefs = [
     headerName: "DexBonus",
     field: "DexBonus",
     type: "number",
-    minWidth: 55,
+    minWidth: 65,
     flex: 1,
     visibility: true,
     valueGetter: ({ row }) => {
@@ -1313,7 +1527,7 @@ let columnDefs = [
     headerName: "AgiBonus",
     field: "AgiBonus",
     type: "number",
-    minWidth: 55,
+    minWidth: 65,
     flex: 1,
     visibility: true,
     valueGetter: ({ row }) => {
@@ -1337,7 +1551,7 @@ let columnDefs = [
     headerName: "VitBonus",
     field: "VitBonus",
     type: "number",
-    minWidth: 55,
+    minWidth: 65,
     flex: 1,
     visibility: true,
     valueGetter: ({ row }) => {
@@ -1360,7 +1574,7 @@ let columnDefs = [
   {
     headerName: "EndBonus",
     field: "EndBonus",
-    minWidth: 55,
+    minWidth: 65,
     flex: 1,
     visibility: true,
     type: "number",
@@ -1384,7 +1598,7 @@ let columnDefs = [
   {
     headerName: "IntBonus",
     field: "IntBonus",
-    minWidth: 55,
+    minWidth: 65,
     flex: 1,
     visibility: true,
     type: "number",
@@ -1408,7 +1622,7 @@ let columnDefs = [
   {
     headerName: "WisBonus",
     field: "WisBonus",
-    minWidth: 55,
+    minWidth: 65,
     flex: 1,
     visibility: true,
     type: "number",
@@ -1432,7 +1646,7 @@ let columnDefs = [
   {
     headerName: "lckBonus",
     field: "luckBonus",
-    minWidth: 55,
+    minWidth: 65,
     flex: 1,
     visibility: true,
     type: "number",
