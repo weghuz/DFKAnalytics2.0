@@ -18,7 +18,7 @@ export default function HeroDetailsModal({ hero, setHero }) {
     >
       <Grid
         container
-        sx={{ paddingBottom: "20px" }}
+        sx={{ paddingBottom: "1px" }}
         bgcolor={"background.default"}
       >
         <Grid item xs={6}>

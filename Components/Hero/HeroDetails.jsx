@@ -1,6 +1,5 @@
-import { Grid, Popover, Typography, useTheme } from "@mui/material"
+import { Container, Grid, Typography, useTheme } from "@mui/material"
 import { DataGridPro } from "@mui/x-data-grid-pro"
-import React from "react"
 import {
   appendageColorOrder,
   eyeColorTiers,
@@ -27,6 +26,7 @@ import HeroHairCell from "./HeroHairCell"
 import HeroHairColorCell from "./HeroHairColorCell"
 import HeroEyeColor from "./HeroEyeColor"
 import HeroSkinColor from "./HeroSkinColor"
+import useMediaQuery from "@mui/material/useMediaQuery"
 
 export default function HeroDetails({ hero }) {
   const theme = useTheme()
@@ -644,9 +644,17 @@ export default function HeroDetails({ hero }) {
         return
     }
   }
+  const mdLess = () => {
+    console.log(screen.width, screen.width < 680)
+    return screen.width < 680
+  }
   return (
-    <Grid container className={GetHeroRarity()} bgcolor={"background.default"}>
-      <Grid container spacing={2}>
+    <Container disableGutters={mdLess()}>
+      <Grid
+        container
+        className={GetHeroRarity()}
+        bgcolor={"background.default"}
+      >
         <Grid
           container
           item
@@ -656,10 +664,19 @@ export default function HeroDetails({ hero }) {
           justifyContent={"center"}
         >
           <Grid item xs={12}>
-            <Typography variant={"h5"} marginY={1}>
+            <Box marginBottom={"3px"}>
               <HeroId>{hero.heroId ? hero.heroId : hero.id}</HeroId> -{" "}
-              {FullName(hero)} - <PriceCell>{hero}</PriceCell>
-            </Typography>
+              {FullName(hero)} -{" "}
+              <Box
+                sx={{
+                  paddingX: "15px",
+                  display: "inline-block",
+                  width: "130px"
+                }}
+              >
+                <PriceCell>{hero}</PriceCell>
+              </Box>
+            </Box>
             Owner: <HeroOwnerName>{hero}</HeroOwnerName> -{" "}
             <HeroOwnerId>{hero}</HeroOwnerId>
           </Grid>
@@ -816,6 +833,6 @@ export default function HeroDetails({ hero }) {
           </Grid>
         </Grid>
       </Grid>
-    </Grid>
+    </Container>
   )
 }

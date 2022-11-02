@@ -22,6 +22,7 @@ export default function HeroOwnerId({ children }) {
         variant={"text"}
         onClick={CopyToClipboard}
         sx={{
+          overflow: "auto",
           cursor: "pointer",
           color: "primary.main",
           display: "inline-block"
