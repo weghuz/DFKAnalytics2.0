@@ -25,6 +25,8 @@ import HeroHairCell from "../Components/Hero/HeroHairCell"
 import HeroHairColorCell from "../Components/Hero/HeroHairColorCell"
 import HeroHeadAppendageCell from "../Components/Hero/HeroHeadAppendageCell"
 import HeroId from "../Components/Hero/HeroId"
+import HeroOwnerName from "../Components/Hero/HeroOwnerName"
+import HeroOwner from "../Components/Hero/HeroOwnerName"
 import HeroSkinColor from "../Components/Hero/HeroSkinColor"
 import HeroSummonsNext from "../Components/Hero/HeroSummonsNext"
 import PJBadge from "../Components/Hero/PJBadge"
@@ -1687,19 +1689,13 @@ let columnDefs = [
     headerName: "Owner",
     field: "owner",
     valueGetter: ({ row }) => {
-      if (row.owner == null) return row.owner
-      if (row.owner.id == "undefined") return null
-      return row.owner.name
+      return <HeroOwnerName>{row}</HeroOwnerName>
     }
   },
   {
     headerName: "Owner Address",
     field: "ownerAddress",
-    valueGetter: ({ row }) => {
-      if (row.owner == null) return row.owner
-      if (row.owner.id == "undefined") return null
-      return row.owner.id
-    }
+    valueGetter: ({ row }) => {}
   },
   {
     headerName: "Name",

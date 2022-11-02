@@ -1,36 +1,37 @@
-import { Box, Grid, Paper, Typography, useTheme } from "@mui/material"
-import { DataGrid } from "@mui/x-data-grid"
+import { Grid, Popover, Typography, useTheme } from "@mui/material"
 import { DataGridPro } from "@mui/x-data-grid-pro"
 import React from "react"
-import { classVars, FullName } from "../../Logic/HeroBase"
+import {
+  appendageColorOrder,
+  eyeColorTiers,
+  FullName,
+  hairColorOrder,
+  skinColorTiers
+} from "../../Logic/HeroBase"
 import ClassScoreCell from "./ClassScoreCell"
 import ElementCell from "./ElementCell"
 import GrowthScoreCell from "./GrowthScoreCell"
 import HeroGenderCell from "./HeroGenderCell"
 import HeroId from "./HeroId"
-import HeroSummonsNext from "./HeroSummonsNext"
-import PJBadge from "./PJBadge"
 import PriceCell from "./PriceCell"
 import RarityCell from "./RarityCell"
 import StatBonusCell from "./StatBonusCell"
+import Image from "next/image"
+import { Box } from "@mui/system"
+import HeroOwnerName from "./HeroOwnerName"
+import HeroOwnerId from "./HeroOwnerId"
+import HeroHeadAppendageCell from "./HeroHeadAppendageCell"
+import HeroColorCell from "./HeroColorCell"
+import HeroBackAppendageCell from "./HeroBackAppendageCell"
+import HeroHairCell from "./HeroHairCell"
+import HeroHairColorCell from "./HeroHairColorCell"
+import HeroEyeColor from "./HeroEyeColor"
+import HeroSkinColor from "./HeroSkinColor"
 
 export default function HeroDetails({ hero }) {
   const theme = useTheme()
   const getBasicColumns = () => {
     return [
-      {
-        headerName: "Cost",
-        field: "salePrice",
-        type: "number",
-        minWidth: 120,
-        flex: 1,
-        valueFormatter: ({ value }) => {
-          return Number(value)
-        },
-        renderCell: ({ row }) => {
-          return <PriceCell>{row}</PriceCell>
-        }
-      },
       { headerName: "Class", field: "mainClass", width: 100, flex: 1 },
       { headerName: "Subclass", field: "subClass", width: 100, flex: 1 },
       {
@@ -345,6 +346,111 @@ export default function HeroDetails({ hero }) {
       }
     ]
   }
+
+  const getVisualColumns1 = () => {
+    return [
+      {
+        headerName: "Head Appendage",
+        field: "headAppendage",
+        minWidth: 100,
+        flex: 1,
+        valueGetter: ({ value }) => {
+          return Number(value)
+        },
+        renderCell: ({ row }) => {
+          return <HeroHeadAppendageCell hero={row} />
+        }
+      },
+      {
+        headerName: "Appendage Color",
+        field: "appendageColor",
+        minWidth: 100,
+        flex: 1,
+        valueGetter: ({ value }) => {
+          return Number(appendageColorOrder[value])
+        },
+        renderCell: ({ row }) => {
+          return <HeroColorCell>{row.appendageColor}</HeroColorCell>
+        }
+      },
+      {
+        headerName: "Back Appendage",
+        field: "backAppendage",
+        minWidth: 100,
+        flex: 1,
+        valueGetter: ({ value }) => {
+          return Number(value)
+        },
+        renderCell: ({ row }) => {
+          return <HeroBackAppendageCell hero={row} />
+        }
+      },
+      {
+        headerName: "Back Appendage Color",
+        field: "backAppendageColor",
+        minWidth: 100,
+        flex: 1,
+        valueGetter: ({ value }) => {
+          return Number(appendageColorOrder[value])
+        },
+        renderCell: ({ row }) => {
+          return <HeroColorCell>{row.backAppendageColor}</HeroColorCell>
+        }
+      }
+    ]
+  }
+  const getVisualColumns2 = () => {
+    return [
+      {
+        headerName: "Hairstyle",
+        field: "hairStyle",
+        minWidth: 100,
+        flex: 1,
+        valueGetter: ({ value }) => {
+          return Number(value)
+        },
+        renderCell: ({ row }) => {
+          return <HeroHairCell hero={row} />
+        }
+      },
+      {
+        headerName: "Hair Color",
+        field: "hairColor",
+        minWidth: 100,
+        flex: 1,
+        valueGetter: ({ value }) => {
+          return Number(hairColorOrder[value])
+        },
+        renderCell: ({ row }) => {
+          return <HeroHairColorCell>{row.hairColor}</HeroHairColorCell>
+        }
+      },
+      {
+        headerName: "Eye color",
+        field: "eyeColor",
+        minWidth: 100,
+        flex: 1,
+        valueGetter: ({ value }) => {
+          return Number(eyeColorTiers[value])
+        },
+        renderCell: ({ row }) => {
+          return <HeroEyeColor>{row.eyeColor}</HeroEyeColor>
+        }
+      },
+      {
+        headerName: "Skin color",
+        field: "skinColor",
+        minWidth: 100,
+        flex: 1,
+        valueGetter: ({ value }) => {
+          return Number(skinColorTiers[value])
+        },
+        renderCell: ({ row }) => {
+          return <HeroSkinColor>{row.skinColor}</HeroSkinColor>
+        }
+      }
+    ]
+  }
   const getGrowthColumns = () => {
     return [
       { headerName: "Growth", field: "class", width: 100, flex: 1 },
@@ -522,17 +628,29 @@ export default function HeroDetails({ hero }) {
       }
     ]
   }
+  const GetHeroRarity = () => {
+    switch (hero.rarity) {
+      case 0:
+        return "common"
+      case 1:
+        return "uncommon"
+      case 2:
+        return "rare"
+      case 3:
+        return "legendary"
+      case 4:
+        return "mythic"
+      default:
+        return
+    }
+  }
   return (
-    <Grid container justifyContent={"center"} bgcolor={"background.default"}>
-      <Grid
-        container
-        justifyContent={"center"}
-        alignSelf={"center"}
-        spacing={2}
-      >
+    <Grid container className={GetHeroRarity()} bgcolor={"background.default"}>
+      <Grid container spacing={2}>
         <Grid
           container
           item
+          display={"flex"}
           textAlign={"center"}
           xs={12}
           justifyContent={"center"}
@@ -540,8 +658,10 @@ export default function HeroDetails({ hero }) {
           <Grid item xs={12}>
             <Typography variant={"h5"} marginY={1}>
               <HeroId>{hero.heroId ? hero.heroId : hero.id}</HeroId> -{" "}
-              {FullName(hero)}
+              {FullName(hero)} - <PriceCell>{hero}</PriceCell>
             </Typography>
+            Owner: <HeroOwnerName>{hero}</HeroOwnerName> -{" "}
+            <HeroOwnerId>{hero}</HeroOwnerId>
           </Grid>
           <Grid
             item
@@ -550,47 +670,34 @@ export default function HeroDetails({ hero }) {
             justifyContent={"center"}
             marginBottom={"50px"}
           >
+            <Box
+              sx={{
+                width: 84,
+                height: 100
+              }}
+              className={GetHeroRarity()}
+            >
+              <Image
+                src={`https://heroes.defikingdoms.com/image/${
+                  hero.heroId ? hero.heroId : hero.id
+                }`}
+                layout={"fixed"}
+                width={100}
+                height={111}
+              ></Image>
+            </Box>
             <Grid
               item
               minWidth={"300px"}
               width={"100%"}
-              maxWidth={"500px"}
+              maxWidth={"200px"}
               margin={"5px"}
             >
               <DataGridPro
                 columns={getBasicColumns()}
                 rows={[hero]}
                 autoHeight={true}
-                density={"compact"}
-                hideFooter={true}
-              ></DataGridPro>
-            </Grid>
-            <Grid
-              minWidth={"200px"}
-              width={"100%"}
-              maxWidth={"500px"}
-              margin={"5px"}
-            >
-              <DataGridPro
-                columns={getBasicColumns2()}
-                width={"100%"}
-                rows={[hero]}
-                autoHeight={true}
-                density={"compact"}
-                hideFooter={true}
-              ></DataGridPro>
-            </Grid>
-            <Grid
-              minWidth={"200px"}
-              width={"100%"}
-              maxWidth={"800px"}
-              margin={"5px"}
-            >
-              <DataGridPro
-                columns={getStatsColumns()}
-                width={"100%"}
-                rows={[hero]}
-                autoHeight={true}
+                disableColumnSelector={true}
                 density={"compact"}
                 hideFooter={true}
               ></DataGridPro>
@@ -602,7 +709,73 @@ export default function HeroDetails({ hero }) {
               margin={"5px"}
             >
               <DataGridPro
+                disableColumnSelector={true}
+                columns={getBasicColumns2()}
+                width={"100%"}
+                rows={[hero]}
+                autoHeight={true}
+                density={"compact"}
+                hideFooter={true}
+              ></DataGridPro>
+            </Grid>
+            <Grid
+              minWidth={"200px"}
+              width={"100%"}
+              maxWidth={"500px"}
+              margin={"5px"}
+            >
+              <DataGridPro
+                disableColumnSelector={true}
+                columns={getStatsColumns()}
+                width={"100%"}
+                rows={[hero]}
+                autoHeight={true}
+                density={"compact"}
+                hideFooter={true}
+              ></DataGridPro>
+            </Grid>
+            <Grid
+              minWidth={"200px"}
+              width={"100%"}
+              maxWidth={"350px"}
+              margin={"5px"}
+            >
+              <DataGridPro
+                disableColumnSelector={true}
                 columns={getProfessionColumns()}
+                width={"100%"}
+                rows={[hero]}
+                autoHeight={true}
+                density={"compact"}
+                hideFooter={true}
+              ></DataGridPro>
+            </Grid>
+
+            <Grid
+              minWidth={"200px"}
+              width={"100%"}
+              maxWidth={"420px"}
+              margin={"5px"}
+            >
+              <DataGridPro
+                disableColumnSelector={true}
+                columns={getVisualColumns1()}
+                width={"100%"}
+                rows={[hero]}
+                autoHeight={true}
+                density={"compact"}
+                hideFooter={true}
+              ></DataGridPro>
+            </Grid>
+            <Grid
+              minWidth={"200px"}
+              width={"100%"}
+              maxWidth={"420px"}
+              margin={"5px"}
+            >
+              <DataGridPro
+                disableColumnSelector={true}
+                columns={getVisualColumns2()}
                 width={"100%"}
                 rows={[hero]}
                 autoHeight={true}
@@ -617,6 +790,7 @@ export default function HeroDetails({ hero }) {
               margin={"5px"}
             >
               <DataGridPro
+                disableColumnSelector={true}
                 autoHeight={true}
                 density={"compact"}
                 columns={getGrowthColumns()}
@@ -631,6 +805,7 @@ export default function HeroDetails({ hero }) {
               margin={"5px"}
             >
               <DataGridPro
+                disableColumnSelector={true}
                 autoHeight={true}
                 density={"compact"}
                 columns={getRecessiveColumns()}
