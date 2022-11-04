@@ -1,12 +1,12 @@
-const { useTheme } = require("@mui/system");
+const { useTheme } = require("@mui/system")
 
-const professions = ["mining", "foraging", "gardening", "fishing"];
+const professions = ["mining", "foraging", "gardening", "fishing"]
 const professionStats = {
   mining: ["strength", "endurance"],
   foraging: ["intelligence", "dexterity"],
   gardening: ["vitality", "wisdom"],
-  fishing: ["agility", "luck"],
-};
+  fishing: ["agility", "luck"]
+}
 const stats = [
   "Strength",
   "Dexterity",
@@ -15,8 +15,8 @@ const stats = [
   "Endurance",
   "Intelligence",
   "Wisdom",
-  "Luck",
-];
+  "Luck"
+]
 const hairStyle = {
   male: {
     0: "Battle Hawk",
@@ -36,7 +36,7 @@ const hairStyle = {
     20: "Hedgehog",
     24: "Skegg",
     25: "Shinobi",
-    28: "Perfect Form",
+    28: "Perfect Form"
   },
 
   female: {
@@ -57,9 +57,9 @@ const hairStyle = {
     20: "Goddess Locks",
     24: "Ethereal Waterfall",
     25: "Kunoichi",
-    28: "Lunar Light Odango",
-  },
-};
+    28: "Lunar Light Odango"
+  }
+}
 const backAppendage = {
   0: "None",
   1: "Monkey Tail",
@@ -78,8 +78,8 @@ const backAppendage = {
   20: "Fallen Angel",
   24: "Aura of the Inner Grove",
   25: "Ancient Orbs",
-  28: "Cecaelia Tentacles",
-};
+  28: "Cecaelia Tentacles"
+}
 const cosmeticTier = {
   0: "Basic1",
   1: "Basic2",
@@ -98,8 +98,8 @@ const cosmeticTier = {
   20: "Advanced5",
   24: "Elite1",
   25: "Elite2",
-  28: "Transcendent1",
-};
+  28: "Transcendent1"
+}
 const headAppendage = {
   0: "None",
   1: "Kitsune Ears",
@@ -118,8 +118,8 @@ const headAppendage = {
   20: "Fallen Angel Coronet",
   24: "Wood Elf Ears",
   25: "Snow Elf Ears",
-  28: "Insight Jewel",
-};
+  28: "Insight Jewel"
+}
 const eyeColorNames = {
   203997: "Blue",
   896693: "Pink",
@@ -128,8 +128,8 @@ const eyeColorNames = {
   "2494a2": "Azure",
   "0d7634": "Green",
   "613d8a": "Purple",
-  a41e12: "Red",
-};
+  a41e12: "Red"
+}
 const eyeColorTiers = {
   203997: 1,
   896693: 2,
@@ -138,8 +138,8 @@ const eyeColorTiers = {
   "2494a2": 5,
   "0d7634": 6,
   "613d8a": 7,
-  a41e12: 8,
-};
+  a41e12: 8
+}
 const skinColorNames = {
   e6a861: "Honey",
   f1ca9e: "Vanilla",
@@ -148,8 +148,8 @@ const skinColorNames = {
   aa5c38: "Almond",
   "985e1c": "Golden",
   "7b4a11": "Toffee",
-  "57340c": "Cocoa",
-};
+  "57340c": "Cocoa"
+}
 const skinColorTiers = {
   f1ca9e: 1,
   e5ac91: 2,
@@ -158,8 +158,8 @@ const skinColorTiers = {
   aa5c38: 5,
   "985e1c": 6,
   "7b4a11": 7,
-  "57340c": 8,
-};
+  "57340c": 8
+}
 const appendageColorTiers = {
   c5bfa7: "Basic1",
   a88b47: "Basic2",
@@ -178,8 +178,8 @@ const appendageColorTiers = {
   147256: "Advanced5",
   c29d35: "Elite1",
   353132: "Elite2",
-  d7d7d7: "Transcendent1",
-};
+  d7d7d7: "Transcendent1"
+}
 const appendageColorOrder = {
   c5bfa7: 0,
   a88b47: 1,
@@ -198,48 +198,48 @@ const appendageColorOrder = {
   147256: 20,
   c29d35: 24,
   353132: 25,
-  d7d7d7: 28,
-};
+  d7d7d7: 28
+}
 const appendageColorNames = {
   c5bfa7: "Dark Vanilla",
-  a88b47: "Bronze (Metallic)",
-  "58381e": "Liver (Dogs)",
-  "566f7d": "Dark Electric Blue",
-  "2a386d": "Indigo (Rainbow)",
+  a88b47: "Bronze",
+  "58381e": "Liver",
+  "566f7d": "Electric Blue",
+  "2a386d": "Indigo",
   "3f2e40": "Onyx",
-  "830e18": "UP Maroon",
+  "830e18": "Dark Red",
   "6f3a3c": "Catawba",
   cddef0: "Columbia Blue",
-  df7126: "Deep Carrot Orange",
-  "6b173c": "Brown Chocolate",
-  a0304d: "Amaranth Purple",
+  df7126: "Deep Carrot",
+  "6b173c": "Red Wine",
+  a0304d: "Maroon",
   "78547c": "Old Lavender",
   "352a51": "Jacarta",
   147256: "Salem",
-  c29d35: "Satin Sheen Gold",
+  c29d35: "Satin Gold",
   353132: "Dark Charcoal",
-  d7d7d7: "Light Silver",
-};
+  d7d7d7: "Light Silver"
+}
 const hairColorNames = {
-  ab9159: "Bronze (Metallic)",
-  af3853: "Maroon (X11)",
+  ab9159: "Dried Mud",
+  af3853: "Light Red",
   578761: "Middle Green",
   "068483": "Teal Green",
   "48321e": "Café Noir",
-  "66489e": "Dark Lavender",
+  "66489e": "Lavender",
   ca93a7: "Parrot Pink",
   "62a7e6": "Blue Jeans",
-  c34b1e: "Dark Pastel Red",
+  c34b1e: "Pastel Red",
   326988: "Teal Blue",
   d7bc65: "Earth Yellow",
-  "9b68ab": "Purple Mountain Majesty",
+  "9b68ab": "Purple Majesty",
   "8d6b3a": "Raw Umber",
-  566377: "Dark Electric Blue",
-  275435: "Cal Poly Pomona Green",
+  566377: "Electric Blue",
+  275435: "Pomona Green",
   880016: "Red Devil",
   353132: "Dark Charcoal",
-  "8f9bb3": "Cadet Grey",
-};
+  "8f9bb3": "Cadet Grey"
+}
 const hairColorTiers = {
   ab9159: "Basic1",
   af3853: "Basic2",
@@ -258,8 +258,8 @@ const hairColorTiers = {
   275435: "Advanced5",
   880016: "Elite1",
   353132: "Elite2",
-  "8f9bb3": "Transcendent1",
-};
+  "8f9bb3": "Transcendent1"
+}
 const hairColorOrder = {
   ab9159: 0,
   af3853: 1,
@@ -278,10 +278,10 @@ const hairColorOrder = {
   275435: 20,
   880016: 24,
   353132: 25,
-  "8f9bb3": 28,
-};
-const statBoost = ["STR", "DEX", "AGI", "VIT", "END", "INT", "WIS", "LCK"];
-const rarities = ["Common", "Uncommon", "Rare", "Legendary", "Mythic"];
+  "8f9bb3": 28
+}
+const statBoost = ["STR", "DEX", "AGI", "VIT", "END", "INT", "WIS", "LCK"]
+const rarities = ["Common", "Uncommon", "Rare", "Legendary", "Mythic"]
 const classes = [
   "warrior",
   "knight",
@@ -290,8 +290,8 @@ const classes = [
   "pirate",
   "monk",
   "priest",
-  "wizard",
-];
+  "wizard"
+]
 
 const TrainStat = (hero, theme) => {
   let stats = [
@@ -299,103 +299,103 @@ const TrainStat = (hero, theme) => {
       name: "STR",
       amount: hero.strength,
       link: "https://beta.defikingdoms.com/#/tavern",
-      linkName: "Tavern: Ice Reaver Zaine - Arm Wrestling",
+      linkName: "Tavern: Ice Reaver Zaine - Arm Wrestling"
     },
     {
       name: "DEX",
       amount: hero.dexterity,
       link: "https://beta.defikingdoms.com/#/tavern",
-      linkName: "Tavern: Layla - Darts",
+      linkName: "Tavern: Layla - Darts"
     },
     {
       name: "AGI",
       amount: hero.agility,
       link: "https://beta.defikingdoms.com/#/marketplace",
-      linkName: "Marketplace: Street Kid Carlin - Game of Ball",
+      linkName: "Marketplace: Street Kid Carlin - Game of Ball"
     },
     {
       name: "VIT",
       amount: hero.vitality,
       link: "https://beta.defikingdoms.com/#/gardens",
-      linkName: "Gardens: Farmer Quill - Helping the Farm",
+      linkName: "Gardens: Farmer Quill - Helping the Farm"
     },
     {
       name: "END",
       amount: hero.endurance,
       link: "https://beta.defikingdoms.com/#/marketplace",
-      linkName: "Marketplace: Isabelle - Dancing",
+      linkName: "Marketplace: Isabelle - Dancing"
     },
     {
       name: "INT",
       amount: hero.intelligence,
       link: "https://beta.defikingdoms.com/#/alchemist",
-      linkName: "Alchemist: Arnold - Alchemist Assistance",
+      linkName: "Alchemist: Arnold - Alchemist Assistance"
     },
     {
       name: "WIS",
       amount: hero.wisdom,
       link: "https://beta.defikingdoms.com/#/castle",
-      linkName: "Castle: Orvin - Puzzle Solving",
+      linkName: "Castle: Orvin - Puzzle Solving"
     },
     {
       name: "LCK",
       amount: hero.luck,
       link: "https://beta.defikingdoms.com/#/tavern",
-      linkName: "Tavern: Lucky Moe - Card Game",
-    },
-  ];
-  stats.find((s) => s.name == hero.statBoost1).amount += 1;
-  stats.find((s) => s.name == hero.statBoost2).amount += 3;
+      linkName: "Tavern: Lucky Moe - Card Game"
+    }
+  ]
+  stats.find((s) => s.name == hero.statBoost1).amount += 1
+  stats.find((s) => s.name == hero.statBoost2).amount += 3
   let highest = stats.reduce(
     (stat, compare) => {
       if (stat.amount < compare.amount) {
-        return compare;
+        return compare
       }
-      return stat;
+      return stat
     },
     { name: "", amount: 0, color: "" }
-  );
-  highest.color = "";
+  )
+  highest.color = ""
   if (highest.name == hero.statBoost1 && highest.name == hero.statBoost2) {
-    highest.color = "info.main";
+    highest.color = "info.main"
   } else if (highest.name == hero.statBoost1) {
-    highest.color = "success.main";
+    highest.color = "success.main"
   } else if (highest.name == hero.statBoost2) {
-    highest.color = "primary.main";
+    highest.color = "primary.main"
   }
-  hero.TrainStat = highest;
-  return hero.TrainStat;
-  hero.TrainStat = 0;
-};
+  hero.TrainStat = highest
+  return hero.TrainStat
+  hero.TrainStat = 0
+}
 
 const calculateRequiredXp = (currentLevel) => {
-  let xpNeeded;
-  const nextLevel = currentLevel + 1;
+  let xpNeeded
+  const nextLevel = currentLevel + 1
   switch (true) {
     case currentLevel < 6:
-      xpNeeded = nextLevel * 1000;
-      break;
+      xpNeeded = nextLevel * 1000
+      break
     case currentLevel < 9:
-      xpNeeded = 4000 + (nextLevel - 5) * 2000;
-      break;
+      xpNeeded = 4000 + (nextLevel - 5) * 2000
+      break
     case currentLevel < 16:
-      xpNeeded = 12000 + (nextLevel - 9) * 4000;
-      break;
+      xpNeeded = 12000 + (nextLevel - 9) * 4000
+      break
     case currentLevel < 36:
-      xpNeeded = 40000 + (nextLevel - 16) * 5000;
-      break;
+      xpNeeded = 40000 + (nextLevel - 16) * 5000
+      break
     case currentLevel < 56:
-      xpNeeded = 140000 + (nextLevel - 36) * 7500;
-      break;
+      xpNeeded = 140000 + (nextLevel - 36) * 7500
+      break
     case currentLevel >= 56:
-      xpNeeded = 290000 + (nextLevel - 56) * 10000;
-      break;
+      xpNeeded = 290000 + (nextLevel - 56) * 10000
+      break
     default:
-      xpNeeded = 0;
-      break;
+      xpNeeded = 0
+      break
   }
-  return xpNeeded;
-};
+  return xpNeeded
+}
 
 const statsGenesMap = {
   0: "mainClass",
@@ -409,8 +409,8 @@ const statsGenesMap = {
   8: "statBoost2",
   9: "statsUnknown1",
   10: "element",
-  11: "statsUnknown2",
-};
+  11: "statsUnknown2"
+}
 
 const choices = {
   gender: { 1: "male", 3: "female" },
@@ -422,7 +422,7 @@ const choices = {
     8: "swamp",
     10: "mountains",
     12: "city",
-    14: "arctic",
+    14: "arctic"
   },
   mainClass: {
     0: "Warrior",
@@ -442,7 +442,7 @@ const choices = {
     20: "Shapeshifter",
     24: "Dragoon",
     25: "Sage",
-    28: "DreadKnight",
+    28: "DreadKnight"
   },
   skinColor: {
     0: "c58135",
@@ -452,7 +452,7 @@ const choices = {
     8: "e6a861",
     10: "7b4a11",
     12: "e5ac91",
-    14: "aa5c38",
+    14: "aa5c38"
   },
   hairColor: {
     0: "ab9159",
@@ -469,7 +469,7 @@ const choices = {
     19: "566377",
     24: "880016",
     25: "353132",
-    28: "8f9bb3",
+    28: "8f9bb3"
   },
   eyeColor: {
     0: "203997",
@@ -479,7 +479,7 @@ const choices = {
     8: "8d7136",
     10: "613d8a",
     12: "2494a2",
-    14: "a41e12",
+    14: "a41e12"
   },
   appendageColor: {
     0: "c5bfa7",
@@ -496,7 +496,7 @@ const choices = {
     19: "352a51",
     24: "c29d35",
     25: "211f1f",
-    28: "d7d7d7",
+    28: "d7d7d7"
   },
   backAppendageColor: {
     0: "c5bfa7",
@@ -513,7 +513,7 @@ const choices = {
     19: "352a51",
     24: "c29d35",
     25: "211f1f",
-    28: "d7d7d7",
+    28: "d7d7d7"
   },
   hairStyle: {
     0: 0,
@@ -530,7 +530,7 @@ const choices = {
     19: 19,
     24: 24,
     25: 25,
-    28: 28,
+    28: 28
   },
   backAppendage: {
     0: 0,
@@ -547,7 +547,7 @@ const choices = {
     19: 19,
     24: 24,
     25: 25,
-    28: 28,
+    28: 28
   },
   headAppendage: {
     0: 0,
@@ -564,7 +564,7 @@ const choices = {
     19: 19,
     24: 24,
     25: 25,
-    28: 28,
+    28: 28
   },
   subClass: {
     0: "Warrior",
@@ -584,13 +584,13 @@ const choices = {
     20: "Shapeshifter",
     24: "Dragoon",
     25: "Sage",
-    28: "DreadKnight",
+    28: "DreadKnight"
   },
   profession: {
     0: "mining",
     2: "gardening",
     4: "fishing",
-    6: "foraging",
+    6: "foraging"
   },
   passive1: {
     0: "Basic1",
@@ -607,7 +607,7 @@ const choices = {
     19: "Advanced4",
     24: "Elite1",
     25: "Elite2",
-    28: "Transcendent1",
+    28: "Transcendent1"
   },
   passive2: {
     0: "Basic1",
@@ -624,7 +624,7 @@ const choices = {
     19: "Advanced4",
     24: "Elite1",
     25: "Elite2",
-    28: "Transcendent1",
+    28: "Transcendent1"
   },
   active1: {
     0: "Basic1",
@@ -641,7 +641,7 @@ const choices = {
     19: "Advanced4",
     24: "Elite1",
     25: "Elite2",
-    28: "Transcendent1",
+    28: "Transcendent1"
   },
   active2: {
     0: "Basic1",
@@ -658,7 +658,7 @@ const choices = {
     19: "Advanced4",
     24: "Elite1",
     25: "Elite2",
-    28: "Transcendent1",
+    28: "Transcendent1"
   },
   statBoost1: {
     0: "STR",
@@ -668,7 +668,7 @@ const choices = {
     8: "LCK",
     10: "VIT",
     12: "END",
-    14: "DEX",
+    14: "DEX"
   },
   statBoost2: {
     0: "STR",
@@ -678,7 +678,7 @@ const choices = {
     8: "LCK",
     10: "VIT",
     12: "END",
-    14: "DEX",
+    14: "DEX"
   },
   element: {
     0: "fire",
@@ -688,7 +688,7 @@ const choices = {
     8: "lightning",
     10: "ice",
     12: "light",
-    14: "dark",
+    14: "dark"
   },
   visualUnknown1: {
     0: 0,
@@ -713,7 +713,7 @@ const choices = {
     19: 19,
     24: 24,
     25: 25,
-    28: 28,
+    28: 28
   },
   visualUnknown2: {
     0: 0,
@@ -738,7 +738,7 @@ const choices = {
     19: 19,
     24: 24,
     25: 25,
-    28: 28,
+    28: 28
   },
   statsUnknown1: {
     0: 0,
@@ -763,7 +763,7 @@ const choices = {
     19: 19,
     24: 24,
     25: 25,
-    28: 28,
+    28: 28
   },
   statsUnknown2: {
     0: 0,
@@ -788,28 +788,28 @@ const choices = {
     19: 19,
     24: 24,
     25: 25,
-    28: 28,
-  },
-};
+    28: 28
+  }
+}
 
 function getRecessives(hero) {
   const rawKai = genesToKai(BigInt(hero.statGenes.toString()))
     .split(" ")
-    .join("");
-  const genes = {};
-  const Dominant = {};
-  const R1 = {};
-  const R2 = {};
-  const R3 = {};
-  const genePoolArray = [];
+    .join("")
+  const genes = {}
+  const Dominant = {}
+  const R1 = {}
+  const R2 = {}
+  const R3 = {}
+  const genePoolArray = []
   for (const k in rawKai.split("")) {
     if (rawKai.hasOwnProperty(k)) {
-      const trait = statsGenesMap[Math.floor(Number(k) / 4)];
+      const trait = statsGenesMap[Math.floor(Number(k) / 4)]
 
-      const kai = rawKai[k];
-      const valueNum = kai2dec(kai);
-      genes[trait] = choices[trait][valueNum];
-      genePoolArray.push(genes[trait]);
+      const kai = rawKai[k]
+      const valueNum = kai2dec(kai)
+      genes[trait] = choices[trait][valueNum]
+      genePoolArray.push(genes[trait])
 
       for (let i = 0; i < genePoolArray.length; i++) {
         if (
@@ -826,7 +826,7 @@ function getRecessives(hero) {
           i == 40 ||
           i == 44
         ) {
-          R3[trait] = genePoolArray[i];
+          R3[trait] = genePoolArray[i]
         } else if (
           i == 1 ||
           i == 5 ||
@@ -841,7 +841,7 @@ function getRecessives(hero) {
           i == 41 ||
           i == 45
         ) {
-          R2[trait] = genePoolArray[i];
+          R2[trait] = genePoolArray[i]
         } else if (
           i == 2 ||
           i == 6 ||
@@ -856,7 +856,7 @@ function getRecessives(hero) {
           i == 42 ||
           i == 46
         ) {
-          R1[trait] = genePoolArray[i];
+          R1[trait] = genePoolArray[i]
         } else if (
           i == 3 ||
           i == 7 ||
@@ -871,15 +871,15 @@ function getRecessives(hero) {
           i == 43 ||
           i == 47
         ) {
-          Dominant[trait] = genePoolArray[i];
+          Dominant[trait] = genePoolArray[i]
         }
       }
     }
   }
-  hero.R1 = R1;
-  hero.R2 = R2;
-  hero.R3 = R3;
-  return;
+  hero.R1 = R1
+  hero.R2 = R2
+  hero.R3 = R3
+  return
 }
 
 const visualGenesMap = {
@@ -894,30 +894,30 @@ const visualGenesMap = {
   8: "skinColor",
   9: "appendageColor",
   10: "backAppendageColor",
-  11: "visualUnknown2",
-};
+  11: "visualUnknown2"
+}
 
 function genesToKai(genes) {
-  const ALPHABET = "123456789abcdefghijkmnopqrstuvwx";
-  const BASE = BigInt(ALPHABET.length);
+  const ALPHABET = "123456789abcdefghijkmnopqrstuvwx"
+  const BASE = BigInt(ALPHABET.length)
 
-  let buf = "";
+  let buf = ""
   while (genes >= BASE) {
-    const mod = genes % BASE;
-    buf = ALPHABET[Number(mod)] + buf;
-    genes = (genes - mod) / BASE;
+    const mod = genes % BASE
+    buf = ALPHABET[Number(mod)] + buf
+    genes = (genes - mod) / BASE
   }
 
-  buf = ALPHABET[Number(genes)] + buf;
+  buf = ALPHABET[Number(genes)] + buf
 
-  buf = buf.padStart(48, "1");
+  buf = buf.padStart(48, "1")
 
-  return buf.replace(/(.{4})/g, "$1 ");
+  return buf.replace(/(.{4})/g, "$1 ")
 }
 
 function kai2dec(kai) {
-  const ALPHABET = "123456789abcdefghijkmnopqrstuvwx";
-  return ALPHABET.indexOf(kai);
+  const ALPHABET = "123456789abcdefghijkmnopqrstuvwx"
+  return ALPHABET.indexOf(kai)
 }
 
 var heroClasses = [
@@ -935,8 +935,8 @@ var heroClasses = [
   "Ninja",
   "Dragoon",
   "Sage",
-  "DreadKnight",
-];
+  "DreadKnight"
+]
 
 var classVars = {
   Warrior: {
@@ -948,7 +948,7 @@ var classVars = {
       end: 0.65,
       int: 0.2,
       wis: 0.2,
-      lck: 0.2,
+      lck: 0.2
     },
     base: {
       str: 11,
@@ -958,8 +958,8 @@ var classVars = {
       end: 8,
       int: 5,
       wis: 5,
-      lck: 7,
-    },
+      lck: 7
+    }
   },
   Knight: {
     growth: {
@@ -970,7 +970,7 @@ var classVars = {
       end: 0.75,
       int: 0.2,
       wis: 0.25,
-      lck: 0.35,
+      lck: 0.35
     },
     base: {
       str: 10,
@@ -980,8 +980,8 @@ var classVars = {
       end: 10,
       int: 5,
       wis: 6,
-      lck: 7,
-    },
+      lck: 7
+    }
   },
   Thief: {
     growth: {
@@ -992,7 +992,7 @@ var classVars = {
       end: 0.45,
       int: 0.25,
       wis: 0.35,
-      lck: 0.65,
+      lck: 0.65
     },
     base: {
       str: 7,
@@ -1002,8 +1002,8 @@ var classVars = {
       end: 6,
       int: 6,
       wis: 7,
-      lck: 10,
-    },
+      lck: 10
+    }
   },
   Archer: {
     growth: {
@@ -1014,7 +1014,7 @@ var classVars = {
       end: 0.6,
       int: 0.4,
       wis: 0.25,
-      lck: 0.4,
+      lck: 0.4
     },
     base: {
       str: 7,
@@ -1024,8 +1024,8 @@ var classVars = {
       end: 7,
       int: 7,
       wis: 6,
-      lck: 8,
-    },
+      lck: 8
+    }
   },
   Priest: {
     growth: {
@@ -1036,7 +1036,7 @@ var classVars = {
       end: 0.6,
       int: 0.7,
       wis: 0.8,
-      lck: 0.4,
+      lck: 0.4
     },
     base: {
       str: 5,
@@ -1046,8 +1046,8 @@ var classVars = {
       end: 7,
       int: 10,
       wis: 13,
-      lck: 7,
-    },
+      lck: 7
+    }
   },
   Wizard: {
     growth: {
@@ -1058,7 +1058,7 @@ var classVars = {
       end: 0.5,
       int: 0.8,
       wis: 0.8,
-      lck: 0.4,
+      lck: 0.4
     },
     base: {
       str: 5,
@@ -1068,8 +1068,8 @@ var classVars = {
       end: 6,
       int: 12,
       wis: 12,
-      lck: 7,
-    },
+      lck: 7
+    }
   },
   Monk: {
     growth: {
@@ -1080,7 +1080,7 @@ var classVars = {
       end: 0.55,
       int: 0.25,
       wis: 0.5,
-      lck: 0.3,
+      lck: 0.3
     },
     base: {
       str: 8,
@@ -1090,8 +1090,8 @@ var classVars = {
       end: 8,
       int: 6,
       wis: 8,
-      lck: 6,
-    },
+      lck: 6
+    }
   },
   Pirate: {
     growth: {
@@ -1102,7 +1102,7 @@ var classVars = {
       end: 0.55,
       int: 0.2,
       wis: 0.2,
-      lck: 0.55,
+      lck: 0.55
     },
     base: {
       str: 9,
@@ -1112,8 +1112,8 @@ var classVars = {
       end: 7,
       int: 5,
       wis: 5,
-      lck: 10,
-    },
+      lck: 10
+    }
   },
   Berserker: {
     growth: {
@@ -1124,7 +1124,7 @@ var classVars = {
       end: 0.6,
       int: 0.2,
       wis: 0.2,
-      lck: 0.4,
+      lck: 0.4
     },
     base: {
       str: 14,
@@ -1134,8 +1134,8 @@ var classVars = {
       end: 8,
       int: 5,
       wis: 5,
-      lck: 6,
-    },
+      lck: 6
+    }
   },
   Seer: {
     growth: {
@@ -1146,7 +1146,7 @@ var classVars = {
       end: 0.5,
       int: 0.7,
       wis: 0.8,
-      lck: 0.35,
+      lck: 0.35
     },
     base: {
       str: 5,
@@ -1156,8 +1156,8 @@ var classVars = {
       end: 6,
       int: 10,
       wis: 13,
-      lck: 6,
-    },
+      lck: 6
+    }
   },
   Paladin: {
     growth: {
@@ -1168,7 +1168,7 @@ var classVars = {
       end: 0.8,
       int: 0.3,
       wis: 0.65,
-      lck: 0.4,
+      lck: 0.4
     },
     base: {
       str: 10,
@@ -1178,8 +1178,8 @@ var classVars = {
       end: 10,
       int: 6,
       wis: 10,
-      lck: 7,
-    },
+      lck: 7
+    }
   },
   DarkKnight: {
     growth: {
@@ -1190,7 +1190,7 @@ var classVars = {
       end: 0.6,
       int: 0.7,
       wis: 0.35,
-      lck: 0.35,
+      lck: 0.35
     },
     base: {
       str: 14,
@@ -1200,8 +1200,8 @@ var classVars = {
       end: 7,
       int: 8,
       wis: 6,
-      lck: 6,
-    },
+      lck: 6
+    }
   },
   Summoner: {
     growth: {
@@ -1212,7 +1212,7 @@ var classVars = {
       end: 0.5,
       int: 0.85,
       wis: 0.85,
-      lck: 0.4,
+      lck: 0.4
     },
     base: {
       str: 6,
@@ -1222,8 +1222,8 @@ var classVars = {
       end: 6,
       int: 14,
       wis: 12,
-      lck: 7,
-    },
+      lck: 7
+    }
   },
   Ninja: {
     growth: {
@@ -1234,7 +1234,7 @@ var classVars = {
       end: 0.4,
       int: 0.5,
       wis: 0.4,
-      lck: 0.6,
+      lck: 0.6
     },
     base: {
       str: 7,
@@ -1244,8 +1244,8 @@ var classVars = {
       end: 6,
       int: 7,
       wis: 6,
-      lck: 10,
-    },
+      lck: 10
+    }
   },
   Shapeshifter: {
     growth: {
@@ -1256,7 +1256,7 @@ var classVars = {
       end: 0.55,
       int: 0.25,
       wis: 0.45,
-      lck: 0.45,
+      lck: 0.45
     },
     base: {
       str: 9,
@@ -1266,8 +1266,8 @@ var classVars = {
       end: 7,
       int: 6,
       wis: 6,
-      lck: 8,
-    },
+      lck: 8
+    }
   },
   Dragoon: {
     growth: {
@@ -1278,7 +1278,7 @@ var classVars = {
       end: 0.7,
       int: 0.5,
       wis: 0.6,
-      lck: 0.5,
+      lck: 0.5
     },
     base: {
       str: 11,
@@ -1288,8 +1288,8 @@ var classVars = {
       end: 10,
       int: 7,
       wis: 9,
-      lck: 8,
-    },
+      lck: 8
+    }
   },
   Sage: {
     growth: {
@@ -1300,7 +1300,7 @@ var classVars = {
       end: 0.5,
       int: 0.9,
       wis: 0.9,
-      lck: 0.55,
+      lck: 0.55
     },
     base: {
       str: 6,
@@ -1310,8 +1310,8 @@ var classVars = {
       end: 6,
       int: 15,
       wis: 15,
-      lck: 7,
-    },
+      lck: 7
+    }
   },
   DreadKnight: {
     growth: {
@@ -1322,7 +1322,7 @@ var classVars = {
       end: 0.75,
       int: 0.65,
       wis: 0.65,
-      lck: 0.6,
+      lck: 0.6
     },
     base: {
       str: 15,
@@ -1332,10 +1332,10 @@ var classVars = {
       end: 11,
       int: 8,
       wis: 8,
-      lck: 7,
-    },
-  },
-};
+      lck: 7
+    }
+  }
+}
 
 var femaleFirstNames = [
   "Alexandria",
@@ -3393,8 +3393,8 @@ var femaleFirstNames = [
   "Grainne",
   "Telyn",
   "Caitlan",
-  "Argoel",
-];
+  "Argoel"
+]
 
 var maleFirstNames = [
   "Dernere",
@@ -5396,8 +5396,8 @@ var maleFirstNames = [
   "thaesonrel",
   "burinnus",
   "yilgultael",
-  "idrosrial",
-];
+  "idrosrial"
+]
 
 var lastNames = [
   "ironsteam",
@@ -7406,65 +7406,65 @@ var lastNames = [
   "momhl\xed",
   "t\xf3nmolgal",
   "c\xe9amhr\xedolm\xf3mh",
-  "d\xfagheli",
-];
+  "d\xfagheli"
+]
 
 function HoursToSummon(hero) {
-  let currSecond = new Date().getTime() / 1000;
+  let currSecond = new Date().getTime() / 1000
   if (currSecond > hero.nextSummonTime) {
-    return "Now";
+    return "Now"
   } else {
-    let current = (hero.nextSummonTime - currSecond) / 3600;
-    return `${current.toFixed(2)} H`;
+    let current = (hero.nextSummonTime - currSecond) / 3600
+    return `${current.toFixed(2)} H`
   }
 }
 
 function FullTime(hero) {
-  let currSecond = new Date().getTime() / 1000;
+  let currSecond = new Date().getTime() / 1000
   if (currSecond > hero.staminaFullAt) {
-    return 0;
+    return 0
   } else {
-    let current = new Date(hero.staminaFullAt * 1000);
-    return current;
+    let current = new Date(hero.staminaFullAt * 1000)
+    return current
   }
 }
 
 function CurrentStaminaHours(hero) {
-  let currSecond = new Date().getTime() / 1000;
+  let currSecond = new Date().getTime() / 1000
   if (currSecond > hero.staminaFullAt) {
-    return 0;
+    return 0
   } else {
-    let current = (hero.staminaFullAt - currSecond) / 3600;
-    return current.toFixed(2);
+    let current = (hero.staminaFullAt - currSecond) / 3600
+    return current.toFixed(2)
   }
 }
 
 function CurrentStamina(hero) {
-  let currSecond = new Date().getTime() / 1000;
+  let currSecond = new Date().getTime() / 1000
   if (currSecond > hero.staminaFullAt) {
-    return hero.stamina;
+    return hero.stamina
   } else {
-    return hero.stamina - ((hero.staminaFullAt - currSecond) / 1200).toFixed(0);
+    return hero.stamina - ((hero.staminaFullAt - currSecond) / 1200).toFixed(0)
   }
 }
 
 function NormalizeHero(h) {
-  getRecessives(h);
-  ClassScore(h);
-  GrowthScore(h);
-  TrainStat(h);
-  h.salePrice = Number(FixSalePrice(h.salePrice));
-  h.assistingPrice = Number(FixSalePrice(h.assistingPrice));
-  h.stats = { hp: h.hp };
-  h.id = h.id;
+  getRecessives(h)
+  ClassScore(h)
+  GrowthScore(h)
+  TrainStat(h)
+  h.salePrice = Number(FixSalePrice(h.salePrice))
+  h.assistingPrice = Number(FixSalePrice(h.assistingPrice))
+  h.stats = { hp: h.hp }
+  h.id = h.id
 }
 
 function FixSalePrice(price) {
-  return parseFloat((price * 0.000000000000000001).toFixed(2));
+  return parseFloat((price * 0.000000000000000001).toFixed(2))
 }
 
 function FullName(hero) {
-  return `${FirstName(hero)} ${LastName(hero)}`;
+  return `${FirstName(hero)} ${LastName(hero)}`
 }
 
 function FirstName(hero) {
@@ -7475,7 +7475,7 @@ function FirstName(hero) {
         1,
         maleFirstNames[hero.firstName].length - 1
       )
-    );
+    )
   } else {
     return (
       femaleFirstNames[hero.firstName][0].toUpperCase() +
@@ -7483,7 +7483,7 @@ function FirstName(hero) {
         1,
         femaleFirstNames[hero.firstName].length - 1
       )
-    );
+    )
   }
 }
 
@@ -7491,20 +7491,20 @@ function LastName(hero) {
   return (
     lastNames[hero.lastName][0].toUpperCase() +
     lastNames[hero.lastName].substr(1, lastNames[hero.lastName].length - 1)
-  );
+  )
 }
 
-const rarityBonus = [0, 2, 4, 7, 10];
+const rarityBonus = [0, 2, 4, 7, 10]
 
 function GrowthScore(hero) {
   if (hero.growthScore == undefined) {
-    GrowthsToRealNumbers(hero);
+    GrowthsToRealNumbers(hero)
   }
-  let r1 = RemoveBaseGrowth(hero);
-  let r2 = AddRarityGrowth(r1);
-  let r3 = SumPandSGrowth(r2);
-  let r4 = MultiplyGrowthByBaseGrowth(r3);
-  let score = SumGrowth(r4);
+  let r1 = RemoveBaseGrowth(hero)
+  let r2 = AddRarityGrowth(r1)
+  let r3 = SumPandSGrowth(r2)
+  let r4 = MultiplyGrowthByBaseGrowth(r3)
+  let score = SumGrowth(r4)
   hero.growthScoreBreakdown = {
     str: r4.strengthGrowthP.toFixed(3),
     dex: r4.dexterityGrowthP.toFixed(3),
@@ -7513,137 +7513,137 @@ function GrowthScore(hero) {
     end: r4.enduranceGrowthP.toFixed(3),
     int: r4.intelligenceGrowthP.toFixed(3),
     wis: r4.wisdomGrowthP.toFixed(3),
-    lck: r4.luckGrowthP.toFixed(3),
-  };
-  hero.growthScore = score.toFixed(3);
+    lck: r4.luckGrowthP.toFixed(3)
+  }
+  hero.growthScore = score.toFixed(3)
 }
 
 function GrowthsToRealNumbers(hero) {
-  hero.strengthGrowthP /= 10000;
-  hero.dexterityGrowthP /= 10000;
-  hero.agilityGrowthP /= 10000;
-  hero.vitalityGrowthP /= 10000;
-  hero.enduranceGrowthP /= 10000;
-  hero.intelligenceGrowthP /= 10000;
-  hero.wisdomGrowthP /= 10000;
-  hero.luckGrowthP /= 10000;
-  hero.strengthGrowthS /= 10000;
-  hero.dexterityGrowthS /= 10000;
-  hero.agilityGrowthS /= 10000;
-  hero.vitalityGrowthS /= 10000;
-  hero.enduranceGrowthS /= 10000;
-  hero.intelligenceGrowthS /= 10000;
-  hero.wisdomGrowthS /= 10000;
-  hero.luckGrowthS /= 10000;
-  return hero;
+  hero.strengthGrowthP /= 10000
+  hero.dexterityGrowthP /= 10000
+  hero.agilityGrowthP /= 10000
+  hero.vitalityGrowthP /= 10000
+  hero.enduranceGrowthP /= 10000
+  hero.intelligenceGrowthP /= 10000
+  hero.wisdomGrowthP /= 10000
+  hero.luckGrowthP /= 10000
+  hero.strengthGrowthS /= 10000
+  hero.dexterityGrowthS /= 10000
+  hero.agilityGrowthS /= 10000
+  hero.vitalityGrowthS /= 10000
+  hero.enduranceGrowthS /= 10000
+  hero.intelligenceGrowthS /= 10000
+  hero.wisdomGrowthS /= 10000
+  hero.luckGrowthS /= 10000
+  return hero
 }
 
 function RemoveBaseGrowth(hero) {
-  let returnHero = Object.assign({}, hero);
+  let returnHero = Object.assign({}, hero)
   returnHero.strengthGrowthP =
-    hero.strengthGrowthP - classVars[hero.mainClass].growth.str;
+    hero.strengthGrowthP - classVars[hero.mainClass].growth.str
   returnHero.dexterityGrowthP =
-    hero.dexterityGrowthP - classVars[hero.mainClass].growth.dex;
+    hero.dexterityGrowthP - classVars[hero.mainClass].growth.dex
   returnHero.agilityGrowthP =
-    hero.agilityGrowthP - classVars[hero.mainClass].growth.agi;
+    hero.agilityGrowthP - classVars[hero.mainClass].growth.agi
   returnHero.vitalityGrowthP =
-    hero.vitalityGrowthP - classVars[hero.mainClass].growth.vit;
+    hero.vitalityGrowthP - classVars[hero.mainClass].growth.vit
   returnHero.enduranceGrowthP =
-    hero.enduranceGrowthP - classVars[hero.mainClass].growth.end;
+    hero.enduranceGrowthP - classVars[hero.mainClass].growth.end
   returnHero.intelligenceGrowthP =
-    hero.intelligenceGrowthP - classVars[hero.mainClass].growth.int;
+    hero.intelligenceGrowthP - classVars[hero.mainClass].growth.int
   returnHero.wisdomGrowthP =
-    hero.wisdomGrowthP - classVars[hero.mainClass].growth.wis;
+    hero.wisdomGrowthP - classVars[hero.mainClass].growth.wis
   returnHero.luckGrowthP =
-    hero.luckGrowthP - classVars[hero.mainClass].growth.lck;
-  return returnHero;
+    hero.luckGrowthP - classVars[hero.mainClass].growth.lck
+  return returnHero
 }
 
 function AddRarityGrowth(hero) {
-  let returnHero = Object.assign({}, hero);
-  let bonus = rarityBonus[hero.rarity];
-  let statBonus = bonus / 40;
-  returnHero.strengthGrowthP = hero.strengthGrowthP + statBonus;
-  returnHero.dexterityGrowthP = hero.dexterityGrowthP + statBonus;
-  returnHero.agilityGrowthP = hero.agilityGrowthP + statBonus;
-  returnHero.vitalityGrowthP = hero.vitalityGrowthP + statBonus;
-  returnHero.enduranceGrowthP = hero.enduranceGrowthP + statBonus;
-  returnHero.intelligenceGrowthP = hero.intelligenceGrowthP + statBonus;
-  returnHero.wisdomGrowthP = hero.wisdomGrowthP + statBonus;
-  returnHero.luckGrowthP = hero.luckGrowthP + statBonus;
-  return returnHero;
+  let returnHero = Object.assign({}, hero)
+  let bonus = rarityBonus[hero.rarity]
+  let statBonus = bonus / 40
+  returnHero.strengthGrowthP = hero.strengthGrowthP + statBonus
+  returnHero.dexterityGrowthP = hero.dexterityGrowthP + statBonus
+  returnHero.agilityGrowthP = hero.agilityGrowthP + statBonus
+  returnHero.vitalityGrowthP = hero.vitalityGrowthP + statBonus
+  returnHero.enduranceGrowthP = hero.enduranceGrowthP + statBonus
+  returnHero.intelligenceGrowthP = hero.intelligenceGrowthP + statBonus
+  returnHero.wisdomGrowthP = hero.wisdomGrowthP + statBonus
+  returnHero.luckGrowthP = hero.luckGrowthP + statBonus
+  return returnHero
 }
 
 function SumPandSGrowth(hero) {
-  let returnHero = Object.assign({}, hero);
-  returnHero.strengthGrowthP += hero.strengthGrowthS;
-  returnHero.dexterityGrowthP += hero.dexterityGrowthS;
-  returnHero.agilityGrowthP += hero.agilityGrowthS;
-  returnHero.vitalityGrowthP += hero.vitalityGrowthS;
-  returnHero.enduranceGrowthP += hero.enduranceGrowthS;
-  returnHero.intelligenceGrowthP += hero.intelligenceGrowthS;
-  returnHero.wisdomGrowthP += hero.wisdomGrowthS;
-  returnHero.luckGrowthP += hero.luckGrowthS;
-  return returnHero;
+  let returnHero = Object.assign({}, hero)
+  returnHero.strengthGrowthP += hero.strengthGrowthS
+  returnHero.dexterityGrowthP += hero.dexterityGrowthS
+  returnHero.agilityGrowthP += hero.agilityGrowthS
+  returnHero.vitalityGrowthP += hero.vitalityGrowthS
+  returnHero.enduranceGrowthP += hero.enduranceGrowthS
+  returnHero.intelligenceGrowthP += hero.intelligenceGrowthS
+  returnHero.wisdomGrowthP += hero.wisdomGrowthS
+  returnHero.luckGrowthP += hero.luckGrowthS
+  return returnHero
 }
 
 function MultiplyGrowthByBaseGrowth(hero) {
-  let returnHero = Object.assign({}, hero);
+  let returnHero = Object.assign({}, hero)
   returnHero.strengthGrowthP =
-    hero.strengthGrowthP * classVars[hero.mainClass].growth.str;
+    hero.strengthGrowthP * classVars[hero.mainClass].growth.str
   returnHero.dexterityGrowthP =
-    hero.dexterityGrowthP * classVars[hero.mainClass].growth.dex;
+    hero.dexterityGrowthP * classVars[hero.mainClass].growth.dex
   returnHero.agilityGrowthP =
-    hero.agilityGrowthP * classVars[hero.mainClass].growth.agi;
+    hero.agilityGrowthP * classVars[hero.mainClass].growth.agi
   returnHero.vitalityGrowthP =
-    hero.vitalityGrowthP * classVars[hero.mainClass].growth.vit;
+    hero.vitalityGrowthP * classVars[hero.mainClass].growth.vit
   returnHero.enduranceGrowthP =
-    hero.enduranceGrowthP * classVars[hero.mainClass].growth.end;
+    hero.enduranceGrowthP * classVars[hero.mainClass].growth.end
   returnHero.intelligenceGrowthP =
-    hero.intelligenceGrowthP * classVars[hero.mainClass].growth.int;
+    hero.intelligenceGrowthP * classVars[hero.mainClass].growth.int
   returnHero.wisdomGrowthP =
-    hero.wisdomGrowthP * classVars[hero.mainClass].growth.wis;
+    hero.wisdomGrowthP * classVars[hero.mainClass].growth.wis
   returnHero.luckGrowthP =
-    hero.luckGrowthP * classVars[hero.mainClass].growth.lck;
-  return returnHero;
+    hero.luckGrowthP * classVars[hero.mainClass].growth.lck
+  return returnHero
 }
 
 function SumGrowth(hero) {
-  let sum = 0;
-  sum += hero.strengthGrowthP;
-  sum += hero.dexterityGrowthP;
-  sum += hero.agilityGrowthP;
-  sum += hero.vitalityGrowthP;
-  sum += hero.enduranceGrowthP;
-  sum += hero.intelligenceGrowthP;
-  sum += hero.wisdomGrowthP;
-  sum += hero.luckGrowthP;
+  let sum = 0
+  sum += hero.strengthGrowthP
+  sum += hero.dexterityGrowthP
+  sum += hero.agilityGrowthP
+  sum += hero.vitalityGrowthP
+  sum += hero.enduranceGrowthP
+  sum += hero.intelligenceGrowthP
+  sum += hero.wisdomGrowthP
+  sum += hero.luckGrowthP
 
   switch (hero.mainClass) {
     case "DarkKnight":
     case "Ninja":
     case "Paladin":
     case "Summoner":
-      sum = sum * 1.14285;
-      break;
+      sum = sum * 1.14285
+      break
     case "Dragoon":
     case "Sage":
     case "Shapeshifter":
-      sum = sum * 1.33334;
-      break;
+      sum = sum * 1.33334
+      break
     case "DreadKnight":
-      sum = sum * 1.6;
-      break;
+      sum = sum * 1.6
+      break
     default:
-      break;
+      break
   }
-  return sum;
+  return sum
 }
 
 function ClassScore(hero) {
-  let r1 = RemoveBase(hero);
-  let r2 = RemoveAverageLevels(r1);
-  let r3 = MultiplyBaseByGrowth(r2);
+  let r1 = RemoveBase(hero)
+  let r2 = RemoveAverageLevels(r1)
+  let r3 = MultiplyBaseByGrowth(r2)
   hero.classScoreBreakdown = {
     str: r3.strength.toFixed(3),
     dex: r3.dexterity.toFixed(3),
@@ -7652,71 +7652,71 @@ function ClassScore(hero) {
     end: r3.endurance.toFixed(3),
     int: r3.intelligence.toFixed(3),
     wis: r3.wisdom.toFixed(3),
-    lck: r3.luck.toFixed(3),
-  };
-  hero.classScore = SumStats(r3);
+    lck: r3.luck.toFixed(3)
+  }
+  hero.classScore = SumStats(r3)
 }
 
 function RemoveBase(hero) {
-  let returnHero = Object.assign({}, hero);
-  returnHero.strength = hero.strength - classVars[hero.mainClass].base.str;
-  returnHero.dexterity = hero.dexterity - classVars[hero.mainClass].base.dex;
-  returnHero.agility = hero.agility - classVars[hero.mainClass].base.agi;
-  returnHero.vitality = hero.vitality - classVars[hero.mainClass].base.vit;
-  returnHero.endurance = hero.endurance - classVars[hero.mainClass].base.end;
+  let returnHero = Object.assign({}, hero)
+  returnHero.strength = hero.strength - classVars[hero.mainClass].base.str
+  returnHero.dexterity = hero.dexterity - classVars[hero.mainClass].base.dex
+  returnHero.agility = hero.agility - classVars[hero.mainClass].base.agi
+  returnHero.vitality = hero.vitality - classVars[hero.mainClass].base.vit
+  returnHero.endurance = hero.endurance - classVars[hero.mainClass].base.end
   returnHero.intelligence =
-    hero.intelligence - classVars[hero.mainClass].base.int;
-  returnHero.wisdom = hero.wisdom - classVars[hero.mainClass].base.wis;
-  returnHero.luck = hero.luck - classVars[hero.mainClass].base.lck;
-  return returnHero;
+    hero.intelligence - classVars[hero.mainClass].base.int
+  returnHero.wisdom = hero.wisdom - classVars[hero.mainClass].base.wis
+  returnHero.luck = hero.luck - classVars[hero.mainClass].base.lck
+  return returnHero
 }
 
 function RemoveAverageLevels(hero) {
-  let returnHero = Object.assign({}, hero);
+  let returnHero = Object.assign({}, hero)
   returnHero.strength =
-    hero.strength - classVars[hero.mainClass].growth.str * (hero.level - 1);
+    hero.strength - classVars[hero.mainClass].growth.str * (hero.level - 1)
   returnHero.dexterity =
-    hero.dexterity - classVars[hero.mainClass].growth.dex * (hero.level - 1);
+    hero.dexterity - classVars[hero.mainClass].growth.dex * (hero.level - 1)
   returnHero.agility =
-    hero.agility - classVars[hero.mainClass].growth.agi * (hero.level - 1);
+    hero.agility - classVars[hero.mainClass].growth.agi * (hero.level - 1)
   returnHero.vitality =
-    hero.vitality - classVars[hero.mainClass].growth.vit * (hero.level - 1);
+    hero.vitality - classVars[hero.mainClass].growth.vit * (hero.level - 1)
   returnHero.endurance =
-    hero.endurance - classVars[hero.mainClass].growth.end * (hero.level - 1);
+    hero.endurance - classVars[hero.mainClass].growth.end * (hero.level - 1)
   returnHero.intelligence =
-    hero.intelligence - classVars[hero.mainClass].growth.int * (hero.level - 1);
+    hero.intelligence - classVars[hero.mainClass].growth.int * (hero.level - 1)
   returnHero.wisdom =
-    hero.wisdom - classVars[hero.mainClass].growth.wis * (hero.level - 1);
+    hero.wisdom - classVars[hero.mainClass].growth.wis * (hero.level - 1)
   returnHero.luck =
-    hero.luck - classVars[hero.mainClass].growth.lck * (hero.level - 1);
-  return returnHero;
+    hero.luck - classVars[hero.mainClass].growth.lck * (hero.level - 1)
+  return returnHero
 }
 
 function MultiplyBaseByGrowth(hero) {
-  let returnHero = Object.assign({}, hero);
-  returnHero.strength = hero.strength * classVars[hero.mainClass].growth.str;
-  returnHero.dexterity = hero.dexterity * classVars[hero.mainClass].growth.dex;
-  returnHero.agility = hero.agility * classVars[hero.mainClass].growth.agi;
-  returnHero.vitality = hero.vitality * classVars[hero.mainClass].growth.vit;
-  returnHero.endurance = hero.endurance * classVars[hero.mainClass].growth.end;
+  let returnHero = Object.assign({}, hero)
+  returnHero.strength = hero.strength * classVars[hero.mainClass].growth.str
+  returnHero.dexterity = hero.dexterity * classVars[hero.mainClass].growth.dex
+  returnHero.agility = hero.agility * classVars[hero.mainClass].growth.agi
+  returnHero.vitality = hero.vitality * classVars[hero.mainClass].growth.vit
+  returnHero.endurance = hero.endurance * classVars[hero.mainClass].growth.end
   returnHero.intelligence =
-    hero.intelligence * classVars[hero.mainClass].growth.int;
-  returnHero.wisdom = hero.wisdom * classVars[hero.mainClass].growth.wis;
-  returnHero.luck = hero.luck * classVars[hero.mainClass].growth.lck;
-  return returnHero;
+    hero.intelligence * classVars[hero.mainClass].growth.int
+  returnHero.wisdom = hero.wisdom * classVars[hero.mainClass].growth.wis
+  returnHero.luck = hero.luck * classVars[hero.mainClass].growth.lck
+  return returnHero
 }
 
 function SumStats(hero) {
-  let sum = 0;
-  sum += hero.strength;
-  sum += hero.dexterity;
-  sum += hero.agility;
-  sum += hero.vitality;
-  sum += hero.endurance;
-  sum += hero.intelligence;
-  sum += hero.wisdom;
-  sum += hero.luck;
-  return sum.toFixed(2);
+  let sum = 0
+  sum += hero.strength
+  sum += hero.dexterity
+  sum += hero.agility
+  sum += hero.vitality
+  sum += hero.endurance
+  sum += hero.intelligence
+  sum += hero.wisdom
+  sum += hero.luck
+  return sum.toFixed(2)
 }
 
 module.exports = {
@@ -7761,5 +7761,5 @@ module.exports = {
   classVars,
   femaleFirstNames,
   maleFirstNames,
-  lastNames,
-};
+  lastNames
+}
