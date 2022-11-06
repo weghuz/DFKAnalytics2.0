@@ -1704,13 +1704,18 @@ let columnDefs = [
       if (row.previousOwner == null || row.previousOwner.id == "undefined")
         return null
       return row.previousOwner.id
+    },
+    renderCell: ({ row }) => {
+      return <HeroOwnerId previousOwner={true}>{row}</HeroOwnerId>
     }
   },
   {
     headerName: "Owner",
     field: "owner",
     valueGetter: ({ row }) => {
-      return <HeroOwnerName>{row}</HeroOwnerName>
+      if (row.owner == null) return row.owner
+      if (row.owner.name == "undefined") return null
+      return row.owner.name
     }
   },
   {

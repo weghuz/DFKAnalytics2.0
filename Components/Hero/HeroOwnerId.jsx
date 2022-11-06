@@ -4,11 +4,17 @@ import { useRef } from "react"
 import { useState } from "react"
 import { useMemo } from "react"
 
-export default function HeroOwnerId({ children }) {
+export default function HeroOwnerId({ children, previousOwner }) {
   const id = useMemo(() => {
-    if (children.owner == null) return children.owner
-    if (children.owner.id == "undefined") return null
-    return children.owner.id
+    if (previousOwner) {
+      if (children.previousOwner == null) return children.previousOwner
+      if (children.previousOwner.id == "undefined") return null
+      return children.previousOwner.id
+    } else {
+      if (children.owner == null) return children.owner
+      if (children.owner.id == "undefined") return null
+      return children.owner.id
+    }
   })
   const [popoverAnchor, setPopoverAnchor] = useState(null)
   const CopyToClipboard = (e) => {
