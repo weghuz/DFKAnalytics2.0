@@ -131,7 +131,8 @@ export const BaseHeroVisibilityModels = [
       p1R3: false,
       p2R3: false,
       su1R3: false,
-      SU2R3: false
+      SU2R3: false,
+      darkSummoned: true
     }
   },
   {
@@ -266,7 +267,8 @@ export const BaseHeroVisibilityModels = [
       p1R3: false,
       p2R3: false,
       su1R3: false,
-      SU2R3: false
+      SU2R3: false,
+      darkSummoned: false
     }
   },
   {
@@ -401,7 +403,8 @@ export const BaseHeroVisibilityModels = [
       p1R3: false,
       p2R3: false,
       su1R3: false,
-      SU2R3: false
+      SU2R3: false,
+      darkSummoned: false
     }
   },
   {
@@ -537,7 +540,8 @@ export const BaseHeroVisibilityModels = [
       p1R3: false,
       p2R3: false,
       su1R3: false,
-      SU2R3: false
+      SU2R3: false,
+      darkSummoned: false
     }
   }
 ]

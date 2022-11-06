@@ -27,6 +27,8 @@ import HeroHairColorCell from "./HeroHairColorCell"
 import HeroEyeColor from "./HeroEyeColor"
 import HeroSkinColor from "./HeroSkinColor"
 import useMediaQuery from "@mui/material/useMediaQuery"
+import PJBadge from "./PJBadge"
+import DarkSummonBadge from "./DarkSummonBadge"
 
 export default function HeroDetails({ hero }) {
   const theme = useTheme()
@@ -665,6 +667,16 @@ export default function HeroDetails({ hero }) {
         >
           <Grid item xs={12}>
             <Box marginBottom={"3px"}>
+              <DarkSummonBadge size={48} style={{ paddingRight: "10px" }}>
+                {hero}
+              </DarkSummonBadge>
+              {hero.pjStatus == null ? (
+                ""
+              ) : hero.pjStatus == "SURVIVED" ? (
+                <PJBadge style={{ paddingTop: "5px", paddingRight: "10px" }} />
+              ) : (
+                <Box sx={{ paddingTop: "5px", paddingRight: "10px" }}>RIP</Box>
+              )}
               <HeroId>{hero.heroId ? hero.heroId : hero.id}</HeroId> -{" "}
               {FullName(hero)} -{" "}
               <Box

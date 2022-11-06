@@ -16,6 +16,7 @@ const {
 import { Tooltip, Typography } from "@mui/material"
 import { Box } from "@mui/system"
 import ClassScoreCell from "../Components/Hero/ClassScoreCell"
+import DarkSummonBadge from "../Components/Hero/DarkSummonBadge"
 import ElementCell from "../Components/Hero/ElementCell"
 import GrowthScoreCell from "../Components/Hero/GrowthScoreCell"
 import HeroBackAppendageCell from "../Components/Hero/HeroBackAppendageCell"
@@ -25,6 +26,7 @@ import HeroHairCell from "../Components/Hero/HeroHairCell"
 import HeroHairColorCell from "../Components/Hero/HeroHairColorCell"
 import HeroHeadAppendageCell from "../Components/Hero/HeroHeadAppendageCell"
 import HeroId from "../Components/Hero/HeroId"
+import HeroOwnerId from "../Components/Hero/HeroOwnerId"
 import HeroOwnerName from "../Components/Hero/HeroOwnerName"
 import HeroOwner from "../Components/Hero/HeroOwnerName"
 import HeroSkinColor from "../Components/Hero/HeroSkinColor"
@@ -640,6 +642,23 @@ let columnDefs = [
     },
     renderCell: ({ row }) => {
       return <HeroSkinColor>{row.skinColor}</HeroSkinColor>
+    }
+  },
+  {
+    headerName: "Dark Summoned",
+    field: "darkSummoned",
+    type: "number",
+    minWidth: 100,
+    flex: 1,
+    valueGetter: ({ row }) => {
+      return Number(
+        row.darkSummoned +
+          row.darkSummonLevels -
+          (row.darkSummoned ? row.level : 0)
+      )
+    },
+    renderCell: ({ row }) => {
+      return <DarkSummonBadge size={32}>{row}</DarkSummonBadge>
     }
   },
   {
@@ -1673,7 +1692,8 @@ let columnDefs = [
     headerName: "Previous Owner",
     field: "previousOwner",
     valueGetter: ({ row }) => {
-      if (row.previousOwner == null) return null
+      if (row.previousOwner == null || row.previousOwner.name == "undefined")
+        return null
       return row.previousOwner.name
     }
   },
@@ -1681,7 +1701,8 @@ let columnDefs = [
     headerName: "Previous Owner Address",
     field: "previousOwnerAddress",
     valueGetter: ({ row }) => {
-      if (row.previousOwner == null) return null
+      if (row.previousOwner == null || row.previousOwner.id == "undefined")
+        return null
       return row.previousOwner.id
     }
   },
@@ -1695,7 +1716,13 @@ let columnDefs = [
   {
     headerName: "Owner Address",
     field: "ownerAddress",
-    valueGetter: ({ row }) => {}
+    valueGetter: ({ row }) => {
+      if (row.owner == null || row.owner.id == "undefined") return null
+      return row.owner.id
+    },
+    renderCell: ({ row }) => {
+      return <HeroOwnerId>{row}</HeroOwnerId>
+    }
   },
   {
     headerName: "Name",

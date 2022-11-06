@@ -1,6 +1,8 @@
-const { Box } = require("@mui/material");
-const { default: PJBadge } = require("../Components/Hero/PJBadge");
-
+const { Box } = require("@mui/material")
+const {
+  default: DarkSummonBadgeImage
+} = require("../Components/Hero/DarkSummonBadgeImage")
+const { default: PJBadge } = require("../Components/Hero/PJBadge")
 module.exports = {
   EyeColors: [
     { value: "203997", label: <Box sx={{ color: "#203997" }}>Blue </Box> },
@@ -10,7 +12,7 @@ module.exports = {
     { value: "2494a2", label: <Box sx={{ color: "#2494a2" }}>Azure </Box> },
     { value: "0d7634", label: <Box sx={{ color: "#0d7634" }}>Green </Box> },
     { value: "613d8a", label: <Box sx={{ color: "#613d8a" }}>Purple</Box> },
-    { value: "a41e12", label: <Box sx={{ color: "#a41e12" }}>Red </Box> },
+    { value: "a41e12", label: <Box sx={{ color: "#a41e12" }}>Red </Box> }
   ],
   SkinColors: [
     { value: "e6a861", label: <Box sx={{ color: "#e6a861" }}>Honey</Box> },
@@ -20,7 +22,7 @@ module.exports = {
     { value: "aa5c38", label: <Box sx={{ color: "#aa5c38" }}>Almond</Box> },
     { value: "985e1c", label: <Box sx={{ color: "#985e1c" }}>Golden</Box> },
     { value: "7b4a11", label: <Box sx={{ color: "#7b4a11" }}>Toffee</Box> },
-    { value: "57340c", label: <Box sx={{ color: "#57340c" }}>Cocoa</Box> },
+    { value: "57340c", label: <Box sx={{ color: "#57340c" }}>Cocoa</Box> }
   ],
   HairColors: [
     { value: "ab9159", label: <Box sx={{ color: "#ab9159" }}>Basic1</Box> },
@@ -42,8 +44,8 @@ module.exports = {
     { value: "353132", label: <Box sx={{ color: "#353132" }}>Elite2</Box> },
     {
       value: "8f9bb3",
-      label: <Box sx={{ color: "#8f9bb3" }}>Transcendent1</Box>,
-    },
+      label: <Box sx={{ color: "#8f9bb3" }}>Transcendent1</Box>
+    }
   ],
   AppendageColor: [
     { value: "c5bfa7", label: <Box sx={{ color: "#c5bfa7" }}>Basic1</Box> },
@@ -65,8 +67,8 @@ module.exports = {
     { value: "353132", label: <Box sx={{ color: "#353132" }}>Elite2</Box> },
     {
       value: "d7d7d7",
-      label: <Box sx={{ color: "#d7d7d7" }}>Transcendent1</Box>,
-    },
+      label: <Box sx={{ color: "#d7d7d7" }}>Transcendent1</Box>
+    }
   ],
   BackAppendages: [
     { value: 0, label: "None" },
@@ -86,7 +88,7 @@ module.exports = {
     { value: 20, label: "Fallen Angel" },
     { value: 24, label: "Aura of the Inner Grove" },
     { value: 25, label: "Ancient Orbs" },
-    { value: 28, label: "Cecaelia Tentacles" },
+    { value: 28, label: "Cecaelia Tentacles" }
   ],
   HeadAppendages: [
     { value: 0, label: "None" },
@@ -106,7 +108,7 @@ module.exports = {
     { value: 20, label: "Fallen Angel Coronet" },
     { value: 24, label: "Wood Elf Ears" },
     { value: 25, label: "Snow Elf Ears" },
-    { value: 28, label: "Insight Jewel" },
+    { value: 28, label: "Insight Jewel" }
   ],
   HairStylesFemale: [
     { value: 0, label: "Windswept" },
@@ -126,7 +128,7 @@ module.exports = {
     { value: 20, label: "Goddess Locks" },
     { value: 24, label: "Ethereal Waterfall" },
     { value: 25, label: "Kunoichi" },
-    { value: 28, label: "Lunar Light Odango" },
+    { value: 28, label: "Lunar Light Odango" }
   ],
   HairStylesGeneric: [
     { value: 0, label: "Basic1" },
@@ -146,7 +148,7 @@ module.exports = {
     { value: 20, label: "Advanced5" },
     { value: 24, label: "Elite1" },
     { value: 25, label: "Elite2" },
-    { value: 28, label: "Transcendent1" },
+    { value: 28, label: "Transcendent1" }
   ],
   HairStylesFemale: [
     { value: 0, label: "Windswept" },
@@ -166,7 +168,7 @@ module.exports = {
     { value: 20, label: "Goddess Locks" },
     { value: 24, label: "Ethereal Waterfall" },
     { value: 25, label: "Kunoichi" },
-    { value: 28, label: "Lunar Light Odango" },
+    { value: 28, label: "Lunar Light Odango" }
   ],
   HairStylesMale: [
     { value: 0, label: "Battle Hawk" },
@@ -186,12 +188,12 @@ module.exports = {
     { value: 20, label: "Hedgehog" },
     { value: 24, label: "Skegg" },
     { value: 25, label: "Shinobi" },
-    { value: 28, label: "Perfect Form" },
+    { value: 28, label: "Perfect Form" }
   ],
   Targets: [
     { value: "All", label: "Find" },
     { value: "Tavern", label: "Buy" },
-    { value: "Hire", label: "Hire" },
+    { value: "Hire", label: "Hire" }
   ],
   Backgrounds: [
     { value: "arctic", label: "Arctic" },
@@ -201,7 +203,7 @@ module.exports = {
     { value: "island", label: "Island" },
     { value: "mountains", label: "Mountains" },
     { value: "plains", label: "Plains" },
-    { value: "swamp", label: "Swamp" },
+    { value: "swamp", label: "Swamp" }
   ],
   Skills: [
     { value: "Basic1", label: "Basic 1" },
@@ -218,13 +220,13 @@ module.exports = {
     { value: "Advanced4", label: "Advanced 4" },
     { value: "Elite1", label: "Elite 1" },
     { value: "Elite2", label: "Elite 2" },
-    { value: "Transcendent1", label: "Transcendent 1" },
+    { value: "Transcendent1", label: "Transcendent 1" }
   ],
   Professions: [
     { value: "mining", label: "Mining" },
     { value: "foraging", label: "Foraging" },
     { value: "gardening", label: "Gardening" },
-    { value: "fishing", label: "Fishing" },
+    { value: "fishing", label: "Fishing" }
   ],
   StatNames: [
     { value: "Strength", label: "Strength" },
@@ -234,7 +236,7 @@ module.exports = {
     { value: "Endurance", label: "Endurance" },
     { value: "Intelligence", label: "Intelligence" },
     { value: "Wisdom", label: "Wisdom" },
-    { value: "Luck", label: "Luck" },
+    { value: "Luck", label: "Luck" }
   ],
   StatBoosts: [
     { value: "STR", label: "STR" },
@@ -244,14 +246,14 @@ module.exports = {
     { value: "END", label: "END" },
     { value: "INT", label: "INT" },
     { value: "WIS", label: "WIS" },
-    { value: "LCK", label: "LCK" },
+    { value: "LCK", label: "LCK" }
   ],
   Rarities: [
     { value: "Common", label: "Common" },
     { value: "Uncommon", label: "Uncommon" },
     { value: "Rare", label: "Rare" },
     { value: "Legendary", label: "Legendary" },
-    { value: "Mythic", label: "Mythic" },
+    { value: "Mythic", label: "Mythic" }
   ],
   Classes: [
     { value: "Seer", label: "Seer" },
@@ -271,11 +273,18 @@ module.exports = {
     { value: "Summoner", label: "Summoner" },
     { value: "Dragoon", label: "Dragoon" },
     { value: "Sage", label: "Sage" },
-    { value: "DreadKnight", label: "DreadKnight" },
+    { value: "DreadKnight", label: "DreadKnight" }
   ],
   PJSurvivor: [
     { value: "SURVIVED", label: <PJBadge /> },
     { value: "DIED", label: "RIP" },
-    { value: "null", label: "No" },
+    { value: "null", label: "No" }
   ],
-};
+  DarkSummoned: [
+    {
+      value: true,
+      label: <DarkSummonBadgeImage size={32} />
+    },
+    { value: false, label: "No" }
+  ]
+}
