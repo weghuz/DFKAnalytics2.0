@@ -1,76 +1,76 @@
-import { Button, Grid, LinearProgress, Typography } from "@mui/material";
-import { useEffect, useState } from "react";
-import { useQuery } from "react-query";
-import MetaMask from "../../Components/Wallet/MetaMask";
-import { base, heroData } from "../../Logic/Query";
-import { columnDefs } from "../../Logic/GridTableColumns";
-import DFKATable from "../../Components/Table/DFKATable";
-import { useRouter } from "next/router";
-import useWallet from "../../Store/WalletStore";
-import useWalletAuctions from "../../Store/WalletAuctions/WalletAuctionsStore";
-import useWalletAuctionsPersist from "../../Store/WalletAuctions/WalletAuctionsPersistStore";
-import { FixSalePrice } from "../../Logic/HeroBase";
-import Head from "next/head";
-import HeroDetailsModal from "../../Components/Hero/HeroDetailsModal";
-import useUser from "../../Store/UserStore";
+import { Button, Grid, LinearProgress, Typography } from "@mui/material"
+import { useEffect, useState } from "react"
+import { useQuery } from "react-query"
+import MetaMask from "../../Components/Wallet/MetaMask"
+import { base, heroData } from "../../Logic/Query"
+import { columnDefs } from "../../Logic/GridTableColumns"
+import DFKATable from "../../Components/Table/DFKATable"
+import { useRouter } from "next/router"
+import useWallet from "../../Store/WalletStore"
+import useWalletAuctions from "../../Store/WalletAuctions/WalletAuctionsStore"
+import useWalletAuctionsPersist from "../../Store/WalletAuctions/WalletAuctionsPersistStore"
+import { FixSalePrice } from "../../Logic/HeroBase"
+import Head from "next/head"
+import HeroDetailsModal from "../../Components/Hero/HeroDetailsModal"
+import useUser from "../../Store/UserStore"
 
 export default function Auctions() {
   const visibilityModel = useWalletAuctionsPersist(
     (state) => state.visibilityModel
-  );
+  )
   const setVisibilityModel = useWalletAuctionsPersist(
     (state) => state.setVisibilityModel
-  );
-  const setHeroes = useWalletAuctions((state) => state.setHeroes);
-  const heroes = useWalletAuctions((state) => state.heroes);
-  const query = useWalletAuctions((state) => state.query);
-  const skip = useWalletAuctions((state) => state.skip);
-  const setAddress = useWalletAuctions((state) => state.setAddress);
-  const address = useWallet((state) => state.address);
-  const heroDetailsViewType = useUser((state) => state.heroDetailsViewType);
+  )
+  const setHeroes = useWalletAuctions((state) => state.setHeroes)
+  const heroes = useWalletAuctions((state) => state.heroes)
+  const query = useWalletAuctions((state) => state.query)
+  const skip = useWalletAuctions((state) => state.skip)
+  const setAddress = useWalletAuctions((state) => state.setAddress)
+  const address = useWallet((state) => state.address)
+  const heroDetailsViewType = useUser((state) => state.heroDetailsViewType)
 
-  const [showingHero, setShowingHero] = useState((hero) => null);
+  const [showingHero, setShowingHero] = useState((hero) => null)
   const clickedHero = (hero) => {
     if (heroDetailsViewType == "page") {
-      window.open(`/hero/${hero.id}`, `_blank`);
+      window.open(`/hero/${hero.id}`, `_blank`)
     } else {
-      setShowingHero((h) => hero);
+      setShowingHero((h) => hero)
     }
-  };
+  }
 
   const requestAuctions = async () => {
     return fetch(base, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json;charset=UTF-8",
+        "Content-Type": "application/json;charset=UTF-8"
       },
       body: JSON.stringify({
-        query: query,
-      }),
-    });
-  };
+        query: query
+      })
+    })
+  }
   useEffect(() => {
-    setAddress(address);
-  }, [address]);
+    setAddress(address)
+  }, [address])
   const result = useQuery(["request", query + address + skip], async () => {
     if (query.length > 0 && address.length > 0) {
-      let requestId = query;
-      let auctionsRequest = await requestAuctions();
+      let requestId = query
+      let auctionsRequest = await requestAuctions()
       if (auctionsRequest.status >= 200 && auctionsRequest.status <= 300) {
-        let json = await auctionsRequest.json();
-        console.log(json.data);
-        let auctions = json.data.saleAuctions;
-        console.log(auctions);
+        let json = await auctionsRequest.json()
+        console.log(json.data)
+        let auctions = json.data.saleAuctions
+        console.log(auctions)
         let heroes = auctions.map((a) => {
-          a.tokenId.purchasePrice = FixSalePrice(a.purchasePrice);
-          a.tokenId.heroId = a.tokenId.id;
-          a.tokenId.id = a.id;
-          return a.tokenId;
-        });
-        setHeroes(heroes, requestId);
+          a.tokenId.purchasePrice = FixSalePrice(a.purchasePrice)
+          a.tokenId.heroId = a.tokenId.id
+          a.tokenId.id = a.id
+          return a.tokenId
+        })
+        setHeroes(heroes, requestId)
       }
     }
-  });
+  })
   return (
     <>
       <Head>
@@ -103,5 +103,5 @@ export default function Auctions() {
         setHero={setShowingHero}
       ></HeroDetailsModal>
     </>
-  );
+  )
 }

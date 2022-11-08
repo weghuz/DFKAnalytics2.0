@@ -9,19 +9,35 @@ export default function PriceCell({ children }) {
   return (
     <>
       {children.purchasePrice ? (
-        <Tooltip
-          placement="right"
-          title={`This hero was sold for ${children.purchasePrice} Jewel.`}
-        >
-          <Grid container>
-            <Grid item sx={{ marginRight: "10px" }}>
-              <Image src={Jewel} alt="Jewel" height="24px" width="24px" />
+        children.id < 1000000000000 ? (
+          <Tooltip
+            placement="right"
+            title={`This hero was sold for ${children.purchasePrice} Jewel.`}
+          >
+            <Grid container>
+              <Grid item sx={{ marginRight: "10px" }}>
+                <Image src={Jewel} alt="Jewel" height="24px" width="24px" />
+              </Grid>
+              <Grid item sx={{ alignSelf: "left", marginTop: "5px" }}>
+                {children.purchasePrice}
+              </Grid>
             </Grid>
-            <Grid item sx={{ alignSelf: "left", marginTop: "5px" }}>
-              {children.purchasePrice}
+          </Tooltip>
+        ) : (
+          <Tooltip
+            placement="right"
+            title={`This hero was sold for ${children.purchasePrice} Crystal.`}
+          >
+            <Grid container>
+              <Grid item sx={{ marginRight: "10px" }}>
+                <Image src={Crystal} alt="Crystal" height="24px" width="24px" />
+              </Grid>
+              <Grid item sx={{ alignSelf: "left", marginTop: "5px" }}>
+                {children.purchasePrice}
+              </Grid>
             </Grid>
-          </Grid>
-        </Tooltip>
+          </Tooltip>
+        )
       ) : children.saleAuction || children.assistingPrice ? (
         children.network == "dfk" ? (
           <Tooltip

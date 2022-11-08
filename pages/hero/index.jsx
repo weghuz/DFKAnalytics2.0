@@ -31,6 +31,7 @@ export default function Home() {
   const skip = useHeroes((state) => state.skip)
   const first = useHeroes((state) => state.first)
   const heroDetailsViewType = useUser((state) => state.heroDetailsViewType)
+  const initiate = useUser((state) => state.initiate)
   const [showingHero, setShowingHero] = useState((hero) => null)
   const clickedHero = (hero) => {
     if (heroDetailsViewType == "page") {
@@ -115,6 +116,7 @@ export default function Home() {
         includeSalePrice={true}
         visible={hideFilters}
         useStore={useHeroes}
+        initiate={initiate}
       />
       {result.isLoading && (
         <LinearProgress style={{ height: 10, margin: "5px 50px" }} />

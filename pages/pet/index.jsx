@@ -1,61 +1,60 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react"
 
-import { Button, LinearProgress, Typography } from "@mui/material";
-import Grid from "@mui/material/Grid";
-import usePets from "../../Store/pet/PetsStore";
-import { useQuery } from "react-query";
-import { base, petData } from "../../Logic/Query";
-import DFKATable from "../../Components/Table/DFKATable";
-import petColumnDefs from "../../Logic/PetTableColumns";
-import PetFilters from "../../Components/PetFilters";
-import usePetsPersist from "../../Store/pet/PetsPersistStore";
-import PetColumnSetups from "../../Components/PetColumnSetups";
-import Head from "next/head";
+import { Button, LinearProgress, Typography } from "@mui/material"
+import Grid from "@mui/material/Grid"
+import usePets from "../../Store/pet/PetsStore"
+import { useQuery } from "react-query"
+import { base, petData } from "../../Logic/Query"
+import DFKATable from "../../Components/Table/DFKATable"
+import petColumnDefs from "../../Logic/PetTableColumns"
+import PetFilters from "../../Components/PetFilters"
+import usePetsPersist from "../../Store/pet/PetsPersistStore"
+import PetColumnSetups from "../../Components/PetColumnSetups"
+import Head from "next/head"
+import useUser from "../../Store/UserStore"
 
 export default function Home() {
-  const setPets = usePets((state) => state.setPets);
-  const pets = usePets((state) => state.pets);
-  const query = usePets((state) => state.query);
-  const first = usePets((state) => state.first);
-  const skip = usePets((state) => state.skip);
-  const attempt = usePets((state) => state.attempt);
+  const setPets = usePets((state) => state.setPets)
+  const pets = usePets((state) => state.pets)
+  const query = usePets((state) => state.query)
+  const first = usePets((state) => state.first)
+  const skip = usePets((state) => state.skip)
+  const attempt = usePets((state) => state.attempt)
 
-  const visibilityModel = usePetsPersist((state) => state.visibilityModel);
-  const setVisibilityModel = usePetsPersist(
-    (state) => state.setVisibilityModel
-  );
-  const hideFilters = usePetsPersist((state) => state.hideFilters);
-  const toggleHideFilters = usePetsPersist((state) => state.toggleHideFilters);
-  const hideColumns = usePetsPersist((state) => state.hideColumns);
-  const toggleHideColumns = usePetsPersist((state) => state.toggleHideColumns);
-  const petSetup = usePetsPersist((state) => state.petSetup);
-  const setPetSetup = usePetsPersist((state) => state.setPetSetup);
-
+  const visibilityModel = usePetsPersist((state) => state.visibilityModel)
+  const setVisibilityModel = usePetsPersist((state) => state.setVisibilityModel)
+  const hideFilters = usePetsPersist((state) => state.hideFilters)
+  const toggleHideFilters = usePetsPersist((state) => state.toggleHideFilters)
+  const hideColumns = usePetsPersist((state) => state.hideColumns)
+  const toggleHideColumns = usePetsPersist((state) => state.toggleHideColumns)
+  const petSetup = usePetsPersist((state) => state.petSetup)
+  const setPetSetup = usePetsPersist((state) => state.setPetSetup)
+  const initiate = useUser((state) => state.initiate)
   const requestPets = async (state) => {
     return fetch(base, {
       method: "POST",
       headers: {
-        "Content-Type": "application/json;charset=UTF-8",
+        "Content-Type": "application/json;charset=UTF-8"
       },
       body: JSON.stringify({
-        query: query,
-      }),
-    });
-  };
+        query: query
+      })
+    })
+  }
   const result = useQuery(
     ["petsRequest", attempt + query + first + skip],
     async () => {
       if (query.length > 0) {
-        let requestId = query;
-        let petsRequest = await requestPets();
+        let requestId = query
+        let petsRequest = await requestPets()
         if (petsRequest.status >= 200 && petsRequest.status <= 300) {
-          let json = await petsRequest.json();
-          let pets = json.data.pets;
-          setPets(pets, requestId);
+          let json = await petsRequest.json()
+          let pets = json.data.pets
+          setPets(pets, requestId)
         }
       }
     }
-  );
+  )
   return (
     <>
       <Head>
@@ -100,6 +99,7 @@ export default function Home() {
             visible={hideFilters}
             includeSalePrice={true}
             useStore={usePets}
+            initiate={initiate}
           ></PetFilters>
         </Grid>
       </Grid>
@@ -113,5 +113,5 @@ export default function Home() {
         visibilityChanged={setVisibilityModel}
       ></DFKATable>
     </>
-  );
+  )
 }

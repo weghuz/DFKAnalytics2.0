@@ -14,6 +14,7 @@ import DFKBase, {
 } from "../Logic/Dropdowns"
 import Image from "next/image"
 import Jewel from "../public/Jewel.png"
+import Crystal from "../public/Crystal.png"
 import SelectItem from "./Filters/SelectItem"
 import RaritySlider from "./Filters/RaritySlider"
 import NumberSlider from "./Filters/NumberSlider"
@@ -30,7 +31,7 @@ import { femaleFirstNames, lastNames, maleFirstNames } from "../Logic/HeroBase"
 import IdInput from "./Filters/IdInput"
 import NumberInput from "./Filters/NumberInput"
 
-function HeroFilters({ includeSalePrice, visible, useStore }) {
+function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
   const mainClass = useStore((state) => state.mainClass)
   const setMainClass = useStore((state) => state.setMainClass)
   const subClass = useStore((state) => state.subClass)
@@ -133,7 +134,7 @@ function HeroFilters({ includeSalePrice, visible, useStore }) {
   const darkSumLevels = useStore((state) => state.darkSumLevels)
   const setDarkSumLevels = useStore((state) => state.setDarkSumLevels)
   useEffect(() => {
-    if (heroes.length == 0) {
+    if (heroes.length == 0 && initiate) {
       UpdateQuery()
     }
   }, [])
@@ -1061,8 +1062,8 @@ function HeroFilters({ includeSalePrice, visible, useStore }) {
                       startAdornment={
                         <InputAdornment position="start" sx={{ width: "30px" }}>
                           <Image
-                            src={Jewel}
-                            alt="Jewel"
+                            src={Crystal}
+                            alt="Crystal"
                             width={24}
                             height={24}
                           ></Image>
@@ -1084,8 +1085,8 @@ function HeroFilters({ includeSalePrice, visible, useStore }) {
                       startAdornment={
                         <InputAdornment position="start" sx={{ width: "30px" }}>
                           <Image
-                            src={Jewel}
-                            alt="Jewel"
+                            src={Crystal}
+                            alt="Crystal"
                             width={24}
                             height={24}
                           ></Image>
@@ -1111,6 +1112,34 @@ function HeroFilters({ includeSalePrice, visible, useStore }) {
             marginY={1}
             justifyContent={"center"}
           >
+            <Grid item>
+              <Button
+                variant="contained"
+                color="success"
+                onClick={() => {
+                  let splitIds = idInput.split(/,| |\n/)
+                  let addys = splitIds.filter((id) => {
+                    return id.length === 42
+                  })
+                  let ids = splitIds.filter((id) => {
+                    return id.trim() && id.length !== 42 && !isNaN(id)
+                  })
+
+                  console.log(ids)
+                  ids = ids.map((v, i) => {
+                    if (Number(v) < 1000000000000) {
+                      console.log(v + 1000000000000, v)
+                      return Number(v) + 1000000000000
+                    }
+                    console.log(v)
+                    return Number(v) - 1000000000000
+                  })
+                  setIdInput(`${addys.toString()},${ids.toString()}`)
+                }}
+              >
+                Convert IDS
+              </Button>
+            </Grid>
             <Grid item>
               <Button
                 variant="contained"
