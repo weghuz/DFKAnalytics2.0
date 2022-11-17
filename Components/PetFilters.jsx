@@ -350,7 +350,11 @@ export default function PetFilters({
                       console.log(v)
                       return Number(v) - 1000000000000
                     })
-                    setIdInput(`${addys.toString()},${ids.toString()}`)
+                    setIdInput(
+                      `${addys.toString()}${
+                        addys.length && ids.length ? `,` : ``
+                      }${ids.toString()}`
+                    )
                   }}
                 >
                   Convert IDS
