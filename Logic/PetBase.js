@@ -1,5 +1,5 @@
-import { blueEggData } from "./blueEggData";
-import { grayEggData } from "./grayEggData";
+import { blueEggData } from "./blueEggData"
+import { greyEggData } from "./greyEggData"
 export const backgrounds = {
   0: "Stillwood Meadow",
   1: "Forest Trail",
@@ -11,66 +11,66 @@ export const backgrounds = {
   7: "Bloater Falls",
   8: "Haywood Farmstead",
   9: "Inner Grove",
-  10: "Vuhlmira Ruins",
-};
+  10: "Vuhlmira Ruins"
+}
 
 const initiatePet = (pet) => {
   if (pet.displayName) {
-    console.log("Already Initiated", pet);
-    return false;
+    console.log("Already Initiated", pet)
+    return false
   }
-  let data = null;
+  let data = null
   switch (pet.eggType) {
     case 0:
-      data = blueEggData[pet.appearance - 1];
-      break;
+      data = blueEggData[pet.appearance - 1]
+      break
     case 1:
-      data = grayEggData[pet.appearance - 1];
-      break;
+      data = greyEggData[pet.appearance - 1]
+      break
     default:
-      return;
+      return
   }
   if (data == null) {
-    console.log("NULL PET", pet);
-    return false;
+    console.log("NULL PET", pet)
+    return false
   }
-  pet.season = data.season;
-  pet.appearanceRarity = data.rarity;
-  pet.family = data.family;
-  pet.displayName = data.displayName;
-  pet.variant = data.variant;
-  pet.variantRarity = data.rarity;
-  pet.pool = data.pool;
-  pet.credits = data.credits;
-  pet.path = data.path;
-  pet.backgroundName = backgrounds[pet.background];
+  pet.season = data.season
+  pet.appearanceRarity = data.rarity
+  pet.family = data.family
+  pet.displayName = data.displayName
+  pet.variant = data.variant
+  pet.variantRarity = data.rarity
+  pet.pool = data.pool
+  pet.credits = data.credits
+  pet.path = data.path
+  pet.backgroundName = backgrounds[pet.background]
   switch (pet.element) {
     case 0:
-      pet.elementName = "fire";
-      break;
+      pet.elementName = "fire"
+      break
     case 1:
-      pet.elementName = "water";
-      break;
+      pet.elementName = "water"
+      break
     case 2:
-      pet.elementName = "earth";
-      break;
+      pet.elementName = "earth"
+      break
     case 3:
-      pet.elementName = "wind";
-      break;
+      pet.elementName = "wind"
+      break
     case 4:
-      pet.elementName = "lightning";
-      break;
+      pet.elementName = "lightning"
+      break
     case 5:
-      pet.elementName = "ice";
-      break;
+      pet.elementName = "ice"
+      break
     case 6:
-      pet.elementName = "light";
-      break;
+      pet.elementName = "light"
+      break
     case 7:
-      pet.elementName = "dark";
-      break;
+      pet.elementName = "dark"
+      break
   }
-  return true;
-};
+  return true
+}
 
-export default initiatePet;
+export default initiatePet

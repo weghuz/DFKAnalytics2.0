@@ -1,6 +1,6 @@
-import BlueEgg from "../public/Pet/Eggs/BlueEgg.png";
-import GrayEgg from "../public/Pet/Eggs/GrayEgg.png";
-import Image from "next/image";
+import BlueEgg from "../public/Pet/Eggs/BlueEgg.png"
+import GreyEgg from "../public/Pet/Eggs/GreyEgg.png"
+import Image from "next/image"
 export const PetBackgrounds = [
   { value: 0, label: "Stillwood Meadow" },
   { value: 1, label: "Forest Trail" },
@@ -12,8 +12,8 @@ export const PetBackgrounds = [
   { value: 7, label: "Bloater Falls" },
   { value: 8, label: "Haywood Farmstead" },
   { value: 9, label: "Inner Grove" },
-  { value: 10, label: "Vuhlmira Ruins" },
-];
+  { value: 10, label: "Vuhlmira Ruins" }
+]
 export const PetElements = [
   { value: 0, label: "fire" },
   { value: 1, label: "water" },
@@ -22,15 +22,15 @@ export const PetElements = [
   { value: 4, label: "lightning" },
   { value: 5, label: "ice" },
   { value: 6, label: "light" },
-  { value: 7, label: "dark" },
-];
+  { value: 7, label: "dark" }
+]
 export const PetEggTypes = [
   {
     value: 0,
-    label: <Image src={BlueEgg} layout={"fixed"} width={20} height={20} />,
+    label: <Image src={BlueEgg} layout={"fixed"} width={20} height={20} />
   },
   {
     value: 1,
-    label: <Image src={GrayEgg} layout={"fixed"} width={20} height={20} />,
-  },
-];
+    label: <Image src={GreyEgg} layout={"fixed"} width={20} height={20} />
+  }
+]

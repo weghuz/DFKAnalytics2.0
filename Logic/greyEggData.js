@@ -1,4 +1,4 @@
-export const grayEggData = [
+export const greyEggData = [
   {
     season: 0,
     appearanceId: 1,
@@ -8,7 +8,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Blubs/Blub_Gray_Idle.png",
+    path: "Blubs/Blub_Gray_Idle.png"
   },
   {
     season: 0,
@@ -19,7 +19,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Blubs/Blub_Red_Idle.png",
+    path: "Blubs/Blub_Red_Idle.png"
   },
   {
     season: 0,
@@ -30,7 +30,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Blubs/Blub_Rust_Idle.png",
+    path: "Blubs/Blub_Rust_Idle.png"
   },
   {
     season: 0,
@@ -41,7 +41,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Boars/Hogling_Red_Idle.png",
+    path: "Boars/Hogling_Red_Idle.png"
   },
   {
     season: 0,
@@ -52,7 +52,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Boars/Hogling_Brown_Idle.png",
+    path: "Boars/Hogling_Brown_Idle.png"
   },
   {
     season: 0,
@@ -63,7 +63,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Boars/Hogling_Black_Idle.png",
+    path: "Boars/Hogling_Black_Idle.png"
   },
   {
     season: 0,
@@ -74,7 +74,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Boars/Hogling_Gray_Idle.png",
+    path: "Boars/Hogling_Gray_Idle.png"
   },
   {
     season: 0,
@@ -85,7 +85,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Boars/Hogling_Blond_Idle.png",
+    path: "Boars/Hogling_Blond_Idle.png"
   },
   {
     season: 0,
@@ -96,7 +96,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Moss%20Kids/Mosskid_Gray_Idle.png",
+    path: "Moss%20Kids/Mosskid_Gray_Idle.png"
   },
   {
     season: 0,
@@ -107,7 +107,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Moss%20Kids/Mosskid_Green_Idle.png",
+    path: "Moss%20Kids/Mosskid_Green_Idle.png"
   },
   {
     season: 0,
@@ -118,7 +118,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Moss%20Kids/Mosskid_Dirt_Idle.png",
+    path: "Moss%20Kids/Mosskid_Dirt_Idle.png"
   },
   {
     season: 0,
@@ -129,7 +129,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Hechu/Hechu_Pink_Idle.png",
+    path: "Hechu/Hechu_Pink_Idle.png"
   },
   {
     season: 0,
@@ -140,7 +140,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Hechu/Hechu_Brown_Idle.png",
+    path: "Hechu/Hechu_Brown_Idle.png"
   },
   {
     season: 0,
@@ -151,7 +151,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Hechu/Hechu_Tan_Idle.png",
+    path: "Hechu/Hechu_Tan_Idle.png"
   },
   {
     season: 0,
@@ -162,7 +162,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Hechu/Hechu_Blond_Idle.png",
+    path: "Hechu/Hechu_Blond_Idle.png"
   },
   {
     season: 0,
@@ -173,7 +173,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Hechu/Hechu_Gray_Idle.png",
+    path: "Hechu/Hechu_Gray_Idle.png"
   },
   {
     season: 0,
@@ -184,7 +184,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Hechu/Hechu_Rust_Idle.png",
+    path: "Hechu/Hechu_Rust_Idle.png"
   },
   {
     season: 0,
@@ -195,7 +195,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Fawns/Fawn_Brown_Idle.png",
+    path: "Fawns/Fawn_Brown_Idle.png"
   },
   {
     season: 0,
@@ -206,7 +206,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Fawns/Fawn_Gray_Idle.png",
+    path: "Fawns/Fawn_Gray_Idle.png"
   },
   {
     season: 0,
@@ -217,7 +217,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Fawns/Fawn_Tan_Idle.png",
+    path: "Fawns/Fawn_Tan_Idle.png"
   },
   {
     season: 0,
@@ -228,7 +228,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Fawns/Fawn_Black_Idle.png",
+    path: "Fawns/Fawn_Black_Idle.png"
   },
   {
     season: 0,
@@ -239,7 +239,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "anonymous",
-    path: "Caedori/Caedori_White_Idle.png",
+    path: "Caedori/Caedori_White_Idle.png"
   },
   {
     season: 0,
@@ -250,7 +250,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Ents/Entkid_Green_Idle.png",
+    path: "Ents/Entkid_Green_Idle.png"
   },
   {
     season: 0,
@@ -261,7 +261,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Corgi/Corgi_Black_Idle.png",
+    path: "Corgi/Corgi_Black_Idle.png"
   },
   {
     season: 0,
@@ -272,7 +272,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Corgi/Corgi_Tan_Idle.png",
+    path: "Corgi/Corgi_Tan_Idle.png"
   },
   {
     season: 0,
@@ -283,7 +283,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Corgi/Corgi_Brown_Idle.png",
+    path: "Corgi/Corgi_Brown_Idle.png"
   },
   {
     season: 0,
@@ -294,7 +294,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Fae/Fae_Red_Idle.png",
+    path: "Fae/Fae_Red_Idle.png"
   },
   {
     season: 0,
@@ -305,7 +305,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Fae/FaeSisters_Red_Idle.png",
+    path: "Fae/FaeSisters_Red_Idle.png"
   },
   {
     season: 0,
@@ -316,7 +316,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Wolves/WolfPup_DarkGray_Idle.png",
+    path: "Wolves/WolfPup_DarkGray_Idle.png"
   },
   {
     season: 0,
@@ -327,7 +327,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Wolves/WolfPup_Brown_Idle.png",
+    path: "Wolves/WolfPup_Brown_Idle.png"
   },
   {
     season: 0,
@@ -338,7 +338,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Wolves/WolfPup_LightGray_Idle.png",
+    path: "Wolves/WolfPup_LightGray_Idle.png"
   },
   {
     season: 0,
@@ -349,7 +349,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Odd",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Moss%20Kids/Mosskid_Cyan_Idle.png",
+    path: "Moss%20Kids/Mosskid_Cyan_Idle.png"
   },
   {
     season: 0,
@@ -360,7 +360,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Odd",
     credits: "https://twitter.com/atlasprkr",
-    path: "Fawns/Fawn_Blue_Idle.png",
+    path: "Fawns/Fawn_Blue_Idle.png"
   },
   {
     season: 0,
@@ -371,7 +371,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Odd",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Boars/Hogling_Violet_Idle.png",
+    path: "Boars/Hogling_Violet_Idle.png"
   },
   {
     season: 0,
@@ -382,7 +382,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Odd",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Blubs/Blub_Violet_Idle.png",
+    path: "Blubs/Blub_Violet_Idle.png"
   },
   {
     season: 0,
@@ -393,7 +393,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Odd",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Ents/Entkid_Fairling_Idle.png",
+    path: "Ents/Entkid_Fairling_Idle.png"
   },
   {
     season: 0,
@@ -404,7 +404,7 @@ export const grayEggData = [
     rarity: 0,
     pool: "Odd",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Corgi/Corgi_Pink_Idle.png",
+    path: "Corgi/Corgi_Pink_Idle.png"
   },
   {
     season: 0,
@@ -415,7 +415,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Blubs/BigBlub_Red_Idle.png",
+    path: "Blubs/BigBlub_Red_Idle.png"
   },
   {
     season: 0,
@@ -426,7 +426,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Blubs/BigBlub_Rust_Idle.png",
+    path: "Blubs/BigBlub_Rust_Idle.png"
   },
   {
     season: 0,
@@ -437,7 +437,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Blubs/BigBlub_Gray_Idle.png",
+    path: "Blubs/BigBlub_Gray_Idle.png"
   },
   {
     season: 0,
@@ -448,7 +448,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Boars/Boar_Brown_Idle.png",
+    path: "Boars/Boar_Brown_Idle.png"
   },
   {
     season: 0,
@@ -459,7 +459,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Boars/Boar_Red_Idle.png",
+    path: "Boars/Boar_Red_Idle.png"
   },
   {
     season: 0,
@@ -470,7 +470,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Boars/Boar_Gray_Idle.png",
+    path: "Boars/Boar_Gray_Idle.png"
   },
   {
     season: 0,
@@ -481,7 +481,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Boars/Boar_Black_Idle.png",
+    path: "Boars/Boar_Black_Idle.png"
   },
   {
     season: 0,
@@ -492,7 +492,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Boars/Boar_Blond_Idle.png",
+    path: "Boars/Boar_Blond_Idle.png"
   },
   {
     season: 0,
@@ -503,7 +503,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Ents/Entkid_Yellow_Idle.png",
+    path: "Ents/Entkid_Yellow_Idle.png"
   },
   {
     season: 0,
@@ -514,7 +514,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Ents/Entkid_Red_Idle.png",
+    path: "Ents/Entkid_Red_Idle.png"
   },
   {
     season: 0,
@@ -525,7 +525,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Hechu/MightyHechu_Rust_Idle.png",
+    path: "Hechu/MightyHechu_Rust_Idle.png"
   },
   {
     season: 0,
@@ -536,7 +536,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Hechu/MightyHechu_Brown_Idle.png",
+    path: "Hechu/MightyHechu_Brown_Idle.png"
   },
   {
     season: 0,
@@ -547,7 +547,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Hechu/MightyHechu_Blond_Idle.png",
+    path: "Hechu/MightyHechu_Blond_Idle.png"
   },
   {
     season: 0,
@@ -558,7 +558,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Hechu/MightyHechu_Gray_Idle.png",
+    path: "Hechu/MightyHechu_Gray_Idle.png"
   },
   {
     season: 0,
@@ -569,7 +569,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Hechu/MightyHechu_Tan_Idle.png",
+    path: "Hechu/MightyHechu_Tan_Idle.png"
   },
   {
     season: 0,
@@ -580,7 +580,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Hechu/MightyHechu_Pink_Idle.png",
+    path: "Hechu/MightyHechu_Pink_Idle.png"
   },
   {
     season: 0,
@@ -591,7 +591,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Shrubblers/Shrubbler_Green_idle.png",
+    path: "Shrubblers/Shrubbler_Green_idle.png"
   },
   {
     season: 0,
@@ -602,7 +602,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "anonymous",
-    path: "Caedori/Caedori_Blue_Idle.png",
+    path: "Caedori/Caedori_Blue_Idle.png"
   },
   {
     season: 0,
@@ -613,7 +613,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "anonymous",
-    path: "Caedori/Caedori_Green_Idle.png",
+    path: "Caedori/Caedori_Green_Idle.png"
   },
   {
     season: 0,
@@ -624,7 +624,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "anonymous",
-    path: "Caedori/Caedori_Purple_Idle.png",
+    path: "Caedori/Caedori_Purple_Idle.png"
   },
   {
     season: 0,
@@ -635,7 +635,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Fae/Fae_Orange_Idle.png",
+    path: "Fae/Fae_Orange_Idle.png"
   },
   {
     season: 0,
@@ -646,7 +646,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Fae/FaeSisters_Orange_Idle.png",
+    path: "Fae/FaeSisters_Orange_Idle.png"
   },
   {
     season: 0,
@@ -657,7 +657,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Fae/Fae_Green_Idle.png",
+    path: "Fae/Fae_Green_Idle.png"
   },
   {
     season: 0,
@@ -668,7 +668,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Fae/FaeSisters_Green_Idle.png",
+    path: "Fae/FaeSisters_Green_Idle.png"
   },
   {
     season: 0,
@@ -679,7 +679,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Wolves/WolfPup_Red_Idle.png",
+    path: "Wolves/WolfPup_Red_Idle.png"
   },
   {
     season: 0,
@@ -690,7 +690,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Wolves/WolfPup_White_Idle.png",
+    path: "Wolves/WolfPup_White_Idle.png"
   },
   {
     season: 0,
@@ -701,7 +701,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Stags/Stag_Brown_Idle.png",
+    path: "Stags/Stag_Brown_Idle.png"
   },
   {
     season: 0,
@@ -712,7 +712,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Wolves/DireWolf_LightGray_Idle.png",
+    path: "Wolves/DireWolf_LightGray_Idle.png"
   },
   {
     season: 0,
@@ -723,7 +723,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Odd",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Blubs/BigBlub_Violet_Idle.png",
+    path: "Blubs/BigBlub_Violet_Idle.png"
   },
   {
     season: 0,
@@ -734,7 +734,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Odd",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Blubs/EngorgedBlub_Violet_Idle.png",
+    path: "Blubs/EngorgedBlub_Violet_Idle.png"
   },
   {
     season: 0,
@@ -745,7 +745,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Odd",
     credits: "https://twitter.com/atlasprkr",
-    path: "Caedori/Caedori_Gold_Idle.png",
+    path: "Caedori/Caedori_Gold_Idle.png"
   },
   {
     season: 0,
@@ -756,7 +756,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Odd",
     credits: "https://twitter.com/atlasprkr",
-    path: "Caedori/Caedori_Crystal_Idle.png",
+    path: "Caedori/Caedori_Crystal_Idle.png"
   },
   {
     season: 0,
@@ -767,7 +767,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Odd",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Shrubblers/Shrubbler_Crystal_idle.png",
+    path: "Shrubblers/Shrubbler_Crystal_idle.png"
   },
   {
     season: 0,
@@ -778,7 +778,7 @@ export const grayEggData = [
     rarity: 1,
     pool: "Odd",
     credits: "https://twitter.com/atlasprkr",
-    path: "Wolves/WolfPup_Golden_Idle.png",
+    path: "Wolves/WolfPup_Golden_Idle.png"
   },
   {
     season: 0,
@@ -789,7 +789,7 @@ export const grayEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Ents/Leafra_Green_Idle.png",
+    path: "Ents/Leafra_Green_Idle.png"
   },
   {
     season: 0,
@@ -800,7 +800,7 @@ export const grayEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Ents/Leafra_Yellow_Idle.png",
+    path: "Ents/Leafra_Yellow_Idle.png"
   },
   {
     season: 0,
@@ -811,7 +811,7 @@ export const grayEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Ents/Leafra_Red_Idle.png",
+    path: "Ents/Leafra_Red_Idle.png"
   },
   {
     season: 0,
@@ -822,7 +822,7 @@ export const grayEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Boars/HaywoodBoar_Brown_Idle.png",
+    path: "Boars/HaywoodBoar_Brown_Idle.png"
   },
   {
     season: 0,
@@ -833,7 +833,7 @@ export const grayEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Boars/HaywoodBoar_Blond_Idle.png",
+    path: "Boars/HaywoodBoar_Blond_Idle.png"
   },
   {
     season: 0,
@@ -844,7 +844,7 @@ export const grayEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Boars/HaywoodBoar_Black_Idle.png",
+    path: "Boars/HaywoodBoar_Black_Idle.png"
   },
   {
     season: 0,
@@ -855,7 +855,7 @@ export const grayEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Shrubblers/Shrubbler_Yellow_idle.png",
+    path: "Shrubblers/Shrubbler_Yellow_idle.png"
   },
   {
     season: 0,
@@ -866,7 +866,7 @@ export const grayEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Fae/Fae_Purple_Idle.png",
+    path: "Fae/Fae_Purple_Idle.png"
   },
   {
     season: 0,
@@ -877,7 +877,7 @@ export const grayEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Fae/FaeSisters_Purple_Idle.png",
+    path: "Fae/FaeSisters_Purple_Idle.png"
   },
   {
     season: 0,
@@ -888,7 +888,7 @@ export const grayEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Fae/Fae_Blue_Idle.png",
+    path: "Fae/Fae_Blue_Idle.png"
   },
   {
     season: 0,
@@ -899,7 +899,7 @@ export const grayEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Fae/FaeSisters_Blue_Idle.png",
+    path: "Fae/FaeSisters_Blue_Idle.png"
   },
   {
     season: 0,
@@ -910,7 +910,7 @@ export const grayEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkrr",
-    path: "Wolves/WolfPup_Shadow_Idle.png",
+    path: "Wolves/WolfPup_Shadow_Idle.png"
   },
   {
     season: 0,
@@ -921,7 +921,7 @@ export const grayEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Wolves/WolfPup_Spectral_Idle.png",
+    path: "Wolves/WolfPup_Spectral_Idle.png"
   },
   {
     season: 0,
@@ -932,7 +932,7 @@ export const grayEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Wolves/DireWolf_Brown_Idle.png",
+    path: "Wolves/DireWolf_Brown_Idle.png"
   },
   {
     season: 0,
@@ -943,7 +943,7 @@ export const grayEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Wolves/DireWolf_Red_Idle.png",
+    path: "Wolves/DireWolf_Red_Idle.png"
   },
   {
     season: 0,
@@ -954,7 +954,7 @@ export const grayEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Wolves/DireWolf_DarkGray_Idle.png",
+    path: "Wolves/DireWolf_DarkGray_Idle.png"
   },
   {
     season: 0,
@@ -965,7 +965,7 @@ export const grayEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Wolves/DireWolf_White_Idle.png",
+    path: "Wolves/DireWolf_White_Idle.png"
   },
   {
     season: 0,
@@ -976,7 +976,7 @@ export const grayEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Blubs/EngorgedBlub_Red_Idle.png",
+    path: "Blubs/EngorgedBlub_Red_Idle.png"
   },
   {
     season: 0,
@@ -987,7 +987,7 @@ export const grayEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Stags/Stag_LightGray_Idle.png",
+    path: "Stags/Stag_LightGray_Idle.png"
   },
   {
     season: 0,
@@ -998,7 +998,7 @@ export const grayEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Stags/Stag_DarkGray_Idle.png",
+    path: "Stags/Stag_DarkGray_Idle.png"
   },
   {
     season: 0,
@@ -1009,7 +1009,7 @@ export const grayEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Stags/Stag_Red_Idle.png",
+    path: "Stags/Stag_Red_Idle.png"
   },
   {
     season: 0,
@@ -1020,7 +1020,7 @@ export const grayEggData = [
     rarity: 2,
     pool: "Odd",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Ents/Leafra_Fairling_Idle.png",
+    path: "Ents/Leafra_Fairling_Idle.png"
   },
   {
     season: 0,
@@ -1031,7 +1031,7 @@ export const grayEggData = [
     rarity: 2,
     pool: "Odd",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Boars/HaywoodBoar_Gold_Idle.png",
+    path: "Boars/HaywoodBoar_Gold_Idle.png"
   },
   {
     season: 0,
@@ -1042,7 +1042,7 @@ export const grayEggData = [
     rarity: 2,
     pool: "Odd",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Boars/HaywoodBoar_Crystal_Idle.png",
+    path: "Boars/HaywoodBoar_Crystal_Idle.png"
   },
   {
     season: 0,
@@ -1053,7 +1053,7 @@ export const grayEggData = [
     rarity: 2,
     pool: "Odd",
     credits: "https://twitter.com/0xFezz",
-    path: "Wolves/DireWolf_Golden_Idle.png",
+    path: "Wolves/DireWolf_Golden_Idle.png"
   },
   {
     season: 0,
@@ -1064,7 +1064,7 @@ export const grayEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Shrubblers/Shrubbler_Pink_idle.png",
+    path: "Shrubblers/Shrubbler_Pink_idle.png"
   },
   {
     season: 0,
@@ -1075,7 +1075,7 @@ export const grayEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "anonymous",
-    path: "Gaeron%20Whelp/GaeronWhelp_Green_Idle.png",
+    path: "Gaeron%20Whelp/GaeronWhelp_Green_Idle.png"
   },
   {
     season: 0,
@@ -1086,7 +1086,7 @@ export const grayEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "anonymous",
-    path: "Gaeron%20Whelp/GaeronWhelp_Red_Idle.png",
+    path: "Gaeron%20Whelp/GaeronWhelp_Red_Idle.png"
   },
   {
     season: 0,
@@ -1097,7 +1097,7 @@ export const grayEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Ents/IllyrianLeafra_Teal_Idle.png",
+    path: "Ents/IllyrianLeafra_Teal_Idle.png"
   },
   {
     season: 0,
@@ -1108,7 +1108,7 @@ export const grayEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Ents/IllyrianLeafra_Violet_Idle.png",
+    path: "Ents/IllyrianLeafra_Violet_Idle.png"
   },
   {
     season: 0,
@@ -1119,7 +1119,7 @@ export const grayEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "anonymous",
-    path: "Caedori/WanderingCaedori_Red_Idle.png",
+    path: "Caedori/WanderingCaedori_Red_Idle.png"
   },
   {
     season: 0,
@@ -1130,7 +1130,7 @@ export const grayEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "anonymous",
-    path: "Caedori/WanderingCaedori_Blue_Idle.png",
+    path: "Caedori/WanderingCaedori_Blue_Idle.png"
   },
   {
     season: 0,
@@ -1141,7 +1141,7 @@ export const grayEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "anonymous",
-    path: "Caedori/WanderingCaedori_Green_Idle.png",
+    path: "Caedori/WanderingCaedori_Green_Idle.png"
   },
   {
     season: 0,
@@ -1152,7 +1152,7 @@ export const grayEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Fae/Fae_Sprigganless_Idle.png",
+    path: "Fae/Fae_Sprigganless_Idle.png"
   },
   {
     season: 0,
@@ -1163,7 +1163,7 @@ export const grayEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Fae/FaeSisters_Sprigganless_Idle.png",
+    path: "Fae/FaeSisters_Sprigganless_Idle.png"
   },
   {
     season: 0,
@@ -1174,7 +1174,7 @@ export const grayEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Starlight%20Butterflies/StarlightButterfly_Blue_Idle.png",
+    path: "Starlight%20Butterflies/StarlightButterfly_Blue_Idle.png"
   },
   {
     season: 0,
@@ -1185,7 +1185,7 @@ export const grayEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Starlight%20Butterflies/StarlightButterfly_Red_Idle.png",
+    path: "Starlight%20Butterflies/StarlightButterfly_Red_Idle.png"
   },
   {
     season: 0,
@@ -1196,7 +1196,7 @@ export const grayEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Wolves/WolfPup_Emerald_Idle.png",
+    path: "Wolves/WolfPup_Emerald_Idle.png"
   },
   {
     season: 0,
@@ -1207,7 +1207,7 @@ export const grayEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkrr",
-    path: "Wolves/WolfPup_Renewal_Idle.png",
+    path: "Wolves/WolfPup_Renewal_Idle.png"
   },
   {
     season: 0,
@@ -1218,7 +1218,7 @@ export const grayEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Wolves/WolfPup_Dreamstone_Idle.png",
+    path: "Wolves/WolfPup_Dreamstone_Idle.png"
   },
   {
     season: 0,
@@ -1229,7 +1229,7 @@ export const grayEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Wolves/DireWolf_Shadow_Idle.png",
+    path: "Wolves/DireWolf_Shadow_Idle.png"
   },
   {
     season: 0,
@@ -1240,7 +1240,7 @@ export const grayEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Wolves/DireWolf_Spectral_Idle.png",
+    path: "Wolves/DireWolf_Spectral_Idle.png"
   },
   {
     season: 0,
@@ -1251,7 +1251,7 @@ export const grayEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Wolves/DireWolf_Renewal_Idle.png",
+    path: "Wolves/DireWolf_Renewal_Idle.png"
   },
   {
     season: 0,
@@ -1262,7 +1262,7 @@ export const grayEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Wolves/DireWolf_Emerald_Idle.png",
+    path: "Wolves/DireWolf_Emerald_Idle.png"
   },
   {
     season: 0,
@@ -1273,7 +1273,7 @@ export const grayEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Stags/Stag_Fairling_Idle.png",
+    path: "Stags/Stag_Fairling_Idle.png"
   },
   {
     season: 0,
@@ -1284,7 +1284,7 @@ export const grayEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Stags/Stag_Renewal_Idle.png",
+    path: "Stags/Stag_Renewal_Idle.png"
   },
   {
     season: 0,
@@ -1295,7 +1295,7 @@ export const grayEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Stags/Stag_Spectral_Idle.png",
+    path: "Stags/Stag_Spectral_Idle.png"
   },
   {
     season: 0,
@@ -1306,7 +1306,7 @@ export const grayEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Moss%20Kids/Mosskid_Wizard_Idle.png",
+    path: "Moss%20Kids/Mosskid_Wizard_Idle.png"
   },
   {
     season: 0,
@@ -1317,7 +1317,7 @@ export const grayEggData = [
     rarity: 3,
     pool: "Odd",
     credits: "anonymous",
-    path: "Caedori/WanderingCaedori_Gold_Idle.png",
+    path: "Caedori/WanderingCaedori_Gold_Idle.png"
   },
   {
     season: 0,
@@ -1328,7 +1328,7 @@ export const grayEggData = [
     rarity: 3,
     pool: "Odd",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Corgi/Corgi_Masked_Idle.png",
+    path: "Corgi/Corgi_Masked_Idle.png"
   },
   {
     season: 0,
@@ -1339,7 +1339,7 @@ export const grayEggData = [
     rarity: 4,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Stags/Stag_Rune_Idle.png",
+    path: "Stags/Stag_Rune_Idle.png"
   },
   {
     season: 0,
@@ -1350,7 +1350,7 @@ export const grayEggData = [
     rarity: 4,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Wolves/DireWolf_Dreamstone_Idle.png",
+    path: "Wolves/DireWolf_Dreamstone_Idle.png"
   },
   {
     season: 0,
@@ -1361,7 +1361,7 @@ export const grayEggData = [
     rarity: 4,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Starlight%20Butterflies/StarlightButterfly_Green_Idle.png",
+    path: "Starlight%20Butterflies/StarlightButterfly_Green_Idle.png"
   },
   {
     season: 0,
@@ -1372,7 +1372,7 @@ export const grayEggData = [
     rarity: 4,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Starlight%20Butterflies/StarlightButterfly_Yellow_Idle.png",
+    path: "Starlight%20Butterflies/StarlightButterfly_Yellow_Idle.png"
   },
   {
     season: 0,
@@ -1383,7 +1383,7 @@ export const grayEggData = [
     rarity: 4,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Fae/Fae_Light_Idle.png",
+    path: "Fae/Fae_Light_Idle.png"
   },
   {
     season: 0,
@@ -1394,7 +1394,7 @@ export const grayEggData = [
     rarity: 4,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Fae/FaeSisters_Light_Idle.png",
+    path: "Fae/FaeSisters_Light_Idle.png"
   },
   {
     season: 0,
@@ -1405,7 +1405,7 @@ export const grayEggData = [
     rarity: 4,
     pool: "Normal",
     credits: "anonymous",
-    path: "Caedori/WanderingCaedori_Crystal_Idle.png",
+    path: "Caedori/WanderingCaedori_Crystal_Idle.png"
   },
   {
     season: 0,
@@ -1416,7 +1416,7 @@ export const grayEggData = [
     rarity: 4,
     pool: "Normal",
     credits: "anonymous",
-    path: "Gaeron%20Whelp/GaeronWhelp_Crystal_Idle.png",
+    path: "Gaeron%20Whelp/GaeronWhelp_Crystal_Idle.png"
   },
   {
     season: 0,
@@ -1427,7 +1427,7 @@ export const grayEggData = [
     rarity: 4,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Highlands%20and%20Riverhold%20Whelps/HighlandsWhelp_Green_Idle.png",
+    path: "Highlands%20and%20Riverhold%20Whelps/HighlandsWhelp_Green_Idle.png"
   },
   {
     season: 0,
@@ -1438,7 +1438,7 @@ export const grayEggData = [
     rarity: 4,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Highlands%20and%20Riverhold%20Whelps/HighlandsWhelp_Gold_Idle.png",
+    path: "Highlands%20and%20Riverhold%20Whelps/HighlandsWhelp_Gold_Idle.png"
   },
   {
     season: 0,
@@ -1449,7 +1449,7 @@ export const grayEggData = [
     rarity: 4,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Highlands%20and%20Riverhold%20Whelps/HighlandsWhelp_Red_Idle.png",
+    path: "Highlands%20and%20Riverhold%20Whelps/HighlandsWhelp_Red_Idle.png"
   },
   {
     season: 0,
@@ -1460,7 +1460,7 @@ export const grayEggData = [
     rarity: 4,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Cerberus/Cerberus_Black_Idle.png",
+    path: "Cerberus/Cerberus_Black_Idle.png"
   },
   {
     season: 0,
@@ -1471,7 +1471,7 @@ export const grayEggData = [
     rarity: 4,
     pool: "Odd",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Highlands%20and%20Riverhold%20Whelps/HighlandsWhelp_Black_Idle.png",
+    path: "Highlands%20and%20Riverhold%20Whelps/HighlandsWhelp_Black_Idle.png"
   },
   {
     season: 0,
@@ -1482,6 +1482,6 @@ export const grayEggData = [
     rarity: 4,
     pool: "Odd",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Pet%20Rock/PetRock_Brown_Idle.png",
-  },
-];
+    path: "Pet%20Rock/PetRock_Brown_Idle.png"
+  }
+]
