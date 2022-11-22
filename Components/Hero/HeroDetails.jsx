@@ -706,14 +706,13 @@ export default function HeroDetails({ hero }) {
               }}
               className={GetHeroRarity()}
             >
-              <Image
+              <img
                 src={`https://heroes.defikingdoms.com/image/${
                   hero.heroId ? hero.heroId : hero.id
                 }`}
-                layout={"fixed"}
                 width={100}
                 height={111}
-              ></Image>
+              ></img>
             </Box>
             <Grid
               item
