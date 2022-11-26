@@ -133,26 +133,22 @@ export default function PetFilters({
       filters += `rarity_lte:${rarity[1]},`
     }
     if (idInput.length > 0) {
+      console.log(idInput)
+      let splitIds = idInput.split(/,| |\n/)
+      let addys = splitIds.filter((id) => id.length == 42)
+      let petId = splitIds.filter(
+        (id) =>
+          id.length < 42 &&
+          id.length > 0 &&
+          (!isNaN(parseInt(id)) || !isNaN(id))
+      )
       if (idInput.length > 0) {
-        console.log(idInput)
-        let splitIds = idInput.split(/,| |\n/)
-        let addys = splitIds.filter((id) => id.length == 42)
         console.log(addys.length)
         if (addys.length != 0) {
-          filters += "owner_in: ["
+          filters += "owner: "
           console.log("addys", addys)
-          addys.forEach((id) => {
-            filters += `"${id}",`
-          })
-          filters += "],"
-        }
-        let petId = splitIds.filter(
-          (id) =>
-            id.length < 42 &&
-            id.length > 0 &&
-            (!isNaN(parseInt(id)) || !isNaN(id))
-        )
-        if (petId.length != 0) {
+          filters += `"${addys[0]}",`
+        } else if (petId.length != 0) {
           console.log("petId", petId)
           filters += "id_in: ["
           petId.forEach((id, i) => {
@@ -307,6 +303,9 @@ export default function PetFilters({
               sx={{ marginTop: "20px" }}
               callback={() => setForSale(false)}
               value={idInput}
+              label={
+                "Searching multiple wallets in the API doesn't work correctly. You can only search one 0x at a time. And multiple IDs. You can't search both IDs and Wallets at the same time."
+              }
               setValue={setIdInput}
             ></IdInput>
             {includeSalePrice && (

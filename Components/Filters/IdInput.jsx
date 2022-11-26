@@ -1,12 +1,12 @@
-import { Grid, TextField } from "@mui/material";
-import React from "react";
+import { Grid, TextField } from "@mui/material"
+import React from "react"
 
-export default function IdInput({ callback, value, setValue }) {
+export default function IdInput({ callback, value, setValue, label }) {
   return (
     <Grid item xs={12} marginTop={"15px"}>
       <TextField
         variant="outlined"
-        label="Id and 0x Address Input, you can't search for Ids and Wallets at the same time (yet)."
+        label={label}
         multiline
         value={value}
         onChange={(e) => setValue(e.target.value)}
@@ -16,5 +16,5 @@ export default function IdInput({ callback, value, setValue }) {
         fullWidth={true}
       />
     </Grid>
-  );
+  )
 }

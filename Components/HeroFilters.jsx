@@ -1098,6 +1098,9 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
               )}
               <IdInput
                 value={idInput}
+                label={
+                  "Id and 0x Address Input, you can't search for Ids and Wallets at the same time."
+                }
                 setValue={(val) => {
                   setIdInput(val)
                   setTarget([Targets[0]])
