@@ -1,7 +1,7 @@
 import React from "react"
-import { FixSalePrice } from "../../Logic/HeroBase"
 import Image from "next/image"
 import Jewel from "../../public/Jewel.png"
+import Jade from "../../public/Jade.png"
 import Crystal from "../../public/Crystal.png"
 import { Grid, Tooltip } from "@mui/material"
 
@@ -62,11 +62,11 @@ export default function PriceCell({ children }) {
             placement="right"
             title={`This hero is being ${
               children.saleAuction ? "Sold" : "Rented out"
-            } in Serendale for Jewel.`}
+            } in Serendale for Jade.`}
           >
             <Grid container>
               <Grid item sx={{ marginRight: "10px" }}>
-                <Image src={Jewel} alt="Jewel" height="24px" width="24px" />
+                <Image src={Jade} alt="Jade" height="24px" width="24px" />
               </Grid>
               <Grid item sx={{ alignSelf: "left", marginTop: "5px" }}>
                 {children.saleAuction

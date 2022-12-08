@@ -512,6 +512,9 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
       case "dfk":
         query += `network: "dfk",`
         break
+      case "kla":
+        query += `network: "kla",`
+        break
       default:
         break
     }
@@ -796,14 +799,15 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
                 </SelectItemSingle>
               )}
               <SelectItemSingle
-                title="Realm"
+                title="Network"
                 clearable={false}
                 values={realm}
                 setValues={setRealm}
               >
                 {[
-                  { value: "hmy", label: "Serendale" },
-                  { value: "dfk", label: "Crystalvale" },
+                  { value: "kla", label: "Klaytn" },
+                  { value: "dfk", label: "DFK Chain" },
+                  { value: "hmy", label: "Harmony" },
                   { value: "", label: "Any" }
                 ]}
               </SelectItemSingle>
@@ -1130,12 +1134,12 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
 
                   console.log(ids)
                   ids = ids.map((v, i) => {
-                    if (Number(v) < 1000000000000) {
+                    if (Number(v) < 2000000000000) {
                       console.log(v + 1000000000000, v)
                       return Number(v) + 1000000000000
                     }
                     console.log(v)
-                    return Number(v) - 1000000000000
+                    return Number(v) - 2000000000000
                   })
                   setIdInput(
                     `${addys.toString()}${

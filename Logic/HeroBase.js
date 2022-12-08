@@ -29,13 +29,17 @@ const hairStyle = {
     7: "Agleam Spike",
     8: "Wayfinder",
     9: "Faded Topknot",
+    10: "Side Shave",
+    11: "Ronin",
     16: "Gruff",
     17: "Rogue Locs",
     18: "Stone Cold",
     19: "Zinra's Tail",
     20: "Hedgehog",
+    21: "???",
     24: "Skegg",
     25: "Shinobi",
+    26: "???",
     28: "Perfect Form"
   },
 
@@ -50,13 +54,17 @@ const hairStyle = {
     7: "Courtly Updo",
     8: "Centaur Tail",
     9: "Lamia",
+    10: "Casual Ponytail",
+    11: "Wild Ponytail",
     16: "Vogue Locs",
     17: "Twin Vine Loops",
     18: "Sweeping Willow",
     19: "Odango",
     20: "Goddess Locks",
+    21: "???",
     24: "Ethereal Waterfall",
     25: "Kunoichi",
+    26: "???",
     28: "Lunar Light Odango"
   }
 }
@@ -71,13 +79,17 @@ const backAppendage = {
   7: "Zweihänder",
   8: "Skeletal Wings",
   9: "Skeletal Tail",
+  10: "Afflicted Spikes",
+  11: "Traveler's Pack",
   16: "Gryphon Wings",
   17: "Draconic Wings",
   18: "Butterfly Wings",
   19: "Phoenix Wings",
   20: "Fallen Angel",
+  21: "???",
   24: "Aura of the Inner Grove",
   25: "Ancient Orbs",
+  26: "???",
   28: "Cecaelia Tentacles"
 }
 const cosmeticTier = {
@@ -96,8 +108,10 @@ const cosmeticTier = {
   18: "Advanced3",
   19: "Advanced4",
   20: "Advanced5",
+  21: "Advanced6",
   24: "Elite1",
   25: "Elite2",
+  26: "Elite3",
   28: "Transcendent1"
 }
 const headAppendage = {
@@ -111,13 +125,17 @@ const headAppendage = {
   7: "Faun Horns",
   8: "Draconic Horns",
   9: "Fae Circlet",
+  10: "Ragfly Antennae",
+  11: "Royal Crown",
   16: "Jagged Horns",
   17: "Spindle Horns",
   18: "Bear Ears",
   19: "Antennae",
   20: "Fallen Angel Coronet",
+  21: "???",
   24: "Wood Elf Ears",
   25: "Snow Elf Ears",
+  26: "???",
   28: "Insight Jewel"
 }
 const eyeColorNames = {
@@ -160,6 +178,7 @@ const skinColorTiers = {
   "7b4a11": 7,
   "57340c": 8
 }
+
 const appendageColorTiers = {
   c5bfa7: "Basic1",
   a88b47: "Basic2",
@@ -171,13 +190,17 @@ const appendageColorTiers = {
   "6f3a3c": "Basic8",
   cddef0: "Basic9",
   df7126: "Basic10",
+  835138: "Basic11",
+  "86a637": "Basic12",
   "6b173c": "Advanced1",
   a0304d: "Advanced2",
   "78547c": "Advanced3",
   "352a51": "Advanced4",
   147256: "Advanced5",
+  "000000": "Advanced6",
   c29d35: "Elite1",
   353132: "Elite2",
+  "0f0f0f": "Elite3",
   d7d7d7: "Transcendent1"
 }
 const appendageColorOrder = {
@@ -191,13 +214,17 @@ const appendageColorOrder = {
   "6f3a3c": 7,
   cddef0: 8,
   df7126: 9,
+  835138: 10,
+  "86a637": 11,
   "6b173c": 16,
   a0304d: 17,
   "78547c": 18,
   "352a51": 19,
   147256: 20,
+  "000000": 21,
   c29d35: 24,
   353132: 25,
+  "0f0f0f": 26,
   d7d7d7: 28
 }
 const appendageColorNames = {
@@ -211,13 +238,17 @@ const appendageColorNames = {
   "6f3a3c": "Catawba",
   cddef0: "Columbia Blue",
   df7126: "Deep Carrot",
+  835138: "Charged Blue",
+  "86a637": "Palm Leaf",
   "6b173c": "Red Wine",
   a0304d: "Maroon",
   "78547c": "Old Lavender",
   "352a51": "Jacarta",
   147256: "Salem",
+  "000000": "Black",
   c29d35: "Satin Gold",
   353132: "Dark Charcoal",
+  "0f0f0f": "Smoky Black",
   d7d7d7: "Light Silver"
 }
 const hairColorNames = {
@@ -231,13 +262,17 @@ const hairColorNames = {
   "62a7e6": "Blue Jeans",
   c34b1e: "Pastel Red",
   326988: "Teal Blue",
+  "513f4f": "Purple Taupe",
+  d48b41: "Peru",
   d7bc65: "Earth Yellow",
   "9b68ab": "Purple Majesty",
   "8d6b3a": "Raw Umber",
   566377: "Electric Blue",
   275435: "Pomona Green",
+  "000000": "Black",
   880016: "Red Devil",
   353132: "Dark Charcoal",
+  "0f0f0f": "Smoky Black",
   "8f9bb3": "Cadet Grey"
 }
 const hairColorTiers = {
@@ -251,34 +286,42 @@ const hairColorTiers = {
   "62a7e6": "Basic8",
   c34b1e: "Basic9",
   326988: "Basic10",
+  "513f4f": "Basic11",
+  d48b41: "Basic12",
   d7bc65: "Advanced1",
   "9b68ab": "Advanced2",
   "8d6b3a": "Advanced3",
   566377: "Advanced4",
   275435: "Advanced5",
+  "000000": "Advanced6",
   880016: "Elite1",
   353132: "Elite2",
+  "0f0f0f": "Elite3",
   "8f9bb3": "Transcendent1"
 }
 const hairColorOrder = {
-  ab9159: 0,
-  af3853: 1,
-  578761: 2,
-  "068483": 3,
-  "48321e": 4,
-  "66489e": 5,
-  ca93a7: 6,
-  "62a7e6": 7,
-  c34b1e: 8,
-  326988: 9,
-  d7bc65: 16,
-  "9b68ab": 17,
-  "8d6b3a": 18,
-  566377: 19,
-  275435: 20,
-  880016: 24,
-  353132: 25,
-  "8f9bb3": 28
+  "#ab9159": 0,
+  "#af3853": 1,
+  "#578761": 2,
+  "#068483": 3,
+  "#48321e": 4,
+  "#66489e": 5,
+  "#ca93a7": 6,
+  "#62a7e6": 7,
+  "#c34b1e": 8,
+  "#326988": 9,
+  "#513f4f": 10,
+  "#d48b41": 11,
+  "#d7bc65": 16,
+  "#9b68ab": 17,
+  "#8d6b3a": 18,
+  "#566377": 19,
+  "#275435": 20,
+  "#000000": 21,
+  "#880016": 24,
+  "#353132": 25,
+  "#0f0f0f": 26,
+  "#8f9bb3": 28
 }
 const statBoost = ["STR", "DEX", "AGI", "VIT", "END", "INT", "WIS", "LCK"]
 const rarities = ["Common", "Uncommon", "Rare", "Legendary", "Mythic"]
@@ -435,13 +478,17 @@ const choices = {
     7: "Pirate",
     8: "Berserker",
     9: "Seer",
+    10: "Legionnaire",
+    11: "Scholar",
     16: "Paladin",
     17: "DarkKnight",
     18: "Summoner",
     19: "Ninja",
     20: "Shapeshifter",
+    21: "Bard",
     24: "Dragoon",
     25: "Sage",
+    26: "Spellbow",
     28: "DreadKnight"
   },
   skinColor: {
@@ -455,21 +502,28 @@ const choices = {
     14: "aa5c38"
   },
   hairColor: {
-    0: "ab9159",
-    1: "af3853",
-    2: "578761",
-    3: "068483",
-    4: "48321e",
-    5: "66489e",
-    6: "ca93a7",
-    7: "62a7e6",
-    16: "d7bc65",
-    17: "9b68ab",
-    18: "8d6b3a",
-    19: "566377",
-    24: "880016",
-    25: "353132",
-    28: "8f9bb3"
+    0: "#ab9159",
+    1: "#af3853",
+    2: "#578761",
+    3: "#068483",
+    4: "#48321e",
+    5: "#66489e",
+    6: "#ca93a7",
+    7: "#62a7e6",
+    8: "#c34b1e",
+    9: "#326988",
+    10: "#513f4f",
+    11: "#d48b41",
+    16: "#d7bc65",
+    17: "#9b68ab",
+    18: "#8d6b3a",
+    19: "#566377",
+    20: "#275435",
+    21: "#000000",
+    24: "#880016",
+    25: "#353132",
+    26: "#0f0f0f",
+    28: "#8f9bb3"
   },
   eyeColor: {
     0: "203997",
@@ -482,38 +536,52 @@ const choices = {
     14: "a41e12"
   },
   appendageColor: {
-    0: "c5bfa7",
-    1: "a88b47",
-    2: "58381e",
-    3: "566f7d",
-    4: "2a386d",
-    5: "3f2e40",
-    6: "830e18",
-    7: "6f3a3c",
-    16: "6b173c",
-    17: "a0304d",
-    18: "78547c",
-    19: "352a51",
-    24: "c29d35",
-    25: "211f1f",
-    28: "d7d7d7"
+    0: "#c5bfa7",
+    1: "#a88b47",
+    2: "#58381e",
+    3: "#566f7d",
+    4: "#2a386d",
+    5: "#3f2e40",
+    6: "#830e18",
+    7: "#6f3a3c",
+    8: "#cddef0",
+    9: "#df7126",
+    10: "#835138",
+    11: "#86a637",
+    16: "#6b173c",
+    17: "#a0304d",
+    18: "#78547c",
+    19: "#352a51",
+    20: "#147256",
+    21: "#000000",
+    24: "#c29d35",
+    25: "#211f1f",
+    26: "#0f0f0f",
+    28: "#d7d7d7"
   },
   backAppendageColor: {
-    0: "c5bfa7",
-    1: "a88b47",
-    2: "58381e",
-    3: "566f7d",
-    4: "2a386d",
-    5: "3f2e40",
-    6: "830e18",
-    7: "6f3a3c",
-    16: "6b173c",
-    17: "a0304d",
-    18: "78547c",
-    19: "352a51",
-    24: "c29d35",
-    25: "211f1f",
-    28: "d7d7d7"
+    0: "#c5bfa7",
+    1: "#a88b47",
+    2: "#58381e",
+    3: "#566f7d",
+    4: "#2a386d",
+    5: "#3f2e40",
+    6: "#830e18",
+    7: "#6f3a3c",
+    8: "#cddef0",
+    9: "#df7126",
+    10: "#835138",
+    11: "#86a637",
+    16: "#6b173c",
+    17: "#a0304d",
+    18: "#78547c",
+    19: "#352a51",
+    20: "#147256",
+    21: "#000000",
+    24: "#c29d35",
+    25: "#211f1f",
+    26: "#0f0f0f",
+    28: "#d7d7d7"
   },
   hairStyle: {
     0: 0,
@@ -524,12 +592,19 @@ const choices = {
     5: 5,
     6: 6,
     7: 7,
+    8: 8,
+    9: 9,
+    10: 10,
+    11: 11,
     16: 16,
     17: 17,
     18: 18,
     19: 19,
+    20: 20,
+    21: 21,
     24: 24,
     25: 25,
+    26: 26,
     28: 28
   },
   backAppendage: {
@@ -541,12 +616,19 @@ const choices = {
     5: 5,
     6: 6,
     7: 7,
+    8: 8,
+    9: 9,
+    10: 10,
+    11: 11,
     16: 16,
     17: 17,
     18: 18,
     19: 19,
+    20: 20,
+    21: 21,
     24: 24,
     25: 25,
+    26: 26,
     28: 28
   },
   headAppendage: {
@@ -558,14 +640,22 @@ const choices = {
     5: 5,
     6: 6,
     7: 7,
+    8: 8,
+    9: 9,
+    10: 10,
+    11: 11,
     16: 16,
     17: 17,
     18: 18,
     19: 19,
+    20: 20,
+    21: 21,
     24: 24,
     25: 25,
+    26: 26,
     28: 28
   },
+
   subClass: {
     0: "Warrior",
     1: "Knight",
@@ -577,13 +667,17 @@ const choices = {
     7: "Pirate",
     8: "Berserker",
     9: "Seer",
+    10: "Legionnaire",
+    11: "Scholar",
     16: "Paladin",
     17: "DarkKnight",
     18: "Summoner",
     19: "Ninja",
     20: "Shapeshifter",
+    21: "Bard",
     24: "Dragoon",
     25: "Sage",
+    26: "Spellbow",
     28: "DreadKnight"
   },
   profession: {
@@ -1159,6 +1253,50 @@ var classVars = {
       lck: 6
     }
   },
+  Legionnaire: {
+    growth: {
+      str: 0.75,
+      dex: 0.65,
+      agi: 0.35,
+      vit: 0.75,
+      end: 0.8,
+      int: 0.2,
+      wis: 0.25,
+      lck: 0.25
+    },
+    base: {
+      str: 10,
+      dex: 8,
+      agi: 5,
+      vit: 10,
+      end: 11,
+      int: 5,
+      wis: 5,
+      lck: 6
+    }
+  },
+  Scholar: {
+    growth: {
+      str: 0.3,
+      dex: 0.3,
+      agi: 0.3,
+      vit: 0.55,
+      end: 0.55,
+      int: 0.8,
+      wis: 0.7,
+      lck: 0.5
+    },
+    base: {
+      str: 5,
+      dex: 5,
+      agi: 5,
+      vit: 7,
+      end: 7,
+      int: 13,
+      wis: 10,
+      lck: 8
+    }
+  },
   Paladin: {
     growth: {
       str: 0.8,
@@ -1269,6 +1407,28 @@ var classVars = {
       lck: 8
     }
   },
+  Bard: {
+    growth: {
+      str: 0.5,
+      dex: 0.7,
+      agi: 0.65,
+      vit: 0.5,
+      end: 0.4,
+      int: 0.5,
+      wis: 0.6,
+      lck: 0.65
+    },
+    base: {
+      str: 5,
+      dex: 11,
+      agi: 10,
+      vit: 6,
+      end: 6,
+      int: 7,
+      wis: 10,
+      lck: 10
+    }
+  },
   Dragoon: {
     growth: {
       str: 0.8,
@@ -1311,6 +1471,29 @@ var classVars = {
       int: 15,
       wis: 15,
       lck: 7
+    }
+  },
+  Spellbow: {
+    growth: {
+      str: 0.4,
+      dex: 0.9,
+      agi: 0.6,
+      vit: 0.6,
+      end: 0.45,
+      int: 0.85,
+      wis: 0.6,
+      lck: 0.6
+    },
+    //This is wrong, needs to be updated. Based on Guesswork.
+    base: {
+      str: 6,
+      dex: 13,
+      agi: 9,
+      vit: 7,
+      end: 6,
+      int: 13,
+      wis: 8,
+      lck: 8
     }
   },
   DreadKnight: {
@@ -7624,11 +7807,13 @@ function SumGrowth(hero) {
     case "Ninja":
     case "Paladin":
     case "Summoner":
+    case "Shapeshifter":
+    case "Bard":
       sum = sum * 1.14285
       break
     case "Dragoon":
     case "Sage":
-    case "Shapeshifter":
+    case "Spellbow":
       sum = sum * 1.33334
       break
     case "DreadKnight":

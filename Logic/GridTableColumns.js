@@ -51,12 +51,12 @@ let columnDefs = [
     }
   },
   {
-    headerName: "Realm",
+    headerName: "Network",
     field: "network",
     minWidth: 50,
     flex: 1,
     valueFormatter: ({ value }) => {
-      return value == "hmy" ? "SD" : "CV"
+      return value
     }
   },
   {
