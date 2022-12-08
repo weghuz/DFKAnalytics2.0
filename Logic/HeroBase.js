@@ -238,7 +238,7 @@ const appendageColorNames = {
   "6f3a3c": "Catawba",
   cddef0: "Columbia Blue",
   df7126: "Deep Carrot",
-  835138: "Charged Blue",
+  835138: "Milk Chocolate",
   "86a637": "Palm Leaf",
   "6b173c": "Red Wine",
   a0304d: "Maroon",
