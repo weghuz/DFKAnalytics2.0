@@ -2,6 +2,8 @@ import { Container, Grid, Typography, useTheme } from "@mui/material"
 import { DataGridPro } from "@mui/x-data-grid-pro"
 import {
   appendageColorOrder,
+  calculateRequiredXp,
+  CurrentStamina,
   eyeColorTiers,
   FullName,
   hairColorOrder,
@@ -348,7 +350,48 @@ export default function HeroDetails({ hero }) {
       }
     ]
   }
-
+  const getStateColumns = () => {
+    return [
+      {
+        headerName: "Stamina",
+        field: "Stamina",
+        title: "Stamina",
+        type: "number",
+        minWidth: 70,
+        flex: 1,
+        valueGetter: ({ row }) => {
+          return `${CurrentStamina(row)} / ${parseInt(
+            25 + parseInt(row.level) / 2
+          )}`
+        }
+      },
+      {
+        headerName: "Summons",
+        field: "Summons",
+        type: "number",
+        minWidth: 50,
+        flex: 1,
+        valueGetter: ({ row }) => {
+          return Number(row.summonsRemaining)
+        },
+        renderCell: ({ row }) => {
+          if (row.generation == 0) {
+            return `${row.summons}/∞`
+          }
+          return `${row.summonsRemaining}/${row.maxSummons}`
+        }
+      },
+      {
+        headerName: "XP",
+        field: "XP",
+        flex: 1,
+        minWidth: 100,
+        valueGetter: ({ row }) => {
+          return `${row.xp}/${calculateRequiredXp(row.level) / 1000}k`
+        }
+      }
+    ]
+  }
   const getVisualColumns1 = () => {
     return [
       {
@@ -739,6 +782,22 @@ export default function HeroDetails({ hero }) {
               <DataGridPro
                 disableColumnSelector={true}
                 columns={getBasicColumns2()}
+                width={"100%"}
+                rows={[hero]}
+                autoHeight={true}
+                density={"compact"}
+                hideFooter={true}
+              ></DataGridPro>
+            </Grid>
+            <Grid
+              minWidth={"200px"}
+              width={"100%"}
+              maxWidth={"300px"}
+              margin={"5px"}
+            >
+              <DataGridPro
+                disableColumnSelector={true}
+                columns={getStateColumns()}
                 width={"100%"}
                 rows={[hero]}
                 autoHeight={true}
