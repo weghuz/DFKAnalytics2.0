@@ -488,7 +488,7 @@ const choices = {
     21: "Bard",
     24: "Dragoon",
     25: "Sage",
-    26: "Spellbow",
+    26: "SpellBow",
     28: "DreadKnight"
   },
   skinColor: {
@@ -677,7 +677,7 @@ const choices = {
     21: "Bard",
     24: "Dragoon",
     25: "Sage",
-    26: "Spellbow",
+    26: "SpellBow",
     28: "DreadKnight"
   },
   profession: {
@@ -1473,7 +1473,7 @@ var classVars = {
       lck: 7
     }
   },
-  Spellbow: {
+  SpellBow: {
     growth: {
       str: 0.4,
       dex: 0.9,
@@ -7813,7 +7813,7 @@ function SumGrowth(hero) {
       break
     case "Dragoon":
     case "Sage":
-    case "Spellbow":
+    case "SpellBow":
       sum = sum * 1.33334
       break
     case "DreadKnight":

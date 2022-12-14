@@ -280,7 +280,7 @@ module.exports = {
     { value: "Bard", label: "Bard" },
     { value: "Dragoon", label: "Dragoon" },
     { value: "Sage", label: "Sage" },
-    { value: "Spellbow", label: "Spellbow" },
+    { value: "SpellBow", label: "SpellBow" },
     { value: "DreadKnight", label: "DreadKnight" }
   ],
   PJSurvivor: [
