@@ -14,7 +14,7 @@ import DFKBase, {
 } from "../Logic/Dropdowns"
 import Image from "next/image"
 import Jewel from "../public/Jewel.png"
-import Crystal from "../public/Crystal.png"
+import Jade from "../public/Jade.png"
 import SelectItem from "./Filters/SelectItem"
 import RaritySlider from "./Filters/RaritySlider"
 import NumberSlider from "./Filters/NumberSlider"
@@ -1066,8 +1066,8 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
                       startAdornment={
                         <InputAdornment position="start" sx={{ width: "30px" }}>
                           <Image
-                            src={Crystal}
-                            alt="Crystal"
+                            src={Jade}
+                            alt="Jade"
                             width={24}
                             height={24}
                           ></Image>
@@ -1089,8 +1089,8 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
                       startAdornment={
                         <InputAdornment position="start" sx={{ width: "30px" }}>
                           <Image
-                            src={Crystal}
-                            alt="Crystal"
+                            src={Jade}
+                            alt="Jade"
                             width={24}
                             height={24}
                           ></Image>

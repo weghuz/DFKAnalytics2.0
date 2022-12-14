@@ -11,7 +11,7 @@ import {
 import React, { useEffect } from "react"
 import PetBonusSlider from "./PetFilters/PetBonusSlider"
 import PetRaritySlider from "./PetFilters/PetRaritySlider"
-import Jewel from "../public/Jewel.png"
+import Jade from "../public/Jade.png"
 import Image from "next/image"
 import IdInput from "./Filters/IdInput"
 import SelectItem from "./Filters/SelectItem"
@@ -53,6 +53,8 @@ export default function PetFilters({
   const setBackground = useStore((state) => state.setBackground)
   const forSale = useStore((state) => state.forSale)
   const setForSale = useStore((state) => state.setForSale)
+  const currentRealm = useStore((state) => state.currentRealm)
+  const setCurrentRealm = useStore((state) => state.setCurrentRealm)
   const clearFilters = useStore((state) => state.clearFilters)
   const setFilter = useStore((state) => state.setFilter)
   const pets = useStore((state) => state.pets)
@@ -102,6 +104,16 @@ export default function PetFilters({
       })
       filters += `],`
     }
+    if (currentRealm.length > 0) {
+      filters += `currentRealm_in: [`
+      currentRealm.forEach((c, i) => {
+        filters += `"${c.value}"`
+        if (i < currentRealm.length - 1) {
+          filters += `,`
+        }
+      })
+      filters += `],`
+    }
     if (profBonus[0] !== 1) {
       filters += `profBonus_gte:${bonusMap[profBonus[0]]},`
     }
@@ -121,10 +133,10 @@ export default function PetFilters({
       filters += `bonusCount_lte:${bonusCount[1]},`
     }
     if (combatBonus[0] !== 0) {
-      filters += `combatBonus_gte: ${combatBonus[0]},`
+      filters += `combatBonus_gte: ${bonusMap[combatBonus[0]]},`
     }
     if (combatBonus[1] !== 3) {
-      filters += `combatBonus_lte:${combatBonus[1]},`
+      filters += `combatBonus_lte:${bonusMap[combatBonus[1]]},`
     }
     if (rarity[0] !== 0) {
       filters += `rarity_gte: ${rarity[0]},`
@@ -188,6 +200,17 @@ export default function PetFilters({
       {visible && (
         <Container>
           <Grid container columnSpacing={4}>
+            <SelectItem
+              title={"Current Realm"}
+              values={currentRealm}
+              setValues={setCurrentRealm}
+            >
+              {[
+                { value: "SER1", label: "SER1" },
+                { value: "SER2", label: "SER2" },
+                { value: "CRY", label: "CRY" }
+              ]}
+            </SelectItem>
             <SelectItem
               title={"Egg Type"}
               values={eggType}
@@ -265,8 +288,8 @@ export default function PetFilters({
                     startAdornment={
                       <InputAdornment position="start" sx={{ width: "30px" }}>
                         <Image
-                          src={Jewel}
-                          alt="Jewel"
+                          src={Jade}
+                          alt="Jade"
                           width={24}
                           height={24}
                         ></Image>
@@ -288,8 +311,8 @@ export default function PetFilters({
                     startAdornment={
                       <InputAdornment position="start" sx={{ width: "30px" }}>
                         <Image
-                          src={Jewel}
-                          alt="Jewel"
+                          src={Jade}
+                          alt="Jade"
                           width={24}
                           height={24}
                         ></Image>

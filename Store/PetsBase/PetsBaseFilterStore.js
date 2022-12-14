@@ -11,86 +11,93 @@ const initialState = {
   element: [],
   background: [],
   forSale: true,
-};
+  currentRealm: []
+}
 
 const PetsBaseFilterStore = (set) => ({
   clearFilters: () => {
     set({
-      ...initialState,
-    });
+      ...initialState
+    })
+  },
+  currentRealm: [],
+  setCurrentRealm: (currentRealm) => {
+    set({
+      currentRealm
+    })
   },
   minSalePrice: 0,
   setMinSalePrice: (minSalePrice) => {
     set({
-      minSalePrice,
-    });
+      minSalePrice
+    })
   },
   maxSalePrice: 9999999,
   setMaxSalePrice: (maxSalePrice) => {
     set({
-      maxSalePrice,
-    });
+      maxSalePrice
+    })
   },
   bonusCount: [1, 3],
   setBonusCount: (bonusCount) => {
     set({
-      bonusCount,
-    });
+      bonusCount
+    })
   },
   combatBonus: [0, 3],
   setCombatBonus: (combatBonus) => {
     set({
-      combatBonus,
-    });
+      combatBonus
+    })
   },
   craftBonus: [0, 3],
   setCraftBonus: (craftBonus) => {
     set({
-      craftBonus,
-    });
+      craftBonus
+    })
   },
   profBonus: [1, 3],
   setProfBonus: (profBonus) => {
     set({
-      profBonus,
-    });
+      profBonus
+    })
   },
   rarity: [0, 4],
   setRarity: (rarity) => {
     set({
-      rarity,
-    });
+      rarity
+    })
   },
   idInput: ``,
   setIdInput: (idInput) => {
     set({
-      idInput,
-    });
+      idInput
+    })
   },
   eggType: [],
   setEggType: (eggType) => {
     set({
-      eggType,
-    });
+      eggType
+    })
   },
   element: [],
   setElement: (element) => {
     set({
-      element,
-    });
+      element
+    })
   },
   background: [],
   setBackground: (background) => {
     set({
-      background,
-    });
+      background
+    })
   },
   forSale: true,
   setForSale: (forSale) => {
     set({
-      forSale,
-    });
-  },
-});
+      forSale
+    })
+  }
+})
 
-export default PetsBaseFilterStore;
+export default PetsBaseFilterStore
