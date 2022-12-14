@@ -15,6 +15,7 @@ const {
 } = require("./HeroBase")
 import { Tooltip, Typography } from "@mui/material"
 import { Box } from "@mui/system"
+import ActiveCell from "../Components/Hero/ActiveCell"
 import ClassScoreCell from "../Components/Hero/ClassScoreCell"
 import DarkSummonBadge from "../Components/Hero/DarkSummonBadge"
 import ElementCell from "../Components/Hero/ElementCell"
@@ -31,6 +32,7 @@ import HeroOwnerName from "../Components/Hero/HeroOwnerName"
 import HeroOwner from "../Components/Hero/HeroOwnerName"
 import HeroSkinColor from "../Components/Hero/HeroSkinColor"
 import HeroSummonsNext from "../Components/Hero/HeroSummonsNext"
+import PassiveCell from "../Components/Hero/PassiveCell"
 import PJBadge from "../Components/Hero/PJBadge"
 import PriceCell from "../Components/Hero/PriceCell"
 import RarityCell from "../Components/Hero/RarityCell"
@@ -923,61 +925,60 @@ let columnDefs = [
   {
     headerName: "Active1",
     field: "active1",
-    minWidth: 100,
-    flex: 1
+    minWidth: 120,
+    flex: 1,
+    renderCell: ({ row }) => {
+      return <ActiveCell>{row.active1}</ActiveCell>
+    }
   },
   {
     headerName: "A1R1",
     field: "a1r1",
-    minWidth: 100,
+    minWidth: 120,
     flex: 1,
-    valueGetter: ({ row }) => {
-      return row.R1.active1
+    renderCell: ({ row }) => {
+      return <ActiveCell>{row.R1.active1}</ActiveCell>
     }
   },
   {
     headerName: "A1R2",
     field: "a1R2",
-    minWidth: 100,
+    minWidth: 120,
     flex: 1,
-    valueGetter: ({ row }) => {
-      return row.R2.active1
+    renderCell: ({ row }) => {
+      return <ActiveCell>{row.R2.active1}</ActiveCell>
     }
   },
   {
     headerName: "A1R3",
     field: "a1R3",
-    minWidth: 100,
+    minWidth: 120,
     flex: 1,
-    valueGetter: ({ row }) => {
-      return row.R3.active1
+    renderCell: ({ row }) => {
+      return <ActiveCell>{row.R3.active1}</ActiveCell>
     }
   },
   {
     headerName: "Active1+",
     field: "active1+",
-    minWidth: 150,
+    minWidth: 225,
     flex: 2,
     renderCell: ({ row }) => {
       return (
-        <Tooltip
-          placement="top"
-          title={`D: ${row.active1} R1: ${row.R1.active1} R2: ${row.R2.active1} R3: ${row.R3.active1}`}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
+            alignContent: "flex-start",
+            fontSize: "12px"
+          }}
         >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              flexWrap: "wrap",
-              alignContent: "flex-start",
-              fontSize: "12px"
-            }}
-          >
-            D: {row.active1} R1: {row.R1.active1}
-            <br />
-            R2: {row.R2.active1} R3: {row.R3.active1}
-          </div>
-        </Tooltip>
+          D: <ActiveCell tooltip={false}>{row.active1}</ActiveCell> R1:{" "}
+          <ActiveCell tooltip={false}>{row.R1.active1}</ActiveCell> R2:{" "}
+          <ActiveCell tooltip={false}>{row.R2.active1}</ActiveCell> R3:{" "}
+          <ActiveCell tooltip={false}>{row.R3.active1}</ActiveCell>
+        </div>
       )
     }
   },
@@ -985,15 +986,18 @@ let columnDefs = [
     headerName: "Active2",
     field: "active2",
     minWidth: 100,
-    flex: 1
+    flex: 1,
+    renderCell: ({ row }) => {
+      return <ActiveCell>{row.active2}</ActiveCell>
+    }
   },
   {
     headerName: "A2R1",
     field: "a2r1",
     minWidth: 100,
     flex: 1,
-    valueGetter: ({ row }) => {
-      return row.R1.active2
+    renderCell: ({ row }) => {
+      return <ActiveCell>{row.R1.active2}</ActiveCell>
     }
   },
   {
@@ -1001,8 +1005,8 @@ let columnDefs = [
     field: "a2R2",
     minWidth: 100,
     flex: 1,
-    valueGetter: ({ row }) => {
-      return row.R2.active2
+    renderCell: ({ row }) => {
+      return <ActiveCell>{row.R2.active2}</ActiveCell>
     }
   },
   {
@@ -1010,34 +1014,31 @@ let columnDefs = [
     field: "a2R3",
     minWidth: 100,
     flex: 1,
-    valueGetter: ({ row }) => {
-      return row.R3.active2
+    renderCell: ({ row }) => {
+      return <ActiveCell>{row.R3.active2}</ActiveCell>
     }
   },
   {
     headerName: "Active2+",
     field: "active2+",
-    minWidth: 150,
+    minWidth: 225,
     flex: 2,
     renderCell: ({ row }) => {
       return (
-        <Tooltip
-          placement="top"
-          title={`D: ${row.active2} R1: ${row.R1.active2} R2: ${row.R2.active2} R3: ${row.R3.active2}`}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
+            alignContent: "flex-start",
+            fontSize: "12px"
+          }}
         >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              flexWrap: "wrap",
-              alignContent: "flex-start",
-              fontSize: "12px"
-            }}
-          >
-            D: {row.active2} R1: {row.R1.active2}
-            <br /> R2: {row.R2.active2} R3: {row.R3.active2}
-          </div>
-        </Tooltip>
+          D: <ActiveCell>{row.active2}</ActiveCell>
+          R1:<ActiveCell>{row.R1.active2}</ActiveCell>
+          R2: <ActiveCell>{row.R2.active2}</ActiveCell>
+          R3: <ActiveCell>{row.R3.active2}</ActiveCell>
+        </div>
       )
     }
   },
@@ -1045,7 +1046,10 @@ let columnDefs = [
     headerName: "Passive1",
     field: "passive1",
     minWidth: 100,
-    flex: 1
+    flex: 1,
+    renderCell: ({ row }) => {
+      return <PassiveCell>{row.passive1}</PassiveCell>
+    }
   },
   {
     headerName: "P1R1",
@@ -1053,7 +1057,7 @@ let columnDefs = [
     minWidth: 100,
     flex: 1,
     renderCell: ({ row }) => {
-      return row.R1.passive1
+      return <PassiveCell>{row.R1.passive1}</PassiveCell>
     }
   },
   {
@@ -1062,7 +1066,7 @@ let columnDefs = [
     minWidth: 100,
     flex: 1,
     renderCell: ({ row }) => {
-      return row.R2.passive1
+      return <PassiveCell>{row.R2.passive1}</PassiveCell>
     }
   },
   {
@@ -1071,34 +1075,30 @@ let columnDefs = [
     minWidth: 100,
     flex: 1,
     renderCell: ({ row }) => {
-      return row.R3.passive1
+      return <PassiveCell>{row.R3.passive1}</PassiveCell>
     }
   },
   {
     headerName: "Passive1+",
     field: "passive1+",
-    minWidth: 150,
+    minWidth: 225,
     flex: 2,
     renderCell: ({ row }) => {
       return (
-        <Tooltip
-          placement="top"
-          title={`D: ${row.passive1} R1: ${row.R1.passive1} R2: ${row.R2.passive1} R3: ${row.R3.passive1}`}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
+            alignContent: "flex-start",
+            fontSize: "12px"
+          }}
         >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              flexWrap: "wrap",
-              alignContent: "flex-start",
-              fontSize: "12px"
-            }}
-          >
-            D: {row.passive1} R1: {row.R1.passive1}
-            <br />
-            R2: {row.R2.passive1} R3: {row.R3.passive1}
-          </div>
-        </Tooltip>
+          D: <PassiveCell>{row.passive1}</PassiveCell> R1:{" "}
+          <PassiveCell>{row.R1.passive1}</PassiveCell>
+          R2: <PassiveCell>{row.R2.passive1}</PassiveCell> R3:{" "}
+          <PassiveCell>{row.R3.passive1}</PassiveCell>
+        </div>
       )
     }
   },
@@ -1106,7 +1106,10 @@ let columnDefs = [
     headerName: "Passive2",
     field: "passive2",
     minWidth: 100,
-    flex: 1
+    flex: 1,
+    renderCell: ({ row }) => {
+      return <PassiveCell>{row.passive2}</PassiveCell>
+    }
   },
   {
     headerName: "P2R1",
@@ -1114,7 +1117,7 @@ let columnDefs = [
     minWidth: 100,
     flex: 1,
     renderCell: ({ row }) => {
-      return row.R1.passive2
+      return <PassiveCell>{row.R1.passive2}</PassiveCell>
     }
   },
   {
@@ -1123,7 +1126,7 @@ let columnDefs = [
     minWidth: 100,
     flex: 1,
     renderCell: ({ row }) => {
-      return row.R2.passive2
+      return <PassiveCell>{row.R2.passive2}</PassiveCell>
     }
   },
   {
@@ -1132,33 +1135,30 @@ let columnDefs = [
     minWidth: 100,
     flex: 1,
     renderCell: ({ row }) => {
-      return row.R3.passive2
+      return <PassiveCell>{row.R3.passive2}</PassiveCell>
     }
   },
   {
     headerName: "Passive2+",
     field: "passive2+",
-    minWidth: 150,
+    minWidth: 225,
     flex: 2,
     renderCell: ({ row }) => {
       return (
-        <Tooltip
-          placement="top"
-          title={`D: ${row.passive2} R1: ${row.R1.passive2} R2: ${row.R2.passive2} R3: ${row.R3.passive1}`}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
+            alignContent: "flex-start",
+            fontSize: "12px"
+          }}
         >
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              flexWrap: "wrap",
-              alignContent: "flex-start",
-              fontSize: "12px"
-            }}
-          >
-            D: {row.passive2} R1: {row.R1.passive2} <br />
-            R2: {row.R2.passive2} R3: {row.R3.passive1}
-          </div>
-        </Tooltip>
+          D: <PassiveCell>{row.passive2}</PassiveCell> R1:{" "}
+          <PassiveCell>{row.R1.passive2}</PassiveCell>
+          R2: <PassiveCell>{row.R2.passive2}</PassiveCell> R3:{" "}
+          <PassiveCell>{row.R3.passive1}</PassiveCell>
+        </div>
       )
     }
   },

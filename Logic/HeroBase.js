@@ -1,3 +1,4 @@
+const { Box } = require("@mui/material")
 const { useTheme } = require("@mui/system")
 
 const professions = ["mining", "foraging", "gardening", "fishing"]

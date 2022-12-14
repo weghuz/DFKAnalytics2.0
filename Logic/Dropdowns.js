@@ -209,22 +209,81 @@ module.exports = {
     { value: "plains", label: "Plains" },
     { value: "swamp", label: "Swamp" }
   ],
-  Skills: [
-    { value: "Basic1", label: "Basic 1" },
-    { value: "Basic2", label: "Basic 2" },
-    { value: "Basic3", label: "Basic 3" },
-    { value: "Basic4", label: "Basic 4" },
-    { value: "Basic5", label: "Basic 5" },
-    { value: "Basic6", label: "Basic 6" },
-    { value: "Basic7", label: "Basic 7" },
-    { value: "Basic8", label: "Basic 8" },
-    { value: "Advanced1", label: "Advanced 1" },
-    { value: "Advanced2", label: "Advanced 2" },
-    { value: "Advanced3", label: "Advanced 3" },
-    { value: "Advanced4", label: "Advanced 4" },
-    { value: "Elite1", label: "Elite 1" },
-    { value: "Elite2", label: "Elite 2" },
-    { value: "Transcendent1", label: "Transcendent 1" }
+  ActiveSkills: [
+    {
+      value: "Basic1",
+      label: "Poisoned Blade"
+    },
+    { value: "Basic2", label: "Blinding Winds" },
+    { value: "Basic3", label: "Heal" },
+    { value: "Basic4", label: "Cleanse" },
+    { value: "Basic5", label: "Iron Skin" },
+    { value: "Basic6", label: "Speed" },
+    { value: "Basic7", label: "Critical Aim" },
+    { value: "Basic8", label: "Deathmark" },
+    {
+      value: "Advanced1",
+      label: <Box sx={{ color: "success.main" }}>Exhaust</Box>
+    },
+    {
+      value: "Advanced2",
+      label: <Box sx={{ color: "success.main" }}>Daze</Box>
+    },
+    {
+      value: "Advanced3",
+      label: <Box sx={{ color: "success.main" }}>Explosion</Box>
+    },
+    {
+      value: "Advanced4",
+      label: <Box sx={{ color: "success.main" }}>Hardened Shield</Box>
+    },
+    { value: "Elite1", label: <Box sx={{ color: "primary.main" }}>Stun</Box> },
+    {
+      value: "Elite2",
+      label: <Box sx={{ color: "primary.main" }}>Second Wind</Box>
+    },
+    {
+      value: "Transcendent1",
+      label: <Box sx={{ color: "error.main" }}>Resurrection</Box>
+    }
+  ],
+  PassiveSkills: [
+    { value: "Basic1", label: "Duelist" },
+    { value: "Basic2", label: "Clutch" },
+    { value: "Basic3", label: "Foresight" },
+    { value: "Basic4", label: "Headstrong" },
+    { value: "Basic5", label: "Clear Vision" },
+    { value: "Basic6", label: "Fearless" },
+    { value: "Basic7", label: "Chatterbox" },
+    { value: "Basic8", label: "Stalwart" },
+    {
+      value: "Advanced1",
+      label: <Box sx={{ color: "success.main" }}>Leadership</Box>
+    },
+    {
+      value: "Advanced2",
+      label: <Box sx={{ color: "success.main" }}>Efficient</Box>
+    },
+    {
+      value: "Advanced3",
+      label: <Box sx={{ color: "success.main" }}>Intimidation</Box>
+    },
+    {
+      value: "Advanced4",
+      label: <Box sx={{ color: "success.main" }}>Toxic</Box>
+    },
+    {
+      value: "Elite1",
+      label: <Box sx={{ color: "primary.main" }}>Giant Slayer</Box>
+    },
+    {
+      value: "Elite2",
+      label: <Box sx={{ color: "primary.main" }}>Last Stand</Box>
+    },
+    {
+      value: "Transcendent1",
+      label: <Box sx={{ color: "error.main" }}>Second Life</Box>
+    }
   ],
   Professions: [
     { value: "mining", label: "Mining" },

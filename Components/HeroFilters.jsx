@@ -8,7 +8,8 @@ import DFKBase, {
   HairStylesGeneric,
   HairStylesMale,
   HeadAppendages,
-  Skills,
+  ActiveSkills,
+  PassiveSkills,
   SkinColors,
   Targets
 } from "../Logic/Dropdowns"
@@ -844,28 +845,28 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
                 values={active1}
                 setValues={setActive1}
               >
-                {Skills}
+                {ActiveSkills}
               </SelectItem>
               <SelectItem
                 title="Active 2"
                 values={active2}
                 setValues={setActive2}
               >
-                {Skills}
+                {ActiveSkills}
               </SelectItem>
               <SelectItem
                 title="Passive 1"
                 values={passive1}
                 setValues={setPassive1}
               >
-                {Skills}
+                {PassiveSkills}
               </SelectItem>
               <SelectItem
                 title="Passive 2"
                 values={passive2}
                 setValues={setPassive2}
               >
-                {Skills}
+                {PassiveSkills}
               </SelectItem>
               <SelectItem
                 title="+2 Stats"

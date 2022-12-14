@@ -573,6 +573,40 @@ export default function HeroDetails({ hero }) {
       { headername: "R3", field: "R3", flex: 1 }
     ]
   }
+  const ActiveSkills = {
+    Basic1: "Poisoned Blade",
+    Basic2: "Blinding Winds",
+    Basic3: "Heal",
+    Basic4: "Cleanse",
+    Basic5: "Iron Skin",
+    Basic6: "Speed",
+    Basic7: "Critical Aim",
+    Basic8: "Deathmark",
+    Advanced1: "Exhaust",
+    Advanced2: "Daze",
+    Advanced3: "Explosion",
+    Advanced4: "Hardened Shield",
+    Elite1: "Stun",
+    Elite2: "Second Wind",
+    Transcendent1: "Resurrection"
+  }
+  const PassiveSkills = {
+    Basic1: "Duelist",
+    Basic2: "Clutch",
+    Basic3: "Foresight",
+    Basic4: "Headstrong",
+    Basic5: "Clear Vision",
+    Basic6: "Fearless",
+    Basic7: "Chatterbox",
+    Basic8: "Stalwart",
+    Advanced1: "Leadership",
+    Advanced2: "Efficient",
+    Advanced3: "Intimidation",
+    Advanced4: "Toxic",
+    Elite1: "Giant Slayer",
+    Elite2: "Last Stand",
+    Transcendent1: "Second Life"
+  }
   const getRecessiveRows = () => {
     return [
       {
@@ -618,34 +652,34 @@ export default function HeroDetails({ hero }) {
       {
         id: "active1",
         Stat: "active1",
-        D: hero.active1,
-        R1: hero.R1.active1,
-        R2: hero.R2.active1,
-        R3: hero.R3.active1
+        D: ActiveSkills[hero.active1] + " " + hero.active1,
+        R1: ActiveSkills[hero.R1.active1] + " " + hero.R1.active1,
+        R2: ActiveSkills[hero.R2.active1] + " " + hero.R2.active1,
+        R3: ActiveSkills[hero.R3.active1] + " " + hero.R3.active1
       },
       {
         id: "active2",
         Stat: "active2",
-        D: hero.active2,
-        R1: hero.R1.active2,
-        R2: hero.R2.active2,
-        R3: hero.R3.active2
+        D: ActiveSkills[hero.active2] + " " + hero.active2,
+        R1: ActiveSkills[hero.R1.active2] + " " + hero.R1.active2,
+        R2: ActiveSkills[hero.R2.active2] + " " + hero.R2.active2,
+        R3: ActiveSkills[hero.R3.active2] + " " + hero.R3.active2
       },
       {
         id: "passive1",
         Stat: "passive1",
-        D: hero.passive1,
-        R1: hero.R1.passive1,
-        R2: hero.R2.passive1,
-        R3: hero.R3.passive1
+        D: PassiveSkills[hero.passive1] + " " + hero.passive1,
+        R1: PassiveSkills[hero.R1.passive1] + " " + hero.R1.passive1,
+        R2: PassiveSkills[hero.R2.passive1] + " " + hero.R2.passive1,
+        R3: PassiveSkills[hero.R3.passive1] + " " + hero.R3.passive1
       },
       {
         id: "passive2",
         Stat: "passive2",
-        D: hero.passive2,
-        R1: hero.R1.passive2,
-        R2: hero.R2.passive2,
-        R3: hero.R3.passive2
+        D: PassiveSkills[hero.passive2] + " " + hero.passive2,
+        R1: PassiveSkills[hero.R1.passive2] + " " + hero.R1.passive2,
+        R2: PassiveSkills[hero.R2.passive2] + " " + hero.R2.passive2,
+        R3: PassiveSkills[hero.R3.passive2] + " " + hero.R3.passive2
       },
       {
         id: "element",
