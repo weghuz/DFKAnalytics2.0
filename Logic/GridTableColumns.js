@@ -985,7 +985,7 @@ let columnDefs = [
   {
     headerName: "Active2",
     field: "active2",
-    minWidth: 100,
+    minWidth: 120,
     flex: 1,
     renderCell: ({ row }) => {
       return <ActiveCell>{row.active2}</ActiveCell>
@@ -994,7 +994,7 @@ let columnDefs = [
   {
     headerName: "A2R1",
     field: "a2r1",
-    minWidth: 100,
+    minWidth: 120,
     flex: 1,
     renderCell: ({ row }) => {
       return <ActiveCell>{row.R1.active2}</ActiveCell>
@@ -1003,7 +1003,7 @@ let columnDefs = [
   {
     headerName: "A2R2",
     field: "a2R2",
-    minWidth: 100,
+    minWidth: 120,
     flex: 1,
     renderCell: ({ row }) => {
       return <ActiveCell>{row.R2.active2}</ActiveCell>
@@ -1012,7 +1012,7 @@ let columnDefs = [
   {
     headerName: "A2R3",
     field: "a2R3",
-    minWidth: 100,
+    minWidth: 120,
     flex: 1,
     renderCell: ({ row }) => {
       return <ActiveCell>{row.R3.active2}</ActiveCell>
@@ -1045,7 +1045,7 @@ let columnDefs = [
   {
     headerName: "Passive1",
     field: "passive1",
-    minWidth: 100,
+    minWidth: 120,
     flex: 1,
     renderCell: ({ row }) => {
       return <PassiveCell>{row.passive1}</PassiveCell>
@@ -1054,7 +1054,7 @@ let columnDefs = [
   {
     headerName: "P1R1",
     field: "p1r1",
-    minWidth: 100,
+    minWidth: 120,
     flex: 1,
     renderCell: ({ row }) => {
       return <PassiveCell>{row.R1.passive1}</PassiveCell>
@@ -1063,7 +1063,7 @@ let columnDefs = [
   {
     headerName: "P1R2",
     field: "p1R2",
-    minWidth: 100,
+    minWidth: 120,
     flex: 1,
     renderCell: ({ row }) => {
       return <PassiveCell>{row.R2.passive1}</PassiveCell>
@@ -1072,7 +1072,7 @@ let columnDefs = [
   {
     headerName: "P1R3",
     field: "p1R3",
-    minWidth: 100,
+    minWidth: 120,
     flex: 1,
     renderCell: ({ row }) => {
       return <PassiveCell>{row.R3.passive1}</PassiveCell>
@@ -1105,7 +1105,7 @@ let columnDefs = [
   {
     headerName: "Passive2",
     field: "passive2",
-    minWidth: 100,
+    minWidth: 120,
     flex: 1,
     renderCell: ({ row }) => {
       return <PassiveCell>{row.passive2}</PassiveCell>
@@ -1114,7 +1114,7 @@ let columnDefs = [
   {
     headerName: "P2R1",
     field: "p2r1",
-    minWidth: 100,
+    minWidth: 120,
     flex: 1,
     renderCell: ({ row }) => {
       return <PassiveCell>{row.R1.passive2}</PassiveCell>
@@ -1123,7 +1123,7 @@ let columnDefs = [
   {
     headerName: "P2R2",
     field: "p2R2",
-    minWidth: 100,
+    minWidth: 120,
     flex: 1,
     renderCell: ({ row }) => {
       return <PassiveCell>{row.R2.passive2}</PassiveCell>
@@ -1132,7 +1132,7 @@ let columnDefs = [
   {
     headerName: "P2R3",
     field: "p2R3",
-    minWidth: 100,
+    minWidth: 120,
     flex: 1,
     renderCell: ({ row }) => {
       return <PassiveCell>{row.R3.passive2}</PassiveCell>

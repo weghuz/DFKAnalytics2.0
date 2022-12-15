@@ -212,77 +212,80 @@ module.exports = {
   ActiveSkills: [
     {
       value: "Basic1",
-      label: "Poisoned Blade"
+      label: "B1 Poisoned Blade"
     },
-    { value: "Basic2", label: "Blinding Winds" },
-    { value: "Basic3", label: "Heal" },
-    { value: "Basic4", label: "Cleanse" },
-    { value: "Basic5", label: "Iron Skin" },
-    { value: "Basic6", label: "Speed" },
-    { value: "Basic7", label: "Critical Aim" },
-    { value: "Basic8", label: "Deathmark" },
+    { value: "Basic2", label: "B2 Blinding Winds" },
+    { value: "Basic3", label: "B3 Heal" },
+    { value: "Basic4", label: "B4 Cleanse" },
+    { value: "Basic5", label: "B5 Iron Skin" },
+    { value: "Basic6", label: "B6 Speed" },
+    { value: "Basic7", label: "B7 Critical Aim" },
+    { value: "Basic8", label: "B8 Deathmark" },
     {
       value: "Advanced1",
-      label: <Box sx={{ color: "success.main" }}>Exhaust</Box>
+      label: <Box sx={{ color: "success.main" }}>A1 Exhaust</Box>
     },
     {
       value: "Advanced2",
-      label: <Box sx={{ color: "success.main" }}>Daze</Box>
+      label: <Box sx={{ color: "success.main" }}>A2 Daze</Box>
     },
     {
       value: "Advanced3",
-      label: <Box sx={{ color: "success.main" }}>Explosion</Box>
+      label: <Box sx={{ color: "success.main" }}>A3 Explosion</Box>
     },
     {
       value: "Advanced4",
-      label: <Box sx={{ color: "success.main" }}>Hardened Shield</Box>
-    },
-    { value: "Elite1", label: <Box sx={{ color: "primary.main" }}>Stun</Box> },
-    {
-      value: "Elite2",
-      label: <Box sx={{ color: "primary.main" }}>Second Wind</Box>
-    },
-    {
-      value: "Transcendent1",
-      label: <Box sx={{ color: "error.main" }}>Resurrection</Box>
-    }
-  ],
-  PassiveSkills: [
-    { value: "Basic1", label: "Duelist" },
-    { value: "Basic2", label: "Clutch" },
-    { value: "Basic3", label: "Foresight" },
-    { value: "Basic4", label: "Headstrong" },
-    { value: "Basic5", label: "Clear Vision" },
-    { value: "Basic6", label: "Fearless" },
-    { value: "Basic7", label: "Chatterbox" },
-    { value: "Basic8", label: "Stalwart" },
-    {
-      value: "Advanced1",
-      label: <Box sx={{ color: "success.main" }}>Leadership</Box>
-    },
-    {
-      value: "Advanced2",
-      label: <Box sx={{ color: "success.main" }}>Efficient</Box>
-    },
-    {
-      value: "Advanced3",
-      label: <Box sx={{ color: "success.main" }}>Intimidation</Box>
-    },
-    {
-      value: "Advanced4",
-      label: <Box sx={{ color: "success.main" }}>Toxic</Box>
+      label: <Box sx={{ color: "success.main" }}>A4 Hardened Shield</Box>
     },
     {
       value: "Elite1",
-      label: <Box sx={{ color: "primary.main" }}>Giant Slayer</Box>
+      label: <Box sx={{ color: "primary.main" }}>E1 Stun</Box>
     },
     {
       value: "Elite2",
-      label: <Box sx={{ color: "primary.main" }}>Last Stand</Box>
+      label: <Box sx={{ color: "primary.main" }}>E2 Second Wind</Box>
     },
     {
       value: "Transcendent1",
-      label: <Box sx={{ color: "error.main" }}>Second Life</Box>
+      label: <Box sx={{ color: "error.main" }}>T1 Resurrection</Box>
+    }
+  ],
+  PassiveSkills: [
+    { value: "Basic1", label: "B1 Duelist" },
+    { value: "Basic2", label: "B2 Clutch" },
+    { value: "Basic3", label: "B3 Foresight" },
+    { value: "Basic4", label: "B4 Headstrong" },
+    { value: "Basic5", label: "B5 Clear Vision" },
+    { value: "Basic6", label: "B6 Fearless" },
+    { value: "Basic7", label: "B7 Chatterbox" },
+    { value: "Basic8", label: "B8 Stalwart" },
+    {
+      value: "Advanced1",
+      label: <Box sx={{ color: "success.main" }}>A1 Leadership</Box>
+    },
+    {
+      value: "Advanced2",
+      label: <Box sx={{ color: "success.main" }}>A2 Efficient</Box>
+    },
+    {
+      value: "Advanced3",
+      label: <Box sx={{ color: "success.main" }}>A3 Intimidation</Box>
+    },
+    {
+      value: "Advanced4",
+      label: <Box sx={{ color: "success.main" }}>A4 Toxic</Box>
+    },
+    {
+      value: "Elite1",
+      label: <Box sx={{ color: "primary.main" }}>E1 Giant Slayer</Box>
+    },
+    {
+      value: "Elite2",
+      label: <Box sx={{ color: "primary.main" }}>E2 Last Stand</Box>
+    },
+    {
+      value: "Transcendent1",
+      label: <Box sx={{ color: "error.main" }}>T1 Second Life</Box>
     }
   ],
   Professions: [
