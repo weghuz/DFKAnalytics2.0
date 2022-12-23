@@ -11,7 +11,7 @@ import React from "react"
 import Link from "next/link"
 import { Box } from "@mui/system"
 import Image from "next/image"
-import CommunitySpotlight from "../public/CommunitySpotlight20220907.png"
+import OfficialSpotlight from "../public/PirateQuesterHome.png"
 import Head from "next/head"
 import Twitter from "../public/Socials/Twitter.svg"
 
@@ -32,59 +32,41 @@ export default function index() {
             <CardContent>
               <Typography variant="h5" component="div">
                 <a
-                  href="https://dfkeggspert.com/"
+                  href="https://piratequester.com/"
                   target={"_blank"}
                   rel={"noreferrer"}
                 >
-                  {`Community Spotlight - DFK EGGSPERT`}
+                  {`Official Spotlight - Piratequester.com`}
                 </a>
               </Typography>
               <Typography variant="h6" component="div"></Typography>
-              <Box display={"flex"} justifyContent={"center"} marginBottom={4}>
-                <Box display={"relative"} maxWidth={850} maxHeight={450}>
-                  <a
-                    href="https://dfkeggspert.com/"
-                    target={"_blank"}
-                    rel={"noreferrer"}
-                  >
-                    <Image
-                      layout={"fixed"}
-                      width={727}
-                      height={476}
-                      src={CommunitySpotlight}
-                      alt={"DFKEggspert.com"}
-                    />
-                  </a>
-                </Box>
-              </Box>
-              <Typography variant="div">
-                <Box>{`DFKEggspert - A website for all your DFK needs!`}</Box>
-                <Box>{`Guides, Tips and Insight into DeFi Kingdoms.`}</Box>
-              </Typography>
-            </CardContent>
-            <CardActions>
-              <Button size="small">
+              <Box display={"flex"} justifyContent={"center"} marginBottom={1}>
                 <a
-                  href="https://dfkeggspert.com/"
-                  target={"_blank"}
-                  rel={"noreferrer"}
-                >
-                  {"https://dfkeggspert.com/"}
-                </a>
-              </Button>
-              <Button size="small">
-                <a
-                  href="https://twitter.com/dfkstronghold"
+                  href="https://piratequester.com/"
                   target={"_blank"}
                   rel={"noreferrer"}
                 >
                   <Image
-                    src={Twitter}
                     layout={"fixed"}
-                    width={20}
-                    height={20}
-                  ></Image>
-                  {"@dfkstronghold"}
+                    width={588}
+                    height={363}
+                    src={OfficialSpotlight}
+                    alt={"PirateQuester.com"}
+                  />
+                </a>
+              </Box>
+              <Box>{`Pirate Quester - A DFK Bot that runs in your browser!`}</Box>
+              <Box>{`Self custodial, encrypted and secure.`}</Box>
+              <Box>{`Created by the creator of DFKAnalytics.`}</Box>
+            </CardContent>
+            <CardActions>
+              <Button size="small">
+                <a
+                  href="https://piratequester.com/"
+                  target={"_blank"}
+                  rel={"noreferrer"}
+                >
+                  {"piratequester.com"}
                 </a>
               </Button>
             </CardActions>
