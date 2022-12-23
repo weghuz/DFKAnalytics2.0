@@ -13,7 +13,6 @@ import { Box } from "@mui/system"
 import Image from "next/image"
 import OfficialSpotlight from "../public/PirateQuesterHome.png"
 import Head from "next/head"
-import Twitter from "../public/Socials/Twitter.svg"
 
 export default function index() {
   return (
