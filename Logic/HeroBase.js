@@ -37,10 +37,10 @@ const hairStyle = {
     18: "Stone Cold",
     19: "Zinra's Tail",
     20: "Hedgehog",
-    21: "???",
+    21: "Delinquent",
     24: "Skegg",
     25: "Shinobi",
-    26: "???",
+    26: "Sanjo",
     28: "Perfect Form"
   },
 
@@ -62,10 +62,10 @@ const hairStyle = {
     18: "Sweeping Willow",
     19: "Odango",
     20: "Goddess Locks",
-    21: "???",
+    21: "Lioness",
     24: "Ethereal Waterfall",
     25: "Kunoichi",
-    26: "???",
+    26: "Bowlcut",
     28: "Lunar Light Odango"
   }
 }
@@ -87,10 +87,10 @@ const backAppendage = {
   18: "Butterfly Wings",
   19: "Phoenix Wings",
   20: "Fallen Angel",
-  21: "???",
+  21: "Crystal Wings",
   24: "Aura of the Inner Grove",
   25: "Ancient Orbs",
-  26: "???",
+  26: "Arachnid Legs",
   28: "Cecaelia Tentacles"
 }
 const cosmeticTier = {
@@ -104,6 +104,8 @@ const cosmeticTier = {
   7: "Basic8",
   8: "Basic9",
   9: "Basic10",
+  10: "Basic11",
+  11: "Basic12",
   16: "Advanced1",
   17: "Advanced2",
   18: "Advanced3",
@@ -133,10 +135,10 @@ const headAppendage = {
   18: "Bear Ears",
   19: "Antennae",
   20: "Fallen Angel Coronet",
-  21: "???",
+  21: "Power Horn",
   24: "Wood Elf Ears",
   25: "Snow Elf Ears",
-  26: "???",
+  26: "Cranial Wings",
   28: "Insight Jewel"
 }
 const eyeColorNames = {
@@ -198,10 +200,10 @@ const appendageColorTiers = {
   "78547c": "Advanced3",
   "352a51": "Advanced4",
   147256: "Advanced5",
-  "000000": "Advanced6",
+  cf7794: "Advanced6",
   c29d35: "Elite1",
   353132: "Elite2",
-  "0f0f0f": "Elite3",
+  "77b6cf": "Elite3",
   d7d7d7: "Transcendent1"
 }
 const appendageColorOrder = {
@@ -222,10 +224,10 @@ const appendageColorOrder = {
   "78547c": 18,
   "352a51": 19,
   147256: 20,
-  "000000": 21,
+  cf7794: 21,
   c29d35: 24,
   353132: 25,
-  "0f0f0f": 26,
+  "77b6cf": 26,
   d7d7d7: 28
 }
 const appendageColorNames = {
@@ -246,10 +248,10 @@ const appendageColorNames = {
   "78547c": "Old Lavender",
   "352a51": "Jacarta",
   147256: "Salem",
-  "000000": "Black",
+  cf7794: "Muted Pink",
   c29d35: "Satin Gold",
   353132: "Dark Charcoal",
-  "0f0f0f": "Smoky Black",
+  "77b5cf": "Glacier",
   d7d7d7: "Light Silver"
 }
 const hairColorNames = {
@@ -270,10 +272,10 @@ const hairColorNames = {
   "8d6b3a": "Raw Umber",
   566377: "Electric Blue",
   275435: "Pomona Green",
-  "000000": "Black",
+  cf7794: "Muted Pink",
   880016: "Red Devil",
   353132: "Dark Charcoal",
-  "0f0f0f": "Smoky Black",
+  "77b5cf": "Glacier",
   "8f9bb3": "Cadet Grey"
 }
 const hairColorTiers = {
@@ -294,10 +296,10 @@ const hairColorTiers = {
   "8d6b3a": "Advanced3",
   566377: "Advanced4",
   275435: "Advanced5",
-  "000000": "Advanced6",
+  "77b23c": "Advanced6",
   880016: "Elite1",
   353132: "Elite2",
-  "0f0f0f": "Elite3",
+  dbfbf5: "Elite3",
   "8f9bb3": "Transcendent1"
 }
 const hairColorOrder = {
@@ -318,10 +320,10 @@ const hairColorOrder = {
   "#8d6b3a": 18,
   "#566377": 19,
   "#275435": 20,
-  "#000000": 21,
+  "#77b23c": 21,
   "#880016": 24,
   "#353132": 25,
-  "#0f0f0f": 26,
+  "#dbfbf5": 26,
   "#8f9bb3": 28
 }
 const statBoost = ["STR", "DEX", "AGI", "VIT", "END", "INT", "WIS", "LCK"]
@@ -520,10 +522,10 @@ const choices = {
     18: "#8d6b3a",
     19: "#566377",
     20: "#275435",
-    21: "#000000",
+    21: "#77b23c",
     24: "#880016",
     25: "#353132",
-    26: "#0f0f0f",
+    26: "#dbfbf5",
     28: "#8f9bb3"
   },
   eyeColor: {
@@ -554,10 +556,10 @@ const choices = {
     18: "#78547c",
     19: "#352a51",
     20: "#147256",
-    21: "#000000",
+    21: "#cf7794",
     24: "#c29d35",
     25: "#211f1f",
-    26: "#0f0f0f",
+    26: "#77b5cf",
     28: "#d7d7d7"
   },
   backAppendageColor: {
@@ -578,10 +580,10 @@ const choices = {
     18: "#78547c",
     19: "#352a51",
     20: "#147256",
-    21: "#000000",
+    21: "#cf7794",
     24: "#c29d35",
     25: "#211f1f",
-    26: "#0f0f0f",
+    26: "#77b5cf",
     28: "#d7d7d7"
   },
   hairStyle: {
