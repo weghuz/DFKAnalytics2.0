@@ -11,7 +11,7 @@ import React from "react"
 import Link from "next/link"
 import { Box } from "@mui/system"
 import Image from "next/image"
-import OfficialSpotlight from "../public/PirateQuesterHome.png"
+import OfficialSpotlight from "../public/PQSpotlight.webp"
 import Head from "next/head"
 
 export default function index() {
@@ -46,9 +46,9 @@ export default function index() {
                   rel={"noreferrer"}
                 >
                   <Image
-                    layout={"fixed"}
-                    width={588}
-                    height={363}
+                    layout={"intrinsic"}
+                    width={1070}
+                    height={686}
                     src={OfficialSpotlight}
                     alt={"PirateQuester.com"}
                   />

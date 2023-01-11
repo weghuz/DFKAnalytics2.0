@@ -8,6 +8,7 @@ import {
   FixSalePrice,
   getRecessives,
   GrowthScore,
+  SetDeprecatedStrings,
   TrainStat
 } from "../../Logic/HeroBase"
 import { Box } from "@mui/system"
@@ -56,6 +57,7 @@ export default function HeroId() {
           setFailed(true)
           return
         }
+        hero = SetDeprecatedStrings(hero)
         getRecessives(hero)
         ClassScore(hero)
         GrowthScore(hero)
