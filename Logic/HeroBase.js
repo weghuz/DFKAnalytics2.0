@@ -448,7 +448,7 @@ const calculateRequiredXp = (currentLevel) => {
   return xpNeeded
 }
 
-const statsGenesMap = {
+const statGenesMap = {
   0: "mainClass",
   1: "subClass",
   2: "profession",
@@ -894,19 +894,21 @@ const choices = {
   }
 }
 
-function getRecessives(hero) {
-  const rawKai = genesToKai(BigInt(hero.statGenes.toString()))
+function getRecessives(hero, statGenes) {
+  const rawKai = genesToKai(
+    BigInt(statGenes ? hero.statGenes : hero.visualGenes)
+  )
     .split(" ")
     .join("")
   const genes = {}
-  const Dominant = {}
   const R1 = {}
   const R2 = {}
   const R3 = {}
   const genePoolArray = []
   for (const k in rawKai.split("")) {
     if (rawKai.hasOwnProperty(k)) {
-      const trait = statsGenesMap[Math.floor(Number(k) / 4)]
+      const map = statGenes ? statGenesMap : visualGenesMap
+      const trait = map[Math.floor(Number(k) / 4)]
 
       const kai = rawKai[k]
       const valueNum = kai2dec(kai)
@@ -973,14 +975,25 @@ function getRecessives(hero) {
           i == 43 ||
           i == 47
         ) {
-          Dominant[trait] = genePoolArray[i]
+          hero[trait] = genePoolArray[i]
         }
       }
     }
   }
-  hero.R1 = R1
-  hero.R2 = R2
-  hero.R3 = R3
+  if (hero.R1 == undefined) {
+    hero.R1 = R1
+    hero.R2 = R2
+    hero.R3 = R3
+  }
+  for (let key in R1) {
+    hero.R1[key] = R1[key]
+  }
+  for (let key in R2) {
+    hero.R2[key] = R2[key]
+  }
+  for (let key in R3) {
+    hero.R3[key] = R3[key]
+  }
   return
 }
 
@@ -7707,8 +7720,9 @@ function SetDeprecatedStrings(hero) {
 }
 
 function NormalizeHero(h) {
-  h = SetDeprecatedStrings(h)
-  getRecessives(h)
+  // h = SetDeprecatedStrings(h)
+  getRecessives(h, true)
+  getRecessives(h, false)
   ClassScore(h)
   GrowthScore(h)
   TrainStat(h)
@@ -7716,6 +7730,7 @@ function NormalizeHero(h) {
   h.assistingPrice = Number(FixSalePrice(h.assistingPrice))
   h.stats = { hp: h.hp }
   h.id = h.id
+  console.log(h)
 }
 
 function FixSalePrice(price) {

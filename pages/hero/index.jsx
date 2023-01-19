@@ -63,7 +63,6 @@ export default function Home() {
           let json = await request.json()
           let data = json.data
           console.log(data.heroes)
-
           setHeroes(data.heroes, requestId)
         } else {
           console.log("error: ", request)

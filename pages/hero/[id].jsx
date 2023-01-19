@@ -57,8 +57,10 @@ export default function HeroId() {
           setFailed(true)
           return
         }
-        hero = SetDeprecatedStrings(hero)
-        getRecessives(hero)
+        // hero = SetDeprecatedStrings(hero)
+        getRecessives(hero, true)
+        getRecessives(hero, false)
+        console.log(hero)
         ClassScore(hero)
         GrowthScore(hero)
         TrainStat(hero)
