@@ -7,22 +7,22 @@ module.exports = {
   EyeColors: [
     { value: 0, label: <Box sx={{ color: "#203997" }}>Blue </Box> },
     { value: 2, label: <Box sx={{ color: "#896693" }}>Pink </Box> },
-    { value: 4, label: <Box sx={{ color: "#8d7136" }}>Brown </Box> },
-    { value: 6, label: <Box sx={{ color: "#bb3f55" }}>Rouge </Box> },
-    { value: 8, label: <Box sx={{ color: "#2494a2" }}>Azure </Box> },
-    { value: 10, label: <Box sx={{ color: "#0d7634" }}>Green </Box> },
-    { value: 12, label: <Box sx={{ color: "#613d8a" }}>Purple</Box> },
+    { value: 4, label: <Box sx={{ color: "#bb3f55" }}>Rouge </Box> },
+    { value: 6, label: <Box sx={{ color: "#0d7634" }}>Green </Box> },
+    { value: 8, label: <Box sx={{ color: "#8d7136" }}>Brown </Box> },
+    { value: 10, label: <Box sx={{ color: "#613d8a" }}>Purple</Box> },
+    { value: 12, label: <Box sx={{ color: "#2494a2" }}>Azure </Box> },
     { value: 14, label: <Box sx={{ color: "#a41e12" }}>Red </Box> }
   ],
   SkinColors: [
-    { value: 0, label: <Box sx={{ color: "#e6a861" }}>Honey</Box> },
+    { value: 0, label: <Box sx={{ color: "#c58135" }}>Bronze</Box> },
     { value: 2, label: <Box sx={{ color: "#f1ca9e" }}>Vanilla</Box> },
-    { value: 4, label: <Box sx={{ color: "#e5ac91" }}>Peach</Box> },
-    { value: 6, label: <Box sx={{ color: "#c58135" }}>Bronze</Box> },
-    { value: 8, label: <Box sx={{ color: "#aa5c38" }}>Almond</Box> },
-    { value: 10, label: <Box sx={{ color: "#985e1c" }}>Golden</Box> },
-    { value: 12, label: <Box sx={{ color: "#7b4a11" }}>Toffee</Box> },
-    { value: 14, label: <Box sx={{ color: "#57340c" }}>Cocoa</Box> }
+    { value: 4, label: <Box sx={{ color: "#985e1c" }}>Golden</Box> },
+    { value: 6, label: <Box sx={{ color: "#57340c" }}>Cocoa</Box> },
+    { value: 8, label: <Box sx={{ color: "#e6a861" }}>Honey</Box> },
+    { value: 10, label: <Box sx={{ color: "#7b4a11" }}>Toffee</Box> },
+    { value: 12, label: <Box sx={{ color: "#e5ac91" }}>Peach</Box> },
+    { value: 14, label: <Box sx={{ color: "#aa5c38" }}>Almond</Box> }
   ],
   HairColors: [
     { value: 0, label: <Box sx={{ color: "#ab9159" }}>Basic1</Box> },

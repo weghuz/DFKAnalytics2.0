@@ -187,7 +187,7 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
     if (skinColor.length > 0) {
       query += `skinColor_in: [`
       skinColor.forEach((c, i) => {
-        query += `"${c.value}"`
+        query += `${c.value}`
         if (i < skinColor.length - 1) {
           query += `,`
         }
@@ -197,7 +197,7 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
     if (eyeColor.length > 0) {
       query += `eyeColor_in: [`
       eyeColor.forEach((c, i) => {
-        query += `"${c.value}"`
+        query += `${c.value}`
         if (i < eyeColor.length - 1) {
           query += `,`
         }
@@ -207,7 +207,7 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
     if (backAppendageColor.length > 0) {
       query += `backAppendageColor_in: [`
       backAppendageColor.forEach((c, i) => {
-        query += `"${c.value}"`
+        query += `${c.value}`
         if (i < backAppendageColor.length - 1) {
           query += `,`
         }
@@ -217,7 +217,7 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
     if (backAppendage.length > 0) {
       query += `backAppendage_in: [`
       backAppendage.forEach((c, i) => {
-        query += `"${c.value}"`
+        query += `${c.value}`
         if (i < backAppendage.length - 1) {
           query += `,`
         }
@@ -237,7 +237,7 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
     if (appendageColor.length > 0) {
       query += `appendageColor_in: [`
       appendageColor.forEach((c, i) => {
-        query += `"${c.value}"`
+        query += `${c.value}`
         if (i < appendageColor.length - 1) {
           query += `,`
         }
@@ -247,7 +247,7 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
     if (hairColor.length > 0) {
       query += `hairColor_in: [`
       hairColor.forEach((c, i) => {
-        query += `"${c.value}"`
+        query += `${c.value}`
         if (i < hairColor.length - 1) {
           query += `,`
         }
