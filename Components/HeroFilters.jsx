@@ -227,7 +227,7 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
     if (headAppendage.length > 0) {
       query += `headAppendage_in: [`
       headAppendage.forEach((c, i) => {
-        query += `"${c.value}"`
+        query += `${c.value}`
         if (i < headAppendage.length - 1) {
           query += `,`
         }
@@ -257,7 +257,7 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
     if (hairStyle.length > 0) {
       query += `hairStyle_in: [`
       hairStyle.forEach((c, i) => {
-        query += `"${c.value}"`
+        query += `${c.value}`
         if (i < hairStyle.length - 1) {
           query += `,`
         }
@@ -267,7 +267,7 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
     if (gender.length > 0) {
       query += `gender_in: [`
       gender.forEach((c, i) => {
-        query += `"${c.value}"`
+        query += `${c.value}`
         if (i < gender.length - 1) {
           query += `,`
         }
@@ -277,7 +277,7 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
     if (mainClass.length > 0) {
       query += `mainClass_in: [`
       mainClass.forEach((c, i) => {
-        query += `"${c.value}"`
+        query += `${c.value}`
         if (i < mainClass.length - 1) {
           query += `,`
         }
@@ -287,7 +287,7 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
     if (subClass.length > 0) {
       query += `subClass_in: [`
       subClass.forEach((c, i) => {
-        query += `"${c.value}"`
+        query += `${c.value}`
         if (i < subClass.length - 1) {
           query += `,`
         }
@@ -307,7 +307,7 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
     if (professions.length > 0) {
       query += `profession_in: [`
       professions.forEach((c, i) => {
-        query += `"${c.value}"`
+        query += `${c.value}`
         if (i < professions.length - 1) {
           query += `,`
         }
@@ -317,7 +317,7 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
     if (active1.length > 0) {
       query += `active1_in: [`
       active1.forEach((c, i) => {
-        query += `"${c.value}"`
+        query += `${c.value}`
         if (i < active1.length - 1) {
           query += `,`
         }
@@ -327,7 +327,7 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
     if (active2.length > 0) {
       query += `active2_in: [`
       active2.forEach((c, i) => {
-        query += `"${c.value}"`
+        query += `${c.value}`
         if (i < active2.length - 1) {
           query += `,`
         }
@@ -337,7 +337,7 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
     if (passive1.length > 0) {
       query += `passive1_in: [`
       passive1.forEach((c, i) => {
-        query += `"${c.value}"`
+        query += `${c.value}`
         if (i < passive1.length - 1) {
           query += `,`
         }
@@ -347,7 +347,7 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
     if (passive2.length > 0) {
       query += `passive2_in: [`
       passive2.forEach((c, i) => {
-        query += `"${c.value}"`
+        query += `${c.value}`
         if (i < passive2.length - 1) {
           query += `,`
         }
@@ -357,7 +357,7 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
     if (SB1.length > 0) {
       query += `statBoost1_in: [`
       SB1.forEach((c, i) => {
-        query += `"${c.value}"`
+        query += `${c.value}`
         if (i < SB1.length - 1) {
           query += `,`
         }
@@ -368,7 +368,7 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
     if (SB2.length > 0) {
       query += `statBoost2_in: [`
       SB2.forEach((c, i) => {
-        query += `"${c.value}"`
+        query += `${c.value}`
         if (i < SB2.length - 1) {
           query += `,`
         }
@@ -403,7 +403,7 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
           query += `,`
         }
       })
-      query += `],gender:"male",`
+      query += `],gender:1,`
     } else if (fFName.length > 0) {
       query += `firstName_in: [`
       fFName.forEach((c, i) => {
@@ -412,7 +412,7 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
           query += `,`
         }
       })
-      query += `],gender:"female",`
+      query += `],gender:3,`
     }
     if (darkSumLevels[0] !== 0) {
       query += `darkSummonLevels_gte: ${darkSumLevels[0]},`
@@ -424,7 +424,7 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
       query += `rarity_gte: ${rarity[0]},`
     }
     if (rarity[1] !== 4) {
-      query += `rarity_lte:${rarity[1]},`
+      query += `rarity_lte: ${rarity[1]},`
     }
     if (generation[0] !== 0) {
       query += `generation_gte: ${generation[0]},`
@@ -663,8 +663,8 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
                   setValues={setGender}
                 >
                   {[
-                    { value: `male`, label: `Male` },
-                    { value: `female`, label: `Female` }
+                    { value: 1, label: `Male` },
+                    { value: 3, label: `Female` }
                   ]}
                 </SelectItem>
                 {gender.length && gender[0].value == "male" ? (

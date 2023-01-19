@@ -355,7 +355,7 @@ let columnDefs = [
     valueFormatter: ({ value }) => Number(value)
   },
   {
-    headerName: "SB1",
+    headerName: "StatBoost 1",
     field: "statBoost1",
     minWidth: 50,
     flex: 1
@@ -409,7 +409,7 @@ let columnDefs = [
     }
   },
   {
-    headerName: "SB2",
+    headerName: "StatBoost 2",
     field: "statBoost2",
     minWidth: 50,
     flex: 1
