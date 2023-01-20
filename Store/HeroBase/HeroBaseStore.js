@@ -25,7 +25,7 @@ const HeroBaseStore = (set, UpdateQuery) => ({
       if (query !== state.query) {
         return
       }
-      newHeroes = newHeroes.filter((h) => h != null)
+      newHeroes = newHeroes.filter((h) => h != null && h.statGenes != "0")
       newHeroes = newHeroes.filter(
         (nh) => !state.heroes.some((h) => h.id === nh.id)
       )

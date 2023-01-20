@@ -297,7 +297,7 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
     if (background.length > 0) {
       query += `background_in: [`
       background.forEach((c, i) => {
-        query += `"${c.value}"`
+        query += `${c.value}`
         if (i < background.length - 1) {
           query += `,`
         }

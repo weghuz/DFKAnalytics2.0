@@ -204,14 +204,14 @@ module.exports = {
     { value: "Hire", label: "Hire" }
   ],
   Backgrounds: [
-    { value: "arctic", label: "Arctic" },
-    { value: "city", label: "City" },
-    { value: "desert", label: "Desert" },
-    { value: "forest", label: "Forest" },
-    { value: "island", label: "Island" },
-    { value: "mountains", label: "Mountains" },
-    { value: "plains", label: "Plains" },
-    { value: "swamp", label: "Swamp" }
+    { value: 0, label: "Desert" },
+    { value: 2, label: "Forest" },
+    { value: 4, label: "Plains" },
+    { value: 6, label: "Island" },
+    { value: 8, label: "Swamp" },
+    { value: 10, label: "Mountains" },
+    { value: 12, label: "City" },
+    { value: 14, label: "Arctic" }
   ],
   ActiveSkills: [
     {

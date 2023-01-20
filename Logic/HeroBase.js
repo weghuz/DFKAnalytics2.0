@@ -7731,7 +7731,6 @@ function NormalizeHero(h) {
   h.assistingPrice = Number(FixSalePrice(h.assistingPrice))
   h.stats = { hp: h.hp }
   h.id = h.id
-  console.log(h)
 }
 
 function FixSalePrice(price) {
