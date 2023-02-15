@@ -667,7 +667,7 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
                     { value: 3, label: `Female` }
                   ]}
                 </SelectItem>
-                {gender.length && gender[0].value == "male" ? (
+                {gender.length && gender[0].value == 1 ? (
                   <SelectItem
                     title="Male First Names"
                     values={mFName}
@@ -677,7 +677,7 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
                       return { value: i, label: n }
                     })}
                   </SelectItem>
-                ) : gender.length && gender[0].value == "female" ? (
+                ) : gender.length && gender[0].value == 2 ? (
                   <SelectItem
                     title="Female First Names"
                     values={fFName}
@@ -710,7 +710,7 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
               </Grid>
 
               <Grid item container xs={12} columnSpacing={2}>
-                {gender.length && gender[0].value == "male" ? (
+                {gender.length && gender[0].value == 1 ? (
                   <SelectItem
                     title="Male Hairstyles"
                     values={hairStyle}
@@ -718,7 +718,7 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
                   >
                     {HairStylesMale}
                   </SelectItem>
-                ) : gender.length && gender[0].value == "female" ? (
+                ) : gender.length && gender[0].value == 2 ? (
                   <SelectItem
                     title="Female Hairstyles"
                     values={hairStyle}

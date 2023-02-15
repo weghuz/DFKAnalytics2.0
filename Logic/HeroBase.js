@@ -7652,75 +7652,7 @@ function CurrentStamina(hero) {
   }
 }
 
-function SetDeprecatedStrings(hero) {
-  hero.profession = hero.professionStr ? hero.professionStr : hero.profession
-  hero.subClass = hero.subClassStr ? hero.subClassStr : hero.subClass
-  hero.mainClass = hero.mainClassStr ? hero.mainClassStr : hero.mainClass
-  hero.gender = hero.genderStrDeprecated
-    ? hero.genderStrDeprecated
-    : hero.gender
-  hero.active1 = hero.active1StrDeprecated
-    ? hero.active1StrDeprecated
-    : hero.active1
-  hero.active2 = hero.active2StrDeprecated
-    ? hero.active2StrDeprecated
-    : hero.active2
-  hero.passive1 = hero.passive1StrDeprecated
-    ? hero.passive1StrDeprecated
-    : hero.passive1
-  hero.passive2 = hero.passive2StrDeprecated
-    ? hero.passive2StrDeprecated
-    : hero.passive2
-  hero.element = hero.elementStrDeprecated
-    ? hero.elementStrDeprecated
-    : hero.element
-  hero.eyeColor = hero.eyeColorStrDeprecated
-    ? hero.eyeColorStrDeprecated
-    : hero.eyeColor
-  hero.hairStyle = hero.hairStyleStrDeprecated
-    ? hero.hairStyleStrDeprecated
-    : hero.hairStyle
-  hero.hairColor = hero.hairColorStrDeprecated
-    ? hero.hairColorStrDeprecated
-    : hero.hairColor
-  hero.skinColor = hero.skinColorStrDeprecated
-    ? hero.skinColorStrDeprecated
-    : hero.skinColor
-  hero.statBoost1 = hero.statBoost1StrDeprecated
-    ? hero.statBoost1StrDeprecated
-    : hero.statBoost1
-  hero.statBoost2 = hero.statBoost2StrDeprecated
-    ? hero.statBoost2StrDeprecated
-    : hero.statBoost2
-  hero.headAppendage = hero.headAppendageStrDeprecated
-    ? hero.headAppendageStrDeprecated
-    : hero.headAppendage
-  hero.backAppendage = hero.backAppendageStrDeprecated
-    ? hero.backAppendageStrDeprecated
-    : hero.backAppendage
-  hero.visualUnknown1 = hero.visualUnknown1StrDeprecated
-    ? hero.visualUnknown1StrDeprecated
-    : hero.visualUnknown1
-  hero.visualUnknown2 = hero.visualUnknown2StrDeprecated
-    ? hero.visualUnknown2StrDeprecated
-    : hero.visualUnknown2
-  hero.appendageColor = hero.appendageColorStrDeprecated
-    ? hero.appendageColorStrDeprecated
-    : hero.appendageColor
-  hero.backAppendageColor = hero.backAppendageColorStrDeprecated
-    ? hero.backAppendageColorStrDeprecated
-    : hero.backAppendageColor
-  hero.statsUnknown1 = hero.statsUnknown1StrDeprecated
-    ? hero.statsUnknown1StrDeprecated
-    : hero.statsUnknown1
-  hero.statsUnknown2 = hero.statsUnknown2StrDeprecated
-    ? hero.statsUnknown2StrDeprecated
-    : hero.statsUnknown2
-  return hero
-}
-
 function NormalizeHero(h) {
-  // h = SetDeprecatedStrings(h)
   getRecessives(h, true)
   getRecessives(h, false)
   console.log(h)
@@ -8013,7 +7945,6 @@ module.exports = {
   CurrentStamina,
   TrainStat,
   NormalizeHero,
-  SetDeprecatedStrings,
   cosmeticTier,
   headAppendage,
   backAppendage,
