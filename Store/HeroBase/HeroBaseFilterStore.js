@@ -46,12 +46,27 @@ const initialState = {
   eyeColor: [],
   skinColor: [],
   darkSum: [],
-  darkSumLevels: [0, 99]
+  darkSumLevels: [0, 99],
+  hasValidCraftingGenes: [{ value: "", label: "Any" }],
+  crafting1: [],
+  crafting2: []
 }
 
 const HeroBaseFilterStore = (set) => ({
   clearFilters: () => {
     set({ ...initialState })
+  },
+  crafting1: [],
+  setCrafting1: (crafting1) => {
+    set({ crafting1 })
+  },
+  crafting2: [],
+  setCrafting2: (crafting2) => {
+    set({ crafting2 })
+  },
+  hasValidCraftingGenes: [{ value: "", label: "Any" }],
+  setHasValidCraftingGenes: (hasValidCraftingGenes) => {
+    set({ hasValidCraftingGenes })
   },
   darkSum: [],
   setDarkSum: (darkSum) => {

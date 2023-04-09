@@ -11,7 +11,8 @@ const {
   hairColorOrder,
   eyeColorTiers,
   skinColorTiers,
-  HoursToSummon
+  HoursToSummon,
+  crafting
 } = require("./HeroBase")
 import { Tooltip, Typography } from "@mui/material"
 import { Box } from "@mui/system"
@@ -489,6 +490,51 @@ let columnDefs = [
           </Box>
         </Tooltip>
       )
+    }
+  },
+  {
+    headerName: "HasValidCraftingGene",
+    field: "hasValidCraftingGenes",
+    minWidth: 90,
+    flex: 1
+  },
+  {
+    headerName: "Crafting",
+    field: "crafting",
+    minWidth: 120,
+    flex: 1.5,
+    valueGetter: ({ row }) => {
+      if (row.hasValidCraftingGenes) {
+        return `${crafting[row.statsUnknown1]} : ${crafting[row.statsUnknown2]}`
+      } else {
+        return `❌`
+      }
+    }
+  },
+  {
+    headerName: "Crafting1",
+    field: "crafting1",
+    minWidth: 90,
+    flex: 1,
+    valueGetter: ({ row }) => {
+      if (row.hasValidCraftingGenes) {
+        return `${crafting[row.statsUnknown1]}`
+      } else {
+        return `❌`
+      }
+    }
+  },
+  {
+    headerName: "Crafting2",
+    field: "crafting2",
+    minWidth: 90,
+    flex: 1,
+    valueGetter: ({ row }) => {
+      if (row.hasValidCraftingGenes) {
+        return `${crafting[row.statsUnknown2]}`
+      } else {
+        return `❌`
+      }
     }
   },
   {

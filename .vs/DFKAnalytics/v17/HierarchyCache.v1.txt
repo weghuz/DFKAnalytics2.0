@@ -1,0 +1,186 @@
+﻿++Solution 'DFKAnalytics' ‎(1 of 1 project)
+i:{00000000-0000-0000-0000-000000000000}:DFKAnalytics.sln
+++Script Documents
+++bootstrap.bundle.min.js
+++43ebb3f471.js
+++blazor.server.js
+++aspnetcore-browser-refresh.js
+++browserLink
+++DFKAnalytics
+i:{00000000-0000-0000-0000-000000000000}:DFKAnalytics
+++Connected Services 
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:>189
+++Dependencies
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:>188
+++Properties
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\properties\
+++wwwroot
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\wwwroot\
+++css
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\wwwroot\css\
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\wwwroot\css\open-iconic\font\css\
+++open-iconic
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\wwwroot\css\open-iconic\
+++site.css
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\wwwroot\css\site.css
+++favicon.ico
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\wwwroot\favicon.ico
+++Data
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\data\
+++Pages
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\pages\
+++_Host.cshtml
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\pages\_host.cshtml
+++_Layout.cshtml
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\pages\_layout.cshtml
+++Counter.razor
+++Error.cshtml
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\pages\error.cshtml
+++Shared
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\shared\
+++MainLayout.razor
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\shared\mainlayout.razor
+++NavMenu.razor
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\shared\navmenu.razor
+++SurveyPrompt.razor
+++_Imports.razor
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\_imports.razor
+++App.razor
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\app.razor
+++appsettings.json
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\appsettings.json
+++Program.cs
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\program.cs
+++No service dependencies discovered
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:>190
+++Analyzers
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:analyzers
+++Frameworks
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:frameworks
+++launchSettings.json
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\properties\launchsettings.json
+++font
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\wwwroot\css\open-iconic\font\
+++FONT-LICENSE
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\wwwroot\css\open-iconic\font-license
+++ICON-LICENSE
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\wwwroot\css\open-iconic\icon-license
+++README.md
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\wwwroot\css\open-iconic\readme.md
+++Error.cshtml.cs
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\pages\error.cshtml.cs
+++MainLayout.razor.css
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\shared\mainlayout.razor.css
+++NavMenu.razor.css
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\shared\navmenu.razor.css
+++appsettings.Development.json
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\appsettings.development.json
+++Microsoft.AspNetCore.Analyzers
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\program files\dotnet\sdk\6.0.200-preview.22055.15\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.analyzers.dll
+++Microsoft.AspNetCore.App.Analyzers
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.0\analyzers\dotnet\cs\microsoft.aspnetcore.app.analyzers.dll
+++Microsoft.AspNetCore.App.CodeFixes
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.0\analyzers\dotnet\cs\microsoft.aspnetcore.app.codefixes.dll
+++Microsoft.AspNetCore.Components.Analyzers
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\program files\dotnet\sdk\6.0.200-preview.22055.15\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.components.analyzers.dll
+++Microsoft.AspNetCore.Mvc.Analyzers
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\program files\dotnet\sdk\6.0.200-preview.22055.15\sdks\microsoft.net.sdk.web\analyzers\cs\microsoft.aspnetcore.mvc.analyzers.dll
+++Microsoft.AspNetCore.Razor.SourceGenerator.Tooling.Internal
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\program files\dotnet\sdk\6.0.200-preview.22055.15\sdks\microsoft.net.sdk.razor\source-generators\microsoft.aspnetcore.razor.sourcegenerator.tooling.internal.dll
+++Microsoft.CodeAnalysis.CSharp.NetAnalyzers
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\program files\dotnet\sdk\6.0.200-preview.22055.15\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.csharp.netanalyzers.dll
+++Microsoft.CodeAnalysis.NetAnalyzers
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\program files\dotnet\sdk\6.0.200-preview.22055.15\sdks\microsoft.net.sdk\analyzers\microsoft.codeanalysis.netanalyzers.dll
+++Microsoft.Extensions.Logging.Generators
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\program files\dotnet\packs\microsoft.aspnetcore.app.ref\6.0.0\analyzers\dotnet\roslyn4.0\cs\microsoft.extensions.logging.generators.dll
+++Microsoft.NET.Sdk.Razor.SourceGenerators
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\program files\dotnet\sdk\6.0.200-preview.22055.15\sdks\microsoft.net.sdk.razor\source-generators\microsoft.net.sdk.razor.sourcegenerators.dll
+++System.Text.Json.SourceGeneration
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\program files\dotnet\packs\microsoft.netcore.app.ref\6.0.1\analyzers\dotnet\cs\system.text.json.sourcegeneration.dll
+++Microsoft.AspNetCore.App
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\microsoft.aspnetcore.app
+++Microsoft.NETCore.App
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\microsoft.netcore.app
+++fonts
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\wwwroot\css\open-iconic\font\fonts\
+++open-iconic-bootstrap.min.css
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\wwwroot\css\open-iconic\font\css\open-iconic-bootstrap.min.css
+++open-iconic.eot
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\wwwroot\css\open-iconic\font\fonts\open-iconic.eot
+++open-iconic.otf
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\wwwroot\css\open-iconic\font\fonts\open-iconic.otf
+++open-iconic.svg
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\wwwroot\css\open-iconic\font\fonts\open-iconic.svg
+++open-iconic.ttf
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\wwwroot\css\open-iconic\font\fonts\open-iconic.ttf
+++open-iconic.woff
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\wwwroot\css\open-iconic\font\fonts\open-iconic.woff
+++NavMenu - Copy.razor
+++NavMenu - Copy.razor.css
+++VM5
+++advanced-theory-part-1-scoring-heroes-in-defi-kingdoms-1ffd043fcd1c
+++manifest.2bda117b.js
+++13730.c507718c.js
+++main.367c5dec.js
+++VM56
+++54029.1dace973.chunk.js
+++18956.0857ed20.chunk.js
+++AppLayout.9721f029.chunk.js
+++reporting.950d4050.chunk.js
+++1752.a348f767.chunk.js
+++7794.9590314e.chunk.js
+++48996.0c1a6c43.chunk.js
+++75221.81c0ae68.chunk.js
+++33928.1ee03131.chunk.js
+++47464.f423a4ac.chunk.js
+++95472.20329d15.chunk.js
+++40043.8060f342.chunk.js
+++46929.ac3c19b9.chunk.js
+++97332.f6bdcfe7.chunk.js
+++46836.e8ebd0c5.chunk.js
+++7321.e6131720.chunk.js
+++88246.40e571a7.chunk.js
+++15248.996af837.chunk.js
+++10887.8c699586.chunk.js
+++21205.3fd8b944.chunk.js
+++28491.e048d545.chunk.js
+++37346.c744a48a.chunk.js
+++24883.521f79ea.chunk.js
+++66451.4286c8a9.chunk.js
+++91743.1eb061c6.chunk.js
+++96277.a0e68f58.chunk.js
+++50082.a8e7128f.chunk.js
+++76705.4adc19b5.chunk.js
+++14603.9da6d15d.chunk.js
+++4261.761f57f2.chunk.js
+++5892.1bd40c03.chunk.js
+++98453.e2314c06.chunk.js
+++PostPage.MainContent.6e082d16.chunk.js
+++75374.93c2b3b7.chunk.js
+++35328.0ebf677d.chunk.js
+++PostPage.RightColumnContent.69c9f3c0.chunk.js
+++VM54
+++45573.4354ed57.chunk.js
+++instrumentation.4fd6ad3a.chunk.js
+++56361.fbdf24c9.chunk.js
+++27497.109a4f26.chunk.js
+++70449.7324b5e0.chunk.js
+++Index.razor
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\pages\index.razor
+++Analyse.razor
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\pages\analyse.razor
+++v652eace1692a40cfa3763df669d7439c1639079717194
+++84792.d3cd03bb.chunk.js
+++28537.be5ec2c0.chunk.js
+++62034.52303e5f.chunk.js
+++38106.9530ec84.chunk.js
+++ThreadedResponsesSidebar.0a4a59aa.chunk.js
+++17084.0ad6f84c.chunk.js
+++67700.ee94b28f.chunk.js
+++VM97
+++VM98
+++defikingdoms.com
+++js
+++analytics.js
+++About.razor
+i:{46885480-9794-4236-ba6d-d2c78d947b5d}:c:\users\rasmu\source\repos\dfkanalytics\dfkanalytics\pages\about.razor

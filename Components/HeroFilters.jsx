@@ -11,7 +11,9 @@ import DFKBase, {
   ActiveSkills,
   PassiveSkills,
   SkinColors,
-  Targets
+  Targets,
+  ValidCraftingGenes,
+  Crafting
 } from "../Logic/Dropdowns"
 import Image from "next/image"
 import Jewel from "../public/Jewel.png"
@@ -28,7 +30,12 @@ import {
   InputLabel
 } from "@mui/material"
 import SelectItemSingle from "./Filters/SelectItemSingle"
-import { femaleFirstNames, lastNames, maleFirstNames } from "../Logic/HeroBase"
+import {
+  crafting,
+  femaleFirstNames,
+  lastNames,
+  maleFirstNames
+} from "../Logic/HeroBase"
 import IdInput from "./Filters/IdInput"
 import NumberInput from "./Filters/NumberInput"
 
@@ -134,6 +141,14 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
   const setDarkSum = useStore((state) => state.setDarkSum)
   const darkSumLevels = useStore((state) => state.darkSumLevels)
   const setDarkSumLevels = useStore((state) => state.setDarkSumLevels)
+  const hasValidCraftingGenes = useStore((state) => state.hasValidCraftingGenes)
+  const setHasValidCraftingGenes = useStore(
+    (state) => state.setHasValidCraftingGenes
+  )
+  const crafting1 = useStore((state) => state.crafting1)
+  const setCrafting1 = useStore((state) => state.setCrafting1)
+  const crafting2 = useStore((state) => state.crafting2)
+  const setCrafting2 = useStore((state) => state.setCrafting2)
   useEffect(() => {
     if (heroes.length == 0 && initiate) {
       UpdateQuery()
@@ -183,7 +198,35 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
     if (minLuck > 0) {
       query += `luck_gte:${minLuck},`
     }
-
+    if (hasValidCraftingGenes[0].value != "false") {
+      if (crafting1.length || crafting2.length) {
+        query += `hasValidCraftingGenes: true,`
+      } else if (hasValidCraftingGenes[0].value.length) {
+        query += `hasValidCraftingGenes: ${hasValidCraftingGenes[0].value},`
+      }
+      if (crafting1.length) {
+        query += `statsUnknown1_in: [`
+        crafting1.forEach((c, i) => {
+          query += `${c.value}`
+          if (i < crafting1.length - 1) {
+            query += `,`
+          }
+        })
+        query += `],`
+      }
+      if (crafting2.length) {
+        query += `statsUnknown2_in: [`
+        crafting2.forEach((c, i) => {
+          query += `${c.value}`
+          if (i < crafting2.length - 1) {
+            query += `,`
+          }
+        })
+        query += `],`
+      }
+    } else {
+      query += `hasValidCraftingGenes: false,`
+    }
     if (skinColor.length > 0) {
       query += `skinColor_in: [`
       skinColor.forEach((c, i) => {
@@ -569,6 +612,15 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
             <Grid item>
               <Button
                 variant="contained"
+                color={section == "Crafting" ? "primary" : "secondary"}
+                onClick={() => setSection("Crafting")}
+              >
+                Crafting
+              </Button>
+            </Grid>
+            <Grid item>
+              <Button
+                variant="contained"
                 color={section == "Cosmetic" ? "primary" : "secondary"}
                 onClick={() => setSection("Cosmetic")}
               >
@@ -576,6 +628,54 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
               </Button>
             </Grid>
           </Grid>
+          {section == "Crafting" && (
+            <Grid container>
+              <Grid item container xs={12} columnSpacing={2}>
+                {crafting1.length || crafting2.length ? (
+                  <SelectItemSingle
+                    title="Valid Crafting Genes"
+                    clearable={false}
+                    values={ValidCraftingGenes.filter(
+                      (vcg) => vcg.value == "true"
+                    )}
+                    setValues={() => {}}
+                  >
+                    {ValidCraftingGenes.filter((vcg) => vcg.value == "true")}
+                  </SelectItemSingle>
+                ) : (
+                  <SelectItemSingle
+                    title="Valid Crafting Genes"
+                    clearable={false}
+                    values={hasValidCraftingGenes}
+                    setValues={setHasValidCraftingGenes}
+                  >
+                    {ValidCraftingGenes}
+                  </SelectItemSingle>
+                )}
+
+                {hasValidCraftingGenes[0].value != "false" ? (
+                  <>
+                    <SelectItem
+                      title="Crafting 1"
+                      values={crafting1}
+                      setValues={setCrafting1}
+                    >
+                      {Crafting}
+                    </SelectItem>
+                    <SelectItem
+                      title="Crafting 2"
+                      values={crafting2}
+                      setValues={setCrafting2}
+                    >
+                      {Crafting}
+                    </SelectItem>
+                  </>
+                ) : (
+                  <></>
+                )}
+              </Grid>
+            </Grid>
+          )}
           {section == "Stats" && (
             <Grid container columnSpacing={2}>
               <NumberInput

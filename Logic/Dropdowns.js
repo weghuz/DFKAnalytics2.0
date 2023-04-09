@@ -4,6 +4,16 @@ const {
 } = require("../Components/Hero/DarkSummonBadgeImage")
 const { default: PJBadge } = require("../Components/Hero/PJBadge")
 module.exports = {
+  Crafting: [
+    { value: 0, label: "Blacksmithing" },
+    { value: 2, label: "Goldsmithing" },
+    { value: 4, label: "Armorsmithing" },
+    { value: 6, label: "Woodworking" },
+    { value: 8, label: "Leatherworking" },
+    { value: 10, label: "Tailoring" },
+    { value: 12, label: "Enchanting" },
+    { value: 14, label: "Alchemy" }
+  ],
   EyeColors: [
     { value: 0, label: <Box sx={{ color: "#203997" }}>Blue </Box> },
     { value: 2, label: <Box sx={{ color: "#896693" }}>Pink </Box> },
@@ -202,6 +212,11 @@ module.exports = {
     { value: "All", label: "Find" },
     { value: "Tavern", label: "Buy" },
     { value: "Hire", label: "Hire" }
+  ],
+  ValidCraftingGenes: [
+    { value: "", label: "Any" },
+    { value: "true", label: "Valid" },
+    { value: "false", label: "Invalid" }
   ],
   Backgrounds: [
     { value: 0, label: "Desert" },

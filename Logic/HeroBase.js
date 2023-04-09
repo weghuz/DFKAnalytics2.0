@@ -8,6 +8,16 @@ const professionStats = {
   gardening: ["vitality", "wisdom"],
   fishing: ["agility", "luck"]
 }
+const crafting = {
+  0: "Blacksmithing",
+  2: "Goldsmithing",
+  4: "Armorsmithing",
+  6: "Woodworking",
+  8: "Leatherworking",
+  10: "Tailoring",
+  12: "Enchanting",
+  14: "Alchemy"
+}
 const stats = [
   "Strength",
   "Dexterity",
@@ -781,6 +791,26 @@ const choices = {
     10: "VIT",
     12: "END",
     14: "DEX"
+  },
+  crafting1: {
+    0: "Blacksmithing",
+    2: "Goldsmithing",
+    4: "Armorsmithing",
+    6: "Woodworking",
+    8: "Leatherworking",
+    10: "Tailoring",
+    12: "Enchanting",
+    14: "Alchemy"
+  },
+  crafting2: {
+    0: "Blacksmithing",
+    2: "Goldsmithing",
+    4: "Armorsmithing",
+    6: "Woodworking",
+    8: "Leatherworking",
+    10: "Tailoring",
+    12: "Enchanting",
+    14: "Alchemy"
   },
   element: {
     0: "fire",
@@ -7959,6 +7989,7 @@ module.exports = {
   hairColorTiers,
   hairColorNames,
   hairColorOrder,
+  crafting,
   professions,
   professionStats,
   stats,
