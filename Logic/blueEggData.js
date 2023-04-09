@@ -8,7 +8,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Blubs/Blub_Blue_Idle.png",
+    path: "Blubs/Blub_Blue_Idle.png"
   },
   {
     season: 0,
@@ -19,7 +19,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Blubs/Blub_Cyan_Idle.png",
+    path: "Blubs/Blub_Cyan_Idle.png"
   },
   {
     season: 0,
@@ -30,7 +30,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Blubs/Blub_Teal_Idle.png",
+    path: "Blubs/Blub_Teal_Idle.png"
   },
   {
     season: 0,
@@ -41,7 +41,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Turtles/Turtle_Green_Idle.png",
+    path: "Turtles/Turtle_Green_Idle.png"
   },
   {
     season: 0,
@@ -52,7 +52,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Turtles/Turtle_Blue_Idle.png",
+    path: "Turtles/Turtle_Blue_Idle.png"
   },
   {
     season: 0,
@@ -63,7 +63,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Turtles/Turtle_Orange_Idle.png",
+    path: "Turtles/Turtle_Orange_Idle.png"
   },
   {
     season: 0,
@@ -74,7 +74,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Turtles/Turtle_Red_Idle.png",
+    path: "Turtles/Turtle_Red_Idle.png"
   },
   {
     season: 0,
@@ -85,7 +85,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Frog/Frog_Green_Idle.png",
+    path: "Frog/Frog_Green_Idle.png"
   },
   {
     season: 0,
@@ -96,7 +96,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Frog/Frog_Cyan_Idle.png",
+    path: "Frog/Frog_Cyan_Idle.png"
   },
   {
     season: 0,
@@ -107,7 +107,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Frog/Frog_Blue_Idle.png",
+    path: "Frog/Frog_Blue_Idle.png"
   },
   {
     season: 0,
@@ -118,7 +118,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Frog/Frog_Red_Idle.png",
+    path: "Frog/Frog_Red_Idle.png"
   },
   {
     season: 0,
@@ -129,7 +129,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Frog/Frog_Black_Idle.png",
+    path: "Frog/Frog_Black_Idle.png"
   },
   {
     season: 0,
@@ -140,7 +140,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Goose/Goose_White_Idle.png",
+    path: "Goose/Goose_White_Idle.png"
   },
   {
     season: 0,
@@ -151,7 +151,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Goose/Goose_Black_Idle.png",
+    path: "Goose/Goose_Black_Idle.png"
   },
   {
     season: 0,
@@ -162,7 +162,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Goose/Goose_Brown_Idle.png",
+    path: "Goose/Goose_Brown_Idle.png"
   },
   {
     season: 0,
@@ -173,7 +173,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Goose/Goose_Green_Idle.png",
+    path: "Goose/Goose_Green_Idle.png"
   },
   {
     season: 0,
@@ -184,7 +184,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Axolotls/Axolotl_Red_Idle.png",
+    path: "Axolotls/Axolotl_Red_Idle.png"
   },
   {
     season: 0,
@@ -195,7 +195,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Giant%20Toads/GiantToad_Green_Idle.png",
+    path: "Giant%20Toads/GiantToad_Green_Idle.png"
   },
   {
     season: 0,
@@ -206,7 +206,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Penguins/PenguinKid_Black_Idle.png",
+    path: "Penguins/PenguinKid_Black_Idle.png"
   },
   {
     season: 0,
@@ -217,7 +217,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Dragonflies/Dragonfly_Green_Idle.png",
+    path: "Dragonflies/Dragonfly_Green_Idle.png"
   },
   {
     season: 0,
@@ -228,7 +228,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Dragonflies/Dragonfly_Red_Idle.png",
+    path: "Dragonflies/Dragonfly_Red_Idle.png"
   },
   {
     season: 0,
@@ -239,7 +239,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Dragonflies/Dragonfly_Blue_Idle.png",
+    path: "Dragonflies/Dragonfly_Blue_Idle.png"
   },
   {
     season: 0,
@@ -250,7 +250,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Basilisks/BasiliskKid_Green_Idle.png",
+    path: "Basilisks/BasiliskKid_Green_Idle.png"
   },
   {
     season: 0,
@@ -261,7 +261,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Basilisks/BasiliskKid_Red_Idle.png",
+    path: "Basilisks/BasiliskKid_Red_Idle.png"
   },
   {
     season: 0,
@@ -272,7 +272,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Basilisks/BasiliskKid_Blue_Idle.png",
+    path: "Basilisks/BasiliskKid_Blue_Idle.png"
   },
   {
     season: 0,
@@ -283,7 +283,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Fish/Fish_Gold_Idle.png",
+    path: "Fish/Fish_Gold_Idle.png"
   },
   {
     season: 0,
@@ -294,7 +294,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Fish/Fish_Red_Idle.png",
+    path: "Fish/Fish_Red_Idle.png"
   },
   {
     season: 0,
@@ -305,7 +305,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Fish/Fish_Blue_Idle.png",
+    path: "Fish/Fish_Blue_Idle.png"
   },
   {
     season: 0,
@@ -316,7 +316,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Crab/Crab_Blue_Idle.png",
+    path: "Crab/Crab_Blue_Idle.png"
   },
   {
     season: 0,
@@ -327,7 +327,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Crab/Crab_Red_Idle.png",
+    path: "Crab/Crab_Red_Idle.png"
   },
   {
     season: 0,
@@ -338,7 +338,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Crab/Crab_Yellow_Idle.png",
+    path: "Crab/Crab_Yellow_Idle.png"
   },
   {
     season: 0,
@@ -349,7 +349,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Crab/Hermit_Brown_Idle.png",
+    path: "Crab/Hermit_Brown_Idle.png"
   },
   {
     season: 0,
@@ -360,7 +360,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Crab/Hermit_Purple_Idle.png",
+    path: "Crab/Hermit_Purple_Idle.png"
   },
   {
     season: 0,
@@ -371,7 +371,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Crab/Hermit_Red_Idle.png",
+    path: "Crab/Hermit_Red_Idle.png"
   },
   {
     season: 0,
@@ -382,7 +382,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Starkid/Starkid_Pink_Idle.png",
+    path: "Starkid/Starkid_Pink_Idle.png"
   },
   {
     season: 0,
@@ -393,7 +393,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Odd",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Dragonflies/Dragonfly_Gold_Idle.png",
+    path: "Dragonflies/Dragonfly_Gold_Idle.png"
   },
   {
     season: 0,
@@ -404,7 +404,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Odd",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Blubs/Blub_Navy_Idle.png",
+    path: "Blubs/Blub_Navy_Idle.png"
   },
   {
     season: 0,
@@ -415,7 +415,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Odd",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Turtles/Turtle_Crystal_Idle.png",
+    path: "Turtles/Turtle_Crystal_Idle.png"
   },
   {
     season: 0,
@@ -426,7 +426,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Odd",
     credits: "https://twitter.com/atlasprkr",
-    path: "Axolotls/Axolotl_Silly_Idle.png",
+    path: "Axolotls/Axolotl_Silly_Idle.png"
   },
   {
     season: 0,
@@ -437,7 +437,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Odd",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Turtles/Turtle_Gold_Idle.png",
+    path: "Turtles/Turtle_Gold_Idle.png"
   },
   {
     season: 0,
@@ -448,7 +448,7 @@ export const blueEggData = [
     rarity: 0,
     pool: "Odd",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Goose/Goose_Blue_Idle.png",
+    path: "Goose/Goose_Blue_Idle.png"
   },
   {
     season: 0,
@@ -459,7 +459,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Fish/Fish_BeadyEyed_Idle.png",
+    path: "Fish/Fish_BeadyEyed_Idle.png"
   },
   {
     season: 0,
@@ -470,7 +470,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "anonymous",
-    path: "Togwas/TogwaKid_Green_Idle.png",
+    path: "Togwas/TogwaKid_Green_Idle.png"
   },
   {
     season: 0,
@@ -481,7 +481,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "anonymous",
-    path: "Togwas/TogwaKid_Blue_Idle.png",
+    path: "Togwas/TogwaKid_Blue_Idle.png"
   },
   {
     season: 0,
@@ -492,7 +492,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "anonymous",
-    path: "Togwas/TogwaKid_Red_Idle.png",
+    path: "Togwas/TogwaKid_Red_Idle.png"
   },
   {
     season: 0,
@@ -503,7 +503,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Blubs/BigBlub_Blue_Idle.png",
+    path: "Blubs/BigBlub_Blue_Idle.png"
   },
   {
     season: 0,
@@ -514,7 +514,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Blubs/BigBlub_Cyan_Idle.png",
+    path: "Blubs/BigBlub_Cyan_Idle.png"
   },
   {
     season: 0,
@@ -525,7 +525,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Blubs/BigBlub_Teal_Idle.png",
+    path: "Blubs/BigBlub_Teal_Idle.png"
   },
   {
     season: 0,
@@ -536,7 +536,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Axolotls/Axolotl_Yellow_Idle.png",
+    path: "Axolotls/Axolotl_Yellow_Idle.png"
   },
   {
     season: 0,
@@ -547,7 +547,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Axolotls/Axolotl_Blue_Idle.png",
+    path: "Axolotls/Axolotl_Blue_Idle.png"
   },
   {
     season: 0,
@@ -558,7 +558,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Axolotls/Axolotl_Violet_Idle.png",
+    path: "Axolotls/Axolotl_Violet_Idle.png"
   },
   {
     season: 0,
@@ -569,7 +569,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Axolotls/Axolotl_Black_Idle.png",
+    path: "Axolotls/Axolotl_Black_Idle.png"
   },
   {
     season: 0,
@@ -580,7 +580,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Tenticklers/Tentickler_Green_Idle.png",
+    path: "Tenticklers/Tentickler_Green_Idle.png"
   },
   {
     season: 0,
@@ -591,7 +591,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Tenticklers/Tentickler_Blue_Idle.png",
+    path: "Tenticklers/Tentickler_Blue_Idle.png"
   },
   {
     season: 0,
@@ -602,7 +602,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Tenticklers/Tentickler_Orange_Idle.png",
+    path: "Tenticklers/Tentickler_Orange_Idle.png"
   },
   {
     season: 0,
@@ -613,7 +613,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Giant%20Toads/GiantToad_Red_Idle.png",
+    path: "Giant%20Toads/GiantToad_Red_Idle.png"
   },
   {
     season: 0,
@@ -624,7 +624,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Turtles/ArmoredTurtle_Green_Idle.png",
+    path: "Turtles/ArmoredTurtle_Green_Idle.png"
   },
   {
     season: 0,
@@ -635,7 +635,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Turtles/ArmoredTurtle_Blue_Idle.png",
+    path: "Turtles/ArmoredTurtle_Blue_Idle.png"
   },
   {
     season: 0,
@@ -646,7 +646,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Turtles/ArmoredTurtle_Red_Idle.png",
+    path: "Turtles/ArmoredTurtle_Red_Idle.png"
   },
   {
     season: 0,
@@ -657,7 +657,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "anonymous",
-    path: "Penguins/Penguin_Black_Idle.png",
+    path: "Penguins/Penguin_Black_Idle.png"
   },
   {
     season: 0,
@@ -668,7 +668,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "anonymous",
-    path: "Penguins/Penguin_Green_Idle.png",
+    path: "Penguins/Penguin_Green_Idle.png"
   },
   {
     season: 0,
@@ -679,7 +679,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "anonymous",
-    path: "Penguins/Penguin_Blue_Idle.png",
+    path: "Penguins/Penguin_Blue_Idle.png"
   },
   {
     season: 0,
@@ -690,7 +690,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "anonymous",
-    path: "Penguins/Penguin_Red_Idle.png",
+    path: "Penguins/Penguin_Red_Idle.png"
   },
   {
     season: 0,
@@ -701,7 +701,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Starkid/Starkid_Green_Idle.png",
+    path: "Starkid/Starkid_Green_Idle.png"
   },
   {
     season: 0,
@@ -712,7 +712,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Starkid/Starkid_Orange_Idle.png",
+    path: "Starkid/Starkid_Orange_Idle.png"
   },
   {
     season: 0,
@@ -723,7 +723,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Starkid/Starkid_Blue_Idle.png",
+    path: "Starkid/Starkid_Blue_Idle.png"
   },
   {
     season: 0,
@@ -734,7 +734,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Basilisks/Basilisk_Green_Idle.png",
+    path: "Basilisks/Basilisk_Green_Idle.png"
   },
   {
     season: 0,
@@ -745,7 +745,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Odd",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Blubs/BigBlub_Navy_Idle.png",
+    path: "Blubs/BigBlub_Navy_Idle.png"
   },
   {
     season: 0,
@@ -756,7 +756,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Odd",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Blubs/EngorgedBlub_Teal_Idle.png",
+    path: "Blubs/EngorgedBlub_Teal_Idle.png"
   },
   {
     season: 0,
@@ -767,7 +767,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Odd",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Goose/Goose_Gold_Idle.png",
+    path: "Goose/Goose_Gold_Idle.png"
   },
   {
     season: 0,
@@ -778,7 +778,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Odd",
     credits: "https://twitter.com/atlasprkr",
-    path: "Axolotls/Axolotl_Poison_Idle.png",
+    path: "Axolotls/Axolotl_Poison_Idle.png"
   },
   {
     season: 0,
@@ -789,7 +789,7 @@ export const blueEggData = [
     rarity: 1,
     pool: "Odd",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Tenticklers/Tentickler_Violet_Idle.png",
+    path: "Tenticklers/Tentickler_Violet_Idle.png"
   },
   {
     season: 0,
@@ -800,7 +800,7 @@ export const blueEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Fish/Fish_Demon_Idle.png",
+    path: "Fish/Fish_Demon_Idle.png"
   },
   {
     season: 0,
@@ -811,7 +811,7 @@ export const blueEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "CinnamonBun",
-    path: "Starkid/Starfish_Magic_Idle.png",
+    path: "Starkid/Starfish_Magic_Idle.png"
   },
   {
     season: 0,
@@ -822,7 +822,7 @@ export const blueEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Turtles/ArmoredTurtle_Gold_Idle.png",
+    path: "Turtles/ArmoredTurtle_Gold_Idle.png"
   },
   {
     season: 0,
@@ -833,7 +833,7 @@ export const blueEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Blubs/EngorgedBlub_Blue_Idle.png",
+    path: "Blubs/EngorgedBlub_Blue_Idle.png"
   },
   {
     season: 0,
@@ -844,7 +844,7 @@ export const blueEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "Woostar",
-    path: "Emberlings/Emberling_Blue_Idle.png",
+    path: "Emberlings/Emberling_Blue_Idle.png"
   },
   {
     season: 0,
@@ -855,7 +855,7 @@ export const blueEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "Woostar",
-    path: "Emberlings/Emberling_Green_Idle.png",
+    path: "Emberlings/Emberling_Green_Idle.png"
   },
   {
     season: 0,
@@ -866,7 +866,7 @@ export const blueEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "Woostar",
-    path: "Emberlings/Emberling_Orange_Idle.png",
+    path: "Emberlings/Emberling_Orange_Idle.png"
   },
   {
     season: 0,
@@ -877,7 +877,7 @@ export const blueEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "Woostar",
-    path: "Emberlings/Emberling_Violet_Idle.png",
+    path: "Emberlings/Emberling_Violet_Idle.png"
   },
   {
     season: 0,
@@ -888,7 +888,7 @@ export const blueEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Turtles/OldTurtle_Blue_Idle.png",
+    path: "Turtles/OldTurtle_Blue_Idle.png"
   },
   {
     season: 0,
@@ -899,7 +899,7 @@ export const blueEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Turtles/OldTurtle_Red_Idle.png",
+    path: "Turtles/OldTurtle_Red_Idle.png"
   },
   {
     season: 0,
@@ -910,7 +910,7 @@ export const blueEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Turtles/OldTurtle_Yellow_Idle.png",
+    path: "Turtles/OldTurtle_Yellow_Idle.png"
   },
   {
     season: 0,
@@ -921,7 +921,7 @@ export const blueEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Giant%20Toads/GiantToad_Blue_Idle.png",
+    path: "Giant%20Toads/GiantToad_Blue_Idle.png"
   },
   {
     season: 0,
@@ -932,7 +932,7 @@ export const blueEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Snails/Snail_Green_Idle.png",
+    path: "Snails/Snail_Green_Idle.png"
   },
   {
     season: 0,
@@ -943,7 +943,7 @@ export const blueEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Snails/Snail_Blue_Idle.png",
+    path: "Snails/Snail_Blue_Idle.png"
   },
   {
     season: 0,
@@ -954,7 +954,7 @@ export const blueEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Snails/Snail_Orange_Idle.png",
+    path: "Snails/Snail_Orange_Idle.png"
   },
   {
     season: 0,
@@ -965,7 +965,7 @@ export const blueEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "anonymous",
-    path: "Penguins/Penguin_Crystal_Idle.png",
+    path: "Penguins/Penguin_Crystal_Idle.png"
   },
   {
     season: 0,
@@ -976,7 +976,7 @@ export const blueEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "anonymous",
-    path: "Togwas/Togwa_Green_Idle.png",
+    path: "Togwas/Togwa_Green_Idle.png"
   },
   {
     season: 0,
@@ -987,7 +987,7 @@ export const blueEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "anonymous",
-    path: "Togwas/Togwa_Blue_Idle.png",
+    path: "Togwas/Togwa_Blue_Idle.png"
   },
   {
     season: 0,
@@ -998,7 +998,7 @@ export const blueEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "anonymous",
-    path: "Togwas/Togwa_Red_Idle.png",
+    path: "Togwas/Togwa_Red_Idle.png"
   },
   {
     season: 0,
@@ -1009,7 +1009,7 @@ export const blueEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "anonymous",
-    path: "Togwas/Togwa_BluePlume1_Idle.png",
+    path: "Togwas/Togwa_BluePlume1_Idle.png"
   },
   {
     season: 0,
@@ -1020,7 +1020,7 @@ export const blueEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "anonymous",
-    path: "Togwas/Togwa_BluePlume2_Idle.png",
+    path: "Togwas/Togwa_BluePlume2_Idle.png"
   },
   {
     season: 0,
@@ -1031,7 +1031,7 @@ export const blueEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Basilisks/Basilisk_Red_Idle.png",
+    path: "Basilisks/Basilisk_Red_Idle.png"
   },
   {
     season: 0,
@@ -1042,7 +1042,7 @@ export const blueEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Basilisks/Basilisk_Blue_Idle.png",
+    path: "Basilisks/Basilisk_Blue_Idle.png"
   },
   {
     season: 0,
@@ -1053,7 +1053,7 @@ export const blueEggData = [
     rarity: 2,
     pool: "Normal",
     credits: "CinnamonBun",
-    path: "Clams/Clam_Gray_Idle.png",
+    path: "Clams/Clam_Gray_Idle.png"
   },
   {
     season: 0,
@@ -1064,7 +1064,7 @@ export const blueEggData = [
     rarity: 2,
     pool: "Odd",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Turtles/Turtle_Jewel_Idle.png",
+    path: "Turtles/Turtle_Jewel_Idle.png"
   },
   {
     season: 0,
@@ -1075,7 +1075,7 @@ export const blueEggData = [
     rarity: 2,
     pool: "Odd",
     credits: "Sinstar Necro",
-    path: "Turtles/Turtle_Silly_Idle.png",
+    path: "Turtles/Turtle_Silly_Idle.png"
   },
   {
     season: 0,
@@ -1086,7 +1086,7 @@ export const blueEggData = [
     rarity: 2,
     pool: "Odd",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Crab/Hermit_Cup_Idle.png",
+    path: "Crab/Hermit_Cup_Idle.png"
   },
   {
     season: 0,
@@ -1097,7 +1097,7 @@ export const blueEggData = [
     rarity: 2,
     pool: "Odd",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Clams/Clam_Dog_Idle.png",
+    path: "Clams/Clam_Dog_Idle.png"
   },
   {
     season: 0,
@@ -1108,7 +1108,7 @@ export const blueEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "anonymous",
-    path: "Penguins/EmperorPenguin_Black_Idle.png",
+    path: "Penguins/EmperorPenguin_Black_Idle.png"
   },
   {
     season: 0,
@@ -1119,7 +1119,7 @@ export const blueEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Giant%20Toads/GiantToad_Black_Idle.png",
+    path: "Giant%20Toads/GiantToad_Black_Idle.png"
   },
   {
     season: 0,
@@ -1130,7 +1130,7 @@ export const blueEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "anonymous",
-    path: "Warloctopus%20and%20Squid%20Oracle/SquidOracle_Red_Idle.png",
+    path: "Warloctopus%20and%20Squid%20Oracle/SquidOracle_Red_Idle.png"
   },
   {
     season: 0,
@@ -1141,7 +1141,7 @@ export const blueEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "anonymous",
-    path: "Warloctopus%20and%20Squid%20Oracle/SquidOracle_Blue_Idle.png",
+    path: "Warloctopus%20and%20Squid%20Oracle/SquidOracle_Blue_Idle.png"
   },
   {
     season: 0,
@@ -1152,7 +1152,7 @@ export const blueEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "anonymous",
-    path: "Warloctopus%20and%20Squid%20Oracle/SquidOracle_Green_Idle.png",
+    path: "Warloctopus%20and%20Squid%20Oracle/SquidOracle_Green_Idle.png"
   },
   {
     season: 0,
@@ -1163,7 +1163,7 @@ export const blueEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "anonymous",
-    path: "Togwas/TogwaBaby_Green_Idle.png",
+    path: "Togwas/TogwaBaby_Green_Idle.png"
   },
   {
     season: 0,
@@ -1174,7 +1174,7 @@ export const blueEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "anonymous",
-    path: "Togwas/TogwaBaby_Blue_Idle.png",
+    path: "Togwas/TogwaBaby_Blue_Idle.png"
   },
   {
     season: 0,
@@ -1185,7 +1185,7 @@ export const blueEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "anonymous",
-    path: "Togwas/TogwaBaby_Red_Idle.png",
+    path: "Togwas/TogwaBaby_Red_Idle.png"
   },
   {
     season: 0,
@@ -1196,7 +1196,7 @@ export const blueEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Warloctopus%20and%20Squid%20Oracle/Warloctopus_Blue_Idle.png",
+    path: "Warloctopus%20and%20Squid%20Oracle/Warloctopus_Blue_Idle.png"
   },
   {
     season: 0,
@@ -1207,7 +1207,7 @@ export const blueEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Warloctopus%20and%20Squid%20Oracle/Warloctopus_Green_Idle.png",
+    path: "Warloctopus%20and%20Squid%20Oracle/Warloctopus_Green_Idle.png"
   },
   {
     season: 0,
@@ -1218,7 +1218,7 @@ export const blueEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Warloctopus%20and%20Squid%20Oracle/Warloctopus_Orange_Idle.png",
+    path: "Warloctopus%20and%20Squid%20Oracle/Warloctopus_Orange_Idle.png"
   },
   {
     season: 0,
@@ -1229,7 +1229,7 @@ export const blueEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Warloctopus%20and%20Squid%20Oracle/Warloctopus_Violet_Idle.png",
+    path: "Warloctopus%20and%20Squid%20Oracle/Warloctopus_Violet_Idle.png"
   },
   {
     season: 0,
@@ -1240,7 +1240,7 @@ export const blueEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Hydra/Hydra_Green_Idle.png",
+    path: "Hydra/Hydra_Green_Idle.png"
   },
   {
     season: 0,
@@ -1251,7 +1251,7 @@ export const blueEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Hydra/Hydra_Blue_Idle.png",
+    path: "Hydra/Hydra_Blue_Idle.png"
   },
   {
     season: 0,
@@ -1262,7 +1262,7 @@ export const blueEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Hydra/Hydra_Black_Idle.png",
+    path: "Hydra/Hydra_Black_Idle.png"
   },
   {
     season: 0,
@@ -1273,7 +1273,7 @@ export const blueEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Snails/Snail_Skull_Idle.png",
+    path: "Snails/Snail_Skull_Idle.png"
   },
   {
     season: 0,
@@ -1284,7 +1284,7 @@ export const blueEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "anonymous",
-    path: "Togwas/TogwaKid_Crystal_Idle.png",
+    path: "Togwas/TogwaKid_Crystal_Idle.png"
   },
   {
     season: 0,
@@ -1295,7 +1295,7 @@ export const blueEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Leviathans/Leviathan_Blue_Idle.png",
+    path: "Leviathans/Leviathan_Blue_Idle.png"
   },
   {
     season: 0,
@@ -1306,7 +1306,7 @@ export const blueEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Leviathans/Leviathan_Green_Idle.png",
+    path: "Leviathans/Leviathan_Green_Idle.png"
   },
   {
     season: 0,
@@ -1317,7 +1317,7 @@ export const blueEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Tenticklers/Tentickler_Evil_Idle.png",
+    path: "Tenticklers/Tentickler_Evil_Idle.png"
   },
   {
     season: 0,
@@ -1328,7 +1328,7 @@ export const blueEggData = [
     rarity: 3,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Basilisks/Basilisk_Gold_Idle.png",
+    path: "Basilisks/Basilisk_Gold_Idle.png"
   },
   {
     season: 0,
@@ -1339,7 +1339,7 @@ export const blueEggData = [
     rarity: 3,
     pool: "Odd",
     credits: "Lux",
-    path: "Merfolk/Merman_Tom_Idle.png",
+    path: "Merfolk/Merman_Tom_Idle.png"
   },
   {
     season: 0,
@@ -1350,7 +1350,7 @@ export const blueEggData = [
     rarity: 3,
     pool: "Odd",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Bloater/Bloater_SD_Idle.png",
+    path: "Bloater/Bloater_SD_Idle.png"
   },
   {
     season: 0,
@@ -1361,7 +1361,7 @@ export const blueEggData = [
     rarity: 4,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Snails/Snail_Bloater_Idle.png",
+    path: "Snails/Snail_Bloater_Idle.png"
   },
   {
     season: 0,
@@ -1372,7 +1372,7 @@ export const blueEggData = [
     rarity: 4,
     pool: "Normal",
     credits: "anonymous",
-    path: "Togwas/TogwaBaby_Cyan_Idle.png",
+    path: "Togwas/TogwaBaby_Cyan_Idle.png"
   },
   {
     season: 0,
@@ -1383,7 +1383,7 @@ export const blueEggData = [
     rarity: 4,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Penguins/EmperorPenguin_Crystal_Idle.png",
+    path: "Penguins/EmperorPenguin_Crystal_Idle.png"
   },
   {
     season: 0,
@@ -1394,7 +1394,7 @@ export const blueEggData = [
     rarity: 4,
     pool: "Normal",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Crab/Crab_Gentleman_Idle.png",
+    path: "Crab/Crab_Gentleman_Idle.png"
   },
   {
     season: 0,
@@ -1405,7 +1405,7 @@ export const blueEggData = [
     rarity: 4,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Hydra/Hydra_Gray_Idle.png",
+    path: "Hydra/Hydra_Gray_Idle.png"
   },
   {
     season: 0,
@@ -1416,7 +1416,7 @@ export const blueEggData = [
     rarity: 4,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Hydra/Hydra_Orange_Idle.png",
+    path: "Hydra/Hydra_Orange_Idle.png"
   },
   {
     season: 0,
@@ -1427,7 +1427,7 @@ export const blueEggData = [
     rarity: 4,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Basilisks/Basilisk_Crystal_Idle.png",
+    path: "Basilisks/Basilisk_Crystal_Idle.png"
   },
   {
     season: 0,
@@ -1438,7 +1438,7 @@ export const blueEggData = [
     rarity: 4,
     pool: "Normal",
     credits: "Lux",
-    path: "Merfolk/Merman_Color1_Idle.png",
+    path: "Merfolk/Merman_Color1_Idle.png"
   },
   {
     season: 0,
@@ -1449,7 +1449,7 @@ export const blueEggData = [
     rarity: 4,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Highlands%20and%20Riverhold%20Whelps/RiverholdWhelp_Red_Idle.png",
+    path: "Highlands%20and%20Riverhold%20Whelps/RiverholdWhelp_Red_Idle.png"
   },
   {
     season: 0,
@@ -1460,7 +1460,7 @@ export const blueEggData = [
     rarity: 4,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Highlands%20and%20Riverhold%20Whelps/RiverholdWhelp_Blue_Idle.png",
+    path: "Highlands%20and%20Riverhold%20Whelps/RiverholdWhelp_Blue_Idle.png"
   },
   {
     season: 0,
@@ -1471,7 +1471,7 @@ export const blueEggData = [
     rarity: 4,
     pool: "Normal",
     credits: "https://twitter.com/atlasprkr",
-    path: "Highlands%20and%20Riverhold%20Whelps/RiverholdWhelp_Black_Idle.png",
+    path: "Highlands%20and%20Riverhold%20Whelps/RiverholdWhelp_Black_Idle.png"
   },
   {
     season: 0,
@@ -1482,7 +1482,7 @@ export const blueEggData = [
     rarity: 4,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Leviathans/Leviathan_Red_Idle.png",
+    path: "Leviathans/Leviathan_Red_Idle.png"
   },
   {
     season: 0,
@@ -1493,7 +1493,7 @@ export const blueEggData = [
     rarity: 4,
     pool: "Normal",
     credits: "https://twitter.com/0xFezz",
-    path: "Leviathans/Leviathan_Black_Idle.png",
+    path: "Leviathans/Leviathan_Black_Idle.png"
   },
   {
     season: 0,
@@ -1504,7 +1504,7 @@ export const blueEggData = [
     rarity: 4,
     pool: "Odd",
     credits: "https://twitter.com/atlasprkr",
-    path: "Highlands%20and%20Riverhold%20Whelps/RiverholdWhelp_Gold_Idle.png",
+    path: "Highlands%20and%20Riverhold%20Whelps/RiverholdWhelp_Gold_Idle.png"
   },
   {
     season: 0,
@@ -1515,6 +1515,6 @@ export const blueEggData = [
     rarity: 4,
     pool: "Odd",
     credits: "https://twitter.com/SecondBestDad",
-    path: "Snowman/Snowman_Default_Idle.png",
-  },
-];
+    path: "Snowman/Snowman_Default_Idle.png"
+  }
+]
