@@ -49,7 +49,8 @@ const initialState = {
   darkSumLevels: [0, 99],
   hasValidCraftingGenes: [{ value: "", label: "Any" }],
   crafting1: [],
-  crafting2: []
+  crafting2: [],
+  element: []
 }
 
 const HeroBaseFilterStore = (set) => ({

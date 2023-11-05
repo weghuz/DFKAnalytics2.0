@@ -14,6 +14,16 @@ module.exports = {
     { value: 12, label: "Enchanting" },
     { value: 14, label: "Alchemy" }
   ],
+  Element: [
+    { value: 0, label: "Fire" },
+    { value: 2, label: "Water" },
+    { value: 4, label: "Earth" },
+    { value: 6, label: "Wind" },
+    { value: 8, label: "Lightning" },
+    { value: 10, label: "Ice" },
+    { value: 12, label: "Light" },
+    { value: 14, label: "Dark" }
+  ],
   EyeColors: [
     { value: 0, label: <Box sx={{ color: "#203997" }}>Blue </Box> },
     { value: 2, label: <Box sx={{ color: "#896693" }}>Pink </Box> },

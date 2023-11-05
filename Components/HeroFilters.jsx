@@ -13,7 +13,8 @@ import DFKBase, {
   SkinColors,
   Targets,
   ValidCraftingGenes,
-  Crafting
+  Crafting,
+  Element
 } from "../Logic/Dropdowns"
 import Image from "next/image"
 import Jewel from "../public/Jewel.png"
@@ -149,6 +150,8 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
   const setCrafting1 = useStore((state) => state.setCrafting1)
   const crafting2 = useStore((state) => state.crafting2)
   const setCrafting2 = useStore((state) => state.setCrafting2)
+  const element = useStore((state) => state.element)
+  const setElement = useStore((state) => state.setElement)
   useEffect(() => {
     if (heroes.length == 0 && initiate) {
       UpdateQuery()
@@ -219,6 +222,16 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
         crafting2.forEach((c, i) => {
           query += `${c.value}`
           if (i < crafting2.length - 1) {
+            query += `,`
+          }
+        })
+        query += `],`
+      }
+      if (element.length) {
+        query += `element_in: [`
+        element.forEach((e, i) => {
+          query += `${e.value}`
+          if (i < element.length - 1) {
             query += `,`
           }
         })
@@ -669,6 +682,14 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
                     >
                       {Crafting}
                     </SelectItem>
+                    <SelectItemSingle
+                      title="Element"
+                      clearable={true}
+                      values={element}
+                      setValues={setElement}
+                    >
+                      {Element}
+                    </SelectItemSingle>
                   </>
                 ) : (
                   <></>
