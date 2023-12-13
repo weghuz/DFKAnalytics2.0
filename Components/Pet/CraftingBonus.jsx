@@ -3,7 +3,7 @@ import React from "react";
 
 export default function CraftingBonus({ children }) {
   const bonusType = () => {
-    if (children.craftBonus) {
+    if ((children.craftBonus - (10000 * children.element)) > 0) {
       switch (children.elementName) {
         case "fire":
           return "Blacksmithing";
@@ -25,7 +25,7 @@ export default function CraftingBonus({ children }) {
     }
   };
   const bonus = () => {
-    switch (children.craftBonus) {
+    switch (children.craftBonus - (10000 * children.element)) {
       case 1:
         return "⭐";
       case 80:
