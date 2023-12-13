@@ -1,5 +1,6 @@
 import BlueEgg from "../public/Pet/Eggs/BlueEgg.png"
 import GreyEgg from "../public/Pet/Eggs/GreyEgg.png"
+import GreenEgg from "../public/Pet/Eggs/GreenEgg.png"
 import Image from "next/image"
 export const PetBackgrounds = [
   { value: 0, label: "Stillwood Meadow" },
@@ -32,5 +33,9 @@ export const PetEggTypes = [
   {
     value: 1,
     label: <Image src={GreyEgg} layout={"fixed"} width={20} height={20} />
+  },
+  {
+    value: 2,
+    label: <Image src={GreenEgg} layout={"fixed"} width={20} height={20} />
   }
 ]

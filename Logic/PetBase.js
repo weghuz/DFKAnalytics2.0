@@ -1,5 +1,6 @@
 import { blueEggData } from "./blueEggData"
 import { greyEggData } from "./greyEggData"
+import { greenEggData } from "./greenEggData"
 export const backgrounds = {
   0: "Stillwood Meadow",
   1: "Forest Trail",
@@ -26,6 +27,9 @@ const initiatePet = (pet) => {
       break
     case 1:
       data = greyEggData[pet.appearance - 1]
+      break
+    case 2:
+      data = greenEggData[pet.appearance - 1]
       break
     default:
       return

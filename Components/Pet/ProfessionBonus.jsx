@@ -8,6 +8,8 @@ export default function ProfessionBonus({ children }) {
         return "Fishing";
       case 1:
         return "Foraging";
+      case 2:
+        return "Gardening";
     }
   };
   const eggType = () => {
@@ -16,6 +18,8 @@ export default function ProfessionBonus({ children }) {
         return "Blue";
       case 1:
         return "Gray";
+      case 2:
+        return "Green";
     }
   };
   const bonus = () => {

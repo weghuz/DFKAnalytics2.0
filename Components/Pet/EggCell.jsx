@@ -3,6 +3,7 @@ import Image from "next/image"
 
 import GreyEgg from "../../public/Pet/Eggs/GreyEgg.png"
 import BlueEgg from "../../public/Pet/Eggs/BlueEgg.png"
+import GreenEgg from "../../public/Pet/Eggs/GreenEgg.png"
 import { Box, Tooltip } from "@mui/material"
 
 export default function EggCell({ children }) {
@@ -12,6 +13,8 @@ export default function EggCell({ children }) {
         return <Image src={BlueEgg} layout={"fixed"} width={20} height={20} />
       case 1:
         return <Image src={GreyEgg} layout={"fixed"} width={20} height={20} />
+      case 2:
+        return <Image src={GreenEgg} layout={"fixed"} width={20} height={20} />
     }
   }
   const toolTipText = () => {
@@ -20,6 +23,8 @@ export default function EggCell({ children }) {
         return `Blue pet egg (0)`
       case 1:
         return `Grey pet egg (1)`
+      case 2:
+        return `Green pet egg (2)`
     }
   }
   return (
