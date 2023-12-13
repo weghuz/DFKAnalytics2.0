@@ -17,6 +17,10 @@ export default function CraftingBonus({ children }) {
           return "Leatherworking";
         case "ice":
           return "Tailoring";
+        case "light":
+          return "Enchanting";
+        case "dark":
+          return "Alchemy";
       }
     }
   };
