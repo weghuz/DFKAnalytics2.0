@@ -8,6 +8,8 @@ export default function ProfessionBonus({ children }) {
         return "Fishing";
       case 1:
         return "Foraging";
+      case 2:
+        return "Gardening";
     }
   };
   const eggType = () => {
@@ -16,15 +18,27 @@ export default function ProfessionBonus({ children }) {
         return "Blue";
       case 1:
         return "Gray";
+      case 2:
+        return "Green";
     }
   };
   const bonus = () => {
-    switch (children.profBonus) {
+    let stars = 0;
+    let adjBonus = children.profBonus - (10000 * children.eggType);
+    if (adjBonus > 0) {
+      if (adjBonus < 80)
+        stars = 1;
+      else if (adjBonus < 160)
+        stars = 2;
+      else
+        stars = 3;
+    }
+    switch (stars) {
       case 1:
         return "⭐";
-      case 80:
+      case 2:
         return "⭐⭐";
-      case 160:
+      case 3:
         return "⭐⭐⭐";
       default:
         return "";
