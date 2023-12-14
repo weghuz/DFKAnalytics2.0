@@ -58,12 +58,61 @@ export default function PetFilters({
   const clearFilters = useStore((state) => state.clearFilters)
   const setFilter = useStore((state) => state.setFilter)
   const pets = useStore((state) => state.pets)
-  const bonusMap = [0, 1, 80, 160]
+  /* mapping from: https://devs.defikingdoms.com/nfts/pets#gathering-profession-bonus */
+  const bonusMap = [
+    /* 0-star values */
+    [ 0, 10000, 20000, 30000, 40000, 50000, 60000, 70000 ],
+    /* 1-star values */
+    [
+          1,     2,     3,     4,     5,     6,     7,     8,     9,    10,    11,
+      10001, 10002, 10003, 10004, 10005, 10006, 10007, 10008, 10009, 10010, 10011,
+      20001, 20002, 20003, 20004, 20005, 20006, 20007, 20008, 20009, 20010, 20011,
+      30001, 30002, 30003, 30004, 30005, 30006, 30007, 30008, 30009, 30010, 30011,
+      40001, 40002, 40003, 40004, 40005, 40006, 40007, 40008, 40009, 40010, 40011,
+      50001, 50002, 50003, 50004, 50005, 50006, 50007, 50008, 50009, 50010, 50011,
+      60001, 60002, 60003, 60004, 60005, 60006, 60007, 60008, 60009, 60010, 60011,
+      70001, 70002, 70003, 70004, 70005, 70006, 70007, 70008, 70009, 70010, 70011,
+    ],
+    /* 2-star values */
+    [
+         80,    81,    82,    83,    84,    85,    86,    87,    88,    89,    90,
+      10080, 10081, 10082, 10083, 10084, 10085, 10086, 10087, 10088, 10089, 10090,
+      20080, 20081, 20082, 20083, 20084, 20085, 20086, 20087, 20088, 20089, 20090,
+      30080, 30081, 30082, 30083, 30084, 30085, 30086, 30087, 30088, 30089, 30090,
+      40080, 40081, 40082, 40083, 40084, 40085, 40086, 40087, 40088, 40089, 40090,
+      50080, 50081, 50082, 50083, 50084, 50085, 50086, 50087, 50088, 50089, 50090,
+      60080, 60081, 60082, 60083, 60084, 60085, 60086, 60087, 60088, 60089, 60090,
+      70080, 70081, 70082, 70083, 70084, 70085, 70086, 70087, 70088, 70089, 70090,
+    ],
+    /* 3-star values */
+    [
+        160,   161,   162,   163,   164,   165,   166,   167,   168,   169,   170,   171,
+      10160, 10161, 10162, 10163, 10164, 10165, 10166, 10167, 10168, 10169, 10170, 10171,
+      20160, 20161, 20162, 20163, 20164, 20165, 20166, 20167, 20168, 20169, 20170, 20171,
+      30160, 30161, 30162, 30163, 30164, 30165, 30166, 30167, 30168, 30169, 30170, 30171,
+      40160, 40161, 40162, 40163, 40164, 40165, 40166, 40167, 40168, 40169, 40170, 40171,
+      50160, 50161, 50162, 50163, 50164, 50165, 50166, 50167, 50168, 50169, 50170, 50171,
+      60160, 60161, 60162, 60163, 60164, 60165, 60166, 60167, 60168, 60169, 60170, 60171,
+      70160, 70161, 70162, 70163, 70164, 70165, 70166, 70167, 70168, 70169, 70170, 70171,
+    ],
+  ]
   useEffect(() => {
     if (pets.length == 0 && initiate) {
       UpdateQuery()
     }
   }, [])
+  const GetBonusValues = (minStars, maxStars) => {
+    let values = ``
+    for (let i = 0; i <= 3; i++) {
+      if (i >= minStars && i <= maxStars) {
+        if (values != ``) {
+          values += `,`
+        }
+        values += bonusMap[i].join(", ")
+      }
+    }
+    return values
+  }
   const UpdateQuery = () => {
     let filters = ``,
       order = ``
@@ -114,17 +163,11 @@ export default function PetFilters({
       })
       filters += `],`
     }
-    if (profBonus[0] !== 1) {
-      filters += `profBonus_gte:${bonusMap[profBonus[0]]},`
+    if (profBonus[0] > 1 || profBonus[1] < 3) {
+      filters += `profBonus_in:[${GetBonusValues(profBonus[0], profBonus[1])}],`
     }
-    if (profBonus[1] !== 3) {
-      filters += `profBonus_lte:${bonusMap[profBonus[1]]},`
-    }
-    if (craftBonus[0] !== 0) {
-      filters += `craftBonus_gte:${bonusMap[craftBonus[0]]},`
-    }
-    if (craftBonus[1] !== 3) {
-      filters += `craftBonus_lte:${bonusMap[craftBonus[1]]},`
+    if (craftBonus[0] > 0 || craftBonus[1] < 3) {
+      filters += `craftBonus_in:[${GetBonusValues(craftBonus[0], craftBonus[1])}],`
     }
     if (bonusCount[0] !== 1) {
       filters += `bonusCount_gte:${bonusCount[0]},`
@@ -132,11 +175,8 @@ export default function PetFilters({
     if (bonusCount[1] !== 3) {
       filters += `bonusCount_lte:${bonusCount[1]},`
     }
-    if (combatBonus[0] !== 0) {
-      filters += `combatBonus_gte: ${bonusMap[combatBonus[0]]},`
-    }
-    if (combatBonus[1] !== 3) {
-      filters += `combatBonus_lte:${bonusMap[combatBonus[1]]},`
+    if (combatBonus[0] > 0 || combatBonus[1] < 3) {
+      filters += `combatBonus_in:[${GetBonusValues(combatBonus[0], combatBonus[1])}],`
     }
     if (rarity[0] !== 0) {
       filters += `rarity_gte: ${rarity[0]},`
