@@ -8,6 +8,21 @@ import PetPriceCell from "../Components/Pet/PetPriceCell"
 import PetRarityCell from "../Components/Pet/PetRarityCell"
 import ProfessionBonus from "../Components/Pet/ProfessionBonus"
 
+const GetBonusStars = (bonusValue) => {
+  let stars = 0
+  /* drop extra bits above 0xFF (255) */
+  let adjBonus = bonusValue & 0xFF;
+  if (adjBonus > 0) {
+    if (adjBonus < 80)
+      stars = 1
+    else if (adjBonus < 160)
+      stars = 2
+    else
+      stars = 3
+  }
+  return stars
+}
+
 let petColumnDefs = [
   {
     headerName: "Cost",
@@ -90,7 +105,7 @@ let petColumnDefs = [
     type: "number",
     hide: false,
     valueGetter: ({ value }) => {
-      return Number({ 0: 0, 1: 1, 80: 2, 160: 3 }[value])
+      return Number(GetBonusStars(value))
     },
     renderCell: ({ row }) => {
       return <ProfessionBonus>{row}</ProfessionBonus>
@@ -102,7 +117,7 @@ let petColumnDefs = [
     type: "number",
     hide: false,
     valueGetter: ({ value }) => {
-      return Number({ 0: 0, 1: 1, 80: 2, 160: 3 }[value])
+      return Number(GetBonusStars(value))
     },
     renderCell: ({ row }) => {
       return <CraftingBonus>{row}</CraftingBonus>
@@ -114,7 +129,7 @@ let petColumnDefs = [
     type: "number",
     hide: false,
     valueGetter: ({ value }) => {
-      return Number({ 0: 0, 1: 1, 80: 2, 160: 3 }[value])
+      return Number(GetBonusStars(value))
     },
     renderCell: ({ row }) => {
       return <CombatBonus>{row}</CombatBonus>
