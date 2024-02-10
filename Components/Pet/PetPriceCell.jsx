@@ -1,5 +1,4 @@
 import React from "react"
-import { FixSalePrice } from "../../Logic/HeroBase"
 import Image from "next/image"
 import Jewel from "../../public/Jewel.png"
 import Jade from "../../public/Jade.png"
@@ -22,7 +21,7 @@ export default function PetPriceCell({ children }) {
         >
           <Grid container justifyContent={"space-between"}>
             <Grid item sx={{ alignSelf: "center" }}>
-              {FixSalePrice(children.salePrice)}
+              {children.salePrice}
             </Grid>
             <Grid item sx={{ marginTop: "4px" }}>
               {children.currentRealm == "SER2" ? (

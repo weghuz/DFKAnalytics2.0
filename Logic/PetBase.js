@@ -1,6 +1,7 @@
 import { blueEggData } from "./blueEggData"
 import { greyEggData } from "./greyEggData"
 import { greenEggData } from "./greenEggData"
+import { FixSalePrice } from "./HeroBase"
 export const backgrounds = {
   0: "Stillwood Meadow",
   1: "Forest Trail",
@@ -38,6 +39,7 @@ const initiatePet = (pet) => {
     console.log("NULL PET", pet)
     return false
   }
+  pet.salePrice = Number(FixSalePrice(pet.salePrice))
   pet.season = data.season
   pet.appearanceRarity = data.rarity
   pet.family = data.family
