@@ -1,6 +1,7 @@
 import { blueEggData } from "./blueEggData"
 import { greyEggData } from "./greyEggData"
 import { greenEggData } from "./greenEggData"
+import { PetProfessionBonusNames } from "./PetDropdownOptions"
 import { FixSalePrice } from "./HeroBase"
 export const backgrounds = {
   0: "Stillwood Meadow",
@@ -76,6 +77,8 @@ const initiatePet = (pet) => {
       pet.elementName = "dark"
       break
   }
+  pet.profBonusName = PetProfessionBonusNames
+    .find(bonus => bonus.value.split(",").some(value => value == pet.profBonus))?.label ?? 'Unknown Bonus'
   return true
 }
 

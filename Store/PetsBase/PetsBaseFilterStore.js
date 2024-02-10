@@ -5,6 +5,7 @@ const initialState = {
   combatBonus: [0, 3],
   craftBonus: [0, 3],
   profBonus: [1, 3],
+  profBonusName: [],
   rarity: [0, 4],
   idInput: ``,
   eggType: [],
@@ -60,6 +61,12 @@ const PetsBaseFilterStore = (set) => ({
   setProfBonus: (profBonus) => {
     set({
       profBonus
+    })
+  },
+  profBonusName: [],
+  setProfBonusName: (profBonusName) => {
+    set({
+      profBonusName
     })
   },
   rarity: [0, 4],

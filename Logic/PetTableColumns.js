@@ -112,6 +112,16 @@ let petColumnDefs = [
     }
   },
   {
+    headerName: "Prof. Bonus Name",
+    field: "profBonusName",
+    hide: false,
+  },
+  {
+    headerName: "Prof. Bonus Value",
+    field: "profBonusScalar",
+    hide: false,
+  },
+  {
     headerName: "Crafting ⭐",
     field: "craftBonus",
     type: "number",
