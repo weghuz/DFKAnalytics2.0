@@ -18,7 +18,8 @@ import SelectItem from "./Filters/SelectItem"
 import {
   PetBackgrounds,
   PetEggTypes,
-  PetElements
+  PetElements,
+  PetProfessionBonusNames
 } from "../Logic/PetDropdownOptions"
 import NumberSlider from "./Filters/NumberSlider"
 import Pet03StarSlider from "./PetFilters/Pet03StarSlider"
@@ -41,6 +42,8 @@ export default function PetFilters({
   const setCraftBonus = useStore((state) => state.setCraftBonus)
   const profBonus = useStore((state) => state.profBonus)
   const setProfBonus = useStore((state) => state.setProfBonus)
+  const profBonusName = useStore((state) => state.profBonusName)
+  const setProfBonusName = useStore((state) => state.setProfBonusName)
   const rarity = useStore((state) => state.rarity)
   const setRarity = useStore((state) => state.setRarity)
   const idInput = useStore((state) => state.idInput)
@@ -108,7 +111,7 @@ export default function PetFilters({
         if (values != ``) {
           values += `,`
         }
-        values += bonusMap[i].join(", ")
+        values += bonusMap[i].join(",")
       }
     }
     return values
@@ -163,8 +166,36 @@ export default function PetFilters({
       })
       filters += `],`
     }
+    let profBonusFilter = []
+    let profBonusFilter1 = ``
+    let profBonusFilter2 = ``
     if (profBonus[0] > 1 || profBonus[1] < 3) {
-      filters += `profBonus_in:[${GetBonusValues(profBonus[0], profBonus[1])}],`
+      profBonusFilter1 = GetBonusValues(profBonus[0], profBonus[1])
+    }
+    if (profBonusName.length > 0) {
+      profBonusName.forEach((c, i) => {
+        profBonusFilter2 += `${c.value}`
+        if (i < profBonusName.length - 1) {
+          profBonusFilter2 += `,`
+        }
+      })
+    }
+    if ((profBonusFilter1.length > 0) && (profBonusFilter2.length > 0)) {
+      // Merge where both values exist
+      profBonusFilter = profBonusFilter1.split(",").filter(v => profBonusFilter2.split(",").indexOf(v) > -1)
+      // if none match set to an empty query
+      if (profBonusFilter.length == 0) {
+        profBonusFilter = [ 0 ]
+      }
+    }
+    else if (profBonusFilter1.length > 0) {
+      profBonusFilter = profBonusFilter1.split(",")
+    }
+    else if (profBonusFilter2.length > 0) {
+      profBonusFilter = profBonusFilter2.split(",")
+    }
+    if (profBonusFilter.length > 0) {
+      filters += `profBonus_in:[${profBonusFilter.join(",")}],`
     }
     if (craftBonus[0] > 0 || craftBonus[1] < 3) {
       filters += `craftBonus_in:[${GetBonusValues(craftBonus[0], craftBonus[1])}],`
@@ -271,6 +302,13 @@ export default function PetFilters({
               setValues={setBackground}
             >
               {PetBackgrounds}
+            </SelectItem>
+            <SelectItem
+              title={"Prof. Bonus Name"}
+              values={profBonusName}
+              setValues={setProfBonusName}
+            >
+              {PetProfessionBonusNames}
             </SelectItem>
             <PetRaritySlider
               setRarity={setRarity}

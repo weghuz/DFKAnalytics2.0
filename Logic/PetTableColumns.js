@@ -10,8 +10,8 @@ import ProfessionBonus from "../Components/Pet/ProfessionBonus"
 
 const GetBonusStars = (bonusValue) => {
   let stars = 0
-  /* drop extra bits above 0xFF (255) */
-  let adjBonus = bonusValue & 0xFF;
+  /* drop values above 1000 */
+  let adjBonus = bonusValue % 1000;
   if (adjBonus > 0) {
     if (adjBonus < 80)
       stars = 1
@@ -110,6 +110,16 @@ let petColumnDefs = [
     renderCell: ({ row }) => {
       return <ProfessionBonus>{row}</ProfessionBonus>
     }
+  },
+  {
+    headerName: "Prof. Bonus Name",
+    field: "profBonusName",
+    hide: false,
+  },
+  {
+    headerName: "Prof. Bonus Value",
+    field: "profBonusScalar",
+    hide: false,
   },
   {
     headerName: "Crafting ⭐",
