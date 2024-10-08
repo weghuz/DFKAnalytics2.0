@@ -562,18 +562,15 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
         }
       }
     }
-    switch (realm[0].value) {
-      case "hmy":
-        query += `network: "hmy",`
-        break
-      case "dfk":
-        query += `network: "dfk",`
-        break
-      case "kla":
-        query += `network: "kla",`
-        break
-      default:
-        break
+    if (realm.length > 0) {
+      query += `network_in: [`
+      realm.forEach((c, i) => {
+        query += `"${c.value}"`
+        if (i < realm.length - 1) {
+          query += `,`
+        }
+      })
+      query += `],`
     }
     let order = ``
     if (includeSalePrice) {
@@ -920,19 +917,18 @@ function HeroFilters({ includeSalePrice, visible, useStore, initiate }) {
                   {Targets}
                 </SelectItemSingle>
               )}
-              <SelectItemSingle
+              <SelectItem
                 title="Network"
-                clearable={false}
                 values={realm}
                 setValues={setRealm}
               >
                 {[
-                  { value: "kla", label: "Klaytn" },
                   { value: "dfk", label: "DFK Chain" },
                   { value: "hmy", label: "Harmony" },
-                  { value: "", label: "Any" }
+                  { value: "kla", label: "Klaytn" },
+                  { value: "met", label: "Metis" },
                 ]}
-              </SelectItemSingle>
+              </SelectItem>
               <SelectItem
                 title="Class"
                 values={mainClass}
