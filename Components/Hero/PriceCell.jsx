@@ -57,7 +57,7 @@ export default function PriceCell({ children }) {
               </Grid>
             </Grid>
           </Tooltip>
-        ) : (
+        ) : (children.network == "kla" ? (
           <Tooltip
             placement="right"
             title={`This hero is being ${
@@ -75,7 +75,27 @@ export default function PriceCell({ children }) {
               </Grid>
             </Grid>
           </Tooltip>
-        )
+        ) : (
+          <Tooltip
+            placement="right"
+            title={`This hero is being ${
+              children.saleAuction ? "Sold" : "Rented out"
+            } ${
+              children.network == "met" ? "in Submersia" : "on Harmony"
+            } for Jewel.`}
+          >
+            <Grid container>
+              <Grid item sx={{ marginRight: "10px" }}>
+                <Image src={Jewel} alt="Jewel" height="24px" width="24px" />
+              </Grid>
+              <Grid item sx={{ alignSelf: "left", marginTop: "5px" }}>
+                {children.saleAuction
+                  ? children.salePrice
+                  : children.assistingPrice}
+              </Grid>
+            </Grid>
+          </Tooltip>
+        ))
       ) : (
         ""
       )}

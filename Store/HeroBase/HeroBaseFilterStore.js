@@ -169,7 +169,7 @@ const HeroBaseFilterStore = (set) => ({
   setGender: (gender) => {
     set({ gender })
   },
-  realm: [{ value: "", label: "Any" }],
+  realm: [],
   setRealm: (realm) => {
     set({ realm })
   },
