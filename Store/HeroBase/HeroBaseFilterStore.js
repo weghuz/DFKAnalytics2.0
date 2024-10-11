@@ -21,7 +21,7 @@ const initialState = {
   passive1: [],
   passive2: [],
   background: [],
-  realm: [{ value: "", label: "Any" }],
+  realm: [],
   gender: [],
   minStrength: 0,
   minDexterity: 0,
