@@ -13,7 +13,7 @@ export default function PassiveCell({ children }) {
     Basic8: <Box>B8 Stalwart</Box>,
     Advanced1: <Box sx={{ color: "success.main" }}>A1 Leadership</Box>,
     Advanced2: <Box sx={{ color: "success.main" }}>A2 Efficient</Box>,
-    Advanced3: <Box sx={{ color: "success.main" }}>A3 Intimidation</Box>,
+    Advanced3: <Box sx={{ color: "success.main" }}>A3 Menacing</Box>,
     Advanced4: <Box sx={{ color: "success.main" }}>A4 Toxic</Box>,
     Elite1: <Box sx={{ color: "primary.main" }}>E1 Giant Slayer</Box>,
     Elite2: <Box sx={{ color: "primary.main" }}>E2 Last Stand</Box>,

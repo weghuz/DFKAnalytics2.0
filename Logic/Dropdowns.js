@@ -298,7 +298,7 @@ module.exports = {
     },
     {
       value: 18,
-      label: <Box sx={{ color: "success.main" }}>A3 Intimidation</Box>
+      label: <Box sx={{ color: "success.main" }}>A3 Menacing</Box>
     },
     {
       value: 19,
