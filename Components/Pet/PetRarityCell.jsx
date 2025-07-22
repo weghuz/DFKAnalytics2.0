@@ -41,12 +41,12 @@ export default function PetRarityCell({ rarity }) {
   };
 
   return (
-    <Tooltip placement="left" title={rarities[rarity]}>
+    <Tooltip placement="right" title={rarities[rarity]}>
       <Box
         sx={{
           width: "100%",
           display: "flex",
-          justifyContent: "center",
+          justifyContent: "right",
           padding: "2px",
         }}
       >
