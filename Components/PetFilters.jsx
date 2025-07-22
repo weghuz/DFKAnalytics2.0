@@ -279,7 +279,8 @@ export default function PetFilters({
               {[
                 { value: "SER1", label: "SER1" },
                 { value: "SER2", label: "SER2" },
-                { value: "CRY", label: "CRY" }
+                { value: "CRY", label: "CRY" },
+                { value: "SUN", label: "SUN" }
               ]}
             </SelectItem>
             <SelectItem
