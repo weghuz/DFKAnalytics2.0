@@ -13,10 +13,12 @@ export default function PetPriceCell({ children }) {
           placement="right"
           title={
             children.currentRealm == "SER2"
-              ? `This pet is being sold in Serendale on Klaytn for Jade.`
+              ? `This is being sold in Serendale on Kaia for Jade.`
               : children.currentRealm == "SER1"
-              ? `This pet is being sold in Serendale on Harmony for Jewel.`
-              : `This pet is being sold in Crystalvale on DFK Chain for Crystal.`
+              ? `This is being sold in Serendale on Harmony for Jewel.`
+              : children.currentRealm == "SUN"
+              ? `This is being sold in the Sundered Isles on Metis for Jewel.`
+              : `This is being sold in Crystalvale on DFK Chain for Crystal.`
           }
         >
           <Grid container justifyContent={"space-between"}>
@@ -27,6 +29,8 @@ export default function PetPriceCell({ children }) {
               {children.currentRealm == "SER2" ? (
                 <Image src={Jade} alt="Jade" height="24px" width="24px" />
               ) : children.currentRealm == "SER1" ? (
+                <Image src={Jewel} alt="Jewel" height="24px" width="24px" />
+              ) : children.currentRealm == "SUN" ? (
                 <Image src={Jewel} alt="Jewel" height="24px" width="24px" />
               ) : (
                 <Image src={Crystal} alt="Crystal" height="24px" width="24px" />
