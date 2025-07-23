@@ -3,6 +3,7 @@ import create from "zustand"
 import { persist } from "zustand/middleware"
 import { BaseHeroVisibilityModels } from "../Logic/BaseHeroVisibilityModels"
 import { BasePetVisibilityModels } from "../Logic/BasePetVisibilityModels"
+import { BaseWeaponVisibilityModels } from "../Logic/BaseWeaponVisibilityModels"
 
 const PersistedStore = create(
   persist(
@@ -52,6 +53,31 @@ const PersistedStore = create(
           }
           return {
             savedPetColumnSetups: state.savedPetColumnSetups.filter(
+              (s, i) => s.name !== columnSetup
+            )
+          }
+        })
+      },
+      savedWeaponColumnSetups: BaseWeaponVisibilityModels,
+      saveWeaponColumnSetup: (columnSetup) => {
+        set((state) => {
+          if (
+            state.savedWeaponColumnSetups.some((s) => s.name === columnSetup.name)
+          ) {
+            return
+          }
+          return {
+            savedWeaponColumnSetups: [...state.savedWeaponColumnSetups, columnSetup]
+          }
+        })
+      },
+      removeWeaponColumnSetup: (columnSetup) => {
+        set((state) => {
+          if (BaseWeaponVisibilityModels.some((s) => s.name === columnSetup)) {
+            return
+          }
+          return {
+            savedWeaponColumnSetups: state.savedWeaponColumnSetups.filter(
               (s, i) => s.name !== columnSetup
             )
           }
@@ -121,6 +147,19 @@ const PersistedStoreInit = create(
         }
       })
     },
+    savedWeaponColumnSetups: BaseWeaponVisibilityModels,
+    saveWeaponColumnSetup: (columnSetup) => {
+      set((state) => {
+        if (
+          state.savedWeaponColumnSetups.some((s) => s.name === columnSetup.name)
+        ) {
+          return
+        }
+        return {
+          savedWeaponColumnSetups: [...state.savedWeaponColumnSetups, columnSetup]
+        }
+      })
+    },
     removePetColumnSetup: (columnSetup) => {
       set((state) => {
         if (BasePetVisibilityModels.some((s) => s.name === columnSetup)) {
@@ -143,6 +182,18 @@ const PersistedStoreInit = create(
             (s, i) => s.name !== state.currentHeroColumnSetup
           ),
           currentHeroColumnSetup: BaseHeroVisibilityModels[0].name
+        }
+      })
+    },
+    removeWeaponColumnSetup: (columnSetup) => {
+      set((state) => {
+        if (BaseWeaponVisibilityModels.some((s) => s.name === columnSetup)) {
+          return
+        }
+        return {
+          savedWeaponColumnSetups: state.savedWeaponColumnSetups.filter(
+            (s, i) => s.name !== columnSetup
+          )
         }
       })
     },
