@@ -53,6 +53,11 @@ export default function Navbar() {
             <Button variant={"text"}>Pets</Button>
           </Link>
         </Grid>
+        <DropDownButton title={"Equipment"}>
+          <Link href={"/equipment/weapon"} passHref>
+            <MenuItem>Weapon</MenuItem>
+          </Link>
+        </DropDownButton>
         <DropDownButton title={"Wallet"}>
           <Link href={"/Wallet"} passhref>
             <MenuItem>Heroes</MenuItem>
