@@ -601,7 +601,7 @@ export default function HeroDetails({ hero }) {
     Basic8: "B8 Stalwart",
     Advanced1: "A1 Leadership",
     Advanced2: "A2 Efficient",
-    Advanced3: "A3 Intimidation",
+    Advanced3: "A3 Menacing",
     Advanced4: "A4 Toxic",
     Elite1: "E1 Giant Slayer",
     Elite2: "E2 Last Stand",
